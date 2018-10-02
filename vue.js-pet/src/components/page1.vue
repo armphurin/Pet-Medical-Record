@@ -5,11 +5,8 @@
     </div>
 </template>
 
-<script src="../js/route.js">
-</script>
-
-
 <script>
+import router from '../router'
     export default {
         name: 'Page1',
         /*
@@ -21,7 +18,8 @@
         */
        props: {
            msg: String
-       }
+       },
+       router
     }
 </script>
 
