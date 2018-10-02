@@ -1,0 +1,17 @@
+select {
+	background: none;
+	text-align: center;
+	color: #575652;
+	font-size: 14px;
+	outline:none;
+	text-align: left;
+	text-decoration: none;
+	width:163px;
+        margin: 1%;
+}
+span {
+	float:left;
+	overflow:hidden;
+	border:1px solid red;
+}
+span select { margin:-1px }
