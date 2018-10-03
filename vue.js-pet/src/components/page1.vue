@@ -18,8 +18,7 @@ import router from '../router'
         */
        props: {
            msg: String
-       },
-       router
+       }
     }
 </script>
 
