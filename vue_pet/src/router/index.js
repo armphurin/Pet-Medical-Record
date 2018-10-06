@@ -80,7 +80,7 @@ let router = new Router({
       }
     },
     {
-      path: '/home-profile',
+      path: '/home_profile',
       name: 'home-profile',
       component: HomeProfile,
       meta: {

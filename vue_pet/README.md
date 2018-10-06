@@ -1,6 +1,6 @@
-# Employee Manager
+# Pet Medical Record
 
-> Vue.js app to manage employees that uses FireStore as a backend.
+> Vue.js app to manage pet medical record that uses FireStore as a backend.
 
 ## Build Setup
 
@@ -22,8 +22,7 @@ npm run build --report
 
 ### Author
 
-Brad Traversy
-[Traversy Media](http://www.traversymedia.com)
+Sattaya Singkul
 
 ### Version
 
