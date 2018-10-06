@@ -33,7 +33,7 @@
 <script>
   import db from './firebaseInit'
   export default {
-    name: 'edit-employee',
+    name: 'edit-pet',
     data () {
       return {
         pet_id: null,

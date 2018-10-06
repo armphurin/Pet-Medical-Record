@@ -1,5 +1,5 @@
 <template>
-  <div id="new-employee">
+  <div id="new-pet">
     <h3>New Pet</h3>
     <div class="row">
     <form @submit.prevent="savePet" class="col s12">
@@ -37,7 +37,7 @@
 <script>
     import db from './firebaseInit'
     export default {
-      name: 'pet-employee',
+      name: 'new-pet',
       data () {
         return {
           pet_id: null,
@@ -47,7 +47,7 @@
         }
       },
       methods: {
-        saveEmployee () {
+        savePet () {
           db.collection('pets').add({
             pet_id: this.pet_id,
             pet_name: this.pet_name,

@@ -55,7 +55,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/vue_firestore_employeemanager/',
+    assetsPublicPath: '/vue_pet/',
 
     /**
      * Source Maps

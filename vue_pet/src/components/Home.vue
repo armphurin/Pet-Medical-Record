@@ -3,9 +3,9 @@
     <ul class="collection with-header">
       <li class="collection-header"><h4>Pet Medic</h4></li>
       <li v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
-        <div class="chip">{{pet.dept}}</div>
-        {{pet.pet_id}}: {{pet.name}} 
-         <router-link class="secondary-content" v-bind:to="{ pet_name: 'view-pet', params: { pet_id: pet.pet_id }}"><i class="fa fa-eye"></i></router-link>
+        <div class="chip">{{pet.pet_id}}</div>
+        {{pet.pet_name}}: {{pet.dept}} 
+         <router-link class="secondary-content" v-bind:to="{ name: 'view-pet', params: { pet_id: pet.pet_id }}">Show {{pet.pet_id}}<i class="fa fa-eye"></i></router-link>
       </li>
     </ul>
     <div class="fixed-action-btn">

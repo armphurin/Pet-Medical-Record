@@ -2,7 +2,7 @@
   <div id="view-profile">
     <ul class="collection with-header">
       <li class="collection-header"><h4>{{profile_name}}</h4></li>
-      <li class="collection-item">Pet ID#: {{profile_id}}</li>
+      <li class="collection-item">Profile ID#: {{profile_id}}</li>
       <li class="collection-item">Department: {{dept}}</li>
       <li class="collection-item">Position: {{position}}</li>
     </ul>

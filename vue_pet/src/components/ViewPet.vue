@@ -10,7 +10,7 @@
     <button @click="deletePet" class="btn red">Delete</button>
 
     <div class="fixed-action-btn">
-      <router-link v-bind:to="{ name: 'edit-pet', params: { pet_id: pet_id }}" class="btn-floating btn-large red">
+      <router-link v-bind:to="{ pet_name: 'edit-pet', params: { pet_id: pet_id }}" class="btn-floating btn-large red">
         <i class="fa fa-pencil"></i>
       </router-link>
     </div>
