@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Navigationbar />
     <div class="container">
       <router-view/>
     </div>
@@ -14,7 +14,7 @@ import NewPet from './components/NewPet';
 export default {
   name: 'app',
   components: {
-    Navbar,
+    'Navigationbar':Navbar,
     NewPet
   }
 };

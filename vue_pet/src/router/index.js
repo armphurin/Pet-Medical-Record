@@ -9,6 +9,7 @@ import Register from '@/components/Register';
 import firebase from 'firebase';
 import ViewProfile from '@/components/ViewProfile'
 import EditProfile from '@/components/EditProfile'
+import HomeProfile from '@/components/HomeProfile'
 
 Vue.use(Router);
 
@@ -74,6 +75,14 @@ let router = new Router({
       path: '/edit/:profile_id',
       name: 'edit-profile',
       component: EditProfile,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/home-profile',
+      name: 'home-profile',
+      component: HomeProfile,
       meta: {
         requiresAuth: true
       }
