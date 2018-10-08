@@ -1,0 +1,319 @@
+
+.container {
+  margin-top: 20px;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+nav div, h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+}
+
+.nav li {
+  margin-top: 12px;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.nav li a {
+  color: #000;
+}
+
+.nav li:last-child {
+  margin-bottom: 10px;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus {
+  color: #000;
+  background-color: transparent;
+}
+
+.nav-pills>li.active>a:hover {
+  background-color: #eee;
+  color: #000;
+}
+
+.carousel-control.left, .carousel-control.right {
+  top: 40%;
+  background: none;
+  font-size: 50px;
+}
+
+.carousel-caption {
+  font-size: 28px;
+  bottom: 0;
+}
+
+.post {
+  margin-bottom: 30px;
+}
+
+a.thumbnail:hover, a.thumbnail:focus{
+  border: 1px solid black;
+}
+
+footer p {
+  text-align: center;
+}
+
+@media (max-width: 992px){
+  .carousel-caption {
+    font-size: 18px;
+  }
+  .nav li {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px){
+  .thumbnail {
+    border: none;
+  }
+  a.thumbnail:hover, a.thumbnail:focus{
+    border: none;
+  }
+}
+
+
+
+/*Photo album*/
+
+#slideshow-wrap {
+    display: block;
+    height: 320px;
+    min-width: 260px;   /* you can't make width any smaller by resizing the browser window */
+    max-width: 640px;   /* size in full window */
+    margin-bottom: auto;
+    margin-right: auto;
+    margin-top: auto;
+    border: 10px #ffffff solid;
+    margin-top: 20px;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+#slideshow-wrap .slide-img {
+    width: 100%;
+}
+
+#slideshow-inner {
+    width: 100%;        /* takes max width of slideshow-wrap */
+    height: 100%;       /* takes max height of slideshow-wrap */
+    background-color: #000000;  /* this background is behind images */
+    overflow: hidden;   /* this hides other images and makes only the current image visible */
+}
+
+#slideshow-inner > ul {
+    list-style: none;
+    height: 100%;       /* ul is the same height as slideshow-inner */
+    width: 1000%;        /* this makes sure that you can only see 1 pic at a time */
+    position: relative; /* this makes sure that you can only see 1 pic at a time */
+                            /* fixed would make current image to take width of full screen */
+                            /* absolute would make all images visible */
+    left: 0px;
+    transition: left 0.5s linear;               /* here we specify how fast will the next image appear */
+        -webkit-transition: left 0.5s linear;
+        -moz-transition: left 0.5s linear;
+        -o-transition: left 0.5s linear;
+}
+
+#slideshow-inner > ul > li {
+    width: 10%; /* since there are 5 images, each has to take 20% of */
+                /* slideshow-inner's width so that we have 1 image per slide */
+    height: 320px;  /* hight is the same as wrap's (this is max height) */
+    float: left;    /* if we type 'right', last image becomes 1st one */
+    position: relative;
+}
+
+#slideshow-inner > ul > li > img {
+    height: 100%;   /* each image has max height */
+}
+
+#slideshow-wrap input[type=radio] {
+    position: absolute;
+    left: 50%;              /* we need inputs just to make nav dots */
+    bottom: 15px;           /* inputs are small dots 15px from the bottom of the wrap */
+    z-index: 100;           /* inputs don't show on screen */
+    visibility: hidden;
+}
+
+#slideshow-wrap label:not(.arrows):not(.show-description-label) {
+    position: absolute;
+    left: 43%;  /* makes bullets seperated by half their size */
+    bottom: -45px; /* makes bullets 45px below images */
+    z-index: 100;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;  
+    border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+    cursor: pointer;
+}
+
+#slideshow-wrap input[type=radio]#button-1:checked~label[for=button-1] { background-color: #FF69B4; }   /* bullet color when active */
+
+#slideshow-wrap input[type=radio]#button-2:checked~label[for=button-2] { background-color: #FF69B4; }
+
+#slideshow-wrap input[type=radio]#button-3:checked~label[for=button-3] { background-color: #FF69B4; }
+
+#slideshow-wrap input[type=radio]#button-4:checked~label[for=button-4] { background-color: #FF69B4; }
+
+#slideshow-wrap input[type=radio]#button-5:checked~label[for=button-5] { background-color: #FF69B4; }
+
+#slideshow-wrap input[type=radio]#button-6:checked~label[for=button-6] { background-color: #FF69B4; }
+
+#slideshow-wrap input[type=radio]#button-7:checked~label[for=button-7] { background-color: #FF69B4; }
+
+#slideshow-wrap input[type=radio]#button-8:checked~label[for=button-8] { background-color: #FF69B4; }
+
+#slideshow-wrap input[type=radio]#button-9:checked~label[for=button-9] { background-color: #FF69B4; }
+
+#slideshow-wrap input[type=radio]#button-10:checked~label[for=button-10] { background-color: #FF69B4; }
+
+
+#slideshow-wrap label[for=button-1] { margin-left: -36px }
+
+#slideshow-wrap label[for=button-2] { margin-left: -18px }
+
+#slideshow-wrap label[for=button-4] { margin-left: 18px }
+
+#slideshow-wrap label[for=button-5] { margin-left: 36px }
+
+#slideshow-wrap label[for=button-6] { margin-left: 54px }
+
+#slideshow-wrap label[for=button-7] { margin-left: 72px }
+
+#slideshow-wrap label[for=button-8] { margin-left: 90px }
+
+#slideshow-wrap label[for=button-9] { margin-left: 108px }
+
+#slideshow-wrap label[for=button-10] { margin-left: 126px }
+
+
+#slideshow-wrap input[type=radio]#button-1:checked~#slideshow-inner > ul { left: 0; }
+
+#slideshow-wrap input[type=radio]#button-2:checked~#slideshow-inner > ul { left: -100%; }
+
+#slideshow-wrap input[type=radio]#button-3:checked~#slideshow-inner > ul { left: -200%; }
+
+#slideshow-wrap input[type=radio]#button-4:checked~#slideshow-inner > ul { left: -300%; }
+
+#slideshow-wrap input[type=radio]#button-5:checked~#slideshow-inner > ul { left: -400%; }
+
+#slideshow-wrap input[type=radio]#button-6:checked~#slideshow-inner > ul { left: -500%; }
+
+#slideshow-wrap input[type=radio]#button-7:checked~#slideshow-inner > ul { left: -600%; }
+
+#slideshow-wrap input[type=radio]#button-8:checked~#slideshow-inner > ul { left: -700%; }
+
+#slideshow-wrap input[type=radio]#button-9:checked~#slideshow-inner > ul { left: -800%; }
+
+#slideshow-wrap input[type=radio]#button-10:checked~#slideshow-inner > ul { left: -900%; }
+
+
+label.arrows {
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    display: none;
+    opacity: 0.7;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+label.arrows:hover { opacity: 1 }
+
+input[type=radio]#button-1:checked~.arrows#arrow-2, input[type=radio]#button-2:checked~.arrows#arrow-3, input[type=radio]#button-3:checked~.arrows#arrow-4, input[type=radio]#button-4:checked~.arrows#arrow-5, input[type=radio]#button-5:checked~.arrows#arrow-6, input[type=radio]#button-6:checked~.arrows#arrow-7, input[type=radio]#button-7:checked~.arrows#arrow-8, input[type=radio]#button-8:checked~.arrows#arrow-9, input[type=radio]#button-9:checked~.arrows#arrow-10 {
+    right: -55px;   /* space betwwen wrap and right arrow */
+    display: block;
+}
+
+input[type=radio]#button-2:checked~.arrows#arrow-1, input[type=radio]#button-3:checked~.arrows#arrow-2, input[type=radio]#button-4:checked~.arrows#arrow-3, input[type=radio]#button-5:checked~.arrows#arrow-4, input[type=radio]#button-6:checked~.arrows#arrow-5, input[type=radio]#button-7:checked~.arrows#arrow-6, input[type=radio]#button-8:checked~.arrows#arrow-7, input[type=radio]#button-9:checked~.arrows#arrow-8, input[type=radio]#button-10:checked~.arrows#arrow-9 {
+    left: -55px;    /* space between wrap and left arrow */
+    display: block;
+    transform: scaleX(-1);              /* this mirrors the arrow image */
+        -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+}
+
+.arrows img {
+    width: 20px;
+    height: 20px;
+}
+
+/* this part keeps arrows in position we set before (55px away from wrap) */
+input[type=radio]#button-2:checked~.arrows#arrow-1 { left: -19px }      
+
+input[type=radio]#button-3:checked~.arrows#arrow-2 { left: -37px }
+
+input[type=radio]#button-4:checked~.arrows#arrow-3 { left: -55px }
+
+input[type=radio]#button-5:checked~.arrows#arrow-4 { left: -73px }
+
+input[type=radio]#button-6:checked~.arrows#arrow-5 { left: -91px }
+
+input[type=radio]#button-7:checked~.arrows#arrow-6 { left: -109px }
+
+input[type=radio]#button-8:checked~.arrows#arrow-7 { left: -127px }
+
+input[type=radio]#button-9:checked~.arrows#arrow-8 { left: -145px }
+
+input[type=radio]#button-10:checked~.arrows#arrow-9 { left: -163px }
+
+
+.description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 260px;
+    z-index: 1000;
+}
+
+.description input { visibility: hidden }
+
+.description label {
+    background-color: #ffffff;
+    position: relative;
+    left: -17px;
+    top: 0px;
+    width: 40px;
+    height: 27px;           
+    display: inline-block;
+    text-align: center;
+    padding-top: 7px;
+    border-bottom-right-radius: 15px;
+    cursor: pointer;
+    z-index: 5;
+    color: #000000;
+}
+
+.description .description-text {
+    background-color: rgba(255,255,250,.5); /* white background, 0.5 opacity */
+    padding-left: 45px;
+    padding-top: 25px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    top: -35px;
+    z-index: 4;
+    opacity: 0;
+    transition: opacity .2s;
+        -webkit-transition: opacity .2s;
+        -moz-transition: opacity .2s;
+        -o-transition: opacity .2s;
+    color: #000000;
+}
+
+.description h2 {
+    color: #ff69b4;
+}
+
+.description input[type=checkbox]:checked~.description-text { opacity: 1 }
+
+
+

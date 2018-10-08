@@ -1,0 +1,18 @@
+.rating-block{
+	background-color:#FAFAFA;
+	border:1px solid #EFEFEF;
+	padding:15px 15px 20px 15px;
+	border-radius:3px;
+}
+.half:before {
+
+      content: "\e006"; /* put here default icon code*/
+      width: 50%;
+      display: block;
+      position: absolute;
+      overflow: hidden;
+
+}
+.half:after {
+    content: "\e007"; /* put here icon-empty code*/
+}
