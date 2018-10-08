@@ -47,6 +47,12 @@ export default {
             alert(`Account Created for ${user.email}`);
             this.$router.go({ path: this.$router.path });
           },
+          db.collection('profiles').doc(this.email).set({
+            profile_id: "new",
+            profile_name: "new",
+            dept: "new",
+            position: "new"
+          }),
           err => {
             alert(err.message);
           }
