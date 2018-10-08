@@ -48,14 +48,14 @@
       },
       methods: {
         savePet () {
-          db.collection('pets').add({
+          db.collection('pets').doc(this.pet_id).set({
             pet_id: this.pet_id,
             pet_name: this.pet_name,
             dept: this.dept,
             position: this.position
           })
           .then(docRef => {
-            console.log('Client added: ', docRef.id)
+            console.log('Client added: ', docRef.pet_id)
             this.$router.push('/')
           })
           .catch(error => {
