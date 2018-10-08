@@ -1,0 +1,30 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 22, 2018, 6:10:35 AM
+    Author     : kukki
+*/
+
+.card {
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin: auto;
+    padding: 1em;
+    margin-top: 3em;
+}
+
+.separator {
+    border-top: 5px solid #ff9800;
+    margin: auto;
+    padding: 10px;
+}
+
+.light-separator {
+    border-top: 5px solid #eff0f1;
+    margin: auto;
+    padding: 10px;
+}

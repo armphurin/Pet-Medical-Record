@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Wan-jai</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/popup2.css"/>
+
+
+        <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+        <link href='css/fontgoogle.css' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link rel="stylesheet" href="bootstrap3/css/bootstrap.min.css">
+        <script src="js/jquery.min.js"></script>
+        <script src="bootstrap3/js/bootstrap.min.js"></script>
+
+        <!-- start details -->
+        <link rel="stylesheet" type="text/css" href="css/productviewgallery.css" media="all" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/cloud-zoom.1.0.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="js/jquery.fancybox-buttons.js"></script>
+        <script type="text/javascript" src="js/jquery.fancybox-thumbs.js"></script>
+        <script type="text/javascript" src="js/productviewgallery.js"></script>
+        <link rel="stylesheet" href="css/w3.css">
+        <!-- start top_js_button -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/move-top.js"></script>
+        <script type="text/javascript" src="js/easing.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $(".scroll").click(function (event) {
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+                });
+            });
+        </script>
+
+
+        <!-- style rating -->
+        <style>
+            ul.beeRating {
+                float: right;
+
+                list-style: none;
+            }
+            .beeRating li {
+                display: inline-block;
+                opacity: .25;
+                font-size: 150%;
+                cursor: pointer;
+                color: orange;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="popup-link">
+            <a href="#popup1">แสดงความคิดเห็น</a>
+        </div>
+        <!--popup1-->
+        <div id="popup1" class="popup-container">
+            <div class="popup-content">
+                <a href="#" class="close">&times;</a>
+                <!-- ฟอร์มวิจารณ์ -->
+                <div class="main">
+                    <div class="contact">
+                    </div>
+                    <div class="contact-form">
+                        <h2>เขียนคำวิจารณ์</h2>
+                        <form method="post" action="contact-post.html">
+                            <!-- ให้คะแนนดาว -->
+                            <div class="starform">
+                                <!--
+                                                                <div class="rating rating2">
+                                                                    &nbsp;&nbsp;
+                                                                    <a href="#5" title="Give 5 stars" class="starClick">★</a>
+                                                                    <a href="#4" title="Give 4 stars" class="starClick">★</a>
+                                                                    <a href="#3" title="Give 3 stars" class="starClick">★</a>
+                                                                    <a href="#2" title="Give 2 stars" class="starClick">★</a>
+                                                                    <a href="#1" title="Give 1 star" class="starClick">★</a>
+                                                                    <h4 style="display: inline">: Rate</h4>
+                                                                </div>
+                                -->
+                                <ul class="beeRating">
+                                    <label style="display: inline">Rate :</label>
+                                    <li class="oneBee" id="1">★</li>
+                                    <li class="twoBee" id="2">★</li>
+                                    <li class="threeBee" id="3">★</li>
+                                    <li class="fourBee" id="4">★</li>
+                                    <li class="fiveBee" id="5">★</li>
+                                </ul>
+                                <input type="text" name="rating" id="ratingHidden" value="" />
+                            </div>
+                            <div>
+                                <span>
+                                    <label>Title</label>
+                                </span>
+                                <span>
+                                    <input name="userName" type="text" class="textbox">
+                                </span>
+                            </div>
+                            <div>
+                                <span>
+                                    <label>Message</label>
+                                </span>
+                                <span>
+                                    <textarea name="userMsg"> </textarea>
+                                </span>
+                            </div>
+                            <div>
+                                <span>
+                                    <input type="submit" class="" value="Submit us">
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--script rating -->
+        <script>
+            var index = 1;
+            $(".beeRating li").on({
+                mouseover: function () {
+                    if (index == 1)
+                    {
+                        $(this).addClass('stop');
+                        $("li").each(function (index, domEle) {
+                            $(domEle).css('opacity', '1');
+                            if ($(this).hasClass('stop')) {
+                                return false;
+                            }
+                        })
+                    }
+                },
+                mouseleave: function () {
+                    if (index == 1)
+                    {
+                        $(this).removeClass('stop');
+                        $("li").each(function (index, domEle) {
+                            $(domEle).css('opacity', '.25');
+                        })
+                    }
+                },
+                click: function () {
+                    var rating = $(this).attr('id');
+                    console.log(rating);
+                    $('#ratingHidden').val(rating);
+                    index = 0;
+                    $.ajax({// do ajax request
+                        url: "/echo/json/"
+
+                    }).done(function () {
+                        alert("success");
+                        index = 1;  // on done set the index as 1
+                    });
+                }
+            });
+        </script>
+
+    </body>
+</html>

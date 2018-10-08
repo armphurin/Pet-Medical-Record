@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/Project">
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="bakery" password="root" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/bakery?useUnicode=true&amp;characterEncoding=UTF8" username="root"/>
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="creditCard" password="root" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/creditcard?zeroDateTimeBehavior=convertToNull" username="root"/>
+</Context>

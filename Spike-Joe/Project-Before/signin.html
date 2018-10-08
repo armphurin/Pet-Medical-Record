@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Login and Register Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="loginandregis.css" type="text/css" rel="stylesheet" >
+        <script src="js/jquery.min.js" type="text/javascript" ></script>
+        <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+        <link href="loginandregister.css" rel="stylesheet" />
+        <script src="loginandregister.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <button class="login-form" id="login_button">Login</button>
+        <button class="login-form" id="regis_button">Register</button>
+        <a href="index.jsp"><button class="login-form" id="back_button">Back</button></a>
+
+        <div class="step-bar" id="bar-all">
+            <ul>
+                <li>
+                    <div class="number active">1</div>
+                    <div class="text">account</div>
+                </li>
+                <li>
+                    <div class="number">2</div>
+                    <div class="text">profiles</div>
+                    <div class="line"></div>
+                </li>
+                <li>
+                    <div class="number">3</div>
+                    <div class="text">details</div>
+                    <div class="line"></div>
+                </li>
+            </ul>
+        </div>
+        <h1 id="head_form"></h1>
+
+        <!-- Register Form -->
+        <form id="regis_form" method="POST" action="SignupServlet">
+            <div class="account-setup register-form">
+                <h2>Step 1 : Username & Password</h2>
+                <input name="username" type="text" placeholder="Username" required="required" />
+                <input name="password" type="password" placeholder="Password" required="required" />
+                <input name="confirmPassword" type="password" placeholder="Confirm Password" required="required" />
+                <div class="button firstNext">Next</div>
+            </div>
+            <div class="user-details register-form">
+                <h2>Step 2 : User Detail</h2>
+                <input type="text" name="firstname" value="" size="25" placeholder="First name" required="required" />
+                <input type="text" name="lastname" value="" size="25" placeholder="Last name" required="required" />
+                <input type="email" name="email" value="" size="25" placeholder="Email" required="required" />
+                <input type="text" name="phone_number" value="" size="25" placeholder="Phone number" required="required" />
+                <input type="text" name="phone_number2" value="" placeholder="Phone number (2)">
+                            
+                <br>
+                
+                <div class="button firstPrev">Back</div>
+                <div class="button secondNext">Next</div>
+            </div>
+            <div class="finish-step register-form resize-tab">
+                <h2>Step 3 : Type of Account</h2>
+                <!-- Detail Type -->
+                <div class="content_tabs">
+                    <select class="tab-select">
+                        <option value="tab1">Customer</option>
+                        <option value="tab2">Seller</option>
+                    </select>
+                    <ul class="tabs"> 
+                        <li class="active" rel="tab1">Customer</li>
+                        <li rel="tab2">Seller</li>
+
+                    </ul>
+                    <div class="tab_container">
+                        <div id="tab1" class="tab_content"><label for="birthday">Birthday:</label>
+                            <input type="date" name="birthday" class="form-control" id="birthday">
+                            <input type="text" name="address" class="form-control" id="address" placeholder="Enter address">
+                            <input type="text" name="district" class="form-control" id="district" placeholder="Enter district">
+                            <input type="text" name="province" class="form-control" id="province" placeholder="Enter province">
+                            <input type="text" name="postcode" class="form-control" id="postcode" placeholder="Enter postcode">
+                            <div class="button secondPrev">Back</div>
+                            <div class="button" id="submit_regis1">Register</div>
+                        </div>
+                    </div>
+                    <div id="tab2" class="tab_content">
+                        <label for="storetype">Store Type</label>
+                        <select name="storeType" style="float: left;">
+                            <option value="4">Thai</option>
+                            <option value="5">Western</option>
+                            <option value="6">Japanese</option>
+                        </select>
+                        <input type="text" name="storeName" value="" size="25" placeholder="Store name" />
+                        <input type="text" name="storeDescription" value="" size="25" placeholder="Store Description" />
+                        <input type="text" name="storeAddress" value="" size="25" placeholder="Store Address" />
+                        <input type="text" name="storeTerm" value="" size="25" placeholder="Store Term of Use" /><br>
+                        <div class="button secondPrev">Back</div>
+                        <div class="button" id="submit_regis2">Register</div>
+                    </div>
+                    <input type="hidden" name="accountType" id="accountTy" value=""/>
+                </div>
+            </div>
+        </form>
+
+        <!-- register form -->
+        <form id="login_form" method="POST" action="SigninServlet">
+            <div class="account-setup register-form">
+                <h2>Please insert your Username & Password</h2>
+                <input name="username" type="text" placeholder="Username" required="required" />
+                <input name="password" type="password" placeholder="Password" required="required" />
+                <div id="submit_login" class="button firstNext">Login</div>
+            </div>
+        </form>
+
+        <script src="loginandregis.js" type="text/javascript"></script>
+    </body>
+</html>
