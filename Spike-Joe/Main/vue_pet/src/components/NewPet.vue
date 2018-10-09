@@ -36,6 +36,7 @@
 
 <script>
     import db from './firebaseInit'
+    import firebase from 'firebase'
     export default {
       name: 'new-pet',
       data () {
@@ -48,7 +49,7 @@
       },
       methods: {
         savePet () {
-          db.collection('pets').doc(this.pet_id).set({
+          db.doc('users/'+firebase.auth().currentUser.email+'/pets/'+this.pet_id).set({
             pet_id: this.pet_id,
             pet_name: this.pet_name,
             dept: this.dept,

@@ -18,7 +18,8 @@
 </template>
 
 <script>
-import db from './firebaseInit';
+import db from './firebaseInit'
+import firebase from 'firebase'
 export default {
   name: 'view-pet',
   data() {
@@ -31,7 +32,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     db
-      .collection('pets')
+      .collection('users').doc(firebase.auth().currentUser.email).collection('pets')
       .where('pet_id', '==', to.params.pet_id)
       .get()
       .then(querySnapshot => {
@@ -51,7 +52,7 @@ export default {
   methods: {
     fetchData() {
       db
-        .collection('pets')
+        .collection('users').doc(firebase.auth().currentUser.email).collection('pets')
         .where('pet_id', '==', this.$route.params.pet_id)
         .get()
         .then(querySnapshot => {
@@ -66,7 +67,7 @@ export default {
     deletePet() {
       if (confirm('Are you sure?')) {
         db
-          .collection('pets')
+          .collection('users').doc(firebase.auth().currentUser.email).collection('pets')
           .where('pet_id', '==', this.$route.params.pet_id)
           .get()
           .then(querySnapshot => {
