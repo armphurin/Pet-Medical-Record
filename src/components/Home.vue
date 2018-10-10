@@ -17,12 +17,9 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-import db from './firebaseInit';
-=======
+
 import db from './firebaseInit'
 import firebase from 'firebase'
->>>>>>> Thanadul
 export default {
   name: 'home',
   data() {
@@ -33,13 +30,8 @@ export default {
   },
   created() {
     db
-<<<<<<< HEAD
-      .collection('pets')
-      .orderBy('dept')
-=======
       .collection('users').doc(firebase.auth().currentUser.email).collection('pets')
       .orderBy('pet_id')
->>>>>>> Thanadul
       .get()
       .then(querySnapshot => {
         this.loading = false;
