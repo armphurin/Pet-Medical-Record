@@ -1,18 +1,18 @@
 <template>
-  <div id="new-pet">
-    <h3>New Pet</h3>
+  <div id="new-employee">
+    <h3>New Employee</h3>
     <div class="row">
-    <form @submit.prevent="savePet" class="col s12">
+    <form @submit.prevent="saveEmployee" class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="pet_id" required>
-          <label>Pet ID#</label>
+          <input type="text" v-model="employee_id" required>
+          <label>Employee ID#</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="pet_name" required>
-          <label>Pet Name</label>
+          <input type="text" v-model="name" required>
+          <label>Name</label>
         </div>
       </div>
       <div class="row">
@@ -36,38 +36,30 @@
 
 <script>
     import db from './firebaseInit'
-<<<<<<< HEAD
-=======
-    import firebase from 'firebase'
->>>>>>> Thanadul
     export default {
-      name: 'new-pet',
+      name: 'new-employee',
       data () {
         return {
-          pet_id: null,
-          pet_name: null,
+          employee_id: null,
+          name: null,
           dept: null,
           position: null
         }
       },
       methods: {
-        savePet () {
-<<<<<<< HEAD
-          db.collection('pets').doc(this.pet_id).set({
-=======
-          db.doc('users/'+firebase.auth().currentUser.email+'/pets/'+this.pet_id).set({
->>>>>>> Thanadul
-            pet_id: this.pet_id,
-            pet_name: this.pet_name,
+        saveEmployee () {
+          db.collection('employees').add({
+            employee_id: this.employee_id,
+            name: this.name,
             dept: this.dept,
             position: this.position
           })
           .then(docRef => {
-            console.log('Client added: ', docRef)
+            console.log('Client added: ', docRef.id)
             this.$router.push('/')
           })
           .catch(error => {
-            console.error('Error adding pet: ', error)
+            console.error('Error adding employee: ', error)
           })
         }
       }
