@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar';
+import Navbar2 from './components/Navbar2';
 import NewPet from './components/NewPet';
 
 export default {
   name: 'app',
   components: {
-    'Navigationbar':Navbar,
+    'Navigationbar':Navbar2,
     NewPet
   }
 };
