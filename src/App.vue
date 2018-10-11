@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="bgTone">
     <Navigationbar />
     <div class="container">
       <router-view/>
@@ -22,6 +22,6 @@ export default {
 
 <style>
 nav {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 </style>
