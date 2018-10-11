@@ -96,5 +96,9 @@ export default {
 .email {
   padding-right: 10px;
 }
+header {
+  position: relative;
+  z-index: 5;
+}
 </style>
 
