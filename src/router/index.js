@@ -10,6 +10,7 @@ import firebase from 'firebase';
 import ViewProfile from '@/components/ViewProfile'
 import EditProfile from '@/components/EditProfile'
 import HomeProfile from '@/components/HomeProfile'
+import HomePage from '@/components/HomePage'
 
 Vue.use(Router);
 
@@ -86,6 +87,14 @@ let router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+      {
+        path: '/homepage',
+        name: 'homepage',
+        component: HomePage,
+        meta: {
+          requiresAuth: true
+        }
     }
   ]
 });
