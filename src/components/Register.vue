@@ -43,16 +43,10 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            // console.log(user);
+             console.log(user.email);
             alert(`Account Created for ${user.email}`);
             this.$router.go({ path: this.$router.path });
           },
-          db.collection('profiles').doc(this.email).set({
-            profile_id: "new",
-            profile_name: "new",
-            dept: "new",
-            position: "new"
-          }),
           err => {
             alert(err.message);
           }

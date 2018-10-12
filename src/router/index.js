@@ -6,10 +6,11 @@ import NewPet from '@/components/NewPet';
 import EditPet from '@/components/EditPet';
 import Login from '@/components/Login';
 import Register from '@/components/Register';
+import ViewProfile from '@/components/ViewProfile';
+import HomeProfile from '@/components/HomeProfile';
+import EditProfile from '@/components/EditProfile';
+
 import firebase from 'firebase';
-import ViewProfile from '@/components/ViewProfile'
-import EditProfile from '@/components/EditProfile'
-import HomeProfile from '@/components/HomeProfile'
 
 Vue.use(Router);
 
@@ -64,19 +65,19 @@ let router = new Router({
       }
     },
     {
-      path: '/profile/:profile_id',
-      name: 'view-profile',
-      component: ViewProfile,
+      path: '/edit/:profile_id',
+      name: 'eidt-profile',
+      component: EditProfile,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: '/edit/:profile_id',
-      name: 'edit-profile',
-      component: EditProfile,
+      path: '/profile/:profile_id',
+      name: 'view-profile',
+      component: ViewProfile,
       meta: {
-        requiresAuth: true
+         requiresAuth: true
       }
     },
     {
@@ -84,9 +85,10 @@ let router = new Router({
       name: 'home-profile',
       component: HomeProfile,
       meta: {
-        requiresAuth: true
+         requiresAuth: true
       }
     }
+
   ]
 });
 
