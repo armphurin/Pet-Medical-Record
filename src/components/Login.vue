@@ -47,9 +47,6 @@
           <row>
               <img src="../assets/logo.svg" alt="Pet Medic" class="logo">
           </row>
-          <row>
-              <hr class="hr-light my-4 w-75"/>
-          </row>
           <row class="areaDistance">
               <input class="form-control form-control-lg" type="email" placeholder="email" id="email" v-model="email" style="width:300px;margin: 0 auto;border-radius: 13px;">
           </row>
@@ -75,15 +72,15 @@
 		<li><img src="../assets/cat.svg" alt="cat"></li>
 		<li><img src="../assets/cat.svg" alt="cat"></li>
 		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/dogfood2.svg" alt="cat"></li>
 		<li><img src="../assets/dog.svg" alt="cat"></li>
 		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dogfood2.svg" alt="cat"></li>
+		<li><img src="../assets/dogfood.svg" alt="cat"></li>
 		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dogfood2.svg" alt="cat"></li>
 		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dogfood.svg" alt="cat"></li>
 		<li><img src="../assets/dog.svg" alt="cat"></li>
 	</ul>
 
@@ -201,7 +198,6 @@ body {
   display: block;
   width: 40px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.15);
   bottom: -160px;
   -webkit-animation: square 25s infinite;
   animation: square 25s infinite;
@@ -230,7 +226,6 @@ body {
   height: 30px;
   -webkit-animation-duration: 22s;
           animation-duration: 22s;
-  background-color: rgba(255, 255, 255, 0.25);
 }
 .bg-bubbles li:nth-child(5) {
   left: 70%;
@@ -241,7 +236,6 @@ body {
   height: 60px;
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
-  background-color: rgba(255, 255, 255, 0.2);
 }
 .bg-bubbles li:nth-child(7) {
   left: 32%;
@@ -267,7 +261,6 @@ body {
           animation-delay: 2s;
   -webkit-animation-duration: 40s;
           animation-duration: 40s;
-  background-color: rgba(255, 255, 255, 0.3);
 }
 .bg-bubbles li:nth-child(10) {
   left: 90%;
@@ -278,7 +271,7 @@ body {
 }
 
 .bg-bubbles li:nth-child(11) {
-  left: 80%;
+  left: 65%;
 }
 .bg-bubbles li:nth-child(12) {
   left: 50%;
@@ -300,7 +293,6 @@ body {
   height: 30px;
   -webkit-animation-duration: 22s;
           animation-duration: 22s;
-  background-color: rgba(255, 255, 255, 0.25);
 }
 .bg-bubbles li:nth-child(15) {
   left: 25%;
@@ -311,17 +303,16 @@ body {
   height: 60px;
   -webkit-animation-delay: 3s;
           animation-delay: 3s;
-  background-color: rgba(255, 255, 255, 0.2);
 }
 .bg-bubbles li:nth-child(17) {
-  left: 14%;
+  left: 5%;
   width: 80px;
   height: 80px;
   -webkit-animation-delay: 7s;
           animation-delay: 7s;
 }
 .bg-bubbles li:nth-child(18) {
-  left: 22%;
+  left: 0%;
   width: 20px;
   height: 20px;
   -webkit-animation-delay: 15s;
@@ -337,12 +328,11 @@ body {
           animation-delay: 2s;
   -webkit-animation-duration: 40s;
           animation-duration: 40s;
-  background-color: rgba(255, 255, 255, 0.3);
 }
 .bg-bubbles li:nth-child(20) {
-  left: 86%;
-  width: 80px;
-  height: 80px;
+  left: 63%;
+  width: 60px;
+  height: 60px;
   -webkit-animation-delay: 11s;
           animation-delay: 11s;
 }
@@ -353,8 +343,8 @@ body {
             transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-300px) rotate(600deg);
-            transform: translateY(-300px) rotate(600deg);
+    -webkit-transform: translateY(-400px) rotate(600deg);
+            transform: translateY(-400px) rotate(600deg);
   }
 }
 @keyframes square {
@@ -363,8 +353,8 @@ body {
             transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-300px) rotate(600deg);
-            transform: translateY(-300px) rotate(600deg);
+    -webkit-transform: translateY(-400px) rotate(600deg);
+            transform: translateY(-400px) rotate(600deg);
   }
 }
 
