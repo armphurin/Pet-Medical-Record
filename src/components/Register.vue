@@ -57,35 +57,51 @@
 
 <script>
 import firebase from 'firebase';
+import db from './firebaseInit'
 
 export default {
   name: 'register',
   data: function() {
     return {
-      email: '',
-      password: ''
-      // fullname: '',
-      // age:'',
-      // gender:'',
-      // phone:'',
-      // line:'',
-      // address:''
+      email: null,
+      password: null
     };
   },
   methods: {
+    // register: function(e) {
+    //   firebase
+    //     .auth()
+    //     .createUserWithEmailAndPassword(this.email, this.password)
+    //     .then(
+    //       user => {
+    //           db.collection('users').doc(this.email).set({
+    //             email: this.email,
+    //             password: this.password
+    //           })
+    //          console.log(user.email);
+    //           alert(`Account Created for ${user.email}`);
+    //          this.$router.go({ path: this.$router.path });
+    //       },
+    //       err => {
+    //         alert(err.message);
+    //       }
+    //     );
+        
+    //   e.preventDefault();
     register: function(e) {
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-        .then(user => {
-            console.log(user);
-            alert(`Account Created for ${user.email}`);
-            this.$router.push('/');
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(
+          user => {
+              db.collection('users').doc(this.email).set({
+                email: this.email,
+                password: this.password
+              })
+            //  console.log(user.email);
+              alert(`Account Created for ${user.email}`);
+             this.$router.push('/login');
           },
-          // db.collection('profiles').doc(this.email).set({
-          //   profile_id: "new",
-          //   profile_name: "new",
-          //   dept: "new",
-          //   position: "new"
-          // }),
           err => {
             alert(err.message);
           }
