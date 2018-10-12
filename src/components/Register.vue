@@ -29,9 +29,15 @@
               <card>
               <card-body class="text-center">
   <img src="../assets/logo.png" alt="Pet Medic" class="logo" style="margin:0 auto;">
-                <card-title>Basic card</card-title>
-                <card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</card-text>
-                <btn color="primary">Button</btn>
+                <card-title>Register</card-title>
+                <row>
+                  <column>
+                  ssdsdssdads
+                  </column>
+                  <column>
+                  asdadsda
+                  </column>
+                </row>
               </card-body>
             </card>
 </form>
@@ -42,7 +48,7 @@
 
 <script>
 import firebase from 'firebase';
-import { Card, CardImg, CardBody, CardTitle, CardText, Btn } from 'mdbvue';
+import { Card, CardImg, CardBody, CardTitle, CardText, Btn, Row, Column } from 'mdbvue';
 
 export default {
   name: 'register',
@@ -58,7 +64,9 @@ export default {
     CardBody,
     CardTitle,
     CardText,
-    Btn
+    Btn,
+    Row,
+    Column
   },
   methods: {
     register: function(e) {
@@ -133,5 +141,8 @@ body {
   width: 20%;
   height: 20%;
   z-index: 6;
+}
+.card-body{
+  background: red;
 }
 </style>
