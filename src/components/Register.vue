@@ -16,7 +16,7 @@
               <input type="password" id="password" v-model="password">
               <label for="password">Password</label>
             </div>
-            <div class="input-field">
+            <!-- <div class="input-field">
               <i class="material-icons prefix">person</i>
               <input type="text" id="fullname" v-model="fullname">
               <label for="text">Fullname</label>
@@ -45,7 +45,7 @@
               <i class="material-icons prefix">address</i>
               <input type="text" id="address" v-model="address">
               <label for="text">Address</label>
-            </div>
+            </div> -->
             <button v-on:click="register" class="btn btn-large btn-extended grey lighten-4 black-text">Register</button>
           </form>
         </div>
@@ -64,29 +64,33 @@ export default {
     return {
       email: '',
       password: ''
+      // fullname: '',
+      // age:'',
+      // gender:'',
+      // phone:'',
+      // line:'',
+      // address:''
     };
   },
   methods: {
     register: function(e) {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(
-          user => {
-            // console.log(user);
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+        .then(user => {
+            console.log(user);
             alert(`Account Created for ${user.email}`);
-            this.$router.go({ path: this.$router.path });
+            this.$router.push('/');
           },
-          db.collection('profiles').doc(this.email).set({
-            profile_id: "new",
-            profile_name: "new",
-            dept: "new",
-            position: "new"
-          }),
+          // db.collection('profiles').doc(this.email).set({
+          //   profile_id: "new",
+          //   profile_name: "new",
+          //   dept: "new",
+          //   position: "new"
+          // }),
           err => {
             alert(err.message);
           }
         );
+        
       e.preventDefault();
     }
   }
