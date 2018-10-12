@@ -43,7 +43,7 @@
   <div class="wrapper">
     <view-wrapper>
         <container class="px-md-3 px-sm-0">
-          <form action="index.html" class="content">
+          <form action="index.html" class="login_content">
           <row>
               <img src="../assets/logo.svg" alt="Pet Medic" class="logo">
           </row>
@@ -372,8 +372,10 @@ form {
   z-index: 2;
 }
 
-form.content{
+form.login_content{
   margin-top: 5%;
+  position: relative;
+  z-index: 2;
 }
 
 .logo{
