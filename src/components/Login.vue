@@ -43,36 +43,48 @@
   <div class="wrapper">
     <view-wrapper>
         <container class="px-md-3 px-sm-0">
-          <form action="index.html">
+          <form action="index.html" class="content">
           <row>
-            <column md="12" class="mb-4 white-text text-center">
-              <h3 class="display-3 font-weight-bold mb-0 pt-md-5">Pet Medic</h3>
+              <img src="../assets/logo.svg" alt="Pet Medic" class="logo">
+          </row>
+          <row>
               <hr class="hr-light my-4 w-75"/>
+          </row>
+          <row class="areaDistance">
               <input class="form-control form-control-lg" type="email" placeholder="email" id="email" v-model="email" style="width:300px;margin: 0 auto;border-radius: 13px;">
-            </column>
-            <column md="12" class="mb-4 white-text text-center">
-              <input class="form-control form-control-lg" type="password" placeholder="password" id="password" v-model="password" style="width:300px;margin: 0 auto;border-radius: 13px;">
-            </column>
-            <column md="12" class="mb-4 white-text text-center">
+          </row>
+          <row class="areaDistance">
+              <input class="form-control form-control-lg" type="password" placeholder="password" id="password" v-model="password" style="width:300px;margin: 0 auto;border-radius: 13px;">            
+          </row>
+          <row class="areaDistance">
               <!-- <btn v-on:click="login" type="button" color="elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</btn> -->
               <button v-on:click="login" class="btn btn-elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</button>
-            </column>
           </row>
           </form>
         </container>
     </view-wrapper>
 
 <ul class="bg-bubbles">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/cat.svg" alt="cat"></li>
+		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dog.svg" alt="cat"></li>
+		<li><img src="../assets/dog.svg" alt="cat"></li>
 	</ul>
 
   </div>
@@ -140,7 +152,7 @@ export default {
 
 <style>
 html {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -264,6 +276,77 @@ body {
   -webkit-animation-delay: 11s;
           animation-delay: 11s;
 }
+
+.bg-bubbles li:nth-child(11) {
+  left: 80%;
+}
+.bg-bubbles li:nth-child(12) {
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 17s;
+          animation-duration: 17s;
+}
+.bg-bubbles li:nth-child(13) {
+  left: 45%;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+.bg-bubbles li:nth-child(14) {
+  left: 60%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation-duration: 22s;
+          animation-duration: 22s;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.bg-bubbles li:nth-child(15) {
+  left: 25%;
+}
+.bg-bubbles li:nth-child(16) {
+  left: 15%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.bg-bubbles li:nth-child(17) {
+  left: 14%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
+}
+.bg-bubbles li:nth-child(18) {
+  left: 22%;
+  width: 20px;
+  height: 20px;
+  -webkit-animation-delay: 15s;
+          animation-delay: 15s;
+  -webkit-animation-duration: 40s;
+          animation-duration: 40s;
+}
+.bg-bubbles li:nth-child(19) {
+  left: 75%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 40s;
+          animation-duration: 40s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.bg-bubbles li:nth-child(20) {
+  left: 86%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation-delay: 11s;
+          animation-delay: 11s;
+}
+
 @-webkit-keyframes square {
   0% {
     -webkit-transform: translateY(0);
@@ -287,16 +370,30 @@ body {
 
 .wrapper {
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  margin-top: -200px;
   overflow: hidden;
 }
 
 form {
   position: relative;
   z-index: 2;
+}
+
+form.content{
+  margin-top: 5%;
+}
+
+.logo{
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.areaDistance{
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 </style>

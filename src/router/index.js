@@ -88,13 +88,13 @@ let router = new Router({
         requiresAuth: true
       }
     },
-      {
-        path: '/homepage',
-        name: 'homepage',
-        component: HomePage,
-        meta: {
-          requiresAuth: true
-        }
+    {
+      path: '/home_page',
+      name: 'home-page',
+      component: HomePage,
+      meta: {
+         requiresAuth: true
+      }
     }
   ]
 });

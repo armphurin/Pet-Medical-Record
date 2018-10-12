@@ -35,7 +35,7 @@
   </mdb-navbar-brand>
   <navbar-collapse>
     <navbar-nav>
-      <navbar-item v-if="!isLoggedIn" active>Home</navbar-item>
+      <navbar-item v-if="!isLoggedIn"><router-link to="/home_page">Home</router-link></navbar-item>
       <navbar-item v-if="!isLoggedIn">Contact</navbar-item>
       <navbar-item v-if="!isLoggedIn"><router-link to="/login">Login</router-link></navbar-item>
       <navbar-item v-if="!isLoggedIn"><router-link to="/register">Register</router-link></navbar-item>
@@ -44,8 +44,8 @@
       <dropdown v-if="isLoggedIn" tag="li" class="nav-item">
         <dropdown-toggle tag="a" navLink color="indigo" slot="toggle" waves-fixed><span class="email black-text">{{currentUser}}</span></dropdown-toggle>
         <dropdown-menu>
-          <dropdown-item>Profile</dropdown-item>
-          <dropdown-item>Pet</dropdown-item>
+          <dropdown-item><router-link to="/home_profile">My Profile</router-link></dropdown-item>
+          <dropdown-item><router-link to="/">My Pet</router-link></dropdown-item>
           <dropdown-item><button v-on:click="logout" class="btn">Logout</button></dropdown-item>
         </dropdown-menu>
       </dropdown>

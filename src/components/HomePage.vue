@@ -33,7 +33,7 @@ import { Container, Row, Column, Navbar, NavbarCollapse, NavbarNav, NavbarItem, 
 
 import firebase from 'firebase';
 export default {
-  name: 'homepage',
+  name: 'home-page',
   components: {
     Container,
     Row,
@@ -47,29 +47,6 @@ export default {
     MdMask,
     Btn,
     mdbNavbarBrand
-  },
-  data: function() {
-    return {
-      email: '',
-      password: ''
-    };
-  },
-  methods: {
-    login: function(e) {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(
-          user => {
-            alert(`You are logged in as ${user.email}`);
-            this.$router.go({ path: this.$router.path });
-          },
-          err => {
-            alert(err.message);
-          }
-        );
-      e.preventDefault();
-    }
   }
 };
 </script>
