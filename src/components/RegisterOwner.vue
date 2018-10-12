@@ -1,23 +1,22 @@
 <template>
-
   <!-- <div>
     <div class="container">
     <div class="row">
       <div class="col s12 m8 offset-m2">
-        <div class="login card-panel green white-text center">
-          <h3>Login</h3>
+        <div class="login card-panel grey lighten-4 black-text center">
+          <h3>Register</h3>
           <form action="index.html">
             <div class="input-field">
               <i class="material-icons prefix">email</i>
               <input type="email" id="email" v-model="email">
-              <label class="white-text" for="email">Email Address</label>
+              <label for="email">Email Address</label>
             </div>
             <div class="input-field">
               <i class="material-icons prefix">lock</i>
               <input type="password" id="password" v-model="password">
-              <label class="white-text" for="password">Password</label>
+              <label for="password">Password</label>
             </div>
-            <button v-on:click="login" class="btn btn-large btn-extended grey lighten-4 black-text">Login</button>
+            <button v-on:click="register" class="btn btn-large btn-extended grey lighten-4 black-text">Register</button>
           </form>
         </div>
       </div>
@@ -25,42 +24,30 @@
   </div>
   </div> -->
 
-
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-sm-4" style="text-align:center;">
-      Lay 1
-    </div>
-    <div class="col-sm-4" style="text-align:center;">
-      Lay 2
-    </div>
-    <div class="col-sm-4" style="text-align:center;">
-      Lay 3
-    </div>
-  </div>
-</div> -->
-
   <div class="wrapper">
-    <view-wrapper>
-        <container class="px-md-3 px-sm-0">
-          <form action="index.html" class="login_content">
-          <row>
-              <img src="../assets/logo.svg" alt="Pet Medic" class="logo_login">
-          </row>
-          <row class="areaDistance">
-              <input class="form-control form-control-lg" type="email" placeholder="email" id="email" v-model="email" style="width:300px;margin: 0 auto;border-radius: 13px;">
-          </row>
-          <row class="areaDistance">
-              <input class="form-control form-control-lg" type="password" placeholder="password" id="password" v-model="password" style="width:300px;margin: 0 auto;border-radius: 13px;">            
-          </row>
-          <row class="areaDistance">
-              <!-- <btn v-on:click="login" type="button" color="elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</btn> -->
-              <button v-on:click="login" class="btn btn-elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</button>
-          </row>
-          </form>
-        </container>
-    </view-wrapper>
-
+<form action="index.html" class="regis_content">
+              <card>
+              <card-body class="text-center">
+                <div class="bg-card">
+  <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis" style="margin:0 auto;margin-bottom:2%;">
+                <row>
+                  <column>
+                  <img src="../assets/owner.svg" class="img-fluid circle-in" alt="owner" style="width:36%; height:36%;top:-5.5%;">
+                  <img src="../assets/circle.svg" class="img-fluid circle-button" alt="register">
+                  <br>
+                  <button class="btn btn-elegant button-regis">Owner</button>
+                  </column>
+                  <column>
+                  <img src="../assets/vet.svg" class="img-fluid circle-in" alt="vet">
+                  <img src="../assets/circle.svg" class="img-fluid circle-button" alt="register">
+                  <br>
+                  <button class="btn btn-elegant button-regis">Veterinary</button>
+                  </column>
+                </row>
+                </div>
+              </card-body>
+            </card>
+</form>
 <ul class="bg-bubbles">
 		<li><img src="../assets/cat.svg" alt="cat"></li>
 		<li><img src="../assets/cat.svg" alt="cat"></li>
@@ -86,57 +73,50 @@
 
   </div>
 
+
 </template>
 
 <script>
-import {
-  Container,
-  Row,
-  Column,
-  Navbar,
-  NavbarCollapse,
-  NavbarNav,
-  NavbarItem,
-  mdbInput,
-  ViewWrapper,
-  MdMask,
-  Btn,
-  mdbNavbarBrand
-} from "mdbvue";
+import firebase from 'firebase';
+import { Card, CardImg, CardBody, CardTitle, CardText, Btn, Row, Column, Mdmask, ViewWrapper} from 'mdbvue';
 
-import firebase from "firebase";
 export default {
-  name: "login",
-  components: {
-    Container,
-    Row,
-    Column,
-    Navbar,
-    NavbarCollapse,
-    NavbarNav,
-    NavbarItem,
-    mdbInput,
-    ViewWrapper,
-    MdMask,
-    Btn,
-    mdbNavbarBrand
-  },
+  name: 'register-owner',
   data: function() {
     return {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     };
   },
+  components: {
+    Card,
+    CardImg,
+    CardBody,
+    CardTitle,
+    CardText,
+    Btn,
+    Row,
+    Column,
+    Mdmask,
+    ViewWrapper
+  },
   methods: {
-    login: function(e) {
+    register: function(e) {
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
+        .createUserWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            alert(`You are logged in as ${user.email}`);
+            // console.log(user);
+            alert(`Account Created for ${user.email}`);
             this.$router.go({ path: this.$router.path });
           },
+          db.collection('profiles').doc(this.email).set({
+            profile_id: "new",
+            profile_name: "new",
+            dept: "new",
+            position: "new"
+          }),
           err => {
             alert(err.message);
           }
@@ -148,6 +128,15 @@ export default {
 </script>
 
 <style>
+form.regis_content{
+  margin-top: 7em;
+  margin-bottom: 5em;
+  margin-left: 5em;
+  margin-right: 5em;
+  height: 50%;
+  z-index: 2;
+}
+
 html {
   min-height: 100%;
   width: 100%;
@@ -179,10 +168,56 @@ html {
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
 }
+
 body {
   background-color: transparent;
 }
 
+.logo_regis{
+  margin: 0 auto;
+  width: 20%;
+  height: 20%;
+  z-index: 6;
+}
+.card{
+  background: linear-gradient(rgba(255,255,255, .2), rgba(255,255,255,.2));
+  border-radius: 80px;
+  height: 32em;
+}
+.circle-button{
+  width: 65%;
+  height: 65%;
+  margin: 0 auto;
+  z-index: 5;
+  position: relative;
+  top: -19%;
+  left: 1%;
+}
+
+.circle-in:hover ~ .circle-button{
+  opacity: .2;
+}
+
+.circle-in{
+  position: absolute;
+  width: 35%;
+  height: 35%;
+  z-index: 6;
+  top: -4%;
+  left: 32%;
+}
+.button-regis{
+  position: relative;
+  width:178px;
+  margin: 0 auto;
+  border-radius: 62px;
+  top:-16.5%;
+  z-index: 2;
+}
+
+.button-regis:hover ~ .circle-button{
+  opacity: .2;
+}
 
 .bg-bubbles {
   position: absolute;
@@ -367,25 +402,4 @@ body {
   overflow: hidden;
 }
 
-form {
-  position: relative;
-  z-index: 2;
-}
-
-form.login_content{
-  margin-top: 5%;
-  position: relative;
-  z-index: 2;
-}
-
-.logo_login{
-  width: 250px;
-  height: 250px;
-  margin: 0 auto;
-}
-
-.areaDistance{
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
 </style>

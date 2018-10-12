@@ -11,6 +11,8 @@ import ViewProfile from '@/components/ViewProfile'
 import EditProfile from '@/components/EditProfile'
 import HomeProfile from '@/components/HomeProfile'
 import HomePage from '@/components/HomePage'
+import RegisterOwner from '@/components/RegisterOwner'
+import RegisterVet from '@/components/RegisterVet'
 
 Vue.use(Router);
 
@@ -92,6 +94,22 @@ let router = new Router({
       path: '/home_page',
       name: 'home-page',
       component: HomePage,
+      meta: {
+         requiresAuth: true
+      }
+    },
+    {
+      path: '/register_owner',
+      name: 'register-owner',
+      component: RegisterOwner,
+      meta: {
+         requiresAuth: true
+      }
+    },
+    {
+      path: '/register_vet',
+      name: 'register-vet',
+      component: RegisterVet,
       meta: {
          requiresAuth: true
       }
