@@ -14,7 +14,7 @@
               <btn outline="white">Learn more</btn>
             </div>
             <column md="6" xl="5" class="mt-xl-5">
-              <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png" class="img-fluid"/>
+              <img src="../assets/iphone.png" class="img-fluid animated bounce infinite w-50" style="height:100%;width:100%;margin:0 auto;"/>
             </column>
           </row>
         </container>
