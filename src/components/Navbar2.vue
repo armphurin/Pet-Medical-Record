@@ -29,7 +29,7 @@
 
     
 <header>
-<navbar class="indigo" dark>
+<navbar class="stylish-color" dark>
   <mdb-navbar-brand>
     <router-link to="/" class="brand-logo">Pet Medic</router-link>
   </mdb-navbar-brand>
@@ -99,6 +99,9 @@ export default {
 header {
   position: relative;
   z-index: 5;
+}
+a{
+  color: white;
 }
 </style>
 

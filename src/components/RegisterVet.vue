@@ -42,7 +42,7 @@
                     <input class="form-control form-control-lg" type="number" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
                     </column>
                     <column>
-                    <select class="form-control form-control-lg"  placeholder="Gender" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                    <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
                       <option selected disabled>Gender</option>
                       <option>Male</option>
                       <option>Female</option>
@@ -176,6 +176,12 @@ export default {
         );
       e.preventDefault();
     }
+  },
+  mounted(){
+    $(".show-placeholder").select({
+    placeholder: "Select a state",
+    allowClear: true
+});
   }
 };
 </script>
