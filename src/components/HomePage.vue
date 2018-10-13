@@ -21,13 +21,77 @@
       </md-mask>
     </view-wrapper>
     <!--/.ViewWrapper-->
+    <container>
+    <section class="text-center my-5">
+      <h2 class="h1-responsive font-weight-bold my-5">Why is it so great?</h2>
+      <p class="lead w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+      <row>
+        <column md="4">
+          <fa icon="area-chart" size="3x" class="red-text"/>
+          <h5 class="font-weight-bold my-4">Analytics</h5>
+          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+        </column>
+        <column md="4">
+          <fa icon="book" size="3x" class="cyan-text"/>
+          <h5 class="font-weight-bold my-4">Tutorials</h5>
+          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+        </column>
+        <column md="4">
+          <fa icon="comments-o" size="3x" class="orange-text"/>
+          <h5 class="font-weight-bold my-4">Support</h5>
+          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+        </column>
+      </row>
+    </section>
+  </container>
+
+  <container>
+    <section class="my-5">
+      <h2 class="h1-responsive font-weight-bold text-center my-5">Why is it so great?</h2>
+      <p class="lead w-responsive text-center mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+      <row>
+        <column lg="5" class="text-center text-lg-left">
+          <img  class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/screens-section.jpg" alt="Sample image" />
+        </column>
+        <column lg="7">
+          <row class="mb-3">
+            <column size="1">
+              <fa icon="mail-forward" size="lg" class="indigo-text"/>
+            </column>
+            <column xl="10" md="11" size="10">
+              <h5 class="font-weight-bold mb-3">Safety</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam, quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+            </column>
+          </row>
+          <row class="mb-3">
+            <column size="1">
+              <fa icon="mail-forward" size="lg" class="indigo-text"/>
+            </column>
+            <column xl="10" md="11" size="10">
+              <h5 class="font-weight-bold mb-3">Technology</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam, quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+            </column>
+          </row>
+          <row class="mb-3">
+            <column size="1">
+              <fa icon="mail-forward" size="lg" class="indigo-text"/>
+            </column>
+            <column xl="10" md="11" size="10">
+              <h5 class="font-weight-bold mb-3">Finance</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam, quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+            </column>
+          </row>
+        </column>
+      </row>
+    </section>
+  </container>
 
   </div>
 
 </template>
 
 <script>
-import { Container, Row, Column, Navbar, NavbarCollapse, NavbarNav, NavbarItem, mdbInput, ViewWrapper, MdMask, Btn, mdbNavbarBrand } from 'mdbvue';
+import { Container, Row, Column, Navbar, NavbarCollapse, NavbarNav, NavbarItem, mdbInput, ViewWrapper, MdMask, Btn, mdbNavbarBrand, Card, CardImg, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardUp, CardAvatar, CardGroup, CardDeck, Fa } from 'mdbvue';
 
 import firebase from 'firebase';
 export default {
@@ -44,7 +108,9 @@ export default {
     ViewWrapper,
     MdMask,
     Btn,
-    mdbNavbarBrand
+    mdbNavbarBrand,
+    Card, CardImg, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardUp, CardAvatar, CardGroup, CardDeck,
+    Fa
   }
 };
 </script>
@@ -68,33 +134,12 @@ body {
     background-color: transparent;
 }
 
-.navbar {
-  transition: 1s;
-}
-.navbar .md-form {
-  margin: 0;
-}
-.top-nav-collapse {
-  background-color: #424f95 !important;
-}
-@media (max-width: 990px){
-  .navbar {
-    background-color: #424f95 !important;
-  }
-}
 .view.home-page {
   background-image: url('');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   height: calc(100vh - 60px);
-}
-.gradient {
-  background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
-  background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
-  background: -webkit-gradient(linear, 45deg, from(rgba(42, 27, 161, 0.7)), to(rgba(29, 210, 177, 0.7)));
-  background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
-  background: linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
 }
 h6 {
   line-height: 1.7;
