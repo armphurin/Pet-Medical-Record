@@ -2,18 +2,16 @@
 
   <div>
     <!--ViewWrapper-->
-    <view-wrapper>
-      <md-mask class="gradient d-flex justify-content-center align-items-center">
+    <view-wrapper class="home-page">
+      <md-mask class="d-flex justify-content-center align-items-center">
         <container>
           <row>
             <div class="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
-              <h1 class="h1-responsive font-weight-bold mt-sm-5">Make purchases with our app </h1>
+              <h1 class="h1-responsive font-weight-bold mt-sm-5">Pet Medical Record System</h1>
               <hr class="hr-light"/>
-              <h6 class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt
-              dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea dolor molestiae
-              iste.</h6>
-              <btn color="white">Download</btn>
-              <btn outline="white">Learn More</btn>
+              <h6 class="mb-4">This website is Pet Medical Record make it simple in few step.</h6>
+              <router-link to="/register"><btn color="white">Register</btn></router-link>
+              <btn outline="white">Learn more</btn>
             </div>
             <column md="6" xl="5" class="mt-xl-5">
               <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png" class="img-fluid"/>
@@ -84,8 +82,8 @@ body {
     background-color: #424f95 !important;
   }
 }
-.view {
-  background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg');
+.view.home-page {
+  background-image: url('');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

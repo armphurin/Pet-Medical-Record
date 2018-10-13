@@ -95,7 +95,7 @@ let router = new Router({
       name: 'home-page',
       component: HomePage,
       meta: {
-         requiresAuth: true
+        requiresGuest: true
       }
     },
     {
@@ -103,7 +103,7 @@ let router = new Router({
       name: 'register-owner',
       component: RegisterOwner,
       meta: {
-         requiresAuth: true
+        requiresGuest: true
       }
     },
     {
@@ -111,7 +111,7 @@ let router = new Router({
       name: 'register-vet',
       component: RegisterVet,
       meta: {
-         requiresAuth: true
+        requiresGuest: true
       }
     }
   ]

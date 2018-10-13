@@ -78,7 +78,7 @@
 
 <script>
 import firebase from 'firebase';
-import { Card, CardImg, CardBody, CardTitle, CardText, Btn, Row, Column, Mdmask, ViewWrapper} from 'mdbvue';
+import { Card, CardImg, CardBody, CardTitle, CardText, Btn, Row, Column, MdMask, ViewWrapper} from 'mdbvue';
 
 export default {
   name: 'register-owner',
@@ -97,7 +97,7 @@ export default {
     Btn,
     Row,
     Column,
-    Mdmask,
+    MdMask,
     ViewWrapper
   },
   methods: {
