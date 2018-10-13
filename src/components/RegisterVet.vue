@@ -296,8 +296,8 @@ body {
   width: 40px;
   height: 40px;
   bottom: -160px;
-  -webkit-animation: square 25s infinite;
-  animation: square 25s infinite;
+  -webkit-animation: square 23s infinite;
+  animation: square 23s infinite;
   transition-timing-function: linear;
 }
 .bg-bubbles li:nth-child(1) {
@@ -307,22 +307,22 @@ body {
   left: 20%;
   width: 40px;
   height: 40px;
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
   -webkit-animation-duration: 17s;
-  animation-duration: 17s;
+          animation-duration: 17s;
 }
 .bg-bubbles li:nth-child(3) {
   left: 25%;
-  -webkit-animation-delay: 4s;
-  animation-delay: 4s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 .bg-bubbles li:nth-child(4) {
   left: 40%;
   width: 30px;
   height: 30px;
   -webkit-animation-duration: 22s;
-  animation-duration: 22s;
+          animation-duration: 22s;
 }
 .bg-bubbles li:nth-child(5) {
   left: 70%;
@@ -331,40 +331,40 @@ body {
   left: 80%;
   width: 60px;
   height: 60px;
-  -webkit-animation-delay: 3s;
-  animation-delay: 3s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 .bg-bubbles li:nth-child(7) {
   left: 32%;
   width: 80px;
   height: 80px;
-  -webkit-animation-delay: 7s;
-  animation-delay: 7s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 .bg-bubbles li:nth-child(8) {
   left: 55%;
   width: 20px;
   height: 20px;
-  -webkit-animation-delay: 15s;
-  animation-delay: 15s;
+  -webkit-animation-delay: 13s;
+          animation-delay: 13s;
   -webkit-animation-duration: 40s;
-  animation-duration: 40s;
+          animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(9) {
   left: 25%;
   width: 10px;
   height: 10px;
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
   -webkit-animation-duration: 40s;
-  animation-duration: 40s;
+          animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(10) {
   left: 90%;
   width: 80px;
   height: 80px;
-  -webkit-animation-delay: 11s;
-  animation-delay: 11s;
+  -webkit-animation-delay: 9s;
+          animation-delay: 9s;
 }
 
 .bg-bubbles li:nth-child(11) {
@@ -374,22 +374,22 @@ body {
   left: 50%;
   width: 40px;
   height: 40px;
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
   -webkit-animation-duration: 17s;
-  animation-duration: 17s;
+          animation-duration: 17s;
 }
 .bg-bubbles li:nth-child(13) {
   left: 45%;
-  -webkit-animation-delay: 4s;
-  animation-delay: 4s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
 }
 .bg-bubbles li:nth-child(14) {
   left: 60%;
   width: 30px;
   height: 30px;
   -webkit-animation-duration: 22s;
-  animation-duration: 22s;
+          animation-duration: 22s;
 }
 .bg-bubbles li:nth-child(15) {
   left: 25%;
@@ -398,60 +398,60 @@ body {
   left: 15%;
   width: 60px;
   height: 60px;
-  -webkit-animation-delay: 3s;
-  animation-delay: 3s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 .bg-bubbles li:nth-child(17) {
   left: 5%;
   width: 80px;
   height: 80px;
-  -webkit-animation-delay: 7s;
-  animation-delay: 7s;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
 }
 .bg-bubbles li:nth-child(18) {
   left: 0%;
   width: 20px;
   height: 20px;
-  -webkit-animation-delay: 15s;
-  animation-delay: 15s;
+  -webkit-animation-delay: 13s;
+          animation-delay: 13s;
   -webkit-animation-duration: 40s;
-  animation-duration: 40s;
+          animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(19) {
   left: 75%;
   width: 10px;
   height: 10px;
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
   -webkit-animation-duration: 40s;
-  animation-duration: 40s;
+          animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(20) {
   left: 63%;
   width: 60px;
   height: 60px;
-  -webkit-animation-delay: 11s;
-  animation-delay: 11s;
+  -webkit-animation-delay: 9s;
+          animation-delay: 9s;
 }
 
 @-webkit-keyframes square {
   0% {
     -webkit-transform: translateY(0);
-    transform: translateY(0);
+            transform: translateY(0);
   }
   100% {
     -webkit-transform: translateY(-400px) rotate(600deg);
-    transform: translateY(-400px) rotate(600deg);
+            transform: translateY(-400px) rotate(600deg);
   }
 }
 @keyframes square {
   0% {
     -webkit-transform: translateY(0);
-    transform: translateY(0);
+            transform: translateY(0);
   }
   100% {
     -webkit-transform: translateY(-400px) rotate(600deg);
-    transform: translateY(-400px) rotate(600deg);
+            transform: translateY(-400px) rotate(600deg);
   }
 }
 
