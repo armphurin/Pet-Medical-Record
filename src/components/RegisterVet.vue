@@ -30,18 +30,49 @@
               <card-body class="text-center">
                 <div class="bg-card">
   <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis" style="margin:0 auto;margin-bottom:2%;">
-                <row>
-                  <column>
-                  <img src="../assets/owner.svg" class="img-fluid circle-in" alt="owner" style="width:36%; height:36%;top:-5.5%;">
-                  <img src="../assets/circle.svg" class="img-fluid circle-button" alt="register">
+                <row style="padding:1em;">
+                  <column class="col-sm-4">
+                  picture
                   <br>
-                  <button class="btn btn-elegant button-regis">Owner</button>
+                  profile
+                  <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
+                  <br>
+                  <row>
+                    <column>
+                    <input class="form-control form-control-lg" type="number" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
+                    </column>
+                    <column>
+                    <input class="form-control form-control-lg" type="text" placeholder="Gender" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
+                    </column>
+                    </row>
                   </column>
-                  <column>
-                  <img src="../assets/vet.svg" class="img-fluid circle-in" alt="vet">
-                  <img src="../assets/circle.svg" class="img-fluid circle-button" alt="register">
+                  <column class="col-sm-8">
+                  <row>
+                    <column>
+                  <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
                   <br>
-                  <button class="btn btn-elegant button-regis">Veterinary</button>
+                    </column>
+                  </row>
+                  <row>
+                    <column>
+                     <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                     <br>
+                    </column>
+                  </row>
+                  <row>
+                    <column>
+                     <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                    </column>
+                    <column>
+                     <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                     <br>
+                    </column>
+                  </row>
+                  <row>
+                    <column>
+                    <textarea class="form-control" id="address" v-model="address" rows="4" placeholder="Address"></textarea>
+                    </column>
+                  </row>
                   </column>
                 </row>
                 </div>
@@ -182,7 +213,7 @@ body {
 .card{
   background: linear-gradient(rgba(255,255,255, .2), rgba(255,255,255,.2));
   border-radius: 80px;
-  height: 32em;
+  height: 36em;
 }
 .circle-button{
   width: 65%;
