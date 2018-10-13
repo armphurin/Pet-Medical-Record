@@ -138,7 +138,7 @@ export default {
 <style>
 form.regis_content{
   margin-top: 7em;
-  margin-bottom: 5em;
+  /* margin-bottom: 5em; */
   margin-left: 5em;
   margin-right: 5em;
   height: 50%;
