@@ -68,39 +68,21 @@ export default {
     };
   },
   methods: {
-    // register: function(e) {
-    //   firebase
-    //     .auth()
-    //     .createUserWithEmailAndPassword(this.email, this.password)
-    //     .then(
-    //       user => {
-    //           db.collection('users').doc(this.email).set({
-    //             email: this.email,
-    //             password: this.password
-    //           })
-    //          console.log(user.email);
-    //           alert(`Account Created for ${user.email}`);
-    //          this.$router.go({ path: this.$router.path });
-    //       },
-    //       err => {
-    //         alert(err.message);
-    //       }
-    //     );
-        
-    //   e.preventDefault();
     register: function(e) {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-              db.collection('users').doc(this.email).set({
-                email: this.email,
-                password: this.password
-              })
-            //  console.log(user.email);
-              alert(`Account Created for ${user.email}`);
-             this.$router.push('/login');
+             console.log(user.email);
+             db.collection('users').doc(this.email).set({
+             email: this.email,
+             password: this.password
+             }).then(
+               user =>{
+                   alert(`Account Created for ${user.email}`);
+                 this.$router.go({ path: this.$router.path });
+                 })
           },
           err => {
             alert(err.message);
