@@ -12,8 +12,10 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "firebase": "^4.13.1",
-    "vue": "^2.5.17",
+    "firebase": "^4.8.0",
+    "mdbootstrap": "^4.5.12",
+    "mdbvue": "^4.8.0",
+    "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
