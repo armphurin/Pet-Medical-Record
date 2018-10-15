@@ -76,7 +76,7 @@
                   </row>
                   <row>
                     <column>
-                    <textarea class="form-control" id="address" v-model="address" rows="4" placeholder="Address"></textarea>
+                    <textarea class="form-control" id="address" v-model="address" rows="4" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                     </column>
                   </row>
                   </column>
