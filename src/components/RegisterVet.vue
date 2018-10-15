@@ -33,6 +33,8 @@
                 <row style="padding:1em;">
                   <column class="col-md-4">
                   picture
+<input type="file" multiple accept="image/jpeg" @change="detectFiles($event.target.files)" id="picPro">
+    <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
                   <br>
                   profile
                   <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
@@ -117,6 +119,9 @@
 
 <script>
 import firebase from "firebase";
+const storage = firebase.storage()
+const storageRef = storage.ref()
+
 import {
   Card,
   CardImg,
@@ -135,7 +140,10 @@ export default {
   data: function() {
     return {
       email: "",
-      password: ""
+      password: "",
+      progressUpload: 0,
+      file: File,
+      uploadTask: ''
     };
   },
   components: {
@@ -175,13 +183,34 @@ export default {
           }
         );
       e.preventDefault();
+    },
+    detectFiles (fileList) {
+      Array.from(Array(fileList.length).keys()).map( x => {
+        this.upload(fileList[x])
+      })
+    },
+    upload (file) {
+      this.uploadTask = storage.ref('imagenes').put(file);
     }
   },
   mounted(){
     $(".show-placeholder").select({
-    placeholder: "Select a state",
+    placeholder: "Select a Gender",
     allowClear: true
 });
+  },
+  watch: {
+    uploadTask: function() {
+      this.uploadTask.on('state_changed', sp => {
+        this.progressUpload = Math.floor(sp.bytesTransferred / sp.totalBytes * 100)
+      }, 
+      null, 
+      () => {
+        this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+          this.$emit('url', downloadURL)
+        })
+      })
+    }
   }
 };
 </script>
