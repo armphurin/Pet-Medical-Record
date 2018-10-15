@@ -33,8 +33,10 @@
                 <row style="padding:1em;">
                   <column class="col-md-4">
                   picture
-<input type="file" multiple accept="image/jpeg" @change="detectFiles($event.target.files)" id="picPro">
+                  <img :src="image" id="picPro"/>
+<input type="file" multiple accept="image/jpeg" @change="onFileChange">
     <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
+    <button @click="removeImage">Remove image</button>
                   <br>
                   profile
                   <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
@@ -119,8 +121,8 @@
 
 <script>
 import firebase from "firebase";
-const storage = firebase.storage()
-const storageRef = storage.ref()
+const storage = firebase.storage();
+const storageRef = storage.ref();
 
 import {
   Card,
@@ -143,7 +145,8 @@ export default {
       password: "",
       progressUpload: 0,
       file: File,
-      uploadTask: ''
+      uploadTask: "",
+      image: ""
     };
   },
   components: {
@@ -184,32 +187,56 @@ export default {
         );
       e.preventDefault();
     },
-    detectFiles (fileList) {
-      Array.from(Array(fileList.length).keys()).map( x => {
-        this.upload(fileList[x])
-      })
+    detectFiles(fileList) {
+      Array.from(Array(fileList.length).keys()).map(x => {
+        this.upload(fileList[x]);
+      });
     },
-    upload (file) {
-      this.uploadTask = storage.ref('imagenes').put(file);
+    upload(file) {
+      this.uploadTask = storage.ref("imagenes").put(file);
+    },
+    onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+      this.detectFiles(files);
+    },
+    createImage(file) {
+      var image = new Image();
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = e => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function(e) {
+      this.image = "";
     }
   },
-  mounted(){
+  mounted() {
     $(".show-placeholder").select({
-    placeholder: "Select a Gender",
-    allowClear: true
-});
+      placeholder: "Select a Gender",
+      allowClear: true
+    });
   },
   watch: {
     uploadTask: function() {
-      this.uploadTask.on('state_changed', sp => {
-        this.progressUpload = Math.floor(sp.bytesTransferred / sp.totalBytes * 100)
-      }, 
-      null, 
-      () => {
-        this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-          this.$emit('url', downloadURL)
-        })
-      })
+      this.uploadTask.on(
+        "state_changed",
+        sp => {
+          this.progressUpload = Math.floor(
+            (sp.bytesTransferred / sp.totalBytes) * 100
+          );
+        },
+        null,
+        () => {
+          this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+            this.$emit("url", downloadURL);
+          });
+        }
+      );
     }
   }
 };
@@ -337,21 +364,21 @@ body {
   width: 40px;
   height: 40px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 17s;
-          animation-duration: 17s;
+  animation-duration: 17s;
 }
 .bg-bubbles li:nth-child(3) {
   left: 25%;
   -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation-delay: 2s;
 }
 .bg-bubbles li:nth-child(4) {
   left: 40%;
   width: 30px;
   height: 30px;
   -webkit-animation-duration: 22s;
-          animation-duration: 22s;
+  animation-duration: 22s;
 }
 .bg-bubbles li:nth-child(5) {
   left: 70%;
@@ -361,39 +388,39 @@ body {
   width: 60px;
   height: 60px;
   -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 .bg-bubbles li:nth-child(7) {
   left: 32%;
   width: 80px;
   height: 80px;
   -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  animation-delay: 5s;
 }
 .bg-bubbles li:nth-child(8) {
   left: 55%;
   width: 20px;
   height: 20px;
   -webkit-animation-delay: 13s;
-          animation-delay: 13s;
+  animation-delay: 13s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(9) {
   left: 25%;
   width: 10px;
   height: 10px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(10) {
   left: 90%;
   width: 80px;
   height: 80px;
   -webkit-animation-delay: 9s;
-          animation-delay: 9s;
+  animation-delay: 9s;
 }
 
 .bg-bubbles li:nth-child(11) {
@@ -404,21 +431,21 @@ body {
   width: 40px;
   height: 40px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 17s;
-          animation-duration: 17s;
+  animation-duration: 17s;
 }
 .bg-bubbles li:nth-child(13) {
   left: 45%;
   -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation-delay: 2s;
 }
 .bg-bubbles li:nth-child(14) {
   left: 60%;
   width: 30px;
   height: 30px;
   -webkit-animation-duration: 22s;
-          animation-duration: 22s;
+  animation-duration: 22s;
 }
 .bg-bubbles li:nth-child(15) {
   left: 25%;
@@ -428,59 +455,59 @@ body {
   width: 60px;
   height: 60px;
   -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 .bg-bubbles li:nth-child(17) {
   left: 5%;
   width: 80px;
   height: 80px;
   -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  animation-delay: 5s;
 }
 .bg-bubbles li:nth-child(18) {
   left: 0%;
   width: 20px;
   height: 20px;
   -webkit-animation-delay: 13s;
-          animation-delay: 13s;
+  animation-delay: 13s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(19) {
   left: 75%;
   width: 10px;
   height: 10px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(20) {
   left: 63%;
   width: 60px;
   height: 60px;
   -webkit-animation-delay: 9s;
-          animation-delay: 9s;
+  animation-delay: 9s;
 }
 
 @-webkit-keyframes square {
   0% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
   100% {
     -webkit-transform: translateY(-400px) rotate(600deg);
-            transform: translateY(-400px) rotate(600deg);
+    transform: translateY(-400px) rotate(600deg);
   }
 }
 @keyframes square {
   0% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
   100% {
     -webkit-transform: translateY(-400px) rotate(600deg);
-            transform: translateY(-400px) rotate(600deg);
+    transform: translateY(-400px) rotate(600deg);
   }
 }
 
@@ -491,5 +518,13 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+
+.progress-bar {
+  margin: 10px 0;
+}
+
+#picPro {
+  width: 30%;
 }
 </style>

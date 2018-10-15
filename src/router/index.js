@@ -13,8 +13,10 @@ import HomeProfile from '@/components/HomeProfile'
 import HomePage from '@/components/HomePage'
 import RegisterOwner from '@/components/RegisterOwner'
 import RegisterVet from '@/components/RegisterVet'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
-Vue.use(Router);
+Vue.use(Router, axios, VueAxios);
 
 let router = new Router({
   routes: [
