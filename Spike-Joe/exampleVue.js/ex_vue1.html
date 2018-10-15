@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="show-ex1">
+        <h1>{{name}}</h1>
+        <p>Nickname: {{nick_name}}</p>
+        <p>Age: {{age}}</p>
+        <h2>My name's {{getName()}}</h2>
+        <hr>
+        <h3>My searching website : <a v-bind:href="website">Click</a></h3>
+        <h4>my Age : <input type="text" name="" v-bind:value="age"></h4>
+        <hr>
+        <button type="button" name="add" v-on:click="addAge()">Add age</button>
+        <button type="button" name="sub" v-on:click="subAge()">Subtract age</button>
+        <hr>
+        <input type="text" v-on:keyup="addCount" v-model="stringInput">
+        <h3>Count: {{count}}, Message Input: {{stringInput}}, Count Message: {{stringCount()}}</h3>
+        <hr>
+        Hobbies :
+        <input type="checkbox" value="Listen Music" v-model="hobbies">
+        <label for="vote">Listen Music</label>
+        <input type="checkbox" value="Watch Movie" v-model="hobbies">
+        <label for="vote">Watch Movie</label>
+        <input type="checkbox" value="Sexy Show" v-model="hobbies">
+        <label for="vote">Sexy Show</label>
+        <h2>I'm selected : {{hobbies}}</h2>
+        <hr>
+        <input type="radio" name="gender" value="Male" v-model="gender">
+        <label for="gender">Male</label>
+        <input type="radio" name="gender" value="Female" v-model="gender">
+        <label for="gender">Female</label>
+        <h2>My Gender's {{gender}}</h2>
+        <hr>
+        <select name="job" v-model="job">
+            <option v-on:click="job_other_status=false">Student</option>
+            <option v-on:click="job_other_status=false">Freelance</option>
+            <option v-on:click="job_other_status=true">Other</option>
+        </select>
+        <h2>My Job's {{job}}</h2>
+        <hr>
+        <input type="text" v-if="job_other_status" v-model="job">
+    </div>
+    <hr>
+    <div id="show-adapt1"><h3>I change name to {{setName('JoesSattes')}}{{getName()}}</h3></div>
+    <hr>
+</body>
+<script src="ex_vue1.js"></script>
+</html>
