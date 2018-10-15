@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <Navbar />
+  <div id="app" class="bgTone">
+    <Navigationbar />
     <div class="container">
       <router-view/>
     </div>
@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar';
+import Navbar2 from './components/Navbar2';
 import NewPet from './components/NewPet';
 
 export default {
   name: 'app',
   components: {
-    Navbar,
+    'Navigationbar':Navbar2,
     NewPet
   }
 };
@@ -22,6 +22,6 @@ export default {
 
 <style>
 nav {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 </style>

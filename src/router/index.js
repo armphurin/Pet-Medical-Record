@@ -11,6 +11,12 @@ import HomeProfile from '@/components/HomeProfile';
 import EditProfile from '@/components/EditProfile';
 
 import firebase from 'firebase';
+import ViewProfile from '@/components/ViewProfile'
+import EditProfile from '@/components/EditProfile'
+import HomeProfile from '@/components/HomeProfile'
+import HomePage from '@/components/HomePage'
+import RegisterOwner from '@/components/RegisterOwner'
+import RegisterVet from '@/components/RegisterVet'
 
 Vue.use(Router);
 
@@ -86,6 +92,30 @@ let router = new Router({
       component: HomeProfile,
       meta: {
          requiresAuth: true
+      }
+    },
+    {
+      path: '/home_page',
+      name: 'home-page',
+      component: HomePage,
+      meta: {
+        requiresGuest: true
+      }
+    },
+    {
+      path: '/register_owner',
+      name: 'register-owner',
+      component: RegisterOwner,
+      meta: {
+        requiresGuest: true
+      }
+    },
+    {
+      path: '/register_vet',
+      name: 'register-vet',
+      component: RegisterVet,
+      meta: {
+        requiresGuest: true
       }
     }
 
