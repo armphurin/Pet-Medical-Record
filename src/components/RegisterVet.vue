@@ -59,7 +59,7 @@
                   </row>
                   <row>
                     <column>
-                     <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                     <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;">
                      <br>
                     </column>
                   </row>
@@ -80,6 +80,7 @@
                   </column>
                 </row>
                 <row>
+                  <loading :active.sync="visible"></loading>
                   <button v-on:click="register" class="btn btn-elegant button-regis">Register</button>
                 </row>
 
@@ -116,6 +117,7 @@
 </template>
 
 <script>
+import db from './firebaseInit.js';
 import firebase from "firebase";
 import {
   Card,
@@ -129,13 +131,26 @@ import {
   MdMask,
   ViewWrapper
 } from "mdbvue";
+  import Loading from 'vue-loading-overlay';
+  // Import stylesheet
+  import 'vue-loading-overlay/dist/vue-loading.css';
+  import Vue from 'vue';
+  Vue.use(Loading);
 
 export default {
   name: "register-vet",
   data: function() {
     return {
       email: "",
-      password: ""
+      password: "",
+      fullname: '',
+      age: '',
+      gender: '',
+      lineid: '',
+      telephone:'',
+      address: '',
+      visible: false
+
     };
   },
   components: {
@@ -152,24 +167,28 @@ export default {
   },
   methods: {
     register: function(e) {
+      let loader = this.$loading.show({
+        loader: 'dots'
+        });
+        setTimeout(() => loader.hide(), 10 * 1000)
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
-          user => {
-            // console.log(user);
-            alert(`Account Created for ${user.email}`);
-            this.$router.go({ path: this.$router.path });
+         user => {
+             console.log(user.email);
+             db.collection('users').doc(this.email).set({
+             fullname: this.fullname,
+             age: this.age,
+             line_id: this.lineid,
+             telephone_number: this.telephone,
+             address: this.address
+             }).then(
+               user =>{
+                   alert(`Account Created for ${this.email}`);
+                 this.$router.go({ path: this.$router.path });
+                 })
           },
-          db
-            .collection("profiles")
-            .doc(this.email)
-            .set({
-              profile_id: "new",
-              profile_name: "new",
-              dept: "new",
-              position: "new"
-            }),
           err => {
             alert(err.message);
           }
