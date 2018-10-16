@@ -109,7 +109,7 @@ export default {
     MdMask,
     Btn,
     mdbNavbarBrand,
-    Card, CardImg, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardUp, CardAvatar, CardGroup, CardDeck,
+    Card, CardImg, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardUp, CardAvatar, CardGroup,
     Fa
   }
 };
@@ -144,4 +144,11 @@ body {
 h6 {
   line-height: 1.7;
 }
+
+@media only screen and (max-width: 600px) {
+  .view.home-page{
+    margin-top: 1em;
+  }
+}
+
 </style>
