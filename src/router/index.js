@@ -6,10 +6,6 @@ import NewPet from '@/components/NewPet';
 import EditPet from '@/components/EditPet';
 import Login from '@/components/Login';
 import Register from '@/components/Register';
-import ViewProfile from '@/components/ViewProfile';
-import HomeProfile from '@/components/HomeProfile';
-import EditProfile from '@/components/EditProfile';
-
 import firebase from 'firebase';
 import ViewProfile from '@/components/ViewProfile'
 import EditProfile from '@/components/EditProfile'

@@ -57,6 +57,7 @@
               <!-- <btn v-on:click="login" type="button" color="elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</btn> -->
               <button v-on:click="login" class="btn btn-elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</button>
           </row>
+          <loading :active.sync="visible"></loading>
           </form>
         </container>
     </view-wrapper>
@@ -101,8 +102,14 @@ import {
   ViewWrapper,
   MdMask,
   Btn,
-  mdbNavbarBrand
+  mdbNavbarBrand,
+  
 } from "mdbvue";
+import Loading from 'vue-loading-overlay';
+    // Import stylesheet
+    import 'vue-loading-overlay/dist/vue-loading.css';
+    import Vue from 'vue';
+    Vue.use(Loading);
 
 import firebase from "firebase";
 export default {
@@ -119,22 +126,29 @@ export default {
     ViewWrapper,
     MdMask,
     Btn,
-    mdbNavbarBrand
+    mdbNavbarBrand,
+    Loading
   },
   data: function() {
     return {
       email: "",
-      password: ""
+      password: "",
+      visible: false
     };
   },
   methods: {
     login: function(e) {
+            let loader = this.$loading.show({
+                loader: 'dots'
+            });
+            setTimeout(() => loader.hide(), 2 * 1000)
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            alert(`You are logged in as ${user.email}`);
+            
+            // alert(`You are logged in as ${user.email}`);
             this.$router.go({ path: this.$router.path });
           },
           err => {
