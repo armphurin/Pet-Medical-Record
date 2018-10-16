@@ -32,18 +32,22 @@
   <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis" style="margin:0 auto;margin-bottom:2%;">
                 <row style="padding:1em;">
                   <column class="col-md-4">
-                  picture
-                  <img :src="image" id="picPro"/>
-<input type="file" multiple accept="image/jpeg" @change="onFileChange">
-    <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
-    <button @click="removeImage">Remove image</button>
+                  <!-- picture -->
+                  <div class="image-upload">
+                  <label for="wizard-picturePro">
+                        <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                  </label>
+<input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+</div>
+    <!-- <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div> -->
+    <!-- <button @click="removeImage">Remove image</button> -->
                   <br>
-                  profile
                   <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
                   <br>
                   <row>
                     <column>
                     <input class="form-control form-control-lg" type="number" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
+              
                     </column>
                     <column>
                     <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
@@ -84,7 +88,10 @@
                   </column>
                 </row>
                 <row>
+                  <column>
+                  <router-link to="/register"><button v-on:click="register" class="btn btn-elegant button-regis">Back</button></router-link>
                   <button v-on:click="register" class="btn btn-elegant button-regis">Register</button>
+                  </column>
                 </row>
 
                 </div>
@@ -143,6 +150,12 @@ export default {
     return {
       email: "",
       password: "",
+      age:"",
+      gender:"",
+      fullname:"",
+      lineid:"",
+      telephone:"",
+      address:"",
       progressUpload: 0,
       file: File,
       uploadTask: "",
@@ -193,7 +206,7 @@ export default {
       });
     },
     upload(file) {
-      this.uploadTask = storage.ref("imagenes").put(file);
+      this.uploadTask = storage.ref("medic/imagenes").put(file);
     },
     onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
@@ -213,7 +226,18 @@ export default {
     },
     removeImage: function(e) {
       this.image = "";
-    }
+    },
+                readURLPro: function(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#wizardPicturePreviewPro').attr('src', e.target.result).fadeIn('slow');
+                    },
+                    reader.readAsDataURL(input.files[0]);
+                    this.detectFiles(input.files)
+                }
+            }
   },
   mounted() {
     $(".show-placeholder").select({
@@ -524,7 +548,78 @@ body {
   margin: 10px 0;
 }
 
+/* upload pic style */
 #picPro {
   width: 30%;
 }
+
+/*Profile Pic Start*/
+            .picture-container1{
+                position: relative;
+                height: 250px;
+                width: 250px;
+                cursor: pointer;
+                text-align: center;
+            }
+            .picture-container2{
+                position: relative;
+                height: 380px;
+                width: 940px;
+                cursor: pointer;
+                text-align: center;
+            }
+            .picturePro{
+                width: 250px;
+                height: 250px;
+                background-color: #999999;
+                border: 4px solid #CCCCCC;
+                color: #FFFFFF;
+                border-radius: 50%;
+                /*margin: 0px auto;*/
+                overflow: hidden;
+                transition: all 0.2s;
+                -webkit-transition: all 0.2s;
+            }
+
+            .picturePro:hover{
+                border-color: #2ca8ff;
+            }
+            .content.ct-wizard-green .picture:hover{
+                border-color: #05ae0e;
+            }
+            .content.ct-wizard-blue .picture:hover{
+                border-color: #3472f7;
+            }
+            .content.ct-wizard-orange .picture:hover{
+                border-color: #ff9500;
+            }
+            .content.ct-wizard-red .picture:hover{
+                border-color: #ff3b30;
+            }
+            .picturePro input[type="file"] {
+                cursor: pointer;
+                display: block;
+                height: 250px;
+                left: 0;
+                opacity: 0 !important;
+                position: absolute;
+                top: 0;
+                width: 250px;
+            }
+            .picture-src{
+                width: 10em;
+                height: 10em;
+            }
+            /*Profile Pic End*/
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    cursor: pointer;
+}
+
+/* upload pic style */
 </style>
