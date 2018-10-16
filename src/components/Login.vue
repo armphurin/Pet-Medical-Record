@@ -381,6 +381,7 @@ form.login_content{
 .logo_login{
   width: 28%;
   height: 28%;
+  min-width: 250px;
   margin: 0 auto;
 }
 
