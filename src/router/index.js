@@ -67,19 +67,19 @@ let router = new Router({
       }
     },
     {
-      path: '/profile/:profile_id',
-      name: 'view-profile',
-      component: ViewProfile,
+      path: '/edit/:profile_id',
+      name: 'eidt-profile',
+      component: EditProfile,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: '/edit/:profile_id',
-      name: 'edit-profile',
-      component: EditProfile,
+      path: '/profile/:profile_id',
+      name: 'view-profile',
+      component: ViewProfile,
       meta: {
-        requiresAuth: true
+         requiresAuth: true
       }
     },
     {
@@ -87,7 +87,7 @@ let router = new Router({
       name: 'home-profile',
       component: HomeProfile,
       meta: {
-        requiresAuth: true
+         requiresAuth: true
       }
     },
     {
@@ -114,6 +114,7 @@ let router = new Router({
         requiresGuest: true
       }
     }
+
   ]
 });
 

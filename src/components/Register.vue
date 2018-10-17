@@ -117,6 +117,7 @@
 <script>
 import firebase from 'firebase';
 import { Card, CardImg, CardBody, CardTitle, CardText, Btn, Row, Column, MdMask, ViewWrapper} from 'mdbvue';
+import db from './firebaseInit'
 
 export default {
   name: 'register',
@@ -139,29 +140,6 @@ export default {
     ViewWrapper
   },
   methods: {
-    register: function(e) {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(
-          user => {
-             console.log(user.email);
-             db.collection('users').doc(this.email).set({
-             email: this.email,
-             password: this.password
-             }).then(
-               user =>{
-                 alert(`Account Created for ${this.email}`);
-                 this.$router.go({ path: this.$router.path });
-                 })
-          },
-          err => {
-            alert(err.message);
-          }
-        );
-        
-      e.preventDefault();
-    }
   }
 };
 </script>
