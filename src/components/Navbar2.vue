@@ -36,6 +36,7 @@
   <navbar-collapse>
     <navbar-nav>
       <navbar-item v-if="!isLoggedIn"><router-link to="/home_page">Home</router-link></navbar-item>
+      <navbar-item v-if="!isLoggedIn"><router-link to="/pre_load">test</router-link></navbar-item>
       <navbar-item v-if="!isLoggedIn">Contact</navbar-item>
       <navbar-item v-if="!isLoggedIn"><router-link to="/login">Login</router-link></navbar-item>
       <navbar-item v-if="!isLoggedIn"><router-link to="/register">Register</router-link></navbar-item>

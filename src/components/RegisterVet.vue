@@ -32,14 +32,22 @@
   <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis" style="margin:0 auto;margin-bottom:2%;">
                 <row style="padding:1em;">
                   <column class="col-md-4">
-                  picture
+                  <!-- picture -->
+                  <div class="image-upload">
+                  <label for="wizard-picturePro">
+                        <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                  </label>
+<input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+</div>
+    <!-- <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div> -->
+    <!-- <button @click="removeImage">Remove image</button> -->
                   <br>
-                  profile
                   <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
                   <br>
                   <row>
                     <column>
                     <input class="form-control form-control-lg" type="number" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
+              
                     </column>
                     <column>
                     <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
@@ -74,14 +82,17 @@
                   </row>
                   <row>
                     <column>
-                    <textarea class="form-control" id="address" v-model="address" rows="4" placeholder="Address"></textarea>
+                    <textarea class="form-control" id="address" v-model="address" rows="4" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                     </column>
                   </row>
                   </column>
                 </row>
                 <row>
+                  <column>
+                  <router-link to="/register"><button v-on:click="register" class="btn btn-elegant button-regis">Back</button></router-link>
                   <loading :active.sync="visible"></loading>
                   <button v-on:click="register" class="btn btn-elegant button-regis">Register</button>
+                  </column>
                 </row>
 
                 </div>
@@ -119,6 +130,9 @@
 <script>
 import db from './firebaseInit.js';
 import firebase from "firebase";
+const storage = firebase.storage();
+const storageRef = storage.ref();
+
 import {
   Card,
   CardImg,
@@ -143,14 +157,16 @@ export default {
     return {
       email: "",
       password: "",
-      fullname: '',
-      age: '',
-      gender: '',
-      lineid: '',
-      telephone:'',
-      address: '',
-      visible: false
-
+      age:"",
+      gender:"",
+      fullname:"",
+      lineid:"",
+      telephone:"",
+      address:"",
+      progressUpload: 0,
+      file: File,
+      uploadTask: "",
+      image: ""
     };
   },
   components: {
@@ -194,13 +210,69 @@ export default {
           }
         );
       e.preventDefault();
-    }
+    },
+    detectFiles(fileList) {
+      Array.from(Array(fileList.length).keys()).map(x => {
+        this.upload(fileList[x]);
+      });
+    },
+    upload(file) {
+      this.uploadTask = storage.ref("medic/imagenes").put(file);
+    },
+    onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+      this.detectFiles(files);
+    },
+    createImage(file) {
+      var image = new Image();
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = e => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function(e) {
+      this.image = "";
+    },
+                readURLPro: function(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#wizardPicturePreviewPro').attr('src', e.target.result).fadeIn('slow');
+                    },
+                    reader.readAsDataURL(input.files[0]);
+                    this.detectFiles(input.files)
+                }
+            }
   },
-  mounted(){
+  mounted() {
     $(".show-placeholder").select({
-    placeholder: "Select a state",
-    allowClear: true
-});
+      placeholder: "Select a Gender",
+      allowClear: true
+    });
+  },
+  watch: {
+    uploadTask: function() {
+      this.uploadTask.on(
+        "state_changed",
+        sp => {
+          this.progressUpload = Math.floor(
+            (sp.bytesTransferred / sp.totalBytes) * 100
+          );
+        },
+        null,
+        () => {
+          this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+            this.$emit("url", downloadURL);
+          });
+        }
+      );
+    }
   }
 };
 </script>
@@ -327,21 +399,21 @@ body {
   width: 40px;
   height: 40px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 17s;
-          animation-duration: 17s;
+  animation-duration: 17s;
 }
 .bg-bubbles li:nth-child(3) {
   left: 25%;
   -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation-delay: 2s;
 }
 .bg-bubbles li:nth-child(4) {
   left: 40%;
   width: 30px;
   height: 30px;
   -webkit-animation-duration: 22s;
-          animation-duration: 22s;
+  animation-duration: 22s;
 }
 .bg-bubbles li:nth-child(5) {
   left: 70%;
@@ -351,39 +423,39 @@ body {
   width: 60px;
   height: 60px;
   -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 .bg-bubbles li:nth-child(7) {
   left: 32%;
   width: 80px;
   height: 80px;
   -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  animation-delay: 5s;
 }
 .bg-bubbles li:nth-child(8) {
   left: 55%;
   width: 20px;
   height: 20px;
   -webkit-animation-delay: 13s;
-          animation-delay: 13s;
+  animation-delay: 13s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(9) {
   left: 25%;
   width: 10px;
   height: 10px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(10) {
   left: 90%;
   width: 80px;
   height: 80px;
   -webkit-animation-delay: 9s;
-          animation-delay: 9s;
+  animation-delay: 9s;
 }
 
 .bg-bubbles li:nth-child(11) {
@@ -394,21 +466,21 @@ body {
   width: 40px;
   height: 40px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 17s;
-          animation-duration: 17s;
+  animation-duration: 17s;
 }
 .bg-bubbles li:nth-child(13) {
   left: 45%;
   -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation-delay: 2s;
 }
 .bg-bubbles li:nth-child(14) {
   left: 60%;
   width: 30px;
   height: 30px;
   -webkit-animation-duration: 22s;
-          animation-duration: 22s;
+  animation-duration: 22s;
 }
 .bg-bubbles li:nth-child(15) {
   left: 25%;
@@ -418,59 +490,59 @@ body {
   width: 60px;
   height: 60px;
   -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 .bg-bubbles li:nth-child(17) {
   left: 5%;
   width: 80px;
   height: 80px;
   -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  animation-delay: 5s;
 }
 .bg-bubbles li:nth-child(18) {
   left: 0%;
   width: 20px;
   height: 20px;
   -webkit-animation-delay: 13s;
-          animation-delay: 13s;
+  animation-delay: 13s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(19) {
   left: 75%;
   width: 10px;
   height: 10px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(20) {
   left: 63%;
   width: 60px;
   height: 60px;
   -webkit-animation-delay: 9s;
-          animation-delay: 9s;
+  animation-delay: 9s;
 }
 
 @-webkit-keyframes square {
   0% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
   100% {
     -webkit-transform: translateY(-400px) rotate(600deg);
-            transform: translateY(-400px) rotate(600deg);
+    transform: translateY(-400px) rotate(600deg);
   }
 }
 @keyframes square {
   0% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
   100% {
     -webkit-transform: translateY(-400px) rotate(600deg);
-            transform: translateY(-400px) rotate(600deg);
+    transform: translateY(-400px) rotate(600deg);
   }
 }
 
@@ -482,4 +554,83 @@ body {
   height: 100%;
   overflow: hidden;
 }
+
+.progress-bar {
+  margin: 10px 0;
+}
+
+/* upload pic style */
+#picPro {
+  width: 30%;
+}
+
+/*Profile Pic Start*/
+            .picture-container1{
+                position: relative;
+                height: 250px;
+                width: 250px;
+                cursor: pointer;
+                text-align: center;
+            }
+            .picture-container2{
+                position: relative;
+                height: 380px;
+                width: 940px;
+                cursor: pointer;
+                text-align: center;
+            }
+            .picturePro{
+                width: 250px;
+                height: 250px;
+                background-color: #999999;
+                border: 4px solid #CCCCCC;
+                color: #FFFFFF;
+                border-radius: 50%;
+                /*margin: 0px auto;*/
+                overflow: hidden;
+                transition: all 0.2s;
+                -webkit-transition: all 0.2s;
+            }
+
+            .picturePro:hover{
+                border-color: #2ca8ff;
+            }
+            .content.ct-wizard-green .picture:hover{
+                border-color: #05ae0e;
+            }
+            .content.ct-wizard-blue .picture:hover{
+                border-color: #3472f7;
+            }
+            .content.ct-wizard-orange .picture:hover{
+                border-color: #ff9500;
+            }
+            .content.ct-wizard-red .picture:hover{
+                border-color: #ff3b30;
+            }
+            .picturePro input[type="file"] {
+                cursor: pointer;
+                display: block;
+                height: 250px;
+                left: 0;
+                opacity: 0 !important;
+                position: absolute;
+                top: 0;
+                width: 250px;
+            }
+            .picture-src{
+                width: 10em;
+                height: 10em;
+            }
+            /*Profile Pic End*/
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    cursor: pointer;
+}
+
+/* upload pic style */
 </style>

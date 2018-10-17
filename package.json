@@ -12,10 +12,12 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "firebase": "^4.8.0",
     "mdbootstrap": "^4.5.12",
     "mdbvue": "^4.8.0",
     "vue": "^2.5.2",
+    "vue-axios": "^2.1.4",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
