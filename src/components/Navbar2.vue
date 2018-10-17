@@ -99,7 +99,7 @@ export default {
 }
 header {
   position: relative;
-  z-index: 5;
+  z-index: 10;
 }
 a{
   color: white;
