@@ -139,7 +139,9 @@ export default {
   methods: {
     login: function(e) {
             let loader = this.$loading.show({
-                loader: 'dots'
+                loader: 'dots',
+                color : '#009999',
+                backgroundColor: 'LightGray',
             });
             setTimeout(() => loader.hide(), 2 * 1000)
       firebase
