@@ -5,7 +5,7 @@
     <view-wrapper class="home-page">
       <md-mask class="d-flex justify-content-center align-items-center">
         <container>
-          <row>
+          <row class="intro-section">
             <div class="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
               <h1 class="h1-responsive font-weight-bold mt-sm-5">Pet Medical Record System</h1>
               <hr class="hr-light"/>
@@ -144,4 +144,23 @@ body {
 h6 {
   line-height: 1.7;
 }
+
+@media only screen and (max-width: 360px) {
+  .view.home-page{
+    margin-top: 1.5em;
+  }
+  .intro-section .btn{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media only screen and (min-width: 370px) and (max-width: 600px){
+  .view.home-page{
+    margin-top: 2em;
+  }
+}
+
+
+
 </style>
