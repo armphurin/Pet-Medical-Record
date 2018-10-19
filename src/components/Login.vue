@@ -45,7 +45,7 @@
         <container class="px-md-3 px-sm-0">
           <form action="index.html" class="login_content">
           <row>
-              <img src="../assets/logo.svg" alt="Pet Medic" class="logo_login">
+              <img src="../assets/logo.png" alt="Pet Medic" class="logo_login">
           </row>
           <row class="areaDistance">
               <input class="form-control form-control-lg" type="email" placeholder="email" id="email" v-model="email" style="width:300px;margin: 0 auto;border-radius: 13px;">
@@ -389,14 +389,15 @@ form {
 }
 
 form.login_content{
-  margin-top: 5%;
+  margin-top: 12%;
   position: relative;
   z-index: 2;
 }
 
 .logo_login{
-  width: 250px;
-  height: 250px;
+  width: 28%;
+  height: 28%;
+  min-width: 250px;
   margin: 0 auto;
 }
 
