@@ -23,11 +23,18 @@
             <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
               <h1 class="h1-responsive font-weight-bold mt-sm-5">Welcome ...</h1>
               <hr class="hr-light"/>
-              <p>awdada</p>
-              <btn>Name : ...</btn><br>
-              <btn>Pet : 01</btn><br>
-              <btn>Pet : 02</btn><br>
-              <btn>Pet : 03</btn><br>
+              <button type="button" class="btn btn-profile text-left">
+                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Name : ...</h5>
+              </button><br>
+              <button type="button" class="btn btn-pet text-left">
+                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+              </button><br>
+              <button type="button" class="btn btn-pet text-left">
+                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+              </button><br>
+              <button type="button" class="btn btn-pet text-left">
+                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+              </button><br>
               <a>see more</a>
             </div>
           </row>
@@ -66,6 +73,11 @@ export default {
       pets: [],
       loading: true
     };
+  },
+  methods:{
+    alertTest:function(e){
+      alert('Testttttttttttttttt')
+    }
   },
   created() {
     db
@@ -117,6 +129,35 @@ body {
 }
 h6 {
   line-height: 1.7;
+}
+
+.btn-profile{
+  background-color: #30323D;
+  width: 42%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 1%;
+  padding-right: 5%;
+  font-weight: 900;
+  transition: transform .3s;
+}
+
+.btn-pet{
+  background-color: #E8C547;
+  width: 42%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 1%;
+  padding-right: 5%;
+  font-weight: 900;
+  transition: transform .3s;
+}
+
+.btn-pet:hover{
+  transform: scale(1.2)
+}
+.btn-profile:hover{
+  transform: scale(1.2)
 }
 
 @media only screen and (max-width: 360px) {
