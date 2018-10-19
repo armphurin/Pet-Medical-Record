@@ -411,9 +411,13 @@ form.login_content{
     margin-top: 2.5em;
     width: 230px;
   }
-  /*button.btn btn-elegant{
-    margin-left: 40px;
-  }*/
+  .logo_login{
+    height: 120px;
+  }
+  button.btn{
+    padding-left: 110px;
+    padding-right: 110px;
+  }
 }
 
 </style>
