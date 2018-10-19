@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <!-- <div id="home">
     <ul class="collection with-header">
       <li class="collection-header"><h4>Pet Medic</h4></li>
       <li v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
@@ -13,15 +13,54 @@
         <i class="fa fa-plus"></i>
       </router-link>
     </div>
-  </div>
+  </div> -->
+
+      <!--ViewWrapper-->
+    <view-wrapper class="home-owner">
+      <md-mask class="d-flex justify-content-center align-items-center">
+        <container>
+          <row class="intro-section">
+            <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
+              <h1 class="h1-responsive font-weight-bold mt-sm-5">Welcome ...</h1>
+              <hr class="hr-light"/>
+              <p>awdada</p>
+              <btn>Name : ...</btn><br>
+              <btn>Pet : 01</btn><br>
+              <btn>Pet : 02</btn><br>
+              <btn>Pet : 03</btn><br>
+              <a>see more</a>
+            </div>
+          </row>
+        </container>
+      </md-mask>
+    </view-wrapper>
+    <!--/.ViewWrapper-->
 </template>
 
 <script>
 
 import db from './firebaseInit'
 import firebase from 'firebase'
+
+import { Container, Row, Column, Navbar, NavbarCollapse, NavbarNav, NavbarItem, mdbInput, ViewWrapper, MdMask, Btn, mdbNavbarBrand, Card, CardImg, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardUp, CardAvatar, CardGroup, Fa } from 'mdbvue';
 export default {
   name: 'home',
+    components: {
+    Container,
+    Row,
+    Column,
+    Navbar,
+    NavbarCollapse,
+    NavbarNav,
+    NavbarItem,
+    mdbInput,
+    ViewWrapper,
+    MdMask,
+    Btn,
+    mdbNavbarBrand,
+    Card, CardImg, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardUp, CardAvatar, CardGroup,
+    Fa
+  },
   data() {
     return {
       pets: [],
@@ -49,3 +88,50 @@ export default {
   }
 };
 </script>
+
+<style>
+html{
+  background-size: cover;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background: rgb(52,160,217); /* Old browsers */
+  background: -moz-linear-gradient(top, rgb(52,160,217) 0%, rgb(23,169,149) 56%, rgb(23,169,149) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgb(52,160,217) 0%,rgb(23,169,149) 56%,rgb(23,169,149) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgb(52,160,217) 0%,rgb(23,169,149) 56%,rgb(23,169,149) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
+}
+body { 
+    background-color: transparent;
+}
+
+.view.home-owner {
+  background-image: url('');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: calc(100vh - 60px);
+}
+h6 {
+  line-height: 1.7;
+}
+
+@media only screen and (max-width: 360px) {
+  .view.home-owner{
+    margin-top: 1.5em;
+  }
+  .intro-section .btn{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media only screen and (min-width: 370px) and (max-width: 600px){
+  .view.home-owner{
+    margin-top: 2em;
+  }
+}
+</style>
