@@ -115,6 +115,14 @@ let router = new Router({
       meta: {
         requiresGuest: true
       }
+    },
+    {
+      path: '/pre_load',
+      name: 'pre-load',
+      component: RegisterVet,
+      meta: {
+        requiresGuest: true
+      }
     }
   ]
 });
