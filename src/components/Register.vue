@@ -16,7 +16,7 @@
               <input type="password" id="password" v-model="password">
               <label for="password">Password</label>
             </div>
-            <!-- <div class="input-field">
+            <div class="input-field">
               <i class="material-icons prefix">person</i>
               <input type="text" id="fullname" v-model="fullname">
               <label for="text">Fullname</label>
@@ -45,7 +45,7 @@
               <i class="material-icons prefix">address</i>
               <input type="text" id="address" v-model="address">
               <label for="text">Address</label>
-            </div> -->
+            </div>
             <button v-on:click="register" class="btn btn-large btn-extended grey lighten-4 black-text">Register</button>
           </form>
         </div>
@@ -115,12 +115,23 @@
 </template>
 
 <script>
-import firebase from 'firebase';
-import { Card, CardImg, CardBody, CardTitle, CardText, Btn, Row, Column, MdMask, ViewWrapper} from 'mdbvue';
-import db from './firebaseInit'
+import firebase from "firebase";
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardText,
+  Btn,
+  Row,
+  Column,
+  MdMask,
+  ViewWrapper
+} from "mdbvue";
+import db from "./firebaseInit";
 
 export default {
-  name: 'register',
+  name: "register",
   data: function() {
     return {
       email: null,
@@ -139,13 +150,12 @@ export default {
     MdMask,
     ViewWrapper
   },
-  methods: {
-  }
+  methods: {}
 };
 </script>
 
 <style>
-form.regis_content{
+form.regis_content {
   margin-top: 7em;
   /* margin-bottom: 5em; */
   margin-left: 5em;
@@ -190,18 +200,21 @@ body {
   background-color: transparent;
 }
 
-.logo_regis{
+.logo_regis {
   margin: 0 auto;
   width: 20%;
   height: 20%;
   z-index: 6;
 }
-.card{
-  background: linear-gradient(rgba(255,255,255, .2), rgba(255,255,255,.2));
+.card {
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.2)
+  );
   border-radius: 80px;
   height: 32em;
 }
-.circle-button{
+.circle-button {
   width: 65%;
   height: 65%;
   margin: 0 auto;
@@ -211,11 +224,11 @@ body {
   left: 1%;
 }
 
-.circle-in:hover ~ .circle-button{
-  opacity: .2;
+.circle-in:hover ~ .circle-button {
+  opacity: 0.2;
 }
 
-.circle-in{
+.circle-in {
   position: absolute;
   width: 35%;
   height: 35%;
@@ -223,17 +236,17 @@ body {
   top: -4%;
   left: 32%;
 }
-.button-regis{
+.button-regis {
   position: relative;
-  width:178px;
+  width: 178px;
   margin: 0 auto;
   border-radius: 62px;
-  top:-16.5%;
+  top: -16.5%;
   z-index: 2;
 }
 
-.button-regis:hover ~ .circle-button{
-  opacity: .2;
+.button-regis:hover ~ .circle-button {
+  opacity: 0.2;
 }
 
 .bg-bubbles {
@@ -263,21 +276,21 @@ body {
   width: 40px;
   height: 40px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 17s;
-          animation-duration: 17s;
+  animation-duration: 17s;
 }
 .bg-bubbles li:nth-child(3) {
   left: 25%;
   -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation-delay: 2s;
 }
 .bg-bubbles li:nth-child(4) {
   left: 40%;
   width: 30px;
   height: 30px;
   -webkit-animation-duration: 22s;
-          animation-duration: 22s;
+  animation-duration: 22s;
 }
 .bg-bubbles li:nth-child(5) {
   left: 70%;
@@ -287,39 +300,39 @@ body {
   width: 60px;
   height: 60px;
   -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 .bg-bubbles li:nth-child(7) {
   left: 32%;
   width: 80px;
   height: 80px;
   -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  animation-delay: 5s;
 }
 .bg-bubbles li:nth-child(8) {
   left: 55%;
   width: 20px;
   height: 20px;
   -webkit-animation-delay: 13s;
-          animation-delay: 13s;
+  animation-delay: 13s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(9) {
   left: 25%;
   width: 10px;
   height: 10px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(10) {
   left: 90%;
   width: 80px;
   height: 80px;
   -webkit-animation-delay: 9s;
-          animation-delay: 9s;
+  animation-delay: 9s;
 }
 
 .bg-bubbles li:nth-child(11) {
@@ -330,21 +343,21 @@ body {
   width: 40px;
   height: 40px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 17s;
-          animation-duration: 17s;
+  animation-duration: 17s;
 }
 .bg-bubbles li:nth-child(13) {
   left: 45%;
   -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation-delay: 2s;
 }
 .bg-bubbles li:nth-child(14) {
   left: 60%;
   width: 30px;
   height: 30px;
   -webkit-animation-duration: 22s;
-          animation-duration: 22s;
+  animation-duration: 22s;
 }
 .bg-bubbles li:nth-child(15) {
   left: 25%;
@@ -354,59 +367,59 @@ body {
   width: 60px;
   height: 60px;
   -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 .bg-bubbles li:nth-child(17) {
   left: 5%;
   width: 80px;
   height: 80px;
   -webkit-animation-delay: 5s;
-          animation-delay: 5s;
+  animation-delay: 5s;
 }
 .bg-bubbles li:nth-child(18) {
   left: 0%;
   width: 20px;
   height: 20px;
   -webkit-animation-delay: 13s;
-          animation-delay: 13s;
+  animation-delay: 13s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(19) {
   left: 75%;
   width: 10px;
   height: 10px;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
   -webkit-animation-duration: 40s;
-          animation-duration: 40s;
+  animation-duration: 40s;
 }
 .bg-bubbles li:nth-child(20) {
   left: 63%;
   width: 60px;
   height: 60px;
   -webkit-animation-delay: 9s;
-          animation-delay: 9s;
+  animation-delay: 9s;
 }
 
 @-webkit-keyframes square {
   0% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
   100% {
     -webkit-transform: translateY(-400px) rotate(600deg);
-            transform: translateY(-400px) rotate(600deg);
+    transform: translateY(-400px) rotate(600deg);
   }
 }
 @keyframes square {
   0% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
   100% {
     -webkit-transform: translateY(-400px) rotate(600deg);
-            transform: translateY(-400px) rotate(600deg);
+    transform: translateY(-400px) rotate(600deg);
   }
 }
 
@@ -418,6 +431,4 @@ body {
   height: 100%;
   overflow: hidden;
 }
-
-
 </style>
