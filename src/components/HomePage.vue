@@ -145,7 +145,14 @@ h6 {
   line-height: 1.7;
 }
 
-/*For Samsung Galaxy S5 Portrait*/
+/*Common Mobile Portrait*/ 
+@media only screen and (min-width: 370px) and (max-width: 600px){
+  .view.home-page{
+    margin-top: 2em;
+  }
+}
+
+/*Samsung Galaxy S5 Portrait*/
 @media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait){
   .view.home-page{
     margin-top: 1.5em;
@@ -156,7 +163,7 @@ h6 {
   }
 }
 
-/*For iPhone 5/SE Portrait*/
+/*iPhone 5/SE Portrait*/
 @media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait){
   .view.home-page{
     height: calc(100vh - 0px);
@@ -166,16 +173,38 @@ h6 {
   } */
 }
 
-/*The Others Portrait*/ 
-@media only screen and (min-width: 370px) and (max-width: 600px){
-  .view.home-page{
-    margin-top: 2em;
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 770px) and (orientation: landscape){
+  .intro-section.row{
+    width: 350px;
+    height: 270px;
+    margin-bottom: 20px;
   }
-
+  .img-fluid{
+    left: 245px;
+    bottom: 300px;
+  }
+  .mt-xl-5.col-md-6.col-xl-5{
+    padding-left: 50px;
+  }
 }
 
+/*Samsung Galaxy S5 Landscape*/
+@media only screen and (max-width: 570px) and (orientation: landscape){
+  /* .intro-section.row{
+    width: 350px;
+    height: 270px;
+    margin-bottom: 20px;
+  } */
+}
 
-
-
+/*Samsung Galaxy S5 Landscape*/
+@media only screen and (max-width: 570px) and (orientation: landscape){
+  /* .intro-section.row{
+    width: 350px;
+    height: 270px;
+    margin-bottom: 20px;
+  } */
+}
 
 </style>
