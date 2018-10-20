@@ -37,8 +37,8 @@
                   <label for="wizard-picturePro">
                         <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
                   </label>
-<input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
-</div>
+                        <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                  </div>
     <!-- <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div> -->
     <!-- <button @click="removeImage">Remove image</button> -->
                   <br>
@@ -166,7 +166,8 @@ export default {
       progressUpload: 0,
       file: File,
       uploadTask: "",
-      image: ""
+      image: "",
+      visible: false
     };
   },
   components: {
@@ -186,7 +187,6 @@ export default {
       let loader = this.$loading.show({
         loader: 'dots'
         });
-        setTimeout(() => loader.hide(), 10 * 1000)
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
@@ -201,11 +201,22 @@ export default {
              address: this.address
              }).then(
                user =>{
+                 firebase.auth().signInWithEmailAndPassword(this.email,this.password)
+                 .then(user =>{
+                   var files = e.target.files || e.dataTransfer.files;
+                  if (!files.length) return;
+                  this.createImage(files[0]);
+                  this.detectFiles(files);
+
+                 })
+                 
+                  loader.hide();
                    alert(`Account Created for ${this.email}`);
                  this.$router.go({ path: this.$router.path });
                  })
           },
           err => {
+            loader.hide();
             alert(err.message);
           }
         );
@@ -217,13 +228,13 @@ export default {
       });
     },
     upload(file) {
-      this.uploadTask = storage.ref("medic/imagenes").put(file);
+      this.uploadTask = storage.ref(this.email+"/imagenes").put(file);
     },
     onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0]);
-      this.detectFiles(files);
+       var files = e.target.files || e.dataTransfer.files;
+       if (!files.length) return;
+       this.createImage(files[0]);
+       this.detectFiles(files);
     },
     createImage(file) {
       var image = new Image();
@@ -237,18 +248,7 @@ export default {
     },
     removeImage: function(e) {
       this.image = "";
-    },
-                readURLPro: function(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        $('#wizardPicturePreviewPro').attr('src', e.target.result).fadeIn('slow');
-                    },
-                    reader.readAsDataURL(input.files[0]);
-                    this.detectFiles(input.files)
-                }
-            }
+    }
   },
   mounted() {
     $(".show-placeholder").select({

@@ -143,17 +143,17 @@ export default {
                 color : '#009999',
                 backgroundColor: 'LightGray',
             });
-            setTimeout(() => loader.hide(), 2 * 1000)
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            
+            loader.hide();
             // alert(`You are logged in as ${user.email}`);
             this.$router.go({ path: this.$router.path });
           },
           err => {
+            loader.hide();
             alert(err.message);
           }
         );
