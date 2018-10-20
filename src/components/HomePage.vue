@@ -145,7 +145,8 @@ h6 {
   line-height: 1.7;
 }
 
-@media only screen and (max-width: 360px) {
+/*For Samsung Galaxy S5 Portrait*/
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait){
   .view.home-page{
     margin-top: 1.5em;
   }
@@ -155,11 +156,25 @@ h6 {
   }
 }
 
+/*For iPhone 5/SE Portrait*/
+@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait){
+  .view.home-page{
+    height: calc(100vh - 0px);
+  }
+  /* .img-fluid{
+    
+  } */
+}
+
+/*The Others Portrait*/ 
 @media only screen and (min-width: 370px) and (max-width: 600px){
   .view.home-page{
     margin-top: 2em;
   }
+
 }
+
+
 
 
 
