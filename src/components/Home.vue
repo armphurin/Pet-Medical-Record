@@ -52,12 +52,12 @@
       </md-mask>
 
       <!-- Popup -->
-      <modal v-if="modal" @close="modal = false">
+      <modal v-if="modal" @close="modal = false" size="lg">
+        <div class="popup-profile">
   <modal-header>
     <modal-title>My Profile Card</modal-title>
   </modal-header>
   <modal-body>
-    Card Detail
                     <row style="padding:1em;">
                   <column class="col-md-4">
                   <!-- picture -->
@@ -118,6 +118,7 @@
     <btn color="secondary" @click.native="modal = false">Close</btn>
     <btn color="primary">Save changes</btn>
   </modal-footer>
+        </div>
 </modal>
 <!-- Popup -->
     </view-wrapper>
@@ -427,6 +428,10 @@ h6 {
                 height: 10em;
             }
             /*Profile Pic End*/
+.image-upload{
+  text-align: center
+}
+
 .image-upload > input
 {
     display: none;
@@ -453,4 +458,12 @@ h6 {
     margin-top: 2em;
   }
 }
+
+/* Popup Style */
+.popup-profile{
+  border-radius: 100px;
+}
+
+
+/* Popup Style */
 </style>
