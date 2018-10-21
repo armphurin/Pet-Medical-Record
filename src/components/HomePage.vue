@@ -168,9 +168,17 @@ h6 {
   .view.home-page{
     height: calc(100vh - 0px);
   }
-  /* .img-fluid{
-    
-  } */
+  .mt-xl-5.col-md-6.col-xl-5{
+    bottom: 80px;
+    width: 200px;
+  }
+  .img-fluid{
+    left: 45px;
+    top: 60px;
+  }
+  .intro-section.row{
+    margin-bottom: 50px;
+  }
 }
 
 /*Common Mobile Landscape*/
