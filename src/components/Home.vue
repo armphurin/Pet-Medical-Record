@@ -67,48 +67,73 @@
                   </label>
 <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
 </div>
-                  <br>
+<div class="label-group">
+                  <label for="fullname">Fullname</label>
                   <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
-                  <br>
+</div>
                   <row>
                     <column>
-                    <input class="form-control form-control-lg" type="number" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
-              
-                    </column>
-                    <column>
+                    <div class="label-group">
+                    <label for="gender">Gender</label>
                     <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                      <option selected disabled>Gender</option>
                       <option>Male</option>
                       <option>Female</option>
                     </select>
+                    </div>
                     </column>
-                    </row>
+                  </row>
+                  <row>
+                    <column>
+                    <div class="label-group">
+                    <label for="datetime">Date of Birth</label>
+                    <datetime v-model="datetime"></datetime>
+                    </div>             
+                    </column>
+                  </row>
                   </column>
                   <column class="col-md-8">
                   <row>
                     <column>
+                    <div class="label-group">
+                    <label for="email">Email</label>
                   <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                  <br>
+                    </div>
                     </column>
                   </row>
                   <row>
                     <column>
-                     <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                     <br>
+                    <div class="label-group">
+                    <label for="password">Password</label>
+                     <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                    </div>
+                    </column>
+                    <column>
+                    <div class="label-group">
+                    <label for="confpassword">Confirm Password</label>
+                     <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confpassword" v-model="confpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                    </div>
                     </column>
                   </row>
                   <row>
                     <column>
+                    <div class="label-group">
+                    <label for="lineid">Line ID</label>
                      <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                    </div>
                     </column>
                     <column>
+                    <div class="label-group">
+                    <label for="telephone">Telephone</label>
                      <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                     <br>
+                    </div>
                     </column>
                   </row>
                   <row>
                     <column>
-                    <textarea class="form-control" id="address" v-model="address" rows="4" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                    <div class="label-group">
+                    <label for="address">Address</label>
+                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                    </div>
                     </column>
                   </row>
                   </column>
@@ -160,6 +185,9 @@ import {
   ModalBody,
   ModalFooter
 } from "mdbvue";
+
+import { Datetime } from 'vue-datetime';
+
 export default {
   name: "home",
   components: {
@@ -190,7 +218,8 @@ export default {
     ModalHeader,
     ModalTitle,
     ModalBody,
-    ModalFooter
+    ModalFooter,
+    'datetime':Datetime
   },
   data() {
     return {
@@ -200,7 +229,8 @@ export default {
       progressUpload: 0,
       file: File,
       uploadTask: "",
-      image: ""
+      image: "",
+      datetime:""
     };
   },
   methods: {
@@ -262,6 +292,7 @@ export default {
           this.pets.push(data);
         });
       });
+      document.getElementsByClassName("vdatetime-input").setAttribute("placeholder", "Enter your number");
   }
 };
 </script>
@@ -466,4 +497,39 @@ h6 {
 
 
 /* Popup Style */
+
+.vdatetime-input{
+  width:100%;
+  margin: 0 auto;
+  border-radius: 13px;
+  border: 1px solid #ced4da;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  -webkit-writing-mode: horizontal-tb !important;
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+.label-group{
+  margin-bottom: .5em;
+}
+label{
+  font-weight: 500;
+}
+input::placeholder{
+  color: grey !important;
+  font-size: 80%;
+}
 </style>
