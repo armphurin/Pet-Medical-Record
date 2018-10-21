@@ -21,12 +21,12 @@
         <container>
           <row class="intro-section">
             <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-              <h1 class="h1-responsive font-weight-bold mt-sm-5">Welcome ...</h1>
+              <h1 class="h1-responsive font-weight-bold mt-sm-5">Welcome {{user_name}}</h1>
               <hr class="hr-light"/>
             </div>
             <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
               <btn type="button" class="btn btn-profile text-left" @click.native="modal=true;">
-                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Name : ...</h5>
+                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Name :{{full_name}}</h5>
               </btn><br>
             </div>
               <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
@@ -35,18 +35,23 @@
                   <button type="button" class="btn btn-label text-center">Add Pet</button><br>
                 </div>
               </div>
+             
               <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-              <btn type="button" class="btn btn-pet text-left">
+                 <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
+              <!-- <btn type="button" class="btn btn-pet text-left">
                 <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
               </btn><br>
+              
               <btn type="button" class="btn btn-pet text-left">
                 <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-              </btn><br>
+              </btn><br> -->
               <btn type="button" class="btn btn-pet text-left">
-                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.pet_id}}: {{pet.pet_name}} </h5>
               </btn><br>
+              </div>
               <a>see more</a>
             </div>
+            
           </row>
         </container>
       </md-mask>
@@ -194,6 +199,8 @@ export default {
   data() {
     return {
       pets: [],
+      user_name: '',
+      full_name:"joe",    
       loading: true,
       modal: false,
       progressUpload: 0,
@@ -258,9 +265,19 @@ export default {
             dept: doc.data().dept,
             position: doc.data().position
           };
+          this.full_name = data.pet_name;
           this.pets.push(data);
         });
-      });
+      }),
+        this.user_name = firebase.auth().currentUser.email;
+    //     db.collection("users").where("email", "==", this.user_name)
+    // .get()
+    // .then(function(querySnapshot) {
+    //     querySnapshot.forEach(function(doc) {
+    //         // this.full_name = doc.data().fullname;
+    //         console.log(doc.id, " => ", doc.data());
+    //     });
+    // })
   }
 };
 </script>
