@@ -201,15 +201,6 @@ export default {
              address: this.address
              }).then(
                user =>{
-                 firebase.auth().signInWithEmailAndPassword(this.email,this.password)
-                 .then(user =>{
-                   var files = e.target.files || e.dataTransfer.files;
-                  if (!files.length) return;
-                  this.createImage(files[0]);
-                  this.detectFiles(files);
-
-                 })
-                 
                   loader.hide();
                    alert(`Account Created for ${this.email}`);
                  this.$router.go({ path: this.$router.path });
@@ -228,7 +219,7 @@ export default {
       });
     },
     upload(file) {
-      this.uploadTask = storage.ref(this.email+"/imagenes").put(file);
+      this.uploadTask = storage.ref("profile/imagenes").put(file);
     },
     onFileChange(e) {
        var files = e.target.files || e.dataTransfer.files;
