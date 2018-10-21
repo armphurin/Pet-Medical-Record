@@ -197,22 +197,26 @@ h6 {
   }
 }
 
-/*Samsung Galaxy S5 Landscape*/
-@media only screen and (max-width: 570px) and (orientation: landscape){
-  /* .intro-section.row{
-    width: 350px;
-    height: 270px;
+/*Pixel 2XL and iPhone X Landscape*/
+@media only screen and (min-width: 810px) and (max-height : 420px)and (orientation: landscape){
+  .mt-xl-5.col-md-6.col-xl-5{
+    padding-top: 50px;
     margin-bottom: 20px;
-  } */
+  }
 }
 
-/*Samsung Galaxy S5 Landscape*/
-@media only screen and (max-width: 570px) and (orientation: landscape){
-  /* .intro-section.row{
+/*iPhone 5/SE Landscape*/
+@media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape){
+  .intro-section.row{
     width: 350px;
-    height: 270px;
-    margin-bottom: 20px;
-  } */
+    height: 200px;
+  }
+  .mt-xl-5.col-md-6.col-xl-5{
+    width: 270px;
+    top: 40px;
+    left: 40px;
+    padding-top: 25px;
+  }
 }
 
 </style>
