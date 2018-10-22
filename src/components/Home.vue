@@ -38,13 +38,6 @@
 
                         <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
                             <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
-                                <!-- <btn type="button" class="btn btn-pet text-left">
-                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-              </btn><br>
-              
-              <btn type="button" class="btn btn-pet text-left">
-                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-              </btn><br> -->
                                 <btn type="button" class="btn btn-pet text-left">
                                     <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.pet_id}}: {{pet.pet_name}} </h5>
                                 </btn><br>
@@ -92,7 +85,7 @@
                 <column class="col-md-8">
                     <row>
                         <column>
-                            <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            <input disabled class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             <br>
                     </column>
                     </row>
@@ -117,11 +110,13 @@
                         </column>
                     </row>
                 </column>
+
             </row>
         </modal-body>
+        <loading :active.sync="visible"></loading>
         <modal-footer>
             <btn color="secondary" @click.native="modal = false">Close</btn>
-            <btn color="primary">Save changes</btn>
+            <btn color="primary" @click.native="updateProfile">Save changes</btn>
         </modal-footer>
     </modal>
     <!-- Popup -->
@@ -132,6 +127,12 @@
 <script>
 import db from "./firebaseInit";
 import firebase from "firebase";
+import Loading from 'vue-loading-overlay';
+// Import stylesheet Vue loader
+import 'vue-loading-overlay/dist/vue-loading.css';
+import Vue from 'vue';
+Vue.use(Loading);
+// ถึงตรงนี้
 
 import {
     Container,
@@ -211,10 +212,31 @@ export default {
             progressUpload: 0,
             file: File,
             uploadTask: "",
-            image: ""
+            image: "",
+            visible: false
         };
     },
     methods: {
+        updateProfile() {
+            // ให้ spinner แสดง
+            let loader = this.$loading.show({
+                loader: 'dots'
+            });
+            db.collection("users").doc(this.email).update({
+                password : this.password,
+                fullname: this.fullname,
+                age: this.age,
+                line_id: this.lineid,
+                telephone_number: this.telephone,
+                address: this.address
+            }).then(
+                user => {
+                    // ให้spinner หยุดแสดง
+                    loader.hide();
+                    alert(`Account Updated for ${this.email}`);
+                    this.modal = false;
+                })
+        },
         detectFiles(fileList) {
             Array.from(Array(fileList.length).keys()).map(x => {
                 this.upload(fileList[x]);
@@ -274,20 +296,21 @@ export default {
     },
     mounted() {
         db.collection("users")
-            .doc(firebase.auth().currentUser.email)
+            .doc(this.email)
             .get()
             .then(doc => {
-                    this.fullname = doc.data().fullname;
-                    this.lineid = doc.data().line_id;
-                    this.address = doc.data().address;
-                    this.age = doc.data().age;
-                    this.password = doc.data().password;
-                    this.telephone = doc.data().telephone_number;
-                    this.gender = doc.data().gender;
-                    console.log("Document data:", doc.data());
+                this.fullname = doc.data().fullname;
+                this.lineid = doc.data().line_id;
+                this.address = doc.data().address;
+                this.age = doc.data().age;
+                this.password = doc.data().password;
+                this.telephone = doc.data().telephone_number;
+                this.gender = doc.data().gender;
+                console.log("Document data:", doc.data());
             })
 
     }
+
 };
 </script>
 
