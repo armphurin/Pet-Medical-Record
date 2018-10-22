@@ -532,4 +532,106 @@ input::placeholder{
   color: grey !important;
   font-size: 80%;
 }
+
+
+/*Edit md width for each platform, .col flex basis removed.*/
+
+/*Common Mobile Portrait*/ 
+@media only screen and (min-width: 370px) and (max-width: 600px){
+.intro-section .btn{
+  width: 100%;
+}
+.intro-section .btn.btn-label{
+    left: 32%;
+    width: 9em;
+    border-radius: 15px;
+    height: 3em;
+}
+h3.content-label{
+    left: 10%;
+}
+}
+
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 770px) and (orientation: landscape){
+
+}
+
+/*Samsung Galaxy S5 Portrait*/
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait){
+.intro-section .btn{
+  width: 100%;
+}
+.intro-section .btn.btn-label{
+    left: 32%;
+    width: 9em;
+    border-radius: 15px;
+    height: 3em;
+}
+h3.content-label{
+    left: 10%;
+}
+}
+
+/*Samsung Galaxy S5 Landscape*/
+@media only screen and (max-width: 640px) and (max-height: 360px) and (orientation: portrait){
+
+}
+
+/*iPhone 5/SE Landscape*/
+@media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape){
+
+}
+
+/*Pixel 2XL and iPhone X Landscape*/
+@media only screen and (min-width: 810px) and (max-height : 420px)and (orientation: landscape){
+  
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 760px){
+  .intro-section .btn{
+  width: 70%;
+}
+.intro-section .btn.btn-label{
+    left: 26%;
+    width: 9em;
+    border-radius: 15px;
+    height: 5em;
+}
+h3.content-label{
+    left: 17%;
+}
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px){
+ .intro-section .btn{
+  width: 70%;
+}
+.intro-section .btn.btn-label{
+    left: 28%;
+    width: 9em;
+    border-radius: 15px;
+    height: 5em;
+}
+h3.content-label{
+    left: 17%;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
