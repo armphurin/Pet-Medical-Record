@@ -13,10 +13,14 @@ import HomeProfile from '@/components/HomeProfile'
 import HomePage from '@/components/HomePage'
 import RegisterOwner from '@/components/RegisterOwner'
 import RegisterVet from '@/components/RegisterVet'
+import Contact from '@/components/Contact'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Datetime from 'vue-datetime'
+// You need a specific loader for CSS files
+import 'vue-datetime/dist/vue-datetime.css'
 
-Vue.use(Router, axios, VueAxios);
+Vue.use(Router, axios, VueAxios, Datetime);
 
 let router = new Router({
   routes: [
@@ -112,6 +116,22 @@ let router = new Router({
       path: '/register_vet',
       name: 'register-vet',
       component: RegisterVet,
+      meta: {
+        requiresGuest: true
+      }
+    },
+    {
+      path: '/pre_load',
+      name: 'pre-load',
+      component: RegisterVet,
+      meta: {
+        requiresGuest: true
+      }
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact,
       meta: {
         requiresGuest: true
       }
