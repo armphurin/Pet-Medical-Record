@@ -550,14 +550,12 @@ input::placeholder{
 h3.content-label{
     left: 10%;
 }
+.col-md-8{
+  flex-basis: unset;
+}
 }
 
-/*Common Mobile Landscape*/
-@media only screen and (max-width: 770px) and (orientation: landscape){
-
-}
-
-/*Samsung Galaxy S5 Portrait*/
+/*Samsung Galaxy S5 and iPhone 5 Portrait*/
 @media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait){
 .intro-section .btn{
   width: 100%;
@@ -571,6 +569,56 @@ h3.content-label{
 h3.content-label{
     left: 10%;
 }
+.col-md-8{
+  flex-basis: unset;
+}
+}
+
+/*iPhone 5/SE Portrait Button Fix*/
+@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait){
+.btn.btn-primary{
+  padding-bottom: 2px;
+  padding-top: 7px;
+}
+.btn.btn-secondary{
+  width: 50%;
+}
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 760px) and (orientation: portrait){
+.intro-section .btn{
+  width: 70%;
+}
+.intro-section .btn.btn-label{
+    left: 26%;
+    width: 9em;
+    border-radius: 15px;
+    height: 5em;
+}
+h3.content-label{
+    left: 17%;
+}
+.col-md-8{
+  left: 4%;
+}
+.col{
+  flex-basis: unset;
+}
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px) and (orientation: portrait){
+.intro-section .btn.btn-label{
+    left: 28%;
+}
+}
+
+
+
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 770px) and (orientation: landscape){
+
 }
 
 /*Samsung Galaxy S5 Landscape*/
@@ -584,54 +632,9 @@ h3.content-label{
 }
 
 /*Pixel 2XL and iPhone X Landscape*/
-@media only screen and (min-width: 810px) and (max-height : 420px)and (orientation: landscape){
+@media only screen and (min-width: 810px) and (max-height : 420px) and (orientation: landscape){
   
 }
-
-/*iPad Portrait*/
-@media only screen and (min-width: 760px){
-  .intro-section .btn{
-  width: 70%;
-}
-.intro-section .btn.btn-label{
-    left: 26%;
-    width: 9em;
-    border-radius: 15px;
-    height: 5em;
-}
-h3.content-label{
-    left: 17%;
-}
-}
-
-/*iPad Pro Portrait*/
-@media only screen and (min-width: 1000px){
- .intro-section .btn{
-  width: 70%;
-}
-.intro-section .btn.btn-label{
-    left: 28%;
-    width: 9em;
-    border-radius: 15px;
-    height: 5em;
-}
-h3.content-label{
-    left: 17%;
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </style>
