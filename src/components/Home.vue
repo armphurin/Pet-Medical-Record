@@ -618,22 +618,54 @@ h3.content-label{
 
 /*Common Mobile Landscape*/
 @media only screen and (max-width: 770px) and (orientation: landscape){
+.intro-section .btn{
 
+}
+.intro-section .btn.btn-label{
+
+}
+h3.content-label{
+
+}
+.col-md-8{
+  flex-basis: unset;
+}
 }
 
 /*Samsung Galaxy S5 Landscape*/
-@media only screen and (max-width: 640px) and (max-height: 360px) and (orientation: portrait){
+@media only screen and (max-width: 640px) and (max-height: 360px) and (orientation: landscape){
+.container {
 
+}
+.intro-section .btn{
+    
+}
+.intro-section .btn.btn-label{
+
+}
+h3.content-label{
+
+}
+.col-md-8{
+  flex-basis: unset;
+}
 }
 
 /*iPhone 5/SE Landscape*/
 @media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape){
-
+.col-md-8{
+  flex-basis: unset;
+}
 }
 
 /*Pixel 2XL and iPhone X Landscape*/
 @media only screen and (min-width: 810px) and (max-height : 420px) and (orientation: landscape){
-  
+.col{
+  flex-basis: unset;
+}
+.col-md-8{
+  left: 4%;
+}
 }
 
 
