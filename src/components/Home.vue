@@ -1,5 +1,5 @@
 <template>
-  <!-- <div id="home">
+<!-- <div id="home">
     <ul class="collection with-header">
       <li class="collection-header"><h4>Pet Medic</h4></li>
       <li v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
@@ -15,140 +15,302 @@
     </div>
   </div> -->
 
-      <!--ViewWrapper-->
-    <view-wrapper class="home-owner">
-      <md-mask class="d-flex justify-content-center align-items-center">
+<!--ViewWrapper-->
+<div class="home-owner">
+    <md-mask class="d-flex justify-content-center align-items-center">
         <container>
-          <row class="intro-section">
-            <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-              <h1 class="h1-responsive font-weight-bold mt-sm-5">Welcome ...</h1>
-              <hr class="hr-light"/>
-            </div>
-            <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-              <btn type="button" class="btn btn-profile text-left" @click.native="modal=true;">
-                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Name : ...</h5>
-              </btn><br>
-            </div>
-              <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                <div>
-                  <h3 class="content-label">My Pet List</h3>
-                  <button type="button" class="btn btn-label text-center">Add Pet</button><br>
+            <row class="intro-section">
+                <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
+                    <h1 class="h1-responsive font-weight-bold mt-sm-5">Welcome ...</h1>
+                    <hr class="hr-light" />
                 </div>
-              </div>
-              <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-              <btn type="button" class="btn btn-pet text-left">
-                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-              </btn><br>
-              <btn type="button" class="btn btn-pet text-left">
-                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-              </btn><br>
-              <btn type="button" class="btn btn-pet text-left">
-                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-              </btn><br>
-              <a>see more</a>
-            </div>
-          </row>
+                <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
+                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true;">
+                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Name : ...</h5>
+                    </btn><br>
+                </div>
+                    <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
+                        <div>
+                            <h3 class="content-label">My Pet List</h3>
+                            <btn type="button" class="btn btn-label text-center" @click.native="popupAddPet=true;">Add Pet</btn><br>
+                        </div>
+                    </div>
+                    <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
+                            <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true;">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                            </btn><br>
+                            <btn type="button" class="btn btn-pet text-left">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                            </btn><br>
+                            <btn type="button" class="btn btn-pet text-left ">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                            </btn><br>
+                            <!-- hide area -->
+                            <input type="checkbox" class="read-more-state" id="pet-hidden" />
+                            <div class="read-more-wrap">
+                              <div class="read-more-target">
+                                <btn type="button" class="btn btn-pet text-left ">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                            </btn><br>
+                                <btn type="button" class="btn btn-pet text-left ">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                            </btn><br>
+                                <btn type="button" class="btn btn-pet text-left ">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                            </btn><br>
+                              </div>
+                            </div>
+                              <label for="pet-hidden" class="read-more-trigger"></label>
+                    </div>
+            </row>
         </container>
-      </md-mask>
+    </md-mask>
 
-      <!-- Popup -->
-      <modal v-if="modal" @close="modal = false" size="lg">
+    <!-- Popup Profile-->
+    <modal v-if="popupProfile" @close="popupProfile = false" size="lg">
         <div class="popup-profile">
-  <modal-header>
-    <modal-title>My Profile Card</modal-title>
-  </modal-header>
-  <modal-body>
-                    <row style="padding:1em;">
-                  <column class="col-md-4">
-                  <!-- picture -->
-                  <div class="image-upload">
-                  <label for="wizard-picturePro">
-                        <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
-                  </label>
-<input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
-</div>
-<div class="label-group">
-                  <label for="fullname">Fullname</label>
-                  <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
-</div>
-                  <row>
-                    <column>
-                    <div class="label-group">
-                    <label for="gender">Gender</label>
-                    <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                      <option>Male</option>
-                      <option>Female</option>
-                    </select>
-                    </div>
+            <modal-header>
+                <modal-title>My Profile Card</modal-title>
+            </modal-header>
+            <modal-body>
+                <row style="padding:1em;">
+                    <column class="col-md-4">
+                        <!-- picture -->
+                        <div class="image-upload">
+                            <label for="wizard-picturePro">
+                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                            </label>
+                            <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                        </div>
+                            <div class="label-group">
+                                <label for="fullname">Fullname</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                        <row>
+                          <column>
+                            <div class="label-group">
+                              <label for="gender">Gender</label>
+                              <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <option>Male</option>
+                                <option>Female</option>
+                              </select>
+                            </div>
+                          </column>
+                        </row>
+                        <row>
+                          <column>
+                              <div class="label-group">
+                                <label for="datetime">Date of Birth</label>
+                                <datetime v-model="datebirth"></datetime>
+                              </div>
+                          </column>
+                        </row>
                     </column>
-                  </row>
-                  <row>
-                    <column>
-                    <div class="label-group">
-                    <label for="datetime">Date of Birth</label>
-                    <datetime v-model="datetime"></datetime>
-                    </div>             
+                    <column class="col-md-8">
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="email">Email</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="password">Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                            <column>
+                                <div class="label-group">
+                                    <label for="confpassword">Confirm Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confpassword" v-model="confpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="lineid">Line ID</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                            <column>
+                                <div class="label-group">
+                                    <label for="telephone">Telephone</label>
+                                    <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="address">Address</label>
+                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                </div>
+                            </column>
+                        </row>
                     </column>
-                  </row>
-                  </column>
-                  <column class="col-md-8">
-                  <row>
-                    <column>
-                    <div class="label-group">
-                    <label for="email">Email</label>
-                  <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                    </div>
-                    </column>
-                  </row>
-                  <row>
-                    <column>
-                    <div class="label-group">
-                    <label for="password">Password</label>
-                     <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                    </div>
-                    </column>
-                    <column>
-                    <div class="label-group">
-                    <label for="confpassword">Confirm Password</label>
-                     <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confpassword" v-model="confpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                    </div>
-                    </column>
-                  </row>
-                  <row>
-                    <column>
-                    <div class="label-group">
-                    <label for="lineid">Line ID</label>
-                     <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                    </div>
-                    </column>
-                    <column>
-                    <div class="label-group">
-                    <label for="telephone">Telephone</label>
-                     <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                    </div>
-                    </column>
-                  </row>
-                  <row>
-                    <column>
-                    <div class="label-group">
-                    <label for="address">Address</label>
-                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
-                    </div>
-                    </column>
-                  </row>
-                  </column>
                 </row>
-  </modal-body>
-  <modal-footer>
-    <btn color="secondary" @click.native="modal = false">Close</btn>
-    <btn color="primary">Save changes</btn>
-  </modal-footer>
+            </modal-body>
+            <modal-footer>
+                <btn color="secondary" @click.native="popupProfile = false">Close</btn>
+                <btn color="primary">Save changes</btn>
+            </modal-footer>
         </div>
-</modal>
-<!-- Popup -->
-    </view-wrapper>
-    <!--/.ViewWrapper-->
-    
+    </modal>
+    <!-- Popup -->
+
+    <!-- Popup Pet -->
+    <modal v-if="popupPet" @close="popupPet = false" size="lg">
+        <div class="popup-profile">
+            <modal-header>
+                <modal-title>My Pet Card</modal-title>
+            </modal-header>
+            <modal-body>
+                <row style="padding:1em;">
+                    <column class="col-md-5">
+                        <!-- picture -->
+                        <div class="image-upload">
+                            <label for="wizard-picturePro">
+                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                            </label>
+                            <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                        </div>
+                            <div class="label-group">
+                                <label for="petname">Pet Name</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                        <row>
+                          <column>
+                              <div class="label-group">
+                                <label for="petbirth">Date of Birth</label>
+                                <datetime v-model="petbirth"></datetime>
+                              </div>
+                          </column>
+                          <column>
+                            <div class="label-group">
+                              <label for="petgender">Gender</label>
+                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="petgender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <option>Male</option>
+                                <option>Female</option>
+                              </select>
+                            </div>
+                          </column>
+                        </row>
+                    </column>
+                    <column class="col-md-7">
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                  <label for="breed">Breed</label>
+                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                              <div class="label-group">
+                                <label for="colour">Colour</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="colour" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                              </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="marking">Markings</label>
+                                    <textarea class="form-control" id="marking" v-model="marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                </div>
+                            </column>
+                        </row>
+                    </column>
+                </row>
+            </modal-body>
+            <modal-footer>
+                <btn color="secondary" @click.native="popupPet = false">Close</btn>
+                <btn color="primary">Save changes</btn>
+            </modal-footer>
+        </div>
+    </modal>
+    <!-- Popup -->
+
+    <!-- Popup Add pet -->
+    <modal v-if="popupAddPet" @close="popupAddPet = false" size="lg">
+        <div class="popup-profile">
+            <modal-header>
+                <modal-title>My Pet Card</modal-title>
+            </modal-header>
+            <modal-body>
+                <row style="padding:1em;">
+                    <column class="col-md-5">
+                        <!-- picture -->
+                        <div class="image-upload">
+                            <label for="wizard-picturePro">
+                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                            </label>
+                            <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                        </div>
+                            <div class="label-group">
+                                <label for="petname">Pet Name</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                        <row>
+                          <column>
+                              <div class="label-group">
+                                <label for="petbirth">Date of Birth</label>
+                                <datetime v-model="petbirth"></datetime>
+                              </div>
+                          </column>
+                          <column>
+                            <div class="label-group">
+                              <label for="petgender">Gender</label>
+                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="petgender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <option>Male</option>
+                                <option>Female</option>
+                              </select>
+                            </div>
+                          </column>
+                        </row>
+                    </column>
+                    <column class="col-md-7">
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                  <label for="breed">Breed</label>
+                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                              <div class="label-group">
+                                <label for="colour">Colour</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="colour" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                              </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="marking">Markings</label>
+                                    <textarea class="form-control" id="marking" v-model="marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                </div>
+                            </column>
+                        </row>
+                    </column>
+                </row>
+            </modal-body>
+            <modal-footer>
+                <btn color="secondary" @click.native="popupAddPet = false">Close</btn>
+                <btn color="primary">Save changes</btn>
+            </modal-footer>
+        </div>
+    </modal>
+    <!-- Popup -->
+</div>
+<!--/.ViewWrapper-->
 </template>
 
 <script>
@@ -183,10 +345,14 @@ import {
   ModalHeader,
   ModalTitle,
   ModalBody,
-  ModalFooter
+  ModalFooter,
+  Pagination,
+  PageNav,
+  PageItem,
+  Collapse
 } from "mdbvue";
 
-import { Datetime } from 'vue-datetime';
+import { Datetime } from "vue-datetime";
 
 export default {
   name: "home",
@@ -219,18 +385,25 @@ export default {
     ModalTitle,
     ModalBody,
     ModalFooter,
-    'datetime':Datetime
+    datetime: Datetime,
+    Pagination,
+    PageNav,
+    PageItem,
+    Collapse
   },
   data() {
     return {
       pets: [],
       loading: true,
-      modal: false,
+      popupProfile: false,
+      popupPet: false,
       progressUpload: 0,
       file: File,
       uploadTask: "",
       image: "",
-      datetime:""
+      datebirth: "",
+      petbirth: "",
+      popupAddPet: false
     };
   },
   methods: {
@@ -261,17 +434,19 @@ export default {
       };
       reader.readAsDataURL(file);
     },
-                readURLPro: function(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
+    readURLPro: function(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-                    reader.onload = function (e) {
-                        $('#wizardPicturePreviewPro').attr('src', e.target.result).fadeIn('slow');
-                    },
-                    reader.readAsDataURL(input.files[0]);
-                    this.detectFiles(input.files)
-                }
-            }
+        (reader.onload = function(e) {
+          $("#wizardPicturePreviewPro")
+            .attr("src", e.target.result)
+            .fadeIn("slow");
+        }),
+          reader.readAsDataURL(input.files[0]);
+        this.detectFiles(input.files);
+      }
+    }
   },
   created() {
     db.collection("users")
@@ -292,7 +467,9 @@ export default {
           this.pets.push(data);
         });
       });
-      document.getElementsByClassName("vdatetime-input").setAttribute("placeholder", "Enter your number");
+    document
+      .getElementsByClassName("vdatetime-input")
+      .setAttribute("placeholder", "Enter your number");
   }
 };
 </script>
@@ -306,27 +483,33 @@ html {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
-  background: rgb(52, 160, 217); /* Old browsers */
+  background: rgb(52, 160, 217);
+  /* Old browsers */
   background: -moz-linear-gradient(
     top,
     rgb(52, 160, 217) 0%,
     rgb(23, 169, 149) 56%,
     rgb(23, 169, 149) 100%
-  ); /* FF3.6-15 */
+  );
+  /* FF3.6-15 */
   background: -webkit-linear-gradient(
     top,
     rgb(52, 160, 217) 0%,
     rgb(23, 169, 149) 56%,
     rgb(23, 169, 149) 100%
-  ); /* Chrome10-25,Safari5.1-6 */
+  );
+  /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(
     to bottom,
     rgb(52, 160, 217) 0%,
     rgb(23, 169, 149) 56%,
     rgb(23, 169, 149) 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
+  );
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
+  /* IE6-9 */
 }
+
 body {
   background-color: transparent;
 }
@@ -339,12 +522,13 @@ body {
   height: calc(100vh - 60px);
   margin-top: -2em;
 }
+
 h6 {
   line-height: 1.7;
 }
 
 .btn-label {
-  background-color: #e8c547;
+  background-color: #e8c547 !important;
   font-weight: 400;
   transition: transform 0.3s;
   padding-top: 0.5%;
@@ -392,6 +576,7 @@ h6 {
 .btn-pet:hover {
   transform: scale(1.2);
 }
+
 .btn-profile:hover {
   transform: scale(1.2);
 }
@@ -402,75 +587,82 @@ h6 {
 }
 
 /*Profile Pic Start*/
-            .picture-container1{
-                position: relative;
-                height: 250px;
-                width: 250px;
-                cursor: pointer;
-                text-align: center;
-            }
-            .picture-container2{
-                position: relative;
-                height: 380px;
-                width: 940px;
-                cursor: pointer;
-                text-align: center;
-            }
-            .picturePro{
-                width: 250px;
-                height: 250px;
-                background-color: #999999;
-                border: 4px solid #CCCCCC;
-                color: #FFFFFF;
-                border-radius: 50%;
-                /*margin: 0px auto;*/
-                overflow: hidden;
-                transition: all 0.2s;
-                -webkit-transition: all 0.2s;
-            }
-
-            .picturePro:hover{
-                border-color: #2ca8ff;
-            }
-            .content.ct-wizard-green .picture:hover{
-                border-color: #05ae0e;
-            }
-            .content.ct-wizard-blue .picture:hover{
-                border-color: #3472f7;
-            }
-            .content.ct-wizard-orange .picture:hover{
-                border-color: #ff9500;
-            }
-            .content.ct-wizard-red .picture:hover{
-                border-color: #ff3b30;
-            }
-            .picturePro input[type="file"] {
-                cursor: pointer;
-                display: block;
-                height: 250px;
-                left: 0;
-                opacity: 0 !important;
-                position: absolute;
-                top: 0;
-                width: 250px;
-            }
-            .picture-src{
-                width: 10em;
-                height: 10em;
-            }
-            /*Profile Pic End*/
-.image-upload{
-  text-align: center
+.picture-container1 {
+  position: relative;
+  height: 250px;
+  width: 250px;
+  cursor: pointer;
+  text-align: center;
 }
 
-.image-upload > input
-{
-    display: none;
+.picture-container2 {
+  position: relative;
+  height: 380px;
+  width: 940px;
+  cursor: pointer;
+  text-align: center;
 }
 
-.image-upload img
-{
-    cursor: pointer;
+.picturePro {
+  width: 250px;
+  height: 250px;
+  background-color: #999999;
+  border: 4px solid #cccccc;
+  color: #ffffff;
+  border-radius: 50%;
+  /*margin: 0px auto;*/
+  overflow: hidden;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+
+.picturePro:hover {
+  border-color: #2ca8ff;
+}
+
+.content.ct-wizard-green .picture:hover {
+  border-color: #05ae0e;
+}
+
+.content.ct-wizard-blue .picture:hover {
+  border-color: #3472f7;
+}
+
+.content.ct-wizard-orange .picture:hover {
+  border-color: #ff9500;
+}
+
+.content.ct-wizard-red .picture:hover {
+  border-color: #ff3b30;
+}
+
+.picturePro input[type="file"] {
+  cursor: pointer;
+  display: block;
+  height: 250px;
+  left: 0;
+  opacity: 0 !important;
+  position: absolute;
+  top: 0;
+  width: 250px;
+}
+
+.picture-src {
+  width: 10em;
+  height: 10em;
+}
+
+/*Profile Pic End*/
+.image-upload {
+  text-align: center;
+}
+
+.image-upload > input {
+  display: none;
+}
+
+.image-upload img {
+  cursor: pointer;
 }
 
 /* upload pic style */
@@ -478,6 +670,7 @@ h6 {
   .view.home-owner {
     margin-top: 1.5em;
   }
+
   .intro-section .btn {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -491,15 +684,14 @@ h6 {
 }
 
 /* Popup Style */
-.popup-profile{
+.popup-profile {
   border-radius: 100px;
 }
 
-
 /* Popup Style */
 
-.vdatetime-input{
-  width:100%;
+.vdatetime-input {
+  width: 100%;
   margin: 0 auto;
   border-radius: 13px;
   border: 1px solid #ced4da;
@@ -518,18 +710,72 @@ h6 {
   margin: 0em;
   font: 400 13.3333px Arial;
   -webkit-writing-mode: horizontal-tb !important;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
 }
-.label-group{
-  margin-bottom: .5em;
+
+.label-group {
+  margin-bottom: 0.5em;
 }
-label{
+
+label {
   font-weight: 500;
 }
-input::placeholder{
+
+input::placeholder {
   color: grey !important;
   font-size: 80%;
 }
+
+/* Show more style */
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: 0.25s ease;
+  display: none;
+}
+
+.read-more-wrap {
+  display: none;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+  display: block;
+}
+
+.read-more-state:checked ~ .read-more-wrap {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+  display: block;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: "Show more";
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: "Show less";
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 0.5em;
+  color: #666;
+  font-size: 0.9em;
+  line-height: 2;
+  border: 1px solid #ddd;
+  border-radius: 0.25em;
+}
+/* Show more style */
 </style>
