@@ -46,7 +46,7 @@
                                 <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
                             </btn><br>
                             <!-- hide area -->
-                            <input type="checkbox" class="read-more-state" id="pet-hidden" />
+                            <input type="checkbox" class="read-more-state read-more" id="pet-hidden" />
                             <div class="read-more-wrap">
                               <div class="read-more-target">
                                 <btn type="button" class="btn btn-pet text-left ">
@@ -734,11 +734,12 @@ input::placeholder {
 }
 
 .read-more-target {
-  opacity: 0;
+  /* opacity: 0; */
   max-height: 0;
   font-size: 0;
-  transition: 0.25s ease;
   display: none;
+  -webkit-animation: fadeOut 1s;
+  animation: fadeOut 1s;
 }
 
 .read-more-wrap {
@@ -746,36 +747,83 @@ input::placeholder {
 }
 
 .read-more-state:checked ~ .read-more-wrap .read-more-target {
-  opacity: 1;
+  /* opacity: 1; */
   font-size: inherit;
   max-height: 999em;
   display: block;
+  -webkit-animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s;
 }
 
 .read-more-state:checked ~ .read-more-wrap {
-  opacity: 1;
+  /* opacity: 1; */
   font-size: inherit;
   max-height: 999em;
   display: block;
+  -webkit-animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s;
 }
 
 .read-more-state ~ .read-more-trigger:before {
-  content: "Show more";
+  content: "\2B9F";
 }
 
 .read-more-state:checked ~ .read-more-trigger:before {
-  content: "Show less";
+  content: "\2B9D";
 }
 
 .read-more-trigger {
   cursor: pointer;
   display: inline-block;
   padding: 0 0.5em;
-  color: #666;
+  color: white;
   font-size: 0.9em;
   line-height: 2;
-  border: 1px solid #ddd;
-  border-radius: 0.25em;
+  border: 4px solid #ddd;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  margin-top: 6px;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+.read-more-trigger:hover {
+  transform: scale(1.2);
+  background-color: hsla(360, 100%, 100%, 0.35);
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 /* Show more style */
 </style>
