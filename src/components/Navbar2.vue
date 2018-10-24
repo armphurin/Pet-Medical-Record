@@ -1,35 +1,6 @@
  <template>
- 
-  <!-- <nav>
-      <div class="nav-wrapper green">
-        <div class="container">
-          <router-link to="/" class="brand-logo">Pet Medic</router-link>    
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li v-if="isLoggedIn"><span class="email black-text">{{currentUser}}</span></li>
-            <li v-if="isLoggedIn"><router-link to="/">All Pet</router-link></li>
-            <li v-if="isLoggedIn"><router-link to="/home_profile">All Profile</router-link></li>
-            <li v-if="!isLoggedIn"><router-link to="/login">Login</router-link></li>
-            <li v-if="!isLoggedIn"><router-link to="/register">Register</router-link></li>
-             <li v-if="isLoggedIn"><button v-on:click="logout" class="btn black">Logout</button></li>
-             
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li v-if="isLoggedIn"><router-link to="/">All Pet</router-link></li>
-            <li v-if="isLoggedIn"><router-link to="/profile">All Profile</router-link></li>
-            <li v-if="!isLoggedIn"><router-link to="/login">Login</router-link></li>
-            <li v-if="!isLoggedIn"><router-link to="/register">Register</router-link></li>
-            <li><a href="#" class="divider"></a></li>
-             <li v-if="isLoggedIn"><button v-on:click="logout" class="btn">Logout</button></li>
-           
-          </ul>
-        </div>
-      </div>
-    </nav> -->
-
-    
 <header>
-<navbar class="stylish-color" dark>
+<navbar class="stylish-color" position="top" dark>
   <mdb-navbar-brand>
     <router-link to="/" class="brand-logo">Pet Medic</router-link>
   </mdb-navbar-brand>
@@ -62,12 +33,31 @@
  </template>
 
 <script>
-
-import firebase from 'firebase';
-import { Navbar, NavbarItem, NavbarNav, NavbarCollapse, mdbNavbarBrand, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'mdbvue';
+import firebase from "firebase";
+import {
+  Navbar,
+  NavbarItem,
+  NavbarNav,
+  NavbarCollapse,
+  mdbNavbarBrand,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle
+} from "mdbvue";
 export default {
-  name: 'navbar2',
-  components: {Navbar, NavbarItem, NavbarNav, NavbarCollapse, mdbNavbarBrand, Dropdown, DropdownItem, DropdownMenu, DropdownToggle },
+  name: "navbar2",
+  components: {
+    Navbar,
+    NavbarItem,
+    NavbarNav,
+    NavbarCollapse,
+    mdbNavbarBrand,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownToggle
+  },
   data() {
     return {
       isLoggedIn: false,
@@ -101,8 +91,11 @@ header {
   position: relative;
   z-index: 10;
 }
-a{
+a {
   color: white;
+}
+.stylish-color {
+  background-color: hsl(220, 33%, 11%, 0.6) !important;
 }
 </style>
 
