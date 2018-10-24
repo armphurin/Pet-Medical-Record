@@ -18,12 +18,8 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-import db from './firebaseInit';
-=======
 import db from './firebaseInit'
 import firebase from 'firebase'
->>>>>>> Thanadul
 export default {
   name: 'view-pet',
   data() {
@@ -36,11 +32,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     db
-<<<<<<< HEAD
-      .collection('pets')
-=======
       .collection('users').doc(firebase.auth().currentUser.email).collection('pets')
->>>>>>> Thanadul
       .where('pet_id', '==', to.params.pet_id)
       .get()
       .then(querySnapshot => {
@@ -60,11 +52,7 @@ export default {
   methods: {
     fetchData() {
       db
-<<<<<<< HEAD
-        .collection('pets')
-=======
         .collection('users').doc(firebase.auth().currentUser.email).collection('pets')
->>>>>>> Thanadul
         .where('pet_id', '==', this.$route.params.pet_id)
         .get()
         .then(querySnapshot => {
@@ -79,11 +67,7 @@ export default {
     deletePet() {
       if (confirm('Are you sure?')) {
         db
-<<<<<<< HEAD
-          .collection('pets')
-=======
           .collection('users').doc(firebase.auth().currentUser.email).collection('pets')
->>>>>>> Thanadul
           .where('pet_id', '==', this.$route.params.pet_id)
           .get()
           .then(querySnapshot => {
