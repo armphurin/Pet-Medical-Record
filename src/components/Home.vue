@@ -716,6 +716,154 @@ input::placeholder {
   font-size: 80%;
 }
 
+
+/*Edit md width for each platform, .col flex basis removed.*/
+
+/*Common Mobile Portrait*/ 
+@media only screen and (min-width: 370px) and (max-width: 600px){
+.intro-section .btn{
+  width: 100%;
+}
+.intro-section .btn.btn-label{
+    left: 32%;
+    width: 9em;
+    border-radius: 15px;
+    height: 3em;
+}
+h3.content-label{
+    left: 10%;
+}
+.col-md-8{
+  flex-basis: unset;
+}
+}
+
+/*Samsung Galaxy S5 and iPhone 5 Portrait*/
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait){
+.intro-section .btn{
+  width: 100%;
+}
+.intro-section .btn.btn-label{
+    left: 32%;
+    width: 9em;
+    border-radius: 15px;
+    height: 3em;
+}
+h3.content-label{
+    left: 10%;
+}
+.col-md-8{
+  flex-basis: unset;
+}
+}
+
+/*iPhone 5/SE Portrait Button Fix*/
+@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait){
+.btn.btn-primary{
+  padding-bottom: 2px;
+  padding-top: 7px;
+}
+.btn.btn-secondary{
+  width: 50%;
+}
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 760px) and (orientation: portrait){
+.intro-section .btn{
+  width: 70%;
+}
+.intro-section .btn.btn-label{
+    left: 26%;
+    width: 9em;
+    border-radius: 15px;
+    height: 5em;
+}
+h3.content-label{
+    left: 17%;
+}
+.col-md-8{
+  left: 4%;
+}
+.col{
+  flex-basis: unset;
+}
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px) and (orientation: portrait){
+.intro-section .btn.btn-label{
+    left: 28%;
+}
+}
+
+
+
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 830px) and (orientation: landscape){
+.view.home-owner {
+  height: 30em;
+}
+.intro-section .btn{
+  width: 50%;
+}
+.intro-section .btn.btn-label{
+  width: 6em;
+  height: 3em;
+  border-radius: 15px;
+}
+h3.content-label{
+  left: 27%;
+}
+.col-md-8{
+  flex-basis: unset;
+}
+}
+
+/*Samsung Galaxy S5 and iPhone 5/SE Landscape*/
+@media only screen and (max-width: 640px) and (max-height: 360px) and (orientation: landscape){
+.view.home-owner {
+  height: 35em;
+}
+.intro-section .btn{
+  width: 70%;
+}
+.intro-section .btn.btn-label{
+  left: 26%;
+  width: 6em;
+  border-radius: 10px;
+  height: 3em;
+}
+h3.content-label{
+  left: 17%;
+}
+.col-md-8{
+  flex-basis: unset;
+}
+}
+
+/*Pixel 2XL and iPhone X Landscape*/
+@media only screen and (min-width: 810px) and (max-height : 420px) and (orientation: landscape){
+.view.home-owner {
+  height: 30em;
+}
+.intro-section .btn.btn-label{
+  left: 19%;
+  border-radius: 10px;
+}
+h3.content-label{
+  left: 26%;
+}
+.col{
+  flex-basis: unset;
+}
+.col-md-8{
+  left: 4%;
+}
+}
+
+
+
 /* Show more style */
 .read-more-state {
   display: none;

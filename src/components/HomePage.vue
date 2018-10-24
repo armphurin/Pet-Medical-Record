@@ -145,7 +145,15 @@ h6 {
   line-height: 1.7;
 }
 
-@media only screen and (max-width: 360px) {
+/*Common Mobile Portrait*/ 
+@media only screen and (min-width: 370px) and (max-width: 600px){
+  .view.home-page{
+    margin-top: 2em;
+  }
+}
+
+/*Samsung Galaxy S5 Portrait*/
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait){
   .view.home-page{
     margin-top: 1.5em;
   }
@@ -155,12 +163,60 @@ h6 {
   }
 }
 
-@media only screen and (min-width: 370px) and (max-width: 600px){
+/*iPhone 5/SE Portrait*/
+@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait){
   .view.home-page{
-    margin-top: 2em;
+    height: calc(100vh - 0px);
+  }
+  .mt-xl-5.col-md-6.col-xl-5{
+    bottom: 80px;
+    width: 200px;
+  }
+  .img-fluid{
+    left: 45px;
+    top: 60px;
+  }
+  .intro-section.row{
+    margin-bottom: 50px;
   }
 }
 
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 770px) and (orientation: landscape){
+  .intro-section.row{
+    width: 350px;
+    height: 270px;
+    margin-bottom: 20px;
+  }
+  .img-fluid{
+    left: 245px;
+    bottom: 300px;
+  }
+  .mt-xl-5.col-md-6.col-xl-5{
+    padding-left: 50px;
+  }
+}
 
+/*Pixel 2XL and iPhone X Landscape*/
+@media only screen and (min-width: 810px) and (max-height : 420px)and (orientation: landscape){
+  .mt-xl-5.col-md-6.col-xl-5{
+    padding-top: 50px;
+    margin-bottom: 20px;
+  }
+}
+
+/*iPhone 5/SE Landscape*/
+@media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape){
+  .intro-section.row{
+    width: 350px;
+    height: 200px;
+  }
+  .mt-xl-5.col-md-6.col-xl-5{
+    width: 270px;
+    top: 40px;
+    left: 40px;
+    padding-top: 25px;
+  }
+}
 
 </style>
