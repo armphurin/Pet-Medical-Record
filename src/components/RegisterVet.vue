@@ -1,103 +1,101 @@
 <template>
-  <!-- <div>
-    <div class="container">
-    <div class="row">
-      <div class="col s12 m8 offset-m2">
-        <div class="login card-panel grey lighten-4 black-text center">
-          <h3>Register</h3>
-          <form action="index.html">
-            <div class="input-field">
-              <i class="material-icons prefix">email</i>
-              <input type="email" id="email" v-model="email">
-              <label for="email">Email Address</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">lock</i>
-              <input type="password" id="password" v-model="password">
-              <label for="password">Password</label>
-            </div>
-            <button v-on:click="register" class="btn btn-large btn-extended grey lighten-4 black-text">Register</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div> -->
-
   <div class="wrapper">
+    <container>
+    <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis">
 <form action="index.html" class="regis_content_vet">
-              <card class="w-75 d-flex justify-content-center register" style="margin:0 auto;top:5em;z-index:2;">
-              <card-body class="text-center">
+              <card class="w-50 d-flex justify-content-center register-card" style="margin:0 auto;z-index:2;">
+              <card-body>
                 <div class="bg-card">
-  <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis" style="margin:0 auto;margin-bottom:2%;">
                 <row style="padding:1em;">
-                  <column class="col-md-4">
-                  <!-- picture -->
-                  <div class="image-upload">
-                  <label for="wizard-picturePro">
-                        <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
-                  </label>
-<input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
-</div>
-    <!-- <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div> -->
-    <!-- <button @click="removeImage">Remove image</button> -->
-                  <br>
-                  <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
-                  <br>
-                  <row>
-                    <column>
-                    <input class="form-control form-control-lg" type="number" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
-              
+                    <column class="col-md-4">
+                        <!-- picture -->
+                        <div class="image-upload text-center">
+                            <label for="wizard-picturePro">
+                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                            </label>
+                            <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                        </div>
+                            <div class="label-group">
+                                <label for="fullname">Fullname</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                        <row>
+                          <column>
+                            <div class="label-group">
+                              <label for="gender">Gender</label>
+                              <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <option>Male</option>
+                                <option>Female</option>
+                              </select>
+                            </div>
+                          </column>
+                        </row>
+                        <row>
+                          <column>
+                              <div class="label-group">
+                                <label for="datetime">Date of Birth</label>
+                                <datetime v-model="datebirth"></datetime>
+                              </div>
+                          </column>
+                        </row>
                     </column>
-                    <column>
-                    <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                      <option selected disabled>Gender</option>
-                      <option>Male</option>
-                      <option>Female</option>
-                    </select>
+                    <column class="col-md-8">
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="email">Email</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="password">Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                            <column>
+                                <div class="label-group">
+                                    <label for="confpassword">Confirm Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confpassword" v-model="confpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="lineid">Veterinary ID</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Veterinary ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                            <column>
+                                <div class="label-group">
+                                    <label for="telephone">Telephone</label>
+                                    <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="address">Hospital Address</label>
+                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Hospital Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                </div>
+                            </column>
+                        </row>
                     </column>
-                    </row>
-                  </column>
-                  <column class="col-md-8">
-                  <row>
-                    <column>
-                  <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                  <br>
-                    </column>
-                  </row>
-                  <row>
-                    <column>
-                     <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                     <br>
-                    </column>
-                  </row>
-                  <row>
-                    <column>
-                     <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                    </column>
-                    <column>
-                     <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                     <br>
-                    </column>
-                  </row>
-                  <row>
-                    <column>
-                    <textarea class="form-control" id="address" v-model="address" rows="4" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
-                    </column>
-                  </row>
-                  </column>
-                </row>
-                <row>
-                  <column>
-                  <router-link to="/register"><button v-on:click="register" class="btn btn-elegant button-regis">Back</button></router-link>
-                  <button v-on:click="register" class="btn btn-elegant button-regis">Register</button>
-                  </column>
                 </row>
 
                 </div>
               </card-body>
             </card>
 </form>
+<div class="obj-center">
+                  <router-link to="/register"><button v-on:click="register" class="btn btn-elegant button-regis">Back</button></router-link>
+                  <button v-on:click="register" class="btn btn-elegant button-regis">Register</button>
+</div>
+            </container>
 <ul class="bg-bubbles">
 		<li><img src="../assets/cat.svg" alt="cat"></li>
 		<li><img src="../assets/cat.svg" alt="cat"></li>
@@ -143,7 +141,7 @@ import {
   MdMask,
   ViewWrapper
 } from "mdbvue";
-
+import { Datetime } from "vue-datetime";
 export default {
   beforeCreate: function() {
     document.body.className = "body-registervet";
@@ -175,7 +173,8 @@ export default {
     Row,
     Column,
     MdMask,
-    ViewWrapper
+    ViewWrapper,
+    datetime: Datetime
   },
   methods: {
     register: function(e) {
@@ -277,8 +276,9 @@ form.regis_content_vet {
   margin-bottom: 5em;
   margin-left: 5em;
   margin-right: 5em; */
-  height: 50%;
+  height: 61%;
   z-index: 2;
+  margin: 0em;
 }
 
 body.body-registervet {
@@ -314,18 +314,29 @@ body.body-registervet {
 }
 
 .logo_regis {
-  margin: 0 auto;
-  width: 20%;
-  height: 20%;
+  width: 12%;
+  height: 12%;
   z-index: 6;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4em;
 }
-.card.register {
+
+.obj-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 3.5em;
+}
+.card.register-card {
   background: linear-gradient(
     rgba(255, 255, 255, 0.2),
     rgba(255, 255, 255, 0.2)
   );
-  border-radius: 80px;
-  height: 36em;
+  border-radius: 2em;
+  height: 107%;
 }
 .circle-button {
   width: 65%;
@@ -650,4 +661,44 @@ body.body-registervet {
 }
 
 /* upload pic style */
+
+/* Popup Style */
+
+.vdatetime-input {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 13px;
+  border: 1px solid #ced4da;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  -webkit-writing-mode: horizontal-tb !important;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.label-group {
+  margin-bottom: 0.5em;
+}
+
+label {
+  font-weight: 500;
+}
+
+input::placeholder {
+  color: grey !important;
+  font-size: 80%;
+}
 </style>
