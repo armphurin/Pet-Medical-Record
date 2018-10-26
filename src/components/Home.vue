@@ -353,6 +353,9 @@ import {
 import { Datetime } from "vue-datetime";
 
 export default {
+  beforeCreate: function() {
+    document.body.className = "body-home";
+  },
   name: "home",
   components: {
     Container,
@@ -470,16 +473,12 @@ export default {
 </script>
 
 <style>
-html {
+body.body-home {
   background: url("../assets/bg_homeowner.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-body {
-  background-color: transparent;
 }
 
 .view.home-owner {

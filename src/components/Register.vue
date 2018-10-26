@@ -100,6 +100,9 @@ import {
 } from "mdbvue";
 
 export default {
+  beforeCreate: function() {
+    document.body.className = "body-register";
+  },
   name: "register",
   data: function() {
     return {
@@ -159,7 +162,7 @@ form.regis_content {
   z-index: 2;
 }
 
-html {
+body.body-register {
   min-height: 100%;
   width: 100%;
   -webkit-background-size: cover;
@@ -191,8 +194,42 @@ html {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
 }
 
-body {
-  background-color: transparent;
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  min-height: 100%;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background: rgb(52, 160, 217); /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
 }
 
 .logo_regis {
@@ -416,15 +453,6 @@ body {
     -webkit-transform: translateY(-400px) rotate(600deg);
     transform: translateY(-400px) rotate(600deg);
   }
-}
-
-.wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
 }
 
 @media only screen and (max-width: 600px) {

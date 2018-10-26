@@ -145,6 +145,9 @@ import {
 } from "mdbvue";
 
 export default {
+  beforeCreate: function() {
+    document.body.className = "body-registervet";
+  },
   name: "register-vet",
   data: function() {
     return {
@@ -278,7 +281,7 @@ form.regis_content_vet {
   z-index: 2;
 }
 
-html {
+body.body-registervet {
   min-height: 100%;
   width: 100%;
   -webkit-background-size: cover;
@@ -308,10 +311,6 @@ html {
     rgb(23, 169, 149) 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
-}
-
-body {
-  background-color: transparent;
 }
 
 .logo_regis {
@@ -544,6 +543,35 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  min-height: 100%;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background: rgb(52, 160, 217); /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
 }
 
 .progress-bar {

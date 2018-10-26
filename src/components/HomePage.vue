@@ -91,11 +91,38 @@
 </template>
 
 <script>
-import { Container, Row, Column, Navbar, NavbarCollapse, NavbarNav, NavbarItem, mdbInput, ViewWrapper, MdMask, Btn, mdbNavbarBrand, Card, CardImg, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardUp, CardAvatar, CardGroup, Fa } from 'mdbvue';
+import {
+  Container,
+  Row,
+  Column,
+  Navbar,
+  NavbarCollapse,
+  NavbarNav,
+  NavbarItem,
+  mdbInput,
+  ViewWrapper,
+  MdMask,
+  Btn,
+  mdbNavbarBrand,
+  Card,
+  CardImg,
+  CardHeader,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardFooter,
+  CardUp,
+  CardAvatar,
+  CardGroup,
+  Fa
+} from "mdbvue";
 
-import firebase from 'firebase';
+import firebase from "firebase";
 export default {
-  name: 'home-page',
+  beforeCreate: function() {
+    document.body.className = "body-homepage";
+  },
+  name: "home-page",
   components: {
     Container,
     Row,
@@ -109,33 +136,54 @@ export default {
     MdMask,
     Btn,
     mdbNavbarBrand,
-    Card, CardImg, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardUp, CardAvatar, CardGroup,
+    Card,
+    CardImg,
+    CardHeader,
+    CardBody,
+    CardTitle,
+    CardText,
+    CardFooter,
+    CardUp,
+    CardAvatar,
+    CardGroup,
     Fa
   }
 };
 </script>
 
 <style>
-html{
+body.body-homepage {
   background-size: cover;
   height: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-repeat:no-repeat;
-  background: rgb(52,160,217); /* Old browsers */
-  background: -moz-linear-gradient(top, rgb(52,160,217) 0%, rgb(23,169,149) 56%, rgb(23,169,149) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgb(52,160,217) 0%,rgb(23,169,149) 56%,rgb(23,169,149) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgb(52,160,217) 0%,rgb(23,169,149) 56%,rgb(23,169,149) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background-repeat: no-repeat;
+  background: rgb(52, 160, 217); /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
-}
-body { 
-    background-color: transparent;
 }
 
 .view.home-page {
-  background-image: url('');
+  background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -145,78 +193,77 @@ h6 {
   line-height: 1.7;
 }
 
-/*Common Mobile Portrait*/ 
-@media only screen and (min-width: 370px) and (max-width: 600px){
-  .view.home-page{
+/*Common Mobile Portrait*/
+@media only screen and (min-width: 370px) and (max-width: 600px) {
+  .view.home-page {
     margin-top: 2em;
   }
 }
 
 /*Samsung Galaxy S5 Portrait*/
-@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait){
-  .view.home-page{
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+  .view.home-page {
     margin-top: 1.5em;
   }
-  .intro-section .btn{
+  .intro-section .btn {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
 
 /*iPhone 5/SE Portrait*/
-@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait){
-  .view.home-page{
+@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait) {
+  .view.home-page {
     height: calc(100vh - 0px);
   }
-  .mt-xl-5.col-md-6.col-xl-5{
+  .mt-xl-5.col-md-6.col-xl-5 {
     bottom: 80px;
     width: 200px;
   }
-  .img-fluid{
+  .img-fluid {
     left: 45px;
     top: 60px;
   }
-  .intro-section.row{
+  .intro-section.row {
     margin-bottom: 50px;
   }
 }
 
 /*Common Mobile Landscape*/
-@media only screen and (max-width: 770px) and (orientation: landscape){
-  .intro-section.row{
+@media only screen and (max-width: 770px) and (orientation: landscape) {
+  .intro-section.row {
     width: 350px;
     height: 270px;
     margin-bottom: 20px;
   }
-  .img-fluid{
+  .img-fluid {
     left: 245px;
     bottom: 300px;
   }
-  .mt-xl-5.col-md-6.col-xl-5{
+  .mt-xl-5.col-md-6.col-xl-5 {
     padding-left: 50px;
   }
 }
 
 /*Pixel 2XL and iPhone X Landscape*/
-@media only screen and (min-width: 810px) and (max-height : 420px)and (orientation: landscape){
-  .mt-xl-5.col-md-6.col-xl-5{
+@media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
+  .mt-xl-5.col-md-6.col-xl-5 {
     padding-top: 50px;
     margin-bottom: 20px;
   }
 }
 
 /*iPhone 5/SE Landscape*/
-@media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape){
-  .intro-section.row{
+@media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape) {
+  .intro-section.row {
     width: 350px;
     height: 200px;
   }
-  .mt-xl-5.col-md-6.col-xl-5{
+  .mt-xl-5.col-md-6.col-xl-5 {
     width: 270px;
     top: 40px;
     left: 40px;
     padding-top: 25px;
   }
 }
-
 </style>
