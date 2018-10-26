@@ -141,12 +141,22 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            swal(
-              "Login Status",
-              `You are logged in as ${user.email}`,
-              "success"
-            );
-            this.$router.go({ path: this.$router.path });
+            swal({
+              title: "Login Status",
+              text: `You are logged in as ${user.email}`,
+              type: "success",
+              confirmButtonColor: "#3085d6",
+              confirmButtonText: "Okay"
+            }).then(result => {
+              if (result.value) {
+                swal(
+                  "Login Status",
+                  `You are logged in as ${user.email}`,
+                  "success"
+                );
+                this.$router.go({ path: this.$router.path });
+              }
+            });
           },
           err => {
             swal("Login Status", err.message, "error");
