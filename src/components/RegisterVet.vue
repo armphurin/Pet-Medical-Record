@@ -142,6 +142,8 @@ import {
   ViewWrapper
 } from "mdbvue";
 import { Datetime } from "vue-datetime";
+// ES6 Modules or TypeScript
+import swal from "sweetalert2";
 export default {
   beforeCreate: function() {
     document.body.className = "body-registervet";
@@ -184,7 +186,11 @@ export default {
         .then(
           user => {
             // console.log(user);
-            alert(`Account Created for ${user.email}`);
+            swal(
+              "Register Status",
+              `You are Register in Veterinary as ${user.email}`,
+              "success"
+            );
             this.$router.go({ path: this.$router.path });
           },
           db
@@ -197,7 +203,7 @@ export default {
               position: "new"
             }),
           err => {
-            alert(err.message);
+            swal("Register Status", err.message, "error");
           }
         );
       e.preventDefault();
@@ -242,12 +248,6 @@ export default {
         this.detectFiles(input.files);
       }
     }
-  },
-  mounted() {
-    $(".show-placeholder").select({
-      placeholder: "Select a Gender",
-      allowClear: true
-    });
   },
   watch: {
     uploadTask: function() {

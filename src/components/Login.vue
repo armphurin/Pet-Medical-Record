@@ -61,7 +61,7 @@
         </container>
     </view-wrapper>
 
-<!-- <ul class="bg-bubbles"> -->
+<ul class="bg-bubbles">
 		<li><img src="../assets/cat.svg" alt="cat"></li>
 		<li><img src="../assets/cat.svg" alt="cat"></li>
 		<li><img src="../assets/cat.svg" alt="cat"></li>

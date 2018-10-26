@@ -142,6 +142,8 @@ import {
   ViewWrapper
 } from "mdbvue";
 import { Datetime } from "vue-datetime";
+// ES6 Modules or TypeScript
+import swal from "sweetalert2";
 export default {
   beforeCreate: function() {
     document.body.className = "body-registerowner";
@@ -197,10 +199,68 @@ export default {
               position: "new"
             }),
           err => {
-            alert(err.message);
+            swal("Register Status", err.message, "error");
           }
         );
       e.preventDefault();
+    },
+    detectFiles(fileList) {
+      Array.from(Array(fileList.length).keys()).map(x => {
+        this.upload(fileList[x]);
+      });
+    },
+    upload(file) {
+      this.uploadTask = storage.ref("medic/imagenes").put(file);
+    },
+    onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+      this.detectFiles(files);
+    },
+    createImage(file) {
+      var image = new Image();
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = e => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function(e) {
+      this.image = "";
+    },
+    readURLPro: function(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        (reader.onload = function(e) {
+          $("#wizardPicturePreviewPro")
+            .attr("src", e.target.result)
+            .fadeIn("slow");
+        }),
+          reader.readAsDataURL(input.files[0]);
+        this.detectFiles(input.files);
+      }
+    }
+  },
+  watch: {
+    uploadTask: function() {
+      this.uploadTask.on(
+        "state_changed",
+        sp => {
+          this.progressUpload = Math.floor(
+            (sp.bytesTransferred / sp.totalBytes) * 100
+          );
+        },
+        null,
+        () => {
+          this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+            this.$emit("url", downloadURL);
+          });
+        }
+      );
     }
   }
 };
