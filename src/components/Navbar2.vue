@@ -37,7 +37,7 @@
     <navbar-nav>
       <navbar-item v-if="!isLoggedIn"><router-link to="/home_page">Home</router-link></navbar-item>
       <navbar-item v-if="!isLoggedIn"><router-link to="/pre_load">test</router-link></navbar-item>
-      <navbar-item v-if="!isLoggedIn">Contact</navbar-item>
+      <navbar-item v-if="!isLoggedIn"><router-link to="/contact">Contact</router-link></navbar-item>
       <navbar-item v-if="!isLoggedIn"><router-link to="/login">Login</router-link></navbar-item>
       <navbar-item v-if="!isLoggedIn"><router-link to="/register">Register</router-link></navbar-item>
       <navbar-item v-if="isLoggedIn"><router-link to="/">All Pet</router-link></navbar-item>
@@ -99,7 +99,7 @@ export default {
 }
 header {
   position: relative;
-  z-index: 5;
+  z-index: 10;
 }
 a{
   color: white;

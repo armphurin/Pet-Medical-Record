@@ -13,6 +13,7 @@ import HomeProfile from '@/components/HomeProfile'
 import HomePage from '@/components/HomePage'
 import RegisterOwner from '@/components/RegisterOwner'
 import RegisterVet from '@/components/RegisterVet'
+import Contact from '@/components/Contact'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
@@ -112,6 +113,22 @@ let router = new Router({
       path: '/register_vet',
       name: 'register-vet',
       component: RegisterVet,
+      meta: {
+        requiresGuest: true
+      }
+    },
+    {
+      path: '/pre_load',
+      name: 'pre-load',
+      component: RegisterVet,
+      meta: {
+        requiresGuest: true
+      }
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact,
       meta: {
         requiresGuest: true
       }

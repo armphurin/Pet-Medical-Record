@@ -158,8 +158,8 @@ export default {
 form.regis_content {
   margin-top: 7em;
   /* margin-bottom: 5em; */
-  margin-left: 5em;
-  margin-right: 5em;
+  margin-left: 17em;
+  margin-right: 17em;
   height: 50%;
   z-index: 2;
 }
@@ -206,12 +206,9 @@ body {
   height: 20%;
   z-index: 6;
 }
-.card {
-  background: linear-gradient(
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.2)
-  );
-  border-radius: 80px;
+.card{
+  background: linear-gradient(rgba(255,255,255, .2), rgba(255,255,255,.2));
+  border-radius: 2em;
   height: 32em;
 }
 .circle-button {
@@ -431,4 +428,43 @@ body {
   height: 100%;
   overflow: hidden;
 }
+
+@media only screen and (max-width: 600px) {
+  .card{
+    align-items: center;
+    align-content: center;
+  }
+  .col{
+    margin-bottom: 2em;
+  }
+  form.regis_content{
+  margin-top: 7em;
+  /* margin-bottom: 5em; */
+  margin-left: 5em;
+  margin-right: 5em;
+  height: 50%;
+  z-index: 2;
+}
+}
+
+@media only screen and (max-height: 600px){
+  .card{
+    border-radius: 2em;
+    align-items: center;
+    align-content: center;
+    height: 400px;
+    width: 200px;
+    
+  }
+  form.regis_content{
+  margin-top: 7em;
+  /* margin-bottom: 5em; */
+  margin-left: 5em;
+  margin-right: 5em;
+  height: 50%;
+  z-index: 2;
+}
+}
+
+
 </style>

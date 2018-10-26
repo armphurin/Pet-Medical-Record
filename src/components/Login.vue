@@ -143,17 +143,17 @@ export default {
                 color : '#009999',
                 backgroundColor: 'LightGray',
             });
-            setTimeout(() => loader.hide(), 2 * 1000)
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            
+            loader.hide();
             // alert(`You are logged in as ${user.email}`);
             this.$router.go({ path: this.$router.path });
           },
           err => {
+            loader.hide();
             alert(err.message);
           }
         );
@@ -405,4 +405,31 @@ form.login_content{
   margin-top: 2%;
   margin-bottom: 2%;
 }
+
+/*For mobile Portrait*/
+@media only screen and (max-width: 765px) and (orientation: portrait){
+  form.login_content{
+    margin-top: 40%;
+  }
+}
+
+/*For mobile Landscape including Pixel2XL. iPhoneX*/
+@media only screen and (max-width: 830px) and (max-height: 420px) and (orientation: landscape){
+  form.login_content{
+    margin-top: 2.5em;
+  }
+}
+
+/*For iPhone5/SE */
+@media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape){
+  form.login_content{
+    padding-left: 170px;
+    margin-top: 2.5em;
+    width: 230px;
+  }
+  /*button.btn btn-elegant{
+    margin-left: 40px;
+  }*/
+}
+
 </style>
