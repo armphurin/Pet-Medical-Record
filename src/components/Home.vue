@@ -481,19 +481,12 @@ body.body-home {
   background-size: cover;
 }
 
-.view.home-owner {
-  background-image: url("");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: calc(100vh - 60px);
-  margin-top: -2em;
-}
-
 h6 {
   line-height: 1.7;
 }
-
+.home-owner {
+  margin-top: 3.5em;
+}
 .btn-label {
   background-color: #e8c547 !important;
   font-weight: 400;
@@ -699,6 +692,13 @@ input::placeholder {
 
 /*Common Mobile Portrait*/
 @media only screen and (min-width: 370px) and (max-width: 600px) {
+  .home-owner {
+    margin-top: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11em;
+  }
   .intro-section .btn {
     width: 100%;
   }
@@ -718,6 +718,13 @@ input::placeholder {
 
 /*Samsung Galaxy S5 and iPhone 5 Portrait*/
 @media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+  .home-owner {
+    margin-top: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11em;
+  }
   .intro-section .btn {
     width: 100%;
   }
@@ -777,7 +784,7 @@ input::placeholder {
 
 /*Common Mobile Landscape*/
 @media only screen and (max-width: 830px) and (orientation: landscape) {
-  .view.home-owner {
+  .home-owner {
     height: 30em;
   }
   .intro-section .btn {
@@ -798,7 +805,7 @@ input::placeholder {
 
 /*Samsung Galaxy S5 and iPhone 5/SE Landscape*/
 @media only screen and (max-width: 640px) and (max-height: 360px) and (orientation: landscape) {
-  .view.home-owner {
+  .home-owner {
     height: 35em;
   }
   .intro-section .btn {
@@ -820,7 +827,7 @@ input::placeholder {
 
 /*Pixel 2XL and iPhone X Landscape*/
 @media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
-  .view.home-owner {
+  .home-owner {
     height: 30em;
   }
   .intro-section .btn.btn-label {
