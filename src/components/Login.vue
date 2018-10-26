@@ -61,7 +61,7 @@
         </container>
     </view-wrapper>
 
-<ul class="bg-bubbles">
+<!-- <ul class="bg-bubbles"> -->
 		<li><img src="../assets/cat.svg" alt="cat"></li>
 		<li><img src="../assets/cat.svg" alt="cat"></li>
 		<li><img src="../assets/cat.svg" alt="cat"></li>
@@ -105,6 +105,9 @@ import {
 } from "mdbvue";
 
 import firebase from "firebase";
+// ES6 Modules or TypeScript
+import swal from "sweetalert2";
+
 export default {
   beforeCreate: function() {
     document.body.className = "body-login";
@@ -127,7 +130,8 @@ export default {
   data: function() {
     return {
       email: "",
-      password: ""
+      password: "",
+      text: ""
     };
   },
   methods: {
@@ -137,11 +141,15 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            alert(`You are logged in as ${user.email}`);
+            swal(
+              "Login Status",
+              `You are logged in as ${user.email}`,
+              "success"
+            );
             this.$router.go({ path: this.$router.path });
           },
           err => {
-            alert(err.message);
+            swal("Login Status", err.message, "error");
           }
         );
       e.preventDefault();

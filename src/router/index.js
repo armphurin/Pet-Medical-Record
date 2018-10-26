@@ -19,8 +19,9 @@ import VueAxios from "vue-axios";
 import Datetime from "vue-datetime";
 // You need a specific loader for CSS files
 import "vue-datetime/dist/vue-datetime.css";
+import VueSweetalert2 from "vue-sweetalert2";
 
-Vue.use(Router, axios, VueAxios, Datetime);
+Vue.use(Router, axios, VueAxios, Datetime, VueSweetalert2);
 
 let router = new Router({
   routes: [
