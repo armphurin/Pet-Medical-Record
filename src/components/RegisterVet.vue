@@ -26,7 +26,7 @@
 
   <div class="wrapper">
 <form action="index.html" class="regis_content_vet">
-              <card class="w-75 d-flex justify-content-center" style="margin:0 auto;top:5em;z-index:2;">
+              <card class="w-75 d-flex justify-content-center register" style="margin:0 auto;top:5em;z-index:2;">
               <card-body class="text-center">
                 <div class="bg-card">
   <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis" style="margin:0 auto;margin-bottom:2%;">
@@ -150,12 +150,12 @@ export default {
     return {
       email: "",
       password: "",
-      age:"",
-      gender:"",
-      fullname:"",
-      lineid:"",
-      telephone:"",
-      address:"",
+      age: "",
+      gender: "",
+      fullname: "",
+      lineid: "",
+      telephone: "",
+      address: "",
       progressUpload: 0,
       file: File,
       uploadTask: "",
@@ -227,17 +227,19 @@ export default {
     removeImage: function(e) {
       this.image = "";
     },
-                readURLPro: function(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
+    readURLPro: function(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-                    reader.onload = function (e) {
-                        $('#wizardPicturePreviewPro').attr('src', e.target.result).fadeIn('slow');
-                    },
-                    reader.readAsDataURL(input.files[0]);
-                    this.detectFiles(input.files)
-                }
-            }
+        (reader.onload = function(e) {
+          $("#wizardPicturePreviewPro")
+            .attr("src", e.target.result)
+            .fadeIn("slow");
+        }),
+          reader.readAsDataURL(input.files[0]);
+        this.detectFiles(input.files);
+      }
+    }
   },
   mounted() {
     $(".show-placeholder").select({
@@ -318,7 +320,7 @@ body {
   height: 20%;
   z-index: 6;
 }
-.card {
+.card.register {
   background: linear-gradient(
     rgba(255, 255, 255, 0.2),
     rgba(255, 255, 255, 0.2)
@@ -554,71 +556,69 @@ body {
 }
 
 /*Profile Pic Start*/
-            .picture-container1{
-                position: relative;
-                height: 250px;
-                width: 250px;
-                cursor: pointer;
-                text-align: center;
-            }
-            .picture-container2{
-                position: relative;
-                height: 380px;
-                width: 940px;
-                cursor: pointer;
-                text-align: center;
-            }
-            .picturePro{
-                width: 250px;
-                height: 250px;
-                background-color: #999999;
-                border: 4px solid #CCCCCC;
-                color: #FFFFFF;
-                border-radius: 50%;
-                /*margin: 0px auto;*/
-                overflow: hidden;
-                transition: all 0.2s;
-                -webkit-transition: all 0.2s;
-            }
-
-            .picturePro:hover{
-                border-color: #2ca8ff;
-            }
-            .content.ct-wizard-green .picture:hover{
-                border-color: #05ae0e;
-            }
-            .content.ct-wizard-blue .picture:hover{
-                border-color: #3472f7;
-            }
-            .content.ct-wizard-orange .picture:hover{
-                border-color: #ff9500;
-            }
-            .content.ct-wizard-red .picture:hover{
-                border-color: #ff3b30;
-            }
-            .picturePro input[type="file"] {
-                cursor: pointer;
-                display: block;
-                height: 250px;
-                left: 0;
-                opacity: 0 !important;
-                position: absolute;
-                top: 0;
-                width: 250px;
-            }
-            .picture-src{
-                width: 10em;
-                height: 10em;
-            }
-            /*Profile Pic End*/
-.image-upload > input
-{
-    display: none;
+.picture-container1 {
+  position: relative;
+  height: 250px;
+  width: 250px;
+  cursor: pointer;
+  text-align: center;
+}
+.picture-container2 {
+  position: relative;
+  height: 380px;
+  width: 940px;
+  cursor: pointer;
+  text-align: center;
+}
+.picturePro {
+  width: 250px;
+  height: 250px;
+  background-color: #999999;
+  border: 4px solid #cccccc;
+  color: #ffffff;
+  border-radius: 50%;
+  /*margin: 0px auto;*/
+  overflow: hidden;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
 }
 
-.image-upload img
-{
-    cursor: pointer;
+.picturePro:hover {
+  border-color: #2ca8ff;
+}
+.content.ct-wizard-green .picture:hover {
+  border-color: #05ae0e;
+}
+.content.ct-wizard-blue .picture:hover {
+  border-color: #3472f7;
+}
+.content.ct-wizard-orange .picture:hover {
+  border-color: #ff9500;
+}
+.content.ct-wizard-red .picture:hover {
+  border-color: #ff3b30;
+}
+.picturePro input[type="file"] {
+  cursor: pointer;
+  display: block;
+  height: 250px;
+  left: 0;
+  opacity: 0 !important;
+  position: absolute;
+  top: 0;
+  width: 250px;
+}
+.picture-src {
+  width: 10em;
+  height: 10em;
+}
+/*Profile Pic End*/
+.image-upload > input {
+  display: none;
+}
+
+.image-upload img {
+  cursor: pointer;
 }
 
 /* upload pic style */
