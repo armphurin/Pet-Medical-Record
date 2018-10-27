@@ -202,6 +202,9 @@ h6 {
 
 /*Samsung Galaxy S5 Portrait*/
 @media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+  .body-homepage{
+    margin-top: 5em;
+  }
   .view.home-page {
     margin-top: 1.5em;
   }
@@ -231,6 +234,9 @@ h6 {
 
 /*Common Mobile Landscape*/
 @media only screen and (max-width: 770px) and (orientation: landscape) {
+  .body-homepage{
+    margin-top: 3em;
+  }
   .intro-section.row {
     width: 350px;
     height: 270px;
@@ -247,6 +253,9 @@ h6 {
 
 /*Pixel 2XL and iPhone X Landscape*/
 @media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
+  .body-homepage{
+    margin-top: 3.25em;
+  }
   .mt-xl-5.col-md-6.col-xl-5 {
     padding-top: 50px;
     margin-bottom: 20px;
