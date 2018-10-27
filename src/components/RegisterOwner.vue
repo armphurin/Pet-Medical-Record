@@ -186,7 +186,11 @@ export default {
         .then(
           user => {
             // console.log(user);
-            alert(`Account Created for ${user.email}`);
+            swal(
+              "Register Status",
+              `You are Register in Owner as ${user.email}`,
+              "success"
+            );
             this.$router.go({ path: this.$router.path });
           },
           db
