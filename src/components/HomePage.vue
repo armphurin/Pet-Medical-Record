@@ -16,8 +16,8 @@
               <h1 class="h1-responsive font-weight-bold mt-sm-5">Pet Medical Record System</h1>
               <hr class="hr-light"/>
               <h6 class="mb-4">This website is Pet Medical Record make it simple in few step.</h6>
-              <router-link to="/register"><btn color="white" style="color:#17A995 !important;">Register</btn></router-link>
-              <btn color="default">Learn more</btn>
+              <router-link to="/register"><btn color="white" style="color:#17A995 !important;" class="btn-curve">Register</btn></router-link>
+              <btn color="default" class="btn-curve">Learn more</btn>
             </div>
           </row>
         </container>
@@ -25,38 +25,39 @@
     </view-wrapper>
     <!--/.ViewWrapper-->
     <container>
-    <section class="text-center my-5">
-      <h2 class="h1-responsive font-weight-bold my-5">Why is it so great?</h2>
-      <p class="lead w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-      <row>
-        <column md="4">
-          <fa icon="area-chart" size="3x" class="red-text"/>
-          <h5 class="font-weight-bold my-4">Analytics</h5>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
-        </column>
-        <column md="4">
-          <fa icon="book" size="3x" class="cyan-text"/>
-          <h5 class="font-weight-bold my-4">Tutorials</h5>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
-        </column>
-        <column md="4">
-          <fa icon="comments-o" size="3x" class="orange-text"/>
-          <h5 class="font-weight-bold my-4">Support</h5>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
-        </column>
-      </row>
-    </section>
-  </container>
-
-  <container>
     <section class="my-5">
-      <h2 class="h1-responsive font-weight-bold text-center my-5">Why is it so great?</h2>
-      <p class="lead w-responsive text-center mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-      <row>
-        asdsad
+      <h2 class="h1-responsive font-weight-bold my-5 text-center">Why is it so great?</h2>
+      <p class="lead w-responsive mx-auto mb-5 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+      <row style="margin:2em;">
+        <column md="6" class="text-center">
+          <img src="../assets/easy.png" class="feature-icon text-center" />
+        </column>
+        <column md="6" class="feature-text">
+          <h2 class="font-weight-bold my-4 feature-text-bold">Easy</h2>
+          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+        </column>
+      </row>
+      <row style="margin:2em;">
+        <column md="6" class="text-center order-md-3">
+          <img src="../assets/engage.png" class="feature-icon text-center" />
+        </column>
+        <column md="6" class="feature-text order-md-2">
+          <h2 class="font-weight-bold my-4 feature-text-bold">Engagement</h2>
+          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+        </column>
+      </row>
+      <row style="margin:2em;">
+        <column md="6" class="text-center">
+          <img src="../assets/control.png" class="feature-icon text-center" />
+        </column>
+        <column md="6" class="feature-text">
+          <h2 class="font-weight-bold my-4 feature-text-bold">Controll</h2>
+          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+        </column>
       </row>
     </section>
   </container>
+  <br/><br/>
 <div class="svg-container-bottom">
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1366 246">
     <image width="1366" height="351" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAABVYAAAFfAQMAAACftwWKAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABlBMVEUXqZUAAABMHWedAAAAAWJLR0QB/wIt3gAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IKGxEWFTZRQG0AAABQSURBVHja7cEBAQAAAIIg/69uSEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8G7r1AABJwQebQAAAABJRU5ErkJggg=="/>
@@ -129,6 +130,21 @@ export default {
 </script>
 
 <style>
+.btn-curve {
+  border-radius: 15px;
+}
+.feature-icon {
+  width: 55%;
+  height: 100%;
+}
+.feature-text {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.feature-text-bold {
+  color: #2bbbad !important;
+}
+
 .svg-container-top {
   position: absolute;
   right: 0;
@@ -141,7 +157,7 @@ export default {
   position: absolute;
   right: 0;
   left: 0;
-  bottom: -100%;
+  bottom: -162%;
   z-index: -1;
 }
 
