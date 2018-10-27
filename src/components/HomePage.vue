@@ -3,9 +3,9 @@
   <div>
     <!-- svg curve -->
     <div class="svg-container-top">
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1366 246">
-    <ellipse cx="686" cy="270" rx="782" ry="248" style="fill:#fff;"/>
-</svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1366 246">
+      <ellipse cx="686" cy="270" rx="782" ry="248" style="fill:#fff;"/>
+      </svg>
     </div>
     <!--ViewWrapper-->
     <view-wrapper class="home-page">
