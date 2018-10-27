@@ -1,103 +1,101 @@
 <template>
-  <!-- <div>
-    <div class="container">
-    <div class="row">
-      <div class="col s12 m8 offset-m2">
-        <div class="login card-panel grey lighten-4 black-text center">
-          <h3>Register</h3>
-          <form action="index.html">
-            <div class="input-field">
-              <i class="material-icons prefix">email</i>
-              <input type="email" id="email" v-model="email">
-              <label for="email">Email Address</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">lock</i>
-              <input type="password" id="password" v-model="password">
-              <label for="password">Password</label>
-            </div>
-            <button v-on:click="register" class="btn btn-large btn-extended grey lighten-4 black-text">Register</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div> -->
-
   <div class="wrapper">
+    <container>
+    <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis">
 <form action="index.html" class="regis_content_vet">
-              <card class="w-75 d-flex justify-content-center" style="margin:0 auto;top:5em;z-index:2;">
-              <card-body class="text-center">
+              <card class="w-50 d-flex justify-content-center register-card" style="margin:0 auto;z-index:2;">
+              <card-body>
                 <div class="bg-card">
-  <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis" style="margin:0 auto;margin-bottom:2%;">
                 <row style="padding:1em;">
-                  <column class="col-md-4">
-                  <!-- picture -->
-                  <div class="image-upload">
-                  <label for="wizard-picturePro">
-                        <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
-                  </label>
-<input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
-</div>
-    <!-- <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div> -->
-    <!-- <button @click="removeImage">Remove image</button> -->
-                  <br>
-                  <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
-                  <br>
-                  <row>
-                    <column>
-                    <input class="form-control form-control-lg" type="number" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;"> 
-              
+                    <column class="col-md-4">
+                        <!-- picture -->
+                        <div class="image-upload text-center">
+                            <label for="wizard-picturePro">
+                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                            </label>
+                            <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                        </div>
+                            <div class="label-group">
+                                <label for="fullname">Fullname</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                        <row>
+                          <column>
+                            <div class="label-group">
+                              <label for="gender">Gender</label>
+                              <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <option>Male</option>
+                                <option>Female</option>
+                              </select>
+                            </div>
+                          </column>
+                        </row>
+                        <row>
+                          <column>
+                              <div class="label-group">
+                                <label for="datetime">Date of Birth</label>
+                                <datetime v-model="datebirth"></datetime>
+                              </div>
+                          </column>
+                        </row>
                     </column>
-                    <column>
-                    <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                      <option selected disabled>Gender</option>
-                      <option>Male</option>
-                      <option>Female</option>
-                    </select>
+                    <column class="col-md-8">
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="email">Email</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="password">Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                            <column>
+                                <div class="label-group">
+                                    <label for="confpassword">Confirm Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confpassword" v-model="confpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="lineid">Veterinary ID</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Veterinary ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                            <column>
+                                <div class="label-group">
+                                    <label for="telephone">Telephone</label>
+                                    <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
+                                <div class="label-group">
+                                    <label for="address">Hospital Address</label>
+                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Hospital Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                </div>
+                            </column>
+                        </row>
                     </column>
-                    </row>
-                  </column>
-                  <column class="col-md-8">
-                  <row>
-                    <column>
-                  <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                  <br>
-                    </column>
-                  </row>
-                  <row>
-                    <column>
-                     <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                     <br>
-                    </column>
-                  </row>
-                  <row>
-                    <column>
-                     <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                    </column>
-                    <column>
-                     <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                     <br>
-                    </column>
-                  </row>
-                  <row>
-                    <column>
-                    <textarea class="form-control" id="address" v-model="address" rows="4" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
-                    </column>
-                  </row>
-                  </column>
-                </row>
-                <row>
-                  <column>
-                  <router-link to="/register"><button v-on:click="register" class="btn btn-elegant button-regis">Back</button></router-link>
-                  <button v-on:click="register" class="btn btn-elegant button-regis">Register</button>
-                  </column>
                 </row>
 
                 </div>
               </card-body>
             </card>
 </form>
+<div class="obj-center">
+                  <router-link to="/register"><button v-on:click="register" class="btn btn-elegant button-regis">Back</button></router-link>
+                  <button v-on:click="register" class="btn btn-elegant button-regis">Register</button>
+</div>
+            </container>
 <ul class="bg-bubbles">
 		<li><img src="../assets/cat.svg" alt="cat"></li>
 		<li><img src="../assets/cat.svg" alt="cat"></li>
@@ -143,19 +141,24 @@ import {
   MdMask,
   ViewWrapper
 } from "mdbvue";
-
+import { Datetime } from "vue-datetime";
+// ES6 Modules or TypeScript
+import swal from "sweetalert2";
 export default {
+  beforeCreate: function() {
+    document.body.className = "body-registervet";
+  },
   name: "register-vet",
   data: function() {
     return {
       email: "",
       password: "",
-      age:"",
-      gender:"",
-      fullname:"",
-      lineid:"",
-      telephone:"",
-      address:"",
+      age: "",
+      gender: "",
+      fullname: "",
+      lineid: "",
+      telephone: "",
+      address: "",
       progressUpload: 0,
       file: File,
       uploadTask: "",
@@ -172,7 +175,8 @@ export default {
     Row,
     Column,
     MdMask,
-    ViewWrapper
+    ViewWrapper,
+    datetime: Datetime
   },
   methods: {
     register: function(e) {
@@ -182,7 +186,11 @@ export default {
         .then(
           user => {
             // console.log(user);
-            alert(`Account Created for ${user.email}`);
+            swal(
+              "Register Status",
+              `You are Register in Veterinary as ${user.email}`,
+              "success"
+            );
             this.$router.go({ path: this.$router.path });
           },
           db
@@ -195,7 +203,7 @@ export default {
               position: "new"
             }),
           err => {
-            alert(err.message);
+            swal("Register Status", err.message, "error");
           }
         );
       e.preventDefault();
@@ -227,23 +235,19 @@ export default {
     removeImage: function(e) {
       this.image = "";
     },
-                readURLPro: function(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
+    readURLPro: function(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-                    reader.onload = function (e) {
-                        $('#wizardPicturePreviewPro').attr('src', e.target.result).fadeIn('slow');
-                    },
-                    reader.readAsDataURL(input.files[0]);
-                    this.detectFiles(input.files)
-                }
-            }
-  },
-  mounted() {
-    $(".show-placeholder").select({
-      placeholder: "Select a Gender",
-      allowClear: true
-    });
+        (reader.onload = function(e) {
+          $("#wizardPicturePreviewPro")
+            .attr("src", e.target.result)
+            .fadeIn("slow");
+        }),
+          reader.readAsDataURL(input.files[0]);
+        this.detectFiles(input.files);
+      }
+    }
   },
   watch: {
     uploadTask: function() {
@@ -272,11 +276,12 @@ form.regis_content_vet {
   margin-bottom: 5em;
   margin-left: 5em;
   margin-right: 5em; */
-  height: 50%;
+  height: 61%;
   z-index: 2;
+  margin: 0em;
 }
 
-html {
+body.body-registervet {
   min-height: 100%;
   width: 100%;
   -webkit-background-size: cover;
@@ -308,23 +313,30 @@ html {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
 }
 
-body {
-  background-color: transparent;
+.logo_regis {
+  width: 12%;
+  height: 12%;
+  z-index: 6;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4em;
 }
 
-.logo_regis {
-  margin: 0 auto;
-  width: 20%;
-  height: 20%;
-  z-index: 6;
+.obj-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 3.5em;
 }
-.card {
+.card.register-card {
   background: linear-gradient(
     rgba(255, 255, 255, 0.2),
     rgba(255, 255, 255, 0.2)
   );
-  border-radius: 80px;
-  height: 36em;
+  border-radius: 2em;
+  height: 107%;
 }
 .circle-button {
   width: 65%;
@@ -542,6 +554,35 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  min-height: 100%;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background: rgb(52, 160, 217); /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
 }
 
 .progress-bar {
@@ -554,72 +595,110 @@ body {
 }
 
 /*Profile Pic Start*/
-            .picture-container1{
-                position: relative;
-                height: 250px;
-                width: 250px;
-                cursor: pointer;
-                text-align: center;
-            }
-            .picture-container2{
-                position: relative;
-                height: 380px;
-                width: 940px;
-                cursor: pointer;
-                text-align: center;
-            }
-            .picturePro{
-                width: 250px;
-                height: 250px;
-                background-color: #999999;
-                border: 4px solid #CCCCCC;
-                color: #FFFFFF;
-                border-radius: 50%;
-                /*margin: 0px auto;*/
-                overflow: hidden;
-                transition: all 0.2s;
-                -webkit-transition: all 0.2s;
-            }
-
-            .picturePro:hover{
-                border-color: #2ca8ff;
-            }
-            .content.ct-wizard-green .picture:hover{
-                border-color: #05ae0e;
-            }
-            .content.ct-wizard-blue .picture:hover{
-                border-color: #3472f7;
-            }
-            .content.ct-wizard-orange .picture:hover{
-                border-color: #ff9500;
-            }
-            .content.ct-wizard-red .picture:hover{
-                border-color: #ff3b30;
-            }
-            .picturePro input[type="file"] {
-                cursor: pointer;
-                display: block;
-                height: 250px;
-                left: 0;
-                opacity: 0 !important;
-                position: absolute;
-                top: 0;
-                width: 250px;
-            }
-            .picture-src{
-                width: 10em;
-                height: 10em;
-            }
-            /*Profile Pic End*/
-.image-upload > input
-{
-    display: none;
+.picture-container1 {
+  position: relative;
+  height: 250px;
+  width: 250px;
+  cursor: pointer;
+  text-align: center;
+}
+.picture-container2 {
+  position: relative;
+  height: 380px;
+  width: 940px;
+  cursor: pointer;
+  text-align: center;
+}
+.picturePro {
+  width: 250px;
+  height: 250px;
+  background-color: #999999;
+  border: 4px solid #cccccc;
+  color: #ffffff;
+  border-radius: 50%;
+  /*margin: 0px auto;*/
+  overflow: hidden;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
 }
 
-.image-upload img
-{
-    cursor: pointer;
+.picturePro:hover {
+  border-color: #2ca8ff;
+}
+.content.ct-wizard-green .picture:hover {
+  border-color: #05ae0e;
+}
+.content.ct-wizard-blue .picture:hover {
+  border-color: #3472f7;
+}
+.content.ct-wizard-orange .picture:hover {
+  border-color: #ff9500;
+}
+.content.ct-wizard-red .picture:hover {
+  border-color: #ff3b30;
+}
+.picturePro input[type="file"] {
+  cursor: pointer;
+  display: block;
+  height: 250px;
+  left: 0;
+  opacity: 0 !important;
+  position: absolute;
+  top: 0;
+  width: 250px;
+}
+.picture-src {
+  width: 10em;
+  height: 10em;
+}
+/*Profile Pic End*/
+.image-upload > input {
+  display: none;
+}
+
+.image-upload img {
+  cursor: pointer;
 }
 
 /* upload pic style */
+
+/* Popup Style */
+
+.vdatetime-input {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 13px;
+  border: 1px solid #ced4da;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  -webkit-writing-mode: horizontal-tb !important;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.label-group {
+  margin-bottom: 0.5em;
+}
+
+label {
+  font-weight: 500;
+}
+
+input::placeholder {
+  color: grey !important;
+  font-size: 80%;
+}
 </style>
