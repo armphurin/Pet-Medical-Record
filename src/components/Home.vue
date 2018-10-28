@@ -474,7 +474,7 @@ export default {
 
 <style>
 body.body-home {
-  background: url("../assets/bg_homeowner.png") no-repeat center center fixed;
+  background: url("../assets/bg_after.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
