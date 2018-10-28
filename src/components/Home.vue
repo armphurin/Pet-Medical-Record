@@ -9,7 +9,7 @@
                 </div>
                 <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
                     <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true;">
-                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Name : ...</h5>
+                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{fullname}}</h5>
                     </btn><br>
                 </div>
                     <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
@@ -19,28 +19,21 @@
                         </div>
                     </div>
                     <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                            <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true;">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-                            </btn><br>
-                            <btn type="button" class="btn btn-pet text-left">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-                            </btn><br>
-                            <btn type="button" class="btn btn-pet text-left ">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-                            </btn><br>
+                             <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
+                              <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
+                              </btn><br>
+                             </div>
+                            
                             <!-- hide area -->
                             <input type="checkbox" class="read-more-state read-more" id="pet-hidden" />
                             <div class="read-more-wrap">
                               <div class="read-more-target">
-                                <btn type="button" class="btn btn-pet text-left ">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-                            </btn><br>
-                                <btn type="button" class="btn btn-pet text-left ">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-                            </btn><br>
-                                <btn type="button" class="btn btn-pet text-left ">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
-                            </btn><br>
+                               <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
+                              <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
+                              </btn><br>
+                               </div>
                               </div>
                             </div>
                               <label for="pet-hidden" class="read-more-trigger"></label>
@@ -139,7 +132,7 @@
             </modal-body>
             <modal-footer>
                 <btn color="default" @click.native="popupProfile = false">Close</btn>
-                <btn color="primary">Save changes</btn>
+                <btn color="primary" @click.native="updateProfile">Save changes</btn>
             </modal-footer>
         </div>
     </modal>
@@ -163,19 +156,19 @@
                         </div>
                             <div class="label-group">
                                 <label for="petname">Pet Name</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="show_pet[0].name" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                         <row>
                           <column>
                               <div class="label-group">
                                 <label for="petbirth">Date of Birth</label>
-                                <datetime v-model="petbirth"></datetime>
+                                <datetime v-model="show_pet[0].pet_dob"></datetime>
                               </div>
                           </column>
                           <column>
                             <div class="label-group">
                               <label for="petgender">Gender</label>
-                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="petgender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="show_pet[0].gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 <option>Male</option>
                                 <option>Female</option>
                               </select>
@@ -186,17 +179,19 @@
                     <column class="col-md-7">
                     <row class="text-center">
                       <column>
-                      <mdb-input type="radio" name="pettype" id="dog" label="Dog" />
+                      <mdb-input type="radio" name="pettype" id="dog" label="Dog"  v-if="show_pet[0].type=='dog'" checked disabled/>
+                      <mdb-input type="radio" name="pettype" id="dog" label="Dog"  v-if="show_pet[0].type=='cat'" disabled />
                       </column>
                       <column>
-                      <mdb-input type="radio" name="pettype" id="cat" label="Cat" />
+                      <mdb-input type="radio" name="pettype" id="cat" label="Cat" v-if="show_pet[0].type=='dog'" disabled/>
+                      <mdb-input type="radio" name="pettype" id="cat" label="Cat" v-if="show_pet[0].type=='cat'" checked disabled/>
                       </column>
                     </row>
                         <row>
                             <column>
                                 <div class="label-group">
                                   <label for="breed">Breed</label>
-                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="show_pet[0].breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
@@ -204,7 +199,7 @@
                             <column>
                               <div class="label-group">
                                 <label for="colour">Colour</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="colour" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="show_pet[0].color" style="width:100%;margin: 0 auto;border-radius: 13px;">
                               </div>
                             </column>
                         </row>
@@ -212,7 +207,7 @@
                             <column>
                                 <div class="label-group">
                                     <label for="marking">Markings</label>
-                                    <textarea class="form-control" id="marking" v-model="marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                    <textarea class="form-control" id="marking" v-model="show_pet[0].marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                 </div>
                             </column>
                         </row>
@@ -220,8 +215,9 @@
                 </row>
             </modal-body>
             <modal-footer>
-                <btn color="default" @click.native="popupPet = false">Close</btn>
-                <btn color="primary">Save changes</btn>
+                <btn color="default" @click.native="popupPet = false,show_pet.pop()">Close</btn>
+                <btn color="danger"  @click.native="updatePet">Delete</btn>
+                <btn color="primary"  @click.native="updatePet">Save changes</btn>
             </modal-footer>
         </div>
     </modal>
@@ -245,19 +241,19 @@
                         </div>
                             <div class="label-group">
                                 <label for="petname">Pet Name</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="pet_name" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                         <row>
                           <column>
                               <div class="label-group">
                                 <label for="petbirth">Date of Birth</label>
-                                <datetime v-model="petbirth"></datetime>
+                                <datetime v-model="pet_birth"></datetime>
                               </div>
                           </column>
                           <column>
                             <div class="label-group">
                               <label for="petgender">Gender</label>
-                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="petgender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="pet_gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 <option>Male</option>
                                 <option>Female</option>
                               </select>
@@ -268,17 +264,17 @@
                     <column class="col-md-7">
                     <row class="text-center">
                       <column>
-                      <mdb-input type="radio" name="pettype" id="dog" label="Dog" />
+                      <mdb-input type="radio" name="pet_type" id="dog" label="Dog" value="dog" @click.native="pet_type='dog'"/>
                       </column>
                       <column>
-                      <mdb-input type="radio" name="pettype" id="cat" label="Cat" />
+                      <mdb-input type="radio" name="pet_type" id="cat" label="Cat" value="cat"  @click.native="pet_type='cat'"/>
                       </column>
                     </row>
                         <row>
                             <column>
                                 <div class="label-group">
                                   <label for="breed">Breed</label>
-                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="pet_breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
@@ -286,7 +282,7 @@
                             <column>
                               <div class="label-group">
                                 <label for="colour">Colour</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="colour" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="color" v-model="pet_color" style="width:100%;margin: 0 auto;border-radius: 13px;">
                               </div>
                             </column>
                         </row>
@@ -294,7 +290,7 @@
                             <column>
                                 <div class="label-group">
                                     <label for="marking">Markings</label>
-                                    <textarea class="form-control" id="marking" v-model="marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                    <textarea class="form-control" id="marking" v-model="pet_marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                 </div>
                             </column>
                         </row>
@@ -303,7 +299,7 @@
             </modal-body>
             <modal-footer>
                 <btn color="default" @click.native="popupAddPet = false">Close</btn>
-                <btn color="primary">Add Pet</btn>
+                <btn color="primary" @click.native="add_pet">Submit</btn>
             </modal-footer>
         </div>
     </modal>
@@ -394,6 +390,7 @@ export default {
   },
   data() {
     return {
+      pet_type: "",
       show_pet: [],
       pet_name: "",
       pet_gender: "",
@@ -424,6 +421,64 @@ export default {
     };
   },
   methods: {
+    updatePet() {
+      db.collection("users")
+        .doc(this.email)
+        .collection("pets")
+        .doc(this.email + "_" + this.show_pet[0].name)
+        .update({
+          // pet_name: this.show_pet[0].name,
+          breed: this.show_pet[0].breed,
+          gender: this.show_pet[0].gender,
+          marking: this.show_pet[0].marking,
+          dob: this.show_pet[0].pet_dob,
+          color: this.show_pet[0].color
+        })
+        .then(user => {
+          alert(`Pet Updated for ${this.show_pet[0].name}`);
+          this.popupPet = false;
+          this.show_pet.pop();
+          this.$router.go(this.$route.path);
+        });
+    },
+    add_pet() {
+      db.collection("users")
+        .doc(this.email)
+        .collection("pets")
+        .doc(this.email + "_" + this.pet_name)
+        .set({
+          pet_id: this.email + "_" + this.pet_name,
+          pet_name: this.pet_name,
+          breed: this.pet_breed,
+          gender: this.pet_gender,
+          marking: this.pet_marking,
+          dob: this.pet_birth,
+          color: this.pet_color,
+          pet_type: this.pet_type
+        })
+        .then(doc => {
+          console.log(this.fullname + " Add " + this.pet_name);
+          alert(`Account Add ${this.pet_name}`);
+          this.popupAddPet = false;
+          this.$router.go(this.$route.path);
+        });
+    },
+    updateProfile() {
+      db.collection("users")
+        .doc(this.email)
+        .update({
+          password: this.password,
+          fullname: this.fullname,
+          age: this.age,
+          line_id: this.lineid,
+          telephone_number: this.telephone,
+          address: this.address
+        })
+        .then(user => {
+          alert(`Account Updated for ${this.email}`);
+          this.popupProfile = false;
+        });
+    },
     detectFiles(fileList) {
       Array.from(Array(fileList.length).keys()).map(x => {
         this.upload(fileList[x]);
@@ -479,7 +534,8 @@ export default {
             color: doc.data().color,
             dob: doc.data().dob,
             gender: doc.data().gender,
-            marking: doc.data().marking
+            marking: doc.data().marking,
+            type: doc.data().pet_type
           };
           console.log(doc.data());
           this.pets.push(data);
@@ -487,9 +543,21 @@ export default {
         this.email = firebase.auth().currentUser.email;
         console.log(this.email);
       });
-    document
-      .getElementsByClassName("vdatetime-input")
-      .setAttribute("placeholder", "Enter your number");
+  },
+   mounted() {
+    db.collection("users")
+      .doc(firebase.auth().currentUser.email)
+      .get()
+      .then(doc => {
+        this.fullname = doc.data().fullname;
+        this.lineid = doc.data().line_id;
+        this.address = doc.data().address;
+        this.age = doc.data().age;
+        this.password = doc.data().password;
+        this.telephone = doc.data().telephone_number;
+        this.gender = doc.data().gender;
+        console.log("Document data:", doc.data());
+      });
   }
 };
 </script>
