@@ -59,7 +59,7 @@
   </container>
   <br/><br/>
 <div class="svg-container-bottom">
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1366 246">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1366 290">
     <image width="1366" height="351" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAABVYAAAFfAQMAAACftwWKAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABlBMVEUXqZUAAABMHWedAAAAAWJLR0QB/wIt3gAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IKGxEWFTZRQG0AAABQSURBVHja7cEBAQAAAIIg/69uSEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8G7r1AABJwQebQAAAABJRU5ErkJggg=="/>
     <ellipse class="cls-1" cx="686" cy="-33" rx="782" ry="248" style="fill:#fff;"/>
 </svg>
