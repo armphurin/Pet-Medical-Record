@@ -430,6 +430,7 @@ body.body-register {
   }
 }
 
+
 @media only screen and (max-width: 600px) {
   .card.register {
     align-items: center;
@@ -440,8 +441,7 @@ body.body-register {
   }
   form.regis_content {
     margin-top: 7em;
-    /* margin-bottom: 5em; */
-    margin-left: 5em;
+    margin-left: 6em;
     margin-right: 5em;
     height: 50%;
     z-index: 2;
@@ -458,11 +458,35 @@ body.body-register {
   }
   form.regis_content {
     margin-top: 7em;
-    /* margin-bottom: 5em; */
-    margin-left: 5em;
+    margin-left: 4em;
     margin-right: 5em;
     height: 50%;
     z-index: 2;
   }
 }
+
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 770px) and (orientation: landscape) {
+  .row{
+    flex-wrap : unset;
+    margin-left : 20em;
+  }
+}
+
+/*Pixel 2XL and iPhone X Landscape*/
+@media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
+  .row{
+    flex-wrap: unset;
+    width: 40em;
+    margin-left: 30em;
+  }
+}
+
+
+
+
+
+
+
+
 </style>

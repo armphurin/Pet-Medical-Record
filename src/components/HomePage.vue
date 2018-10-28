@@ -194,7 +194,7 @@ h6 {
 }
 
 /*Common Mobile Portrait*/
-@media only screen and (min-width: 370px) and (max-width: 600px) {
+@media only screen and (min-width: 370px) and (max-width: 600px) and (orientation: portrait){
   .view.home-page {
     margin-top: 2em;
   }
@@ -264,6 +264,13 @@ h6 {
 
 /*iPhone 5/SE Landscape*/
 @media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape) {
+  .view.home-page{
+    height: 20em;
+  }
+  .btn{
+    width: 23.5em;
+  }
+  
   .intro-section.row {
     width: 350px;
     height: 200px;

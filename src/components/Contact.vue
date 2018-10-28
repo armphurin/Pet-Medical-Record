@@ -263,7 +263,7 @@ input[type="checkbox"]:checked + label:after {
 /*-----Mobile Device Edit-----*/
 
 /*Common Mobile Portrait*/
-@media only screen and (min-width: 370px) and (max-width: 600px) {
+@media only screen and (min-width: 370px) and (max-width: 600px) and (orientation: portrait){
   .view.contact{
     margin-top: 3em;
   }
