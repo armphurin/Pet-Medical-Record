@@ -1,7 +1,4 @@
 <template>
-
-
-<!--ViewWrapper-->
 <div class="home-owner">
     <md-mask class="d-flex justify-content-center align-items-center">
         <container>
@@ -12,7 +9,7 @@
                 </div>
                 <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
                     <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true;">
-                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{fullname}}</h5>
+                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Name : ...</h5>
                     </btn><br>
                 </div>
                     <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
@@ -22,13 +19,17 @@
                         </div>
                     </div>
                     <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                      <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
-                            <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
+                            <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true;">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
                             </btn><br>
-                            </div>
+                            <btn type="button" class="btn btn-pet text-left">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                            </btn><br>
+                            <btn type="button" class="btn btn-pet text-left ">
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                            </btn><br>
                             <!-- hide area -->
-                            <input type="checkbox" class="read-more-state" id="pet-hidden" />
+                            <input type="checkbox" class="read-more-state read-more" id="pet-hidden" />
                             <div class="read-more-wrap">
                               <div class="read-more-target">
                                 <btn type="button" class="btn btn-pet text-left ">
@@ -137,8 +138,8 @@
                 </row>
             </modal-body>
             <modal-footer>
-                <btn color="secondary" @click.native="popupProfile = false">Close</btn>
-                <btn color="primary" @click.native="updateProfile">Save changes</btn>
+                <btn color="default" @click.native="popupProfile = false">Close</btn>
+                <btn color="primary">Save changes</btn>
             </modal-footer>
         </div>
     </modal>
@@ -162,19 +163,19 @@
                         </div>
                             <div class="label-group">
                                 <label for="petname">Pet Name</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="show_pet[0].name" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                         <row>
                           <column>
                               <div class="label-group">
-                                <label for="pet_dob">Date of Birth</label>
-                                <datetime v-model="show_pet[0].pet_dob" input-class="form-control form-control-lg" style="content:'yes'"></datetime>
+                                <label for="petbirth">Date of Birth</label>
+                                <datetime v-model="petbirth"></datetime>
                               </div>
                           </column>
                           <column>
                             <div class="label-group">
                               <label for="petgender">Gender</label>
-                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="show_pet[0].gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="petgender" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 <option>Male</option>
                                 <option>Female</option>
                               </select>
@@ -183,11 +184,19 @@
                         </row>
                     </column>
                     <column class="col-md-7">
+                    <row class="text-center">
+                      <column>
+                      <mdb-input type="radio" name="pettype" id="dog" label="Dog" />
+                      </column>
+                      <column>
+                      <mdb-input type="radio" name="pettype" id="cat" label="Cat" />
+                      </column>
+                    </row>
                         <row>
                             <column>
                                 <div class="label-group">
                                   <label for="breed">Breed</label>
-                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="show_pet[0].breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
@@ -195,7 +204,7 @@
                             <column>
                               <div class="label-group">
                                 <label for="colour">Colour</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Color" id="colour" v-model="show_pet[0].color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="colour" style="width:100%;margin: 0 auto;border-radius: 13px;">
                               </div>
                             </column>
                         </row>
@@ -203,7 +212,7 @@
                             <column>
                                 <div class="label-group">
                                     <label for="marking">Markings</label>
-                                    <textarea class="form-control" id="marking" v-model="show_pet[0].marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                    <textarea class="form-control" id="marking" v-model="marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                 </div>
                             </column>
                         </row>
@@ -211,8 +220,8 @@
                 </row>
             </modal-body>
             <modal-footer>
-                <btn color="secondary" @click.native="popupPet = false, show_pet.pop()">Close</btn>
-                <btn color="primary" @click.native="updatePet">Save changes</btn>
+                <btn color="default" @click.native="popupPet = false">Close</btn>
+                <btn color="primary">Save changes</btn>
             </modal-footer>
         </div>
     </modal>
@@ -236,19 +245,19 @@
                         </div>
                             <div class="label-group">
                                 <label for="petname">Pet Name</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="pet_name" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                         <row>
                           <column>
                               <div class="label-group">
                                 <label for="petbirth">Date of Birth</label>
-                                <datetime v-model="pet_birth"></datetime>
+                                <datetime v-model="petbirth"></datetime>
                               </div>
                           </column>
                           <column>
                             <div class="label-group">
                               <label for="petgender">Gender</label>
-                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="pet_gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="petgender" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 <option>Male</option>
                                 <option>Female</option>
                               </select>
@@ -257,11 +266,19 @@
                         </row>
                     </column>
                     <column class="col-md-7">
+                    <row class="text-center">
+                      <column>
+                      <mdb-input type="radio" name="pettype" id="dog" label="Dog" />
+                      </column>
+                      <column>
+                      <mdb-input type="radio" name="pettype" id="cat" label="Cat" />
+                      </column>
+                    </row>
                         <row>
                             <column>
                                 <div class="label-group">
                                   <label for="breed">Breed</label>
-                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="pet_breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
@@ -269,7 +286,7 @@
                             <column>
                               <div class="label-group">
                                 <label for="colour">Colour</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Color" id="colour" v-model="pet_color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="colour" style="width:100%;margin: 0 auto;border-radius: 13px;">
                               </div>
                             </column>
                         </row>
@@ -277,7 +294,7 @@
                             <column>
                                 <div class="label-group">
                                     <label for="marking">Markings</label>
-                                    <textarea class="form-control" id="marking" v-model="pet_marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                    <textarea class="form-control" id="marking" v-model="marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                 </div>
                             </column>
                         </row>
@@ -285,8 +302,8 @@
                 </row>
             </modal-body>
             <modal-footer>
-                <btn color="secondary" @click.native="popupAddPet = false">Close</btn>
-                <btn color="primary" @click.native="add_pet">Submit</btn>
+                <btn color="default" @click.native="popupAddPet = false">Close</btn>
+                <btn color="primary">Add Pet</btn>
             </modal-footer>
         </div>
     </modal>
@@ -330,13 +347,15 @@ import {
   ModalFooter,
   Pagination,
   PageNav,
-  PageItem,
-  Collapse
+  PageItem
 } from "mdbvue";
 
 import { Datetime } from "vue-datetime";
 
 export default {
+  beforeCreate: function() {
+    document.body.className = "body-home";
+  },
   name: "home",
   components: {
     Container,
@@ -371,7 +390,7 @@ export default {
     Pagination,
     PageNav,
     PageItem,
-    Collapse
+    mdbInput
   },
   data() {
     return {
@@ -405,63 +424,6 @@ export default {
     };
   },
   methods: {
-    updatePet() {
-      db.collection("users")
-        .doc(this.email)
-        .collection("pets")
-        .doc(this.email + "_" + this.show_pet[0].name)
-        .update({
-          // pet_name: this.show_pet[0].name,
-          breed: this.show_pet[0].breed,
-          gender: this.show_pet[0].gender,
-          marking: this.show_pet[0].marking,
-          dob: this.show_pet[0].pet_dob,
-          color: this.show_pet[0].color
-        })
-        .then(user => {
-          alert(`Pet Updated for ${this.show_pet[0].name}`);
-          this.popupPet = false;
-          this.show_pet.pop();
-          this.$router.go(this.$route.path);
-        });
-    },
-    add_pet() {
-      db.collection("users")
-        .doc(this.email)
-        .collection("pets")
-        .doc(this.email + "_" + this.show_pet[0].name)
-        .set({
-          pet_id: this.email + "_" + this.pet_name,
-          pet_name: this.pet_name,
-          breed: this.pet_breed,
-          gender: this.pet_gender,
-          marking: this.pet_marking,
-          dob: this.pet_birth,
-          color: this.pet_color
-        })
-        .then(doc => {
-          console.log(this.fullname + " Add " + this.pet_name);
-          alert(`Account Add ${this.pet_name}`);
-          this.popupAddPet = false;
-          this.$router.go(this.$route.path);
-        });
-    },
-    updateProfile() {
-      db.collection("users")
-        .doc(this.email)
-        .update({
-          password: this.password,
-          fullname: this.fullname,
-          age: this.age,
-          line_id: this.lineid,
-          telephone_number: this.telephone,
-          address: this.address
-        })
-        .then(user => {
-          alert(`Account Updated for ${this.email}`);
-          this.popupProfile = false;
-        });
-    },
     detectFiles(fileList) {
       Array.from(Array(fileList.length).keys()).map(x => {
         this.upload(fileList[x]);
@@ -525,78 +487,28 @@ export default {
         this.email = firebase.auth().currentUser.email;
         console.log(this.email);
       });
-  },
-  mounted() {
-    db.collection("users")
-      .doc(firebase.auth().currentUser.email)
-      .get()
-      .then(doc => {
-        this.fullname = doc.data().fullname;
-        this.lineid = doc.data().line_id;
-        this.address = doc.data().address;
-        this.age = doc.data().age;
-        this.password = doc.data().password;
-        this.telephone = doc.data().telephone_number;
-        this.gender = doc.data().gender;
-        console.log("Document data:", doc.data());
-      });
+    document
+      .getElementsByClassName("vdatetime-input")
+      .setAttribute("placeholder", "Enter your number");
   }
 };
 </script>
 
 <style>
-html {
-  background-size: cover;
-  height: 100%;
+body.body-home {
+  background: url("../assets/bg_after.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-repeat: no-repeat;
-  background: rgb(52, 160, 217);
-  /* Old browsers */
-  background: -moz-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
-  /* IE6-9 */
-}
-
-body {
-  background-color: transparent;
-}
-
-.view.home-owner {
-  background-image: url("");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: calc(100vh - 60px);
-  margin-top: -2em;
 }
 
 h6 {
   line-height: 1.7;
 }
-
+.home-owner {
+  margin-top: 3.5em;
+}
 .btn-label {
   background-color: #e8c547 !important;
   font-weight: 400;
@@ -798,17 +710,175 @@ input::placeholder {
   font-size: 80%;
 }
 
+/*Edit md width for each platform, .col flex basis removed.*/
+
+/*Common Mobile Portrait*/
+@media only screen and (min-width: 370px) and (max-width: 600px) {
+  .home-owner {
+    margin-top: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11em;
+  }
+  .intro-section .btn {
+    width: 100%;
+  }
+  .intro-section .btn.btn-label {
+    left: 32%;
+    width: 9em;
+    border-radius: 15px;
+    height: 3em;
+  }
+  h3.content-label {
+    left: 10%;
+  }
+  .col-md-8 {
+    flex-basis: unset;
+  }
+}
+
+/*Samsung Galaxy S5 and iPhone 5 Portrait*/
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+  .home-owner {
+    margin-top: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11em;
+  }
+  .intro-section .btn {
+    width: 100%;
+  }
+  .intro-section .btn.btn-label {
+    left: 32%;
+    width: 9em;
+    border-radius: 15px;
+    height: 3em;
+  }
+  h3.content-label {
+    left: 10%;
+  }
+  .col-md-8 {
+    flex-basis: unset;
+  }
+}
+
+/*iPhone 5/SE Portrait Button Fix*/
+@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait) {
+  .btn.btn-primary {
+    padding-bottom: 2px;
+    padding-top: 7px;
+  }
+  .btn.btn-secondary {
+    width: 50%;
+  }
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 760px) and (orientation: portrait) {
+  .intro-section .btn {
+    width: 70%;
+  }
+  .intro-section .btn.btn-label {
+    left: 26%;
+    width: 9em;
+    border-radius: 15px;
+    height: 5em;
+  }
+  h3.content-label {
+    left: 17%;
+  }
+  .col-md-8 {
+    left: 4%;
+  }
+  .col {
+    flex-basis: unset;
+  }
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px) and (orientation: portrait) {
+  .intro-section .btn.btn-label {
+    left: 28%;
+  }
+}
+
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 830px) and (orientation: landscape) {
+  .home-owner {
+    height: 30em;
+  }
+  .intro-section .btn {
+    width: 50%;
+  }
+  .intro-section .btn.btn-label {
+    width: 6em;
+    height: 3em;
+    border-radius: 15px;
+  }
+  h3.content-label {
+    left: 27%;
+  }
+  .col-md-8 {
+    flex-basis: unset;
+  }
+}
+
+/*Samsung Galaxy S5 and iPhone 5/SE Landscape*/
+@media only screen and (max-width: 640px) and (max-height: 360px) and (orientation: landscape) {
+  .home-owner {
+    height: 35em;
+  }
+  .intro-section .btn {
+    width: 70%;
+  }
+  .intro-section .btn.btn-label {
+    left: 26%;
+    width: 6em;
+    border-radius: 10px;
+    height: 3em;
+  }
+  h3.content-label {
+    left: 17%;
+  }
+  .col-md-8 {
+    flex-basis: unset;
+  }
+}
+
+/*Pixel 2XL and iPhone X Landscape*/
+@media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
+  .home-owner {
+    height: 30em;
+  }
+  .intro-section .btn.btn-label {
+    left: 19%;
+    border-radius: 10px;
+  }
+  h3.content-label {
+    left: 26%;
+  }
+  .col {
+    flex-basis: unset;
+  }
+  .col-md-8 {
+    left: 4%;
+  }
+}
+
 /* Show more style */
 .read-more-state {
   display: none;
 }
 
 .read-more-target {
-  opacity: 0;
+  /* opacity: 0; */
   max-height: 0;
   font-size: 0;
-  transition: 0.25s ease;
   display: none;
+  -webkit-animation: fadeOut 1s;
+  animation: fadeOut 1s;
 }
 
 .read-more-wrap {
@@ -816,36 +886,209 @@ input::placeholder {
 }
 
 .read-more-state:checked ~ .read-more-wrap .read-more-target {
-  opacity: 1;
+  /* opacity: 1; */
   font-size: inherit;
   max-height: 999em;
   display: block;
+  -webkit-animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s;
 }
 
 .read-more-state:checked ~ .read-more-wrap {
-  opacity: 1;
+  /* opacity: 1; */
   font-size: inherit;
   max-height: 999em;
   display: block;
+  -webkit-animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s;
 }
 
 .read-more-state ~ .read-more-trigger:before {
-  content: "Show more";
+  content: "\2B9F";
 }
 
 .read-more-state:checked ~ .read-more-trigger:before {
-  content: "Show less";
+  content: "\2B9D";
 }
 
 .read-more-trigger {
   cursor: pointer;
   display: inline-block;
   padding: 0 0.5em;
-  color: #666;
+  color: white;
   font-size: 0.9em;
   line-height: 2;
-  border: 1px solid #ddd;
-  border-radius: 0.25em;
+  border: 4px solid #ddd;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  margin-top: 6px;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+.read-more-trigger:hover {
+  transform: scale(1.2);
+  background-color: hsla(360, 100%, 100%, 0.35);
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 /* Show more style */
+
+/* checkbox and radio style */
+input[type="checkbox"],
+input[type="radio"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+input[type="checkbox"]:hover + label:before,
+input[type="radio"]:hover + label:before {
+  border-color: #999;
+}
+input[type="checkbox"]:active + label:before,
+input[type="radio"]:active + label:before {
+  transition-duration: 0;
+  filter: brightness(0.2);
+}
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  position: relative;
+  padding-left: 26px;
+  font-weight: normal;
+}
+input[type="checkbox"] + label:before,
+input[type="checkbox"] + label:after,
+input[type="radio"] + label:before,
+input[type="radio"] + label:after {
+  box-sizing: content-box;
+  position: absolute;
+  content: "";
+  display: block;
+  left: 0;
+}
+input[type="checkbox"] + label:before,
+input[type="radio"] + label:before {
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: -10px;
+  border: 2px solid #d9d9d9;
+  text-align: center;
+}
+input[type="checkbox"] + label:after,
+input[type="radio"] + label:after {
+  background-color: #00bad2;
+  top: 50%;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  transform: scale(0);
+  transform-origin: 50%;
+  transition: transform 200ms ease-out;
+}
+
+input[type="radio"]:checked + label:before {
+  -moz-animation: borderscale 300ms ease-in;
+  -webkit-animation: borderscale 300ms ease-in;
+  animation: borderscale 300ms ease-in;
+  background-color: #fff;
+}
+input[type="radio"]:checked + label:after {
+  transform: scale(1);
+}
+input[type="radio"] + label:before,
+input[type="radio"] + label:after {
+  border-radius: 50%;
+}
+
+input[type="checkbox"] + label:after {
+  background-color: transparent;
+  top: 50%;
+  left: 5px;
+  width: 7px;
+  height: 4px;
+  margin-top: -5px;
+  border-style: solid;
+  border-color: #00bad2;
+  border-width: 0 0 3px 3px;
+  -moz-transform: rotate(-45deg) scale(0);
+  -ms-transform: rotate(-45deg) scale(0);
+  -webkit-transform: rotate(-45deg) scale(0);
+  transform: rotate(-45deg) scale(0);
+  -moz-transition: none;
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+}
+input[type="checkbox"]:checked + label:before {
+  -moz-animation: borderscale 200ms ease-in;
+  -webkit-animation: borderscale 200ms ease-in;
+  animation: borderscale 200ms ease-in;
+}
+input[type="checkbox"]:checked + label:after {
+  content: "";
+  -moz-transform: rotate(-45deg) scale(1);
+  -ms-transform: rotate(-45deg) scale(1);
+  -webkit-transform: rotate(-45deg) scale(1);
+  transform: rotate(-45deg) scale(1);
+  -moz-transition: -moz-transform 200ms ease-out;
+  -o-transition: -o-transform 200ms ease-out;
+  -webkit-transition: -webkit-transform 200ms ease-out;
+  transition: transform 200ms ease-out;
+}
+
+@-moz-keyframes borderscale {
+  50% {
+    box-shadow: 0 0 0 2px #999;
+  }
+}
+@-webkit-keyframes borderscale {
+  50% {
+    box-shadow: 0 0 0 2px #999;
+  }
+}
+@keyframes borderscale {
+  50% {
+    box-shadow: 0 0 0 2px #999;
+  }
+}
+/* checkbox and radio style */
 </style>
