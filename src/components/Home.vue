@@ -66,18 +66,15 @@
                           <column>
                             <div class="label-group">
                               <label for="gender">Gender</label>
-                              <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                                <option>Male</option>
-                                <option>Female</option>
-                              </select>
+                              <input class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>      
                             </div>
                           </column>
                         </row>
                         <row>
                           <column>
                               <div class="label-group">
-                                <label for="datetime">Date of Birth</label>
-                                <datetime v-model="datebirth"></datetime>
+                                <label for="datetime">Age</label>
+                                <input  class="form-control form-control-lg" type="text" v-model="age"  style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                               </div>
                           </column>
                         </row>
@@ -87,7 +84,7 @@
                             <column>
                                 <div class="label-group">
                                     <label for="email">Email</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                                 </div>
                             </column>
                         </row>
@@ -421,6 +418,20 @@ export default {
     };
   },
   methods: {
+    calculateAge(){
+      var today = new Date();
+      var dob = this.datebirth.split("-");
+      var year = Number(dob[0]);
+      var month = Number(dob[1])-1;
+      var split_day = dob[2].split("T");
+      var day = Number(split_day[0]);
+      var age = today.getFullYear() - year;
+      if (today.getMonth() < month || (today.getMonth() == month && today.getDate() < day)) {
+        age--;
+      }
+      this.age = age;
+      console.log(age);
+    }, 
     updatePet() {
       db.collection("users")
         .doc(this.email)
@@ -549,14 +560,16 @@ export default {
       .doc(firebase.auth().currentUser.email)
       .get()
       .then(doc => {
+        this.datebirth = doc.data().datebirth,
+        this.calculateAge();
         this.fullname = doc.data().fullname;
         this.lineid = doc.data().line_id;
         this.address = doc.data().address;
-        this.age = doc.data().age;
         this.password = doc.data().password;
         this.telephone = doc.data().telephone_number;
         this.gender = doc.data().gender;
         console.log("Document data:", doc.data());
+        
       });
   }
 };

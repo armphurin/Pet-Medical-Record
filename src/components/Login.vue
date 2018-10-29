@@ -144,11 +144,6 @@ export default {
   },
   methods: {
     login: function(e) {
-            let loader = this.$loading.show({
-                loader: 'dots',
-                color : '#009999',
-                backgroundColor: 'LightGray',
-            });
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
