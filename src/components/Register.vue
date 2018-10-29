@@ -482,10 +482,26 @@ body.body-register {
   }
 }
 
+/*Pixel 2 Landscape*/
+@media only screen and (max-width: 740px) and (max-height: 420px) and (orientation: landscape) {
+  .row{
+    margin-left: 25em;
+  }
+}
 
+/*iPhone 5/SE Landscape*/
+@media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape) {
+  .row{
+    margin-left: 15em;
+  }
+}
 
-
-
+/*Samsung Galaxy S5 Landscape*/
+@media only screen and (min-width: 640px) and (max-height: 360px) and (orientation: landscape) {
+  .row{
+    margin-left: 20em
+  }
+}
 
 
 
