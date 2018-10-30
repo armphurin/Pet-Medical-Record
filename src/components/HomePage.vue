@@ -157,7 +157,7 @@ export default {
   position: absolute;
   right: 0;
   left: 0;
-  bottom: -162%;
+  bottom: -135%;
   z-index: -1;
 }
 
@@ -186,6 +186,13 @@ h6 {
   .view.home-page {
     margin-top: 2em;
   }
+  .svg-container-top{
+    height: 17em;
+  }
+  .svg-container-bottom{
+    bottom: -100em;
+    height: 6em;
+  }
 }
 
 /*Samsung Galaxy S5 Portrait*/
@@ -199,6 +206,12 @@ h6 {
   .intro-section .btn {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+  .svg-container-top{
+    height: 15em;
+  }
+  .svg-container-bottom{
+    bottom: -248%;
   }
 }
 
@@ -217,6 +230,45 @@ h6 {
   }
   .intro-section.row {
     margin-bottom: 50px;
+  }
+  .svg-container-bottom{
+    bottom: -105em;
+  }
+} 
+
+/*iPhone 6/7/8 Portrait*/
+@media only screen and (min-width: 375px) and (max-height: 670px) and (orientation: portrait) {
+  .svg-container-bottom{
+    bottom: -101em;
+  }
+}
+
+/*iPhone 6/7/8 Plus Portrait*/
+@media only screen and (min-width: 414px) and (max-height: 740px) and (orientation: portrait) {
+  .svg-container-bottom{
+    bottom: -98em;
+  }
+}
+
+/*iPhone X Portrait*/
+@media only screen and (min-width: 375px) and (max-width: 400px) and (max-height: 815px) and (orientation: portrait) {
+  .svg-container-bottom{
+    bottom: -101em;
+  }
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 768px) and (max-height: 1025px) and (orientation: portrait) {
+  .svg-container-bottom{
+    bottom: -60em;
+  }
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px) and (max-height: 1400px) and (orientation: portrait) {
+  .svg-container-bottom{
+    bottom: -66em;
+    height: 15em;
   }
 }
 
