@@ -20,10 +20,10 @@
                     </div>
                     <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
                             <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true;">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_cat.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
                             </btn><br>
                             <btn type="button" class="btn btn-pet text-left">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
+                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_dog2.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
                             </btn><br>
                             <btn type="button" class="btn btn-pet text-left ">
                                 <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Pet : 03</h5>
@@ -474,7 +474,7 @@ export default {
 
 <style>
 body.body-home {
-  background: url("../assets/bg_homeowner.png") no-repeat center center fixed;
+  background: url("../assets/bg_after.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
