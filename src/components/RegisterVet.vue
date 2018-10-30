@@ -247,6 +247,9 @@ export default {
                     }
                 );
             e.preventDefault();
+          }
+          if(this.password != this.confpassword){
+              swal("Register Status", "Password is not match", "error");
           } 
           }
           if(count_input_empty){
