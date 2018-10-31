@@ -17,27 +17,27 @@
                             <h3 class="content-label">My Pet List</h3>
                             <btn type="button" class="btn btn-label text-center" @click.native="popupAddPet=true;">Add Pet</btn><br>
                         </div>
-                    </div>
-                    <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                             <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
-                              <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
-                              </btn><br>
+                        </div>
+                        <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
+                            <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
+                                <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                    <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
+                                </btn><br>
                              </div>
-                            
-                            <!-- hide area -->
-                            <input type="checkbox" class="read-more-state read-more" id="pet-hidden" />
-                            <div class="read-more-wrap">
-                              <div class="read-more-target">
-                               <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
-                              <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
-                              </btn><br>
+
+                                <!-- hide area -->
+                                <!-- <input type="checkbox" class="read-more-state read-more" id="pet-hidden" /> -->
+                                <!-- <div class="read-more-wrap">
+                                    <div class="read-more-target">
+                                        <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
+                                            <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
+                                            </btn><br>
                                </div>
-                              </div>
-                            </div>
-                              <label for="pet-hidden" class="read-more-trigger"></label>
-                    </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <label for="pet-hidden" class="read-more-trigger"></label> -->
+                                </div>
             </row>
         </container>
     </md-mask>
@@ -62,22 +62,22 @@
                                 <label for="fullname">Fullname</label>
                                 <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-                        <row>
-                          <column>
-                            <div class="label-group">
-                              <label for="gender">Gender</label>
-                              <input class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>      
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="gender">Gender</label>
+                                            <input class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                          </column>
-                        </row>
-                        <row>
-                          <column>
-                              <div class="label-group">
-                                <label for="datetime">Age</label>
-                                <input  class="form-control form-control-lg" type="text" v-model="age"  style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    </column>
+                                </row>
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="datetime">Age</label>
+                                            <input  class="form-control form-control-lg" type="text" v-model="age"  style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                               </div>
-                          </column>
-                        </row>
+                                    </column>
+                                </row>
                     </column>
                     <column class="col-md-8">
                         <row>
@@ -136,7 +136,7 @@
     <!-- Popup -->
 
     <!-- Popup Pet -->
-    <modal v-if="popupPet" @close="popupPet = false" size="lg">
+    <modal v-if="popupPet" @close="popupPet = false, show_pet.pop()" size="lg">
         <div class="popup-profile">
             <modal-header>
                 <modal-title>My Pet Card</modal-title>
@@ -153,50 +153,50 @@
                         </div>
                             <div class="label-group">
                                 <label for="petname">Pet Name</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="show_pet[0].name" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="show_pet[0].name" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                        <row>
-                          <column>
-                              <div class="label-group">
-                                <label for="petbirth">Date of Birth</label>
-                                <datetime v-model="show_pet[0].dob"></datetime>
-                              </div>
-                          </column>
-                          <column>
-                            <div class="label-group">
-                              <label for="petgender">Gender</label>
-                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="show_pet[0].gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="petbirth">Age</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Age" id="petage" v-model="show_pet[0].age" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        </div>
+                                    </column>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="petgender">Gender</label>
+                                            <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="show_pet[0].gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                                 <option>Male</option>
                                 <option>Female</option>
                               </select>
-                            </div>
-                          </column>
-                        </row>
+                                        </div>
+                                    </column>
+                                </row>
                     </column>
                     <column class="col-md-7">
-                    <row class="text-center">
-                      <column>
-                      <mdb-input type="radio" name="pettype" id="dog" label="Dog"  v-if="show_pet[0].type=='dog'" checked disabled/>
-                      <mdb-input type="radio" name="pettype" id="dog" label="Dog"  v-if="show_pet[0].type=='cat'" disabled />
-                      </column>
-                      <column>
-                      <mdb-input type="radio" name="pettype" id="cat" label="Cat" v-if="show_pet[0].type=='dog'" disabled/>
-                      <mdb-input type="radio" name="pettype" id="cat" label="Cat" v-if="show_pet[0].type=='cat'" checked disabled/>
-                      </column>
-                    </row>
+                        <row class="text-center">
+                            <column>
+                                <mdb-input type="radio" name="pettype" id="dog" label="Dog" v-if="show_pet[0].type=='dog'" checked disabled />
+                                <mdb-input type="radio" name="pettype" id="dog" label="Dog" v-if="show_pet[0].type=='cat'" disabled />
+                            </column>
+                            <column>
+                                <mdb-input type="radio" name="pettype" id="cat" label="Cat" v-if="show_pet[0].type=='dog'" disabled />
+                                <mdb-input type="radio" name="pettype" id="cat" label="Cat" v-if="show_pet[0].type=='cat'" checked disabled />
+                            </column>
+                        </row>
                         <row>
                             <column>
                                 <div class="label-group">
-                                  <label for="breed">Breed</label>
-                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="show_pet[0].breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <label for="breed">Breed</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="show_pet[0].breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
                         <row>
                             <column>
-                              <div class="label-group">
-                                <label for="colour">Colour</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="show_pet[0].color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <div class="label-group">
+                                    <label for="colour">Colour</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="show_pet[0].color" style="width:100%;margin: 0 auto;border-radius: 13px;">
                               </div>
                             </column>
                         </row>
@@ -213,8 +213,8 @@
             </modal-body>
             <modal-footer>
                 <btn color="default" @click.native="popupPet = false,show_pet.pop()">Close</btn>
-                <btn color="danger"  @click.native="updatePet">Delete</btn>
-                <btn color="primary"  @click.native="updatePet">Save changes</btn>
+                <btn color="danger" @click.native="updatePet">Delete</btn>
+                <btn color="primary" @click.native="updatePet">Save changes</btn>
             </modal-footer>
         </div>
     </modal>
@@ -240,46 +240,46 @@
                                 <label for="petname">Pet Name</label>
                                 <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="pet_name" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-                        <row>
-                          <column>
-                              <div class="label-group">
-                                <label for="petbirth">Date of Birth</label>
-                                <datetime v-model="pet_birth"></datetime>
-                              </div>
-                          </column>
-                          <column>
-                            <div class="label-group">
-                              <label for="petgender">Gender</label>
-                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="pet_gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="petbirth">Date of Birth</label>
+                                            <datetime v-model="pet_birth"></datetime>
+                                        </div>
+                                    </column>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="petgender">Gender</label>
+                                            <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="pet_gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 <option>Male</option>
                                 <option>Female</option>
                               </select>
-                            </div>
-                          </column>
-                        </row>
+                                        </div>
+                                    </column>
+                                </row>
                     </column>
                     <column class="col-md-7">
-                    <row class="text-center">
-                      <column>
-                      <mdb-input type="radio" name="pet_type" id="dog" label="Dog" value="dog" @click.native="pet_type='dog'"/>
-                      </column>
-                      <column>
-                      <mdb-input type="radio" name="pet_type" id="cat" label="Cat" value="cat"  @click.native="pet_type='cat'"/>
-                      </column>
-                    </row>
+                        <row class="text-center">
+                            <column>
+                                <mdb-input type="radio" name="pet_type" id="dog" label="Dog" value="dog" @click.native="pet_type='dog'" />
+                            </column>
+                            <column>
+                                <mdb-input type="radio" name="pet_type" id="cat" label="Cat" value="cat" @click.native="pet_type='cat'" />
+                            </column>
+                        </row>
                         <row>
                             <column>
                                 <div class="label-group">
-                                  <label for="breed">Breed</label>
-                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="pet_breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <label for="breed">Breed</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="pet_breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
                         <row>
                             <column>
-                              <div class="label-group">
-                                <label for="colour">Colour</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="color" v-model="pet_color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <div class="label-group">
+                                    <label for="colour">Colour</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Colour" id="color" v-model="pet_color" style="width:100%;margin: 0 auto;border-radius: 13px;">
                               </div>
                             </column>
                         </row>
@@ -308,49 +308,8 @@
 <script>
 import db from "./firebaseInit";
 import firebase from "firebase";
-
+import swal from "sweetalert2";
 import {
-  Container,
-  Row,
-  Column,
-  Navbar,
-  NavbarCollapse,
-  NavbarNav,
-  NavbarItem,
-  mdbInput,
-  ViewWrapper,
-  MdMask,
-  Btn,
-  mdbNavbarBrand,
-  Card,
-  CardImg,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  CardText,
-  CardFooter,
-  CardUp,
-  CardAvatar,
-  CardGroup,
-  Fa,
-  Modal,
-  ModalHeader,
-  ModalTitle,
-  ModalBody,
-  ModalFooter,
-  Pagination,
-  PageNav,
-  PageItem
-} from "mdbvue";
-
-import { Datetime } from "vue-datetime";
-
-export default {
-  beforeCreate: function() {
-    document.body.className = "body-home";
-  },
-  name: "home-vet",
-  components: {
     Container,
     Row,
     Column,
@@ -379,799 +338,958 @@ export default {
     ModalTitle,
     ModalBody,
     ModalFooter,
-    datetime: Datetime,
     Pagination,
     PageNav,
-    PageItem,
-    mdbInput
-  },
-  data() {
-    return {
-      pet_type: "",
-      show_pet: [],
-      pet_name: "",
-      pet_gender: "",
-      pet_breed: "",
-      pet_color: "",
-      pet_birth: "",
-      pet_marking: "",
-      email: "",
-      fullname: "",
-      password: "",
-      confpassword: "",
-      address: "",
-      age: "",
-      gender: "",
-      lineid: "",
-      telephone: "",
-      pets: [],
-      loading: true,
-      popupProfile: false,
-      popupPet: false,
-      progressUpload: 0,
-      file: File,
-      uploadTask: "",
-      image: "",
-      datebirth: "",
-      petbirth: "",
-      popupAddPet: false
-    };
-  },
-  methods: {
-    calculateAge(){
-      var today = new Date();
-      var dob = this.datebirth.split("-");
-      var year = Number(dob[0]);
-      var month = Number(dob[1])-1;
-      var split_day = dob[2].split("T");
-      var day = Number(split_day[0]);
-      var age = today.getFullYear() - year;
-      if (today.getMonth() < month || (today.getMonth() == month && today.getDate() < day)) {
-        age--;
-      }
-      this.age = age;
-      console.log(age);
-    }, 
-    updatePet() {
-      db.collection("users")
-        .doc(this.email)
-        .collection("pets")
-        .doc(this.email + "_" + this.show_pet[0].name)
-        .update({
-          // pet_name: this.show_pet[0].name,
-          breed: this.show_pet[0].breed,
-          gender: this.show_pet[0].gender,
-          marking: this.show_pet[0].marking,
-          dob: this.show_pet[0].dob,
-          color: this.show_pet[0].color
-        })
-        .then(user => {
-          alert(`Pet Updated for ${this.show_pet[0].name}`);
-          this.popupPet = false;
-          this.show_pet.pop();
-          this.$router.go(this.$route.path);
-        });
-    },
-    add_pet() {
-      if(!this.pet_name){}
-      // db.collection("users")
-      //   .doc(this.email)
-      //   .collection("pets")
-      //   .doc(this.email + "_" + this.pet_name)
-      //   .set({
-      //     pet_id: this.email + "_" + this.pet_name,
-      //     pet_name: this.pet_name,
-      //     breed: this.pet_breed,
-      //     gender: this.pet_gender,
-      //     marking: this.pet_marking,
-      //     dob: this.pet_birth,
-      //     color: this.pet_color,
-      //     pet_type: this.pet_type
-      //   })
-      //   .then(doc => {
-      //     console.log(this.fullname + " Add " + this.pet_name);
-      //     alert(`Account Add ${this.pet_name}`);
-      //     this.popupAddPet = false;
-      //     this.$router.go(this.$route.path);
-      //   });
-    },
-    updateProfile() {
-      db.collection("users")
-        .doc(this.email)
-        .update({
-          password: this.password,
-          fullname: this.fullname,
-          age: this.age,
-          line_id: this.lineid,
-          telephone_number: this.telephone,
-          address: this.address
-        })
-        .then(user => {
-          alert(`Account Updated for ${this.email}`);
-          this.popupProfile = false;
-        });
-    },
-    detectFiles(fileList) {
-      Array.from(Array(fileList.length).keys()).map(x => {
-        this.upload(fileList[x]);
-      });
-    },
-    upload(file) {
-      this.uploadTask = storage.ref("medic/imagenes").put(file);
-    },
-    onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0]);
-      this.detectFiles(files);
-    },
-    createImage(file) {
-      var image = new Image();
-      var reader = new FileReader();
-      var vm = this;
+    PageItem
+} from "mdbvue";
 
-      reader.onload = e => {
-        vm.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-    readURLPro: function(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
+import {
+    Datetime
+} from "vue-datetime";
 
-        (reader.onload = function(e) {
-          $("#wizardPicturePreviewPro")
-            .attr("src", e.target.result)
-            .fadeIn("slow");
-        }),
-          reader.readAsDataURL(input.files[0]);
-        this.detectFiles(input.files);
-      }
+export default {
+    beforeCreate: function () {
+        document.body.className = "body-home";
+    },
+    name: "home-vet",
+    components: {
+        Container,
+        Row,
+        Column,
+        Navbar,
+        NavbarCollapse,
+        NavbarNav,
+        NavbarItem,
+        mdbInput,
+        ViewWrapper,
+        MdMask,
+        Btn,
+        mdbNavbarBrand,
+        Card,
+        CardImg,
+        CardHeader,
+        CardBody,
+        CardTitle,
+        CardText,
+        CardFooter,
+        CardUp,
+        CardAvatar,
+        CardGroup,
+        Fa,
+        Modal,
+        ModalHeader,
+        ModalTitle,
+        ModalBody,
+        ModalFooter,
+        datetime: Datetime,
+        Pagination,
+        PageNav,
+        PageItem,
+        mdbInput
+    },
+    data() {
+        return {
+            pet_type: "",
+            show_pet: [],
+            pet_name: "",
+            pet_gender: "",
+            pet_breed: "",
+            pet_color: "",
+            pet_birth: "",
+            pet_marking: "",
+            email: "",
+            fullname: "",
+            password: "",
+            confpassword: "",
+            address: "",
+            age: "",
+            gender: "",
+            lineid: "",
+            telephone: "",
+            pets: [],
+            loading: true,
+            popupProfile: false,
+            popupPet: false,
+            progressUpload: 0,
+            file: File,
+            uploadTask: "",
+            image: "",
+            datebirth: "",
+            petbirth: "",
+            popupAddPet: false
+        };
+    },
+    methods: {
+        calAgePet(e){
+          if(!e){
+             return 0;
+          }
+          else{
+            var today = new Date();
+            var dob = e.split("-");
+            var year = Number(dob[0]);
+            var month = Number(dob[1]) - 1;
+            var split_day = dob[2].split("T");
+            var day = Number(today.getDate()) - Number(split_day[0]);
+            var yearsOld = Number(today.getFullYear()) - year;
+            var monthsOld = today.getMonth() - month;
+            console.log("Age : "+yearsOld+" years "+monthsOld+" months "+ day + " days ")
+            if(yearsOld == 0 && monthsOld == 0){
+              return (day+ " Days")
+            }
+            else if(monthsOld == 0 && day == 0){
+              return (yearsOld+" Years")
+            }
+            else if (yearsOld == 0 && day == 0){
+              return (monthsOld+" Months")
+            }
+            else{
+              return (yearsOld+" Years "+monthsOld+" Months")
+            }
+          }
+        },
+        calculateAge() {
+            var today = new Date();
+            var dob = this.datebirth.split("-");
+            var year = Number(dob[0]);
+            var month = Number(dob[1]) - 1;
+            var split_day = dob[2].split("T");
+            var day = Number(split_day[0]);
+            var age = today.getFullYear() - year;
+            if (today.getMonth() < month || (today.getMonth() == month && today.getDate() < day)) {
+                age--;
+            }
+            this.age = age;
+            console.log(age);
+        },
+        updatePet() {
+            db.collection("users")
+                .doc(this.email)
+                .collection("pets")
+                .doc(this.email + "_" + this.show_pet[0].name)
+                .update({
+                    // pet_name: this.show_pet[0].name,
+                    breed: this.show_pet[0].breed,
+                    gender: this.show_pet[0].gender,
+                    marking: this.show_pet[0].marking,
+                    dob: this.show_pet[0].dob,
+                    color: this.show_pet[0].color
+                })
+                .then(user => {
+                    alert(`Pet Updated for ${this.show_pet[0].name}`);
+                    this.popupPet = false;
+                    this.show_pet.pop();
+                    this.$router.go(this.$route.path);
+                });
+        },
+        add_pet() {
+            const toast = swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1000
+            });
+            var count_input_empty = "";
+            if (!this.pet_name) {
+                count_input_empty = count_input_empty.concat("pet_name, ")
+            }
+            if (!this.pet_type) {
+                count_input_empty = count_input_empty.concat("pet_type, ")
+            }
+            if (!this.pet_breed) {
+                count_input_empty = count_input_empty.concat("pet_breed, ")
+            }
+            if (!this.pet_birth) {
+                count_input_empty = count_input_empty.concat("pet_birth, ")
+            }
+            if (!this.pet_gender) {
+                count_input_empty = count_input_empty.concat("pet_gender, ")
+            }
+            if (!this.pet_color) {
+                count_input_empty = count_input_empty.concat("pet_color, ")
+            }
+            if (!this.pet_marking) {
+                count_input_empty = count_input_empty.concat("pet_marking, ")
+            }
+            if (!count_input_empty) {
+                db.collection("users")
+                    .doc(this.email)
+                    .collection("pets")
+                    .doc(this.email + "_" + this.pet_name)
+                    .set({
+                        pet_id: this.email + "_" + this.pet_name,
+                        pet_name: this.pet_name,
+                        breed: this.pet_breed,
+                        gender: this.pet_gender,
+                        marking: this.pet_marking,
+                        dob: this.pet_birth,
+                        color: this.pet_color,
+                        pet_type: this.pet_type
+                    })
+                    .then(doc => {
+                        toast({
+                            type: 'success',
+                            title: 'Add pet successfully'
+                        }).then(result =>{
+                          this.popupAddPet = false;
+                          this.$router.go(this.$route.path);
+                        })
+                    });
+            }
+            if (count_input_empty) {
+              console.log(count_input_empty)
+                toast({
+                    type: 'error',
+                    title: 'Plaese Fill out empty field'
+                })
+            }
+        },
+        updateProfile() {
+            db.collection("users")
+                .doc(this.email)
+                .update({
+                    password: this.password,
+                    fullname: this.fullname,
+                    age: this.age,
+                    line_id: this.lineid,
+                    telephone_number: this.telephone,
+                    address: this.address
+                })
+                .then(user => {
+                    alert(`Account Updated for ${this.email}`);
+                    this.popupProfile = false;
+                });
+        },
+        detectFiles(fileList) {
+            Array.from(Array(fileList.length).keys()).map(x => {
+                this.upload(fileList[x]);
+            });
+        },
+        upload(file) {
+            this.uploadTask = storage.ref("medic/imagenes").put(file);
+        },
+        onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length) return;
+            this.createImage(files[0]);
+            this.detectFiles(files);
+        },
+        createImage(file) {
+            var image = new Image();
+            var reader = new FileReader();
+            var vm = this;
+
+            reader.onload = e => {
+                vm.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        readURLPro: function (input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                (reader.onload = function (e) {
+                    $("#wizardPicturePreviewPro")
+                        .attr("src", e.target.result)
+                        .fadeIn("slow");
+                }),
+                reader.readAsDataURL(input.files[0]);
+                this.detectFiles(input.files);
+            }
+        }
+    },
+    created() {
+        db.collection("users")
+            .doc(firebase.auth().currentUser.email)
+            .collection("pets")
+            .orderBy("pet_id")
+            .get()
+            .then(querySnapshot => {
+                this.loading = false;
+                querySnapshot.forEach(doc => {
+                    const data = {
+                        id: doc.id,
+                        pet_id: doc.data().pet_id,
+                        name: doc.data().pet_name,
+                        breed: doc.data().breed,
+                        color: doc.data().color,
+                        // dob: doc.data().dob,
+                        gender: doc.data().gender,
+                        marking: doc.data().marking,
+                        type: doc.data().pet_type,
+                        age : this.calAgePet(doc.data().dob)
+                    };
+                    console.log(doc.data());
+                    this.pets.push(data);
+                    
+                });
+                this.email = firebase.auth().currentUser.email;
+                console.log(this.email);
+                console.log(this.pets[0].age)
+            });
+    },
+    mounted() {
+        db.collection("users")
+            .doc(firebase.auth().currentUser.email)
+            .get()
+            .then(doc => {
+                this.datebirth = doc.data().datebirth,
+                    this.calculateAge();
+                this.fullname = doc.data().fullname;
+                this.lineid = doc.data().line_id;
+                this.address = doc.data().address;
+                this.password = doc.data().password;
+                this.telephone = doc.data().telephone_number;
+                this.gender = doc.data().gender;
+                console.log("Document data:", doc.data());
+
+            });
     }
-  },
-  created() {
-    db.collection("users")
-      .doc(firebase.auth().currentUser.email)
-      .collection("pets")
-      .orderBy("pet_id")
-      .get()
-      .then(querySnapshot => {
-        this.loading = false;
-        querySnapshot.forEach(doc => {
-          const data = {
-            id: doc.id,
-            pet_id: doc.data().pet_id,
-            name: doc.data().pet_name,
-            breed: doc.data().breed,
-            color: doc.data().color,
-            dob: doc.data().dob,
-            gender: doc.data().gender,
-            marking: doc.data().marking,
-            type: doc.data().pet_type
-          };
-          console.log(doc.data());
-          this.pets.push(data);
-        });
-        this.email = firebase.auth().currentUser.email;
-        console.log(this.email);
-        console.log("Hello Vet")
-      });
-  },
-   mounted() {
-    db.collection("users")
-      .doc(firebase.auth().currentUser.email)
-      .get()
-      .then(doc => {
-        this.datebirth = doc.data().datebirth,
-        this.calculateAge();
-        this.fullname = doc.data().fullname;
-        this.lineid = doc.data().line_id;
-        this.address = doc.data().address;
-        this.password = doc.data().password;
-        this.telephone = doc.data().telephone_number;
-        this.gender = doc.data().gender;
-        console.log("Document data:", doc.data());
-        
-      });
-  }
 };
 </script>
 
 <style>
 body.body-home {
-  background: url("../assets/bg_after.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    background: url("../assets/bg_after.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 h6 {
-  line-height: 1.7;
+    line-height: 1.7;
 }
+
 .home-owner {
-  margin-top: 3.5em;
+    margin-top: 3.5em;
 }
+
 .btn-label {
-  background-color: #e8c547 !important;
-  font-weight: 400;
-  transition: transform 0.3s;
-  padding-top: 0.5%;
-  padding-bottom: 0.5%;
-  padding-left: 1%;
-  padding-right: 1%;
-  border-radius: 20%;
-  position: relative;
-  left: 17%;
-  color: black;
+    background-color: #e8c547 !important;
+    font-weight: 400;
+    transition: transform 0.3s;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 20%;
+    position: relative;
+    left: 17%;
+    color: black;
 }
 
 .content-label {
-  font-weight: 400;
-  position: absolute;
-  left: 30%;
-  top: 27%;
-  font-size: 100%;
+    font-weight: 400;
+    position: absolute;
+    left: 30%;
+    top: 27%;
+    font-size: 100%;
 }
 
 .btn-profile {
-  background-color: #30323d !important;
-  width: 42%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 1%;
-  padding-right: 5%;
-  font-weight: 900;
-  transition: transform 0.3s;
-  border-radius: 20px;
+    background-color: #30323d !important;
+    width: 42%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 5%;
+    font-weight: 900;
+    transition: transform 0.3s;
+    border-radius: 20px;
 }
 
 .btn-pet {
-  background-color: #e8c547 !important;
-  width: 42%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 1%;
-  padding-right: 5%;
-  font-weight: 900;
-  transition: transform 0.3s;
-  border-radius: 15px;
+    background-color: #e8c547 !important;
+    width: 42%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 5%;
+    font-weight: 900;
+    transition: transform 0.3s;
+    border-radius: 15px;
 }
 
 .btn-pet:hover {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .btn-profile:hover {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 /* upload pic style */
 #picPro {
-  width: 30%;
+    width: 30%;
 }
 
 /*Profile Pic Start*/
 .picture-container1 {
-  position: relative;
-  height: 250px;
-  width: 250px;
-  cursor: pointer;
-  text-align: center;
+    position: relative;
+    height: 250px;
+    width: 250px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .picture-container2 {
-  position: relative;
-  height: 380px;
-  width: 940px;
-  cursor: pointer;
-  text-align: center;
+    position: relative;
+    height: 380px;
+    width: 940px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .picturePro {
-  width: 250px;
-  height: 250px;
-  background-color: #999999;
-  border: 4px solid #cccccc;
-  color: #ffffff;
-  border-radius: 50%;
-  /*margin: 0px auto;*/
-  overflow: hidden;
-  transition: all 0.2s;
-  -webkit-transition: all 0.2s;
+    width: 250px;
+    height: 250px;
+    background-color: #999999;
+    border: 4px solid #cccccc;
+    color: #ffffff;
+    border-radius: 50%;
+    /*margin: 0px auto;*/
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
 }
 
 .picturePro:hover {
-  border-color: #2ca8ff;
+    border-color: #2ca8ff;
 }
 
 .content.ct-wizard-green .picture:hover {
-  border-color: #05ae0e;
+    border-color: #05ae0e;
 }
 
 .content.ct-wizard-blue .picture:hover {
-  border-color: #3472f7;
+    border-color: #3472f7;
 }
 
 .content.ct-wizard-orange .picture:hover {
-  border-color: #ff9500;
+    border-color: #ff9500;
 }
 
 .content.ct-wizard-red .picture:hover {
-  border-color: #ff3b30;
+    border-color: #ff3b30;
 }
 
 .picturePro input[type="file"] {
-  cursor: pointer;
-  display: block;
-  height: 250px;
-  left: 0;
-  opacity: 0 !important;
-  position: absolute;
-  top: 0;
-  width: 250px;
+    cursor: pointer;
+    display: block;
+    height: 250px;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 250px;
 }
 
 .picture-src {
-  width: 10em;
-  height: 10em;
+    width: 10em;
+    height: 10em;
 }
 
 /*Profile Pic End*/
 .image-upload {
-  text-align: center;
+    text-align: center;
 }
 
-.image-upload > input {
-  display: none;
+.image-upload>input {
+    display: none;
 }
 
 .image-upload img {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 /* upload pic style */
 @media only screen and (max-width: 360px) {
-  .view.home-owner {
-    margin-top: 1.5em;
-  }
+    .view.home-owner {
+        margin-top: 1.5em;
+    }
 
-  .intro-section .btn {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+    .intro-section .btn {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 }
 
 @media only screen and (min-width: 370px) and (max-width: 600px) {
-  .view.home-owner {
-    margin-top: 2em;
-  }
+    .view.home-owner {
+        margin-top: 2em;
+    }
 }
 
 /* Popup Style */
 .popup-profile {
-  border-radius: 100px;
+    border-radius: 100px;
 }
 
 /* Popup Style */
 
 .vdatetime-input {
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 13px;
-  border: 1px solid #ced4da;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  text-rendering: auto;
-  color: initial;
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: start;
-  margin: 0em;
-  font: 400 13.3333px Arial;
-  -webkit-writing-mode: horizontal-tb !important;
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
-  line-height: 1.5;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 13px;
+    border: 1px solid #ced4da;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    -webkit-writing-mode: horizontal-tb !important;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
 }
 
 .label-group {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 label {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 input::placeholder {
-  color: grey !important;
-  font-size: 80%;
+    color: grey !important;
+    font-size: 80%;
 }
 
 /*Edit md width for each platform, .col flex basis removed.*/
 
 /*Common Mobile Portrait*/
 @media only screen and (min-width: 370px) and (max-width: 600px) {
-  .home-owner {
-    margin-top: 10em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 11em;
-  }
-  .intro-section .btn {
-    width: 100%;
-  }
-  .intro-section .btn.btn-label {
-    left: 32%;
-    width: 9em;
-    border-radius: 15px;
-    height: 3em;
-  }
-  h3.content-label {
-    left: 10%;
-  }
-  .col-md-8 {
-    flex-basis: unset;
-  }
+    .home-owner {
+        margin-top: 10em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 11em;
+    }
+
+    .intro-section .btn {
+        width: 100%;
+    }
+
+    .intro-section .btn.btn-label {
+        left: 32%;
+        width: 9em;
+        border-radius: 15px;
+        height: 3em;
+    }
+
+    h3.content-label {
+        left: 10%;
+    }
+
+    .col-md-8 {
+        flex-basis: unset;
+    }
 }
 
 /*Samsung Galaxy S5 and iPhone 5 Portrait*/
 @media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
-  .home-owner {
-    margin-top: 10em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 11em;
-  }
-  .intro-section .btn {
-    width: 100%;
-  }
-  .intro-section .btn.btn-label {
-    left: 32%;
-    width: 9em;
-    border-radius: 15px;
-    height: 3em;
-  }
-  h3.content-label {
-    left: 10%;
-  }
-  .col-md-8 {
-    flex-basis: unset;
-  }
+    .home-owner {
+        margin-top: 10em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 11em;
+    }
+
+    .intro-section .btn {
+        width: 100%;
+    }
+
+    .intro-section .btn.btn-label {
+        left: 32%;
+        width: 9em;
+        border-radius: 15px;
+        height: 3em;
+    }
+
+    h3.content-label {
+        left: 10%;
+    }
+
+    .col-md-8 {
+        flex-basis: unset;
+    }
 }
 
 /*iPhone 5/SE Portrait Button Fix*/
 @media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait) {
-  .btn.btn-primary {
-    padding-bottom: 2px;
-    padding-top: 7px;
-  }
-  .btn.btn-secondary {
-    width: 50%;
-  }
+    .btn.btn-primary {
+        padding-bottom: 2px;
+        padding-top: 7px;
+    }
+
+    .btn.btn-secondary {
+        width: 50%;
+    }
 }
 
 /*iPad Portrait*/
 @media only screen and (min-width: 760px) and (orientation: portrait) {
-  .intro-section .btn {
-    width: 70%;
-  }
-  .intro-section .btn.btn-label {
-    left: 26%;
-    width: 9em;
-    border-radius: 15px;
-    height: 5em;
-  }
-  h3.content-label {
-    left: 17%;
-  }
-  .col-md-8 {
-    left: 4%;
-  }
-  .col {
-    flex-basis: unset;
-  }
+    .intro-section .btn {
+        width: 70%;
+    }
+
+    .intro-section .btn.btn-label {
+        left: 26%;
+        width: 9em;
+        border-radius: 15px;
+        height: 5em;
+    }
+
+    h3.content-label {
+        left: 17%;
+    }
+
+    .col-md-8 {
+        left: 4%;
+    }
+
+    .col {
+        flex-basis: unset;
+    }
 }
 
 /*iPad Pro Portrait*/
 @media only screen and (min-width: 1000px) and (orientation: portrait) {
-  .intro-section .btn.btn-label {
-    left: 28%;
-  }
+    .intro-section .btn.btn-label {
+        left: 28%;
+    }
 }
 
 /*Common Mobile Landscape*/
 @media only screen and (max-width: 830px) and (orientation: landscape) {
-  .home-owner {
-    height: 30em;
-  }
-  .intro-section .btn {
-    width: 50%;
-  }
-  .intro-section .btn.btn-label {
-    width: 6em;
-    height: 3em;
-    border-radius: 15px;
-  }
-  h3.content-label {
-    left: 27%;
-  }
-  .col-md-8 {
-    flex-basis: unset;
-  }
+    .home-owner {
+        height: 30em;
+    }
+
+    .intro-section .btn {
+        width: 50%;
+    }
+
+    .intro-section .btn.btn-label {
+        width: 6em;
+        height: 3em;
+        border-radius: 15px;
+    }
+
+    h3.content-label {
+        left: 27%;
+    }
+
+    .col-md-8 {
+        flex-basis: unset;
+    }
 }
 
 /*Samsung Galaxy S5 and iPhone 5/SE Landscape*/
 @media only screen and (max-width: 640px) and (max-height: 360px) and (orientation: landscape) {
-  .home-owner {
-    height: 35em;
-  }
-  .intro-section .btn {
-    width: 70%;
-  }
-  .intro-section .btn.btn-label {
-    left: 26%;
-    width: 6em;
-    border-radius: 10px;
-    height: 3em;
-  }
-  h3.content-label {
-    left: 17%;
-  }
-  .col-md-8 {
-    flex-basis: unset;
-  }
+    .home-owner {
+        height: 35em;
+    }
+
+    .intro-section .btn {
+        width: 70%;
+    }
+
+    .intro-section .btn.btn-label {
+        left: 26%;
+        width: 6em;
+        border-radius: 10px;
+        height: 3em;
+    }
+
+    h3.content-label {
+        left: 17%;
+    }
+
+    .col-md-8 {
+        flex-basis: unset;
+    }
 }
 
 /*Pixel 2XL and iPhone X Landscape*/
 @media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
-  .home-owner {
-    height: 30em;
-  }
-  .intro-section .btn.btn-label {
-    left: 19%;
-    border-radius: 10px;
-  }
-  h3.content-label {
-    left: 26%;
-  }
-  .col {
-    flex-basis: unset;
-  }
-  .col-md-8 {
-    left: 4%;
-  }
+    .home-owner {
+        height: 30em;
+    }
+
+    .intro-section .btn.btn-label {
+        left: 19%;
+        border-radius: 10px;
+    }
+
+    h3.content-label {
+        left: 26%;
+    }
+
+    .col {
+        flex-basis: unset;
+    }
+
+    .col-md-8 {
+        left: 4%;
+    }
 }
 
 /* Show more style */
 .read-more-state {
-  display: none;
+    display: none;
 }
 
 .read-more-target {
-  /* opacity: 0; */
-  max-height: 0;
-  font-size: 0;
-  display: none;
-  -webkit-animation: fadeOut 1s;
-  animation: fadeOut 1s;
+    /* opacity: 0; */
+    max-height: 0;
+    font-size: 0;
+    display: none;
+    -webkit-animation: fadeOut 1s;
+    animation: fadeOut 1s;
 }
 
 .read-more-wrap {
-  display: none;
+    display: none;
 }
 
-.read-more-state:checked ~ .read-more-wrap .read-more-target {
-  /* opacity: 1; */
-  font-size: inherit;
-  max-height: 999em;
-  display: block;
-  -webkit-animation: fadeIn 0.5s;
-  animation: fadeIn 0.5s;
+.read-more-state:checked~.read-more-wrap .read-more-target {
+    /* opacity: 1; */
+    font-size: inherit;
+    max-height: 999em;
+    display: block;
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
 }
 
-.read-more-state:checked ~ .read-more-wrap {
-  /* opacity: 1; */
-  font-size: inherit;
-  max-height: 999em;
-  display: block;
-  -webkit-animation: fadeIn 0.5s;
-  animation: fadeIn 0.5s;
+.read-more-state:checked~.read-more-wrap {
+    /* opacity: 1; */
+    font-size: inherit;
+    max-height: 999em;
+    display: block;
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
 }
 
-.read-more-state ~ .read-more-trigger:before {
-  content: "\2B9F";
+.read-more-state~.read-more-trigger:before {
+    content: "\2B9F";
 }
 
-.read-more-state:checked ~ .read-more-trigger:before {
-  content: "\2B9D";
+.read-more-state:checked~.read-more-trigger:before {
+    content: "\2B9D";
 }
 
 .read-more-trigger {
-  cursor: pointer;
-  display: inline-block;
-  padding: 0 0.5em;
-  color: white;
-  font-size: 0.9em;
-  line-height: 2;
-  border: 4px solid #ddd;
-  border-radius: 50%;
-  transition: transform 0.2s;
-  margin-top: 6px;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 0.5em;
+    color: white;
+    font-size: 0.9em;
+    line-height: 2;
+    border: 4px solid #ddd;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    margin-top: 6px;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
 }
 
 .read-more-trigger:hover {
-  transform: scale(1.2);
-  background-color: hsla(360, 100%, 100%, 0.35);
+    transform: scale(1.2);
+    background-color: hsla(360, 100%, 100%, 0.35);
 }
 
 @-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
+
 @keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
+
 /* Show more style */
 
 /* checkbox and radio style */
 input[type="checkbox"],
 input[type="radio"] {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-input[type="checkbox"]:hover + label:before,
-input[type="radio"]:hover + label:before {
-  border-color: #999;
-}
-input[type="checkbox"]:active + label:before,
-input[type="radio"]:active + label:before {
-  transition-duration: 0;
-  filter: brightness(0.2);
-}
-input[type="checkbox"] + label,
-input[type="radio"] + label {
-  position: relative;
-  padding-left: 26px;
-  font-weight: normal;
-}
-input[type="checkbox"] + label:before,
-input[type="checkbox"] + label:after,
-input[type="radio"] + label:before,
-input[type="radio"] + label:after {
-  box-sizing: content-box;
-  position: absolute;
-  content: "";
-  display: block;
-  left: 0;
-}
-input[type="checkbox"] + label:before,
-input[type="radio"] + label:before {
-  top: 50%;
-  width: 16px;
-  height: 16px;
-  margin-top: -10px;
-  border: 2px solid #d9d9d9;
-  text-align: center;
-}
-input[type="checkbox"] + label:after,
-input[type="radio"] + label:after {
-  background-color: #00bad2;
-  top: 50%;
-  left: 6px;
-  width: 8px;
-  height: 8px;
-  margin-top: -4px;
-  transform: scale(0);
-  transform-origin: 50%;
-  transition: transform 200ms ease-out;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
 
-input[type="radio"]:checked + label:before {
-  -moz-animation: borderscale 300ms ease-in;
-  -webkit-animation: borderscale 300ms ease-in;
-  animation: borderscale 300ms ease-in;
-  background-color: #fff;
-}
-input[type="radio"]:checked + label:after {
-  transform: scale(1);
-}
-input[type="radio"] + label:before,
-input[type="radio"] + label:after {
-  border-radius: 50%;
+input[type="checkbox"]:hover+label:before,
+input[type="radio"]:hover+label:before {
+    border-color: #999;
 }
 
-input[type="checkbox"] + label:after {
-  background-color: transparent;
-  top: 50%;
-  left: 5px;
-  width: 7px;
-  height: 4px;
-  margin-top: -5px;
-  border-style: solid;
-  border-color: #00bad2;
-  border-width: 0 0 3px 3px;
-  -moz-transform: rotate(-45deg) scale(0);
-  -ms-transform: rotate(-45deg) scale(0);
-  -webkit-transform: rotate(-45deg) scale(0);
-  transform: rotate(-45deg) scale(0);
-  -moz-transition: none;
-  -o-transition: none;
-  -webkit-transition: none;
-  transition: none;
+input[type="checkbox"]:active+label:before,
+input[type="radio"]:active+label:before {
+    transition-duration: 0;
+    filter: brightness(0.2);
 }
-input[type="checkbox"]:checked + label:before {
-  -moz-animation: borderscale 200ms ease-in;
-  -webkit-animation: borderscale 200ms ease-in;
-  animation: borderscale 200ms ease-in;
+
+input[type="checkbox"]+label,
+input[type="radio"]+label {
+    position: relative;
+    padding-left: 26px;
+    font-weight: normal;
 }
-input[type="checkbox"]:checked + label:after {
-  content: "";
-  -moz-transform: rotate(-45deg) scale(1);
-  -ms-transform: rotate(-45deg) scale(1);
-  -webkit-transform: rotate(-45deg) scale(1);
-  transform: rotate(-45deg) scale(1);
-  -moz-transition: -moz-transform 200ms ease-out;
-  -o-transition: -o-transform 200ms ease-out;
-  -webkit-transition: -webkit-transform 200ms ease-out;
-  transition: transform 200ms ease-out;
+
+input[type="checkbox"]+label:before,
+input[type="checkbox"]+label:after,
+input[type="radio"]+label:before,
+input[type="radio"]+label:after {
+    box-sizing: content-box;
+    position: absolute;
+    content: "";
+    display: block;
+    left: 0;
+}
+
+input[type="checkbox"]+label:before,
+input[type="radio"]+label:before {
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -10px;
+    border: 2px solid #d9d9d9;
+    text-align: center;
+}
+
+input[type="checkbox"]+label:after,
+input[type="radio"]+label:after {
+    background-color: #00bad2;
+    top: 50%;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    transform: scale(0);
+    transform-origin: 50%;
+    transition: transform 200ms ease-out;
+}
+
+input[type="radio"]:checked+label:before {
+    -moz-animation: borderscale 300ms ease-in;
+    -webkit-animation: borderscale 300ms ease-in;
+    animation: borderscale 300ms ease-in;
+    background-color: #fff;
+}
+
+input[type="radio"]:checked+label:after {
+    transform: scale(1);
+}
+
+input[type="radio"]+label:before,
+input[type="radio"]+label:after {
+    border-radius: 50%;
+}
+
+input[type="checkbox"]+label:after {
+    background-color: transparent;
+    top: 50%;
+    left: 5px;
+    width: 7px;
+    height: 4px;
+    margin-top: -5px;
+    border-style: solid;
+    border-color: #00bad2;
+    border-width: 0 0 3px 3px;
+    -moz-transform: rotate(-45deg) scale(0);
+    -ms-transform: rotate(-45deg) scale(0);
+    -webkit-transform: rotate(-45deg) scale(0);
+    transform: rotate(-45deg) scale(0);
+    -moz-transition: none;
+    -o-transition: none;
+    -webkit-transition: none;
+    transition: none;
+}
+
+input[type="checkbox"]:checked+label:before {
+    -moz-animation: borderscale 200ms ease-in;
+    -webkit-animation: borderscale 200ms ease-in;
+    animation: borderscale 200ms ease-in;
+}
+
+input[type="checkbox"]:checked+label:after {
+    content: "";
+    -moz-transform: rotate(-45deg) scale(1);
+    -ms-transform: rotate(-45deg) scale(1);
+    -webkit-transform: rotate(-45deg) scale(1);
+    transform: rotate(-45deg) scale(1);
+    -moz-transition: -moz-transform 200ms ease-out;
+    -o-transition: -o-transform 200ms ease-out;
+    -webkit-transition: -webkit-transform 200ms ease-out;
+    transition: transform 200ms ease-out;
 }
 
 @-moz-keyframes borderscale {
-  50% {
-    box-shadow: 0 0 0 2px #999;
-  }
+    50% {
+        box-shadow: 0 0 0 2px #999;
+    }
 }
+
 @-webkit-keyframes borderscale {
-  50% {
-    box-shadow: 0 0 0 2px #999;
-  }
+    50% {
+        box-shadow: 0 0 0 2px #999;
+    }
 }
+
 @keyframes borderscale {
-  50% {
-    box-shadow: 0 0 0 2px #999;
-  }
+    50% {
+        box-shadow: 0 0 0 2px #999;
+    }
 }
+
 /* checkbox and radio style */
 </style>
