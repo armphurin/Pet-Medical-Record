@@ -27,15 +27,15 @@ Vue.use(Router, axios, VueAxios, Datetime, VueSweetalert2);
 
 let router = new Router({
   routes: [
-    {
-      path: "/",
-      name: "home-owner",
-      component: HomeOwner,
-      meta: {
-        requiresAuth: true,
-        requiresOwner: true
-      }
-    },
+    // {
+    //   path: "/",
+    //   name: "home-owner",
+    //   component: HomeOwner,
+    //   meta: {
+    //     requiresAuth: true,
+    //     requiresOwner: true
+    //   }
+    // },
     {
       path: "/",
       name: "home-vet",
