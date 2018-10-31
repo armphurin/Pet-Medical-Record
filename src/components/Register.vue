@@ -1,68 +1,15 @@
 <template>
-  <!-- <div>
-    <div class="container">
-    <div class="row">
-      <div class="col s12 m8 offset-m2">
-        <div class="login card-panel grey lighten-4 black-text center">
-          <h3>Register</h3>
-          <form action="index.html">
-            <div class="input-field">
-              <i class="material-icons prefix">email</i>
-              <input type="email" id="email" v-model="email">
-              <label for="email">Email Address</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">lock</i>
-              <input type="password" id="password" v-model="password">
-              <label for="password">Password</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">person</i>
-              <input type="text" id="fullname" v-model="fullname">
-              <label for="text">Fullname</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">face</i>
-              <input type="text" id="age" v-model="age">
-              <label for="text">Age</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">wc</i>
-              <input type="text" id="gender" v-model="gender">
-              <label for="text">Gender</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">phone</i>
-              <input type="text" id="phone" v-model="phone">
-              <label for="text">Telephone</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">chat</i>
-              <input type="text" id="line" v-model="line">
-              <label for="text">Line ID</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">address</i>
-              <input type="text" id="address" v-model="address">
-              <label for="text">Address</label>
-            </div>
-            <button v-on:click="register" class="btn btn-large btn-extended grey lighten-4 black-text">Register</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div> -->
 
   <div class="wrapper">
 <form action="index.html" class="regis_content">
-              <card>
+              <card class="register">
               <card-body class="text-center">
                 <div class="bg-card">
-  <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis" style="margin:0 auto;margin-bottom:2%;">
+  <!-- <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis" style="margin:0 auto;margin-bottom:2%;"> -->
                 <row>
-                  <column>
-                  <a>
+                  <column class="col-md-2"></column>
+                  <column class="col-md-4">
+                  <a class="link-right">
                     <router-link to="/register_owner">
                   <img src="../assets/owner.svg" class="img-fluid circle-in" alt="owner" style="width:36%; height:36%;top:-5.5%;">
                   <img src="../assets/circle.svg" class="img-fluid circle-button" alt="register">
@@ -71,8 +18,8 @@
                     </router-link>
                   </a>
                   </column>
-                  <column>
-                  <a>
+                  <column class="col-md-4">
+                  <a class="link-left">
                     <router-link to="/register_vet">
                   <img src="../assets/vet.svg" class="img-fluid circle-in" alt="vet">
                   <img src="../assets/circle.svg" class="img-fluid circle-button" alt="register">
@@ -81,6 +28,7 @@
                     </router-link>
                   </a>
                   </column>
+                  <column class="col-md-2"></column>
                 </row>
                 </div>
               </card-body>
@@ -128,14 +76,16 @@ import {
   MdMask,
   ViewWrapper
 } from "mdbvue";
-import db from "./firebaseInit";
 
 export default {
+  beforeCreate: function() {
+    document.body.className = "body-register";
+  },
   name: "register",
   data: function() {
     return {
-      email: null,
-      password: null
+      email: "",
+      password: ""
     };
   },
   components: {
@@ -150,21 +100,86 @@ export default {
     MdMask,
     ViewWrapper
   },
-  methods: {}
+  methods: {
+    register: function(e) {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(
+          user => {
+            // console.log(user);
+            alert(`Account Created for ${user.email}`);
+            this.$router.go({ path: this.$router.path });
+          },
+          db
+            .collection("profiles")
+            .doc(this.email)
+            .set({
+              profile_id: "new",
+              profile_name: "new",
+              dept: "new",
+              position: "new"
+            }),
+          err => {
+            alert(err.message);
+          }
+        );
+      e.preventDefault();
+    }
+  }
 };
 </script>
 
 <style>
 form.regis_content {
-  margin-top: 7em;
+  margin-top: 17%;
   /* margin-bottom: 5em; */
-  margin-left: 17em;
-  margin-right: 17em;
-  height: 50%;
+  /* margin-left: 17em;
+  margin-right: 17em; */
+  height: 100%;
   z-index: 2;
 }
 
-html {
+body.body-register {
+  min-height: 100%;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background: rgb(52, 160, 217); /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
+}
+.link-left {
+}
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   min-height: 100%;
   width: 100%;
   -webkit-background-size: cover;
@@ -196,20 +211,15 @@ html {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
 }
 
-body {
-  background-color: transparent;
-}
-
-.logo_regis {
+/* .logo_regis {
   margin: 0 auto;
   width: 20%;
   height: 20%;
   z-index: 6;
-}
-.card{
-  background: linear-gradient(rgba(255,255,255, .2), rgba(255,255,255,.2));
-  border-radius: 2em;
-  height: 32em;
+} */
+.card.register {
+  background: transparent;
+  box-shadow: none !important;
 }
 .circle-button {
   width: 65%;
@@ -420,51 +430,39 @@ body {
   }
 }
 
-.wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
 @media only screen and (max-width: 600px) {
-  .card{
+  .card.register {
     align-items: center;
     align-content: center;
   }
-  .col{
+  .col {
     margin-bottom: 2em;
   }
-  form.regis_content{
-  margin-top: 7em;
-  /* margin-bottom: 5em; */
-  margin-left: 5em;
-  margin-right: 5em;
-  height: 50%;
-  z-index: 2;
-}
+  form.regis_content {
+    margin-top: 7em;
+    /* margin-bottom: 5em; */
+    margin-left: 5em;
+    margin-right: 5em;
+    height: 50%;
+    z-index: 2;
+  }
 }
 
-@media only screen and (max-height: 600px){
-  .card{
+@media only screen and (max-height: 600px) {
+  .card.register {
     border-radius: 2em;
     align-items: center;
     align-content: center;
     height: 400px;
     width: 200px;
-    
   }
-  form.regis_content{
-  margin-top: 7em;
-  /* margin-bottom: 5em; */
-  margin-left: 5em;
-  margin-right: 5em;
-  height: 50%;
-  z-index: 2;
+  form.regis_content {
+    margin-top: 7em;
+    /* margin-bottom: 5em; */
+    margin-left: 5em;
+    margin-right: 5em;
+    height: 50%;
+    z-index: 2;
+  }
 }
-}
-
-
 </style>

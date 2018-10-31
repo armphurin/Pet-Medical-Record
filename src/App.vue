@@ -4,18 +4,21 @@
     <div class="container">
       <router-view/>
     </div>
+    <Footerbar />
   </div>
 </template>
 
 <script>
-import Navbar2 from './components/Navbar2';
-import NewPet from './components/NewPet';
+import Navbar2 from "./components/Navbar2";
+import NewPet from "./components/NewPet";
+import Footer from "./components/Footer";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    'Navigationbar':Navbar2,
-    NewPet
+    Navigationbar: Navbar2,
+    NewPet,
+    Footerbar: Footer
   }
 };
 </script>
