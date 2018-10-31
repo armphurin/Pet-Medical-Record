@@ -5,21 +5,23 @@
           	<div class="header-button">
               <div class="scrolling-wrapper-flexbox text-center">
                 <!-- pet 1 -->
-  <label class="text-white" style="margin-top:1.3em;margin-left: 1.5em;"><div class="card-header img-scroll-dog"></div>Dog 1</label>
+  <label class="text-white" style="margin-top:1.3em;margin-left: 0em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 1</label>
   <!-- pet 2 to n -->
-  <label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-cat"></div>Cat 2</label>
-<label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-dog"></div>Dog 3</label>
-  <label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-cat"></div>Cat 4</label>
-<label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-dog"></div>Dog 5</label>
-  <label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-dog"></div>Dog 6</label>
-  <label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-cat"></div>Cat 7</label>
-<label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-dog"></div>Dog 8</label>
-  <label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-cat"></div>Cat 9</label>
-<label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-dog"></div>Dog 10</label>
-  <label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-dog"></div>Dog 11</label>
-  <label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-cat"></div>Cat 12</label>
-<label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-dog"></div>Dog 13</label>
-  <label class="text-white" style="margin-top:1.3em;"><div class="card-header img-scroll-cat"></div>Cat 14</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
 </div>
             </div>
         </container>
@@ -119,10 +121,24 @@ export default {
       uploadTask: "",
       image: "",
       datebirth: "",
-      petbirth: ""
+      petbirth: "",
+      selected: false
     };
   },
-  methods: {},
+  methods: {
+    selectHeader(e) {
+      alert("section");
+      this.selected = true;
+      var allelement = document.getElementsByClassName("selectedHeader");
+      console.log(allelement);
+      for (var i = 0; i < allelement.length; i++) {
+        console.log("inloop" + i);
+        allelement[i].classList.remove("selectedHeader");
+      }
+      e.target.className += " selectedHeader";
+      console.log(e.target.className);
+    }
+  },
   created() {
     db.collection("users")
       .doc(firebase.auth().currentUser.email)
@@ -145,6 +161,16 @@ export default {
     document
       .getElementsByClassName("vdatetime-input")
       .setAttribute("placeholder", "Enter your number");
+  },
+  mounted() {
+    var area_select = document.querySelector(".scrolling-wrapper-flexbox");
+    console.log(area_select.classList);
+    var selectH = document.getElementsByClassName("card-header");
+    if (selectH.length < 10) {
+      area_select.classList.add("scrolling-wrapper-flexbox-min");
+    } else {
+      area_select.classList.remove("scrolling-wrapper-flexbox-min");
+    }
   }
 };
 </script>
@@ -304,6 +330,10 @@ input[type="checkbox"]:checked + label:after {
   flex-wrap: nowrap;
   overflow-x: auto;
   align-items: center;
+  /* justify-content: center; */
+}
+
+.scrolling-wrapper-flexbox-min {
   justify-content: center;
 }
 
@@ -349,6 +379,17 @@ input[type="checkbox"]:checked + label:after {
   transform: scale(1.5);
   z-index: 2;
   position: relative;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  margin-bottom: 1em;
+}
+
+.selectedHeader {
+  border: 2px solid #e8c547;
+  box-shadow: 0px 0px 5px #000000;
+  width: 100px;
+  height: 100px;
+  margin-left: 100px;
 }
 
 .scrolling-wrapper,
