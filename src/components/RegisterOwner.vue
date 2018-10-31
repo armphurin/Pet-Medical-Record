@@ -231,11 +231,13 @@ export default {
                             user_type: "owner"
                         }).then(
                             user => {
-                                swal(
-                                    "Register Status",
-                                    `You are Register in Veterinary as ${this.email}`,
-                                    "success"
-                                );
+                                swal({
+                                    title : "Register Status",
+                                    text :`You are Register in Veterinary as ${this.email}`,
+                                    type : "success",
+                                    showConfirmButton: false,
+                                    timer : 1500
+                                });
                                 this.$router.go({
                                     path: this.$router.path
                                 });

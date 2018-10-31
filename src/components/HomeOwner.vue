@@ -136,7 +136,7 @@
     <!-- Popup -->
 
     <!-- Popup Pet -->
-    <modal v-if="popupPet" @close="popupPet = false" size="lg">
+    <modal v-if="popupPet" @close="popupPet = false, show_pet.pop()" size="lg">
         <div class="popup-profile">
             <modal-header>
                 <modal-title>My Pet Card</modal-title>
@@ -159,7 +159,7 @@
                           <column>
                               <div class="label-group">
                                 <label for="petbirth">Date of Birth</label>
-                                <datetime v-model="show_pet[0].pet_dob"></datetime>
+                                <datetime v-model="show_pet[0].dob"></datetime>
                               </div>
                           </column>
                           <column>
@@ -349,7 +349,7 @@ export default {
   beforeCreate: function() {
     document.body.className = "body-home";
   },
-  name: "home",
+  name: "home-owner",
   components: {
     Container,
     Row,
@@ -442,7 +442,7 @@ export default {
           breed: this.show_pet[0].breed,
           gender: this.show_pet[0].gender,
           marking: this.show_pet[0].marking,
-          dob: this.show_pet[0].pet_dob,
+          dob: this.show_pet[0].dob,
           color: this.show_pet[0].color
         })
         .then(user => {

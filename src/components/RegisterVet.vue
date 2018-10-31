@@ -86,7 +86,7 @@
                                 </row>
                             </column>
                         </row>
-
+                        <loading :active.sync="visible"></loading>
                     </div>
                 </card-body>
             </card>
@@ -143,6 +143,11 @@ import {
 import {
     Datetime
 } from "vue-datetime";
+import Loading from 'vue-loading-overlay';
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css';
+import Vue from 'vue';
+Vue.use(Loading);
 // ES6 Modules or TypeScript
 import swal from "sweetalert2";
 export default {
@@ -165,7 +170,8 @@ export default {
             uploadTask: "",
             image: "",
             confpassword: "",
-            datebirth: ""
+            datebirth: "",
+            visible: false,
         };
     },
     components: {
@@ -179,84 +185,97 @@ export default {
         Column,
         MdMask,
         ViewWrapper,
-        datetime: Datetime
+        datetime: Datetime,
+        Loading
     },
     methods: {
         register: function (e) {
-          var count_input_empty = "";
-          if(!this.fullname){
-            count_input_empty = count_input_empty.concat("fullname, ")
-          }
-          if(!this.gender){
-            count_input_empty = count_input_empty.concat("gender, ")
-          }
-          if(!this.email){
-            count_input_empty = count_input_empty.concat("email, ")
-          }
-          if(!this.password){
-            count_input_empty = count_input_empty.concat("password, ")
-          }
-          if(!this.confpassword){
-            count_input_empty = count_input_empty.concat("confirm password, ")
-          }
-          if(!this.vet_id){
-            count_input_empty = count_input_empty.concat("vet_id, ")
-          }
-          if(!this.telephone){
-            count_input_empty = count_input_empty.concat("telephone, ")
-          }
-          if(!this.address){
-            count_input_empty = count_input_empty.concat("address, ")
-          }
-          if(!this.datebirth){
-            count_input_empty = count_input_empty.concat("datebirth, ")
-          }
-          if(!count_input_empty){
-            if(this.password == this.confpassword){
-            console.log('password is equal')
-            firebase
-                .auth()
-                .createUserWithEmailAndPassword(this.email, this.password)
-                .then(
-                    user => {
-                        db.collection('users').doc(this.email).set({
-                            email: this.email,
-                            gender: this.gender,
-                            password: this.password,
-                            fullname: this.fullname,
-                            vet_id: this.vet_id,
-                            telephone_number: this.telephone,
-                            address: this.address,
-                            datebirth: this.datebirth,
-                            user_type: "vet"
-                        }).then(
+            let loader = this.$loading.show({
+                loader: 'dots'
+            });
+            var count_input_empty = "";
+            if (!this.fullname) {
+                count_input_empty = count_input_empty.concat("fullname, ")
+            }
+            if (!this.gender) {
+                count_input_empty = count_input_empty.concat("gender, ")
+            }
+            if (!this.email) {
+                count_input_empty = count_input_empty.concat("email, ")
+            }
+            if (!this.password) {
+                count_input_empty = count_input_empty.concat("password, ")
+            }
+            if (!this.confpassword) {
+                count_input_empty = count_input_empty.concat("confirm password, ")
+            }
+            if (!this.vet_id) {
+                count_input_empty = count_input_empty.concat("vet_id, ")
+            }
+            if (!this.telephone) {
+                count_input_empty = count_input_empty.concat("telephone, ")
+            }
+            if (!this.address) {
+                count_input_empty = count_input_empty.concat("address, ")
+            }
+            if (!this.datebirth) {
+                count_input_empty = count_input_empty.concat("datebirth, ")
+            }
+            if (!count_input_empty) {
+                if (this.password == this.confpassword) {
+
+                    console.log('password is equal')
+                    firebase
+                        .auth()
+                        .createUserWithEmailAndPassword(this.email, this.password)
+                        .then(
                             user => {
-                                swal(
-                                    "Register Status",
-                                    `You are Register in Veterinary as ${this.email}`,
-                                    "success"
-                                );
-                                this.$router.go({
-                                    path: this.$router.path
-                                });
+                                db.collection('users').doc(this.email).set({
+                                    email: this.email,
+                                    gender: this.gender,
+                                    password: this.password,
+                                    fullname: this.fullname,
+                                    vet_id: this.vet_id,
+                                    telephone_number: this.telephone,
+                                    address: this.address,
+                                    datebirth: this.datebirth,
+                                    user_type: "vet"
+                                }).then(
+                                    user => {
+                                        loader.hide()
+                                        swal({
+                                            title: "Register Status",
+                                            text: `You are Register in Veterinary as ${this.email}`,
+                                            type: "success",
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        }).then(result => {
+                                            this.$router.go({
+                                                path: this.$router.path
+                                            });
+                                        });
+
+                                    }
+                                )
+                            },
+                            err => {
+                                loader.hide()
+                                swal("Register Status", err.message, "error");
                             }
-                        )
-                    },
-                    err => {
-                        swal("Register Status", err.message, "error");
-                    }
-                );
-            e.preventDefault();
-          }
-          if(this.password != this.confpassword){
-              swal("Register Status", "Password is not match", "error");
-          } 
-          }
-          if(count_input_empty){
-             swal("Register Status", "Please fill out empty field", "error");
-          }
-          console.log(count_input_empty)
-            
+                        );
+                    e.preventDefault();
+                }
+                if (this.password != this.confpassword) {
+                    loader.hide()
+                    swal("Register Status", "Password is not match", "error");
+                }
+            }
+            if (count_input_empty) {
+                loader.hide()
+                swal("Register Status", "Please fill out empty field", "error");
+            }
+            console.log(count_input_empty)
+
         },
         detectFiles(fileList) {
             Array.from(Array(fileList.length).keys()).map(x => {
