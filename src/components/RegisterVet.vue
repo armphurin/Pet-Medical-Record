@@ -336,7 +336,7 @@ body.body-registervet {
     rgba(255, 255, 255, 0.2)
   );
   border-radius: 2em;
-  height: 107%;
+  /* height: 107%; */
 }
 .circle-button {
   width: 65%;
@@ -701,4 +701,44 @@ input::placeholder {
   color: grey !important;
   font-size: 80%;
 }
+
+/*Common Responsive Portrait, Phone*/
+@media only screen and (max-width: 600px){
+  .wrapper{
+    overflow: scroll;
+  }
+  form.regis_content_vet{
+    width: 150%;
+    margin-left: -25%;
+  }
+  .obj-center{
+    margin-top: 250%;
+    margin-bottom: 5%;
+  }
+  .logo_regis{
+    width: 10em;
+    height: 5em;
+  }
+  .btn{
+    width: 10em;
+    height: 5em;
+  }
+}
+/*Common Responsive Portrait, Tablet*/
+@media only screen and (min-width: 600px){
+  form.regis_content_vet{
+    width: 140%;
+    margin-left: -20%;
+  }
+  .logo_regis{
+    width: 10em;
+    height: 5em;
+  }
+  .obj-center{
+    margin-top: -10%;
+  }
+}
+
+
+
 </style>
