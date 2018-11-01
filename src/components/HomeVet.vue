@@ -36,8 +36,8 @@
                                </div>
                                         </div>
                                     </div> -->
-                                    <!-- <label for="pet-hidden" class="read-more-trigger"></label> -->
-                                </div>
+                                <!-- <label for="pet-hidden" class="read-more-trigger"></label> -->
+                            </div>
             </row>
         </container>
     </md-mask>
@@ -420,33 +420,48 @@ export default {
         };
     },
     methods: {
-        calAgePet(e){
-          if(!e){
-             return 0;
-          }
-          else{
-            var today = new Date();
-            var dob = e.split("-");
-            var year = Number(dob[0]);
-            var month = Number(dob[1]) - 1;
-            var split_day = dob[2].split("T");
-            var day = Number(today.getDate()) - Number(split_day[0]);
-            var yearsOld = Number(today.getFullYear()) - year;
-            var monthsOld = today.getMonth() - month;
-            console.log("Age : "+yearsOld+" years "+monthsOld+" months "+ day + " days ")
-            if(yearsOld == 0 && monthsOld == 0){
-              return (day+ " Days")
+        validateInput() {
+            var count_input_empty = "";
+            if (!this.fullname) {
+                return false;
             }
-            else if(monthsOld == 0 && day == 0){
-              return (yearsOld+" Years")
+            if (!this.lineid) {
+                return false;
             }
-            else if (yearsOld == 0 && day == 0){
-              return (monthsOld+" Months")
+            if (!this.address) {
+                return false;
             }
-            else{
-              return (yearsOld+" Years "+monthsOld+" Months")
+            if (!this.telephone) {
+                return false;
             }
-          }
+            if (!this.confpassword) {
+                return false;
+            }
+            return true;
+        },
+        calAgePet(e) {
+            if (!e) {
+                return 0;
+            } else {
+                var today = new Date();
+                var dob = e.split("-");
+                var year = Number(dob[0]);
+                var month = Number(dob[1]) - 1;
+                var split_day = dob[2].split("T");
+                var day = Number(today.getDate()) - Number(split_day[0]);
+                var yearsOld = Number(today.getFullYear()) - year;
+                var monthsOld = today.getMonth() - month;
+                console.log("Age : " + yearsOld + " years " + monthsOld + " months " + day + " days ")
+                if (yearsOld == 0 && monthsOld == 0) {
+                    return (day + " Days")
+                } else if (monthsOld == 0 && day == 0) {
+                    return (yearsOld + " Years")
+                } else if (yearsOld == 0 && day == 0) {
+                    return (monthsOld + " Months")
+                } else {
+                    return (yearsOld + " Years " + monthsOld + " Months")
+                }
+            }
         },
         calculateAge() {
             var today = new Date();
@@ -468,7 +483,6 @@ export default {
                 .collection("pets")
                 .doc(this.email + "_" + this.show_pet[0].name)
                 .update({
-                    // pet_name: this.show_pet[0].name,
                     breed: this.show_pet[0].breed,
                     gender: this.show_pet[0].gender,
                     marking: this.show_pet[0].marking,
@@ -530,14 +544,14 @@ export default {
                         toast({
                             type: 'success',
                             title: 'Add pet successfully'
-                        }).then(result =>{
-                          this.popupAddPet = false;
-                          this.$router.go(this.$route.path);
+                        }).then(result => {
+                            this.popupAddPet = false;
+                            this.$router.go(this.$route.path);
                         })
                     });
             }
             if (count_input_empty) {
-              console.log(count_input_empty)
+                console.log(count_input_empty)
                 toast({
                     type: 'error',
                     title: 'Plaese Fill out empty field'
@@ -545,20 +559,46 @@ export default {
             }
         },
         updateProfile() {
-            db.collection("users")
-                .doc(this.email)
-                .update({
-                    password: this.password,
-                    fullname: this.fullname,
-                    age: this.age,
-                    line_id: this.lineid,
-                    telephone_number: this.telephone,
-                    address: this.address
-                })
-                .then(user => {
-                    alert(`Account Updated for ${this.email}`);
-                    this.popupProfile = false;
+            const toast = swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1200
+            });
+            var checkInput = this.validateInput();
+            if (checkInput) {
+                if(this.password == this.confpassword){
+                    db.collection("users")
+                    .doc(this.email)
+                    .update({
+                        password: this.password,
+                        fullname: this.fullname,
+                        age: this.age,
+                        line_id: this.lineid,
+                        telephone_number: this.telephone,
+                        address: this.address
+                    })
+                    .then(user => {
+                        toast({
+                            type: 'success',
+                            title: 'Update Profile Successfully'
+                        }).then(result => {
+                            this.popupProfile = false;
+                            this.$router.go(this.$route.path);
+                        })
+                    });
+                } else {
+                    toast({
+                    type: 'error',
+                    title: 'Password mismatch'
                 });
+                }
+            } else {
+                toast({
+                    type: 'error',
+                    title: 'Plaese Fill out empty field'
+                });
+            }
         },
         detectFiles(fileList) {
             Array.from(Array(fileList.length).keys()).map(x => {
@@ -617,15 +657,15 @@ export default {
                         gender: doc.data().gender,
                         marking: doc.data().marking,
                         type: doc.data().pet_type,
-                        age : this.calAgePet(doc.data().dob)
+                        age: this.calAgePet(doc.data().dob)
                     };
                     console.log(doc.data());
                     this.pets.push(data);
-                    
+
                 });
                 this.email = firebase.auth().currentUser.email;
                 console.log(this.email);
-                console.log(this.pets[0].age)
+                // console.log(this.pets[0].age)
             });
     },
     mounted() {
