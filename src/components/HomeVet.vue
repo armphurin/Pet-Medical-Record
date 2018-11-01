@@ -464,6 +464,18 @@ export default {
             }
             return true;
             }
+            if(data_type == "update_pet"){
+            if (!this.show_pet[0].breed) {
+                return false;
+            }
+            if (!this.show_pet[0].color) {
+                return false;
+            }
+            if (!this.show_pet[0].marking) {
+                return false;
+            }
+            return true;
+            }
         },
         calAgePet(e) {
             if (!e) {
@@ -512,24 +524,32 @@ export default {
                 showConfirmButton: false,
                 timer: 1200
             });
-
-            db.collection("users")
+            var checkInput = this.validateInput("update_pet")
+            if(checkInput){
+                db.collection("users")
                 .doc(this.email)
                 .collection("pets")
                 .doc(this.email + "_" + this.show_pet[0].name)
                 .update({
                     breed: this.show_pet[0].breed,
-                    gender: this.show_pet[0].gender,
                     marking: this.show_pet[0].marking,
-                    dob: this.show_pet[0].dob,
                     color: this.show_pet[0].color
                 })
                 .then(user => {
-                    alert(`Pet Updated for ${this.show_pet[0].name}`);
-                    this.popupPet = false;
-                    this.show_pet.pop();
-                    this.$router.go(this.$route.path);
+                    toast({
+                            type: 'success',
+                            title: 'Update pet successfully'
+                        }).then(result => {
+                            this.popupAddPet = false;
+                            this.$router.go(this.$route.path);
+                        });
                 });
+            } else {
+                toast({
+                    type: 'error',
+                    title: 'Plaese Fill out empty field'
+                });
+            }
         },
         add_pet() {
             const toast = swal.mixin({
@@ -583,9 +603,7 @@ export default {
                     db.collection("users")
                     .doc(this.email)
                     .update({
-                        password: this.password,
                         fullname: this.fullname,
-                        age: this.age,
                         line_id: this.lineid,
                         telephone_number: this.telephone,
                         address: this.address
