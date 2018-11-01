@@ -24,8 +24,113 @@
   <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
 </div>
             </div>
+<div class="doc-section text-center white-text">
+</div>
         </container>
     </md-mask>
+      <div>
+<container>
+<div class="tab-wrapper"> 
+   <div class="tab-panel">
+      <label for="tab-1" tabindex="0" class="tab-panel-label three-tabs"></label>
+      <input id="tab-1" type="radio" name="tabs" checked="true" aria-hidden="true" />
+      <h2 class="tab-title three-tabs">Profile</h2>
+
+      <div class="tab-panel-content">
+          <row class="medic-content">
+            <column md="4">
+            <row class="text-center">
+              <column>
+              <img src="../assets/pic_cat.png" class="medic-pic" />
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="pettype">Pet Type</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="marking">Marking</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="marking" v-model="marking" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            </column>
+            <column md="8">
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="petname">Pet Name</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="age">Age</label>
+                                <input class="form-control form-control-lg" type="text" value="18 Year" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+              <column>
+                            <div class="label-group">
+                                <label for="gender">Gender</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Gender" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="breed">Breed</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="color">Color</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" v-model="color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            </column>
+          </row>
+          <row>
+            <column>
+                                <div class="label-group">
+                                    <label for="contact">Contact</label>
+                                    <textarea class="form-control" id="contact" v-model="contact" rows="5" placeholder="Contact" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                </div>
+            </column>
+          </row>
+      </div>
+
+      <label for="tab-2" tabindex="0" class="tab-panel-label three-tabs"></label>
+      <input id="tab-2" type="radio" name="tabs" aria-hidden="true" />
+      <h2 class="tab-title three-tabs">Medic</h2>
+
+      <div class="tab-panel-content">
+        Second
+      </div>
+
+      <label for="tab-3" tabindex="0" class="tab-panel-label three-tabs"></label>
+      <input id="tab-3" type="radio" name="tabs" aria-hidden="true" />
+      <h2 class="tab-title three-tabs">Vact</h2>
+
+      <div class="tab-panel-content">
+          Third
+      </div>
+   </div>
+</div>
+</container>
+</div>
 </div>
 <!--/.ViewWrapper-->
 </template>
@@ -33,7 +138,6 @@
 <script>
 import db from "./firebaseInit";
 import firebase from "firebase";
-
 import {
   Container,
   Row,
@@ -419,4 +523,238 @@ input[type="checkbox"]:checked + label:after {
   background-size: cover;
 }
 /* dot style */
+
+/* tab doc style */
+.tab-wrapper {
+  width: 100%;
+  margin: 40px auto;
+  /* display: inline-block; */
+}
+@media screen and (max-width: 45em) {
+  .tab-wrapper {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* panel style */
+.tab-panel {
+  position: relative;
+  /* border: solid 1px #e5e5e5; */
+  border-radius: 6px;
+  font-family: "Open sans", sans-serif;
+}
+.tab-panel > .tab-panel-label {
+  position: absolute;
+  z-index: 1;
+  padding: 10px;
+  height: 44px;
+  outline: none;
+  font-size: 16px;
+  line-height: 24px;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > .tab-panel-label {
+    width: 100% !important;
+    height: 44px;
+  }
+}
+.tab-panel > .tab-panel-label ~ label {
+  position: absolute;
+  top: 0;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > .tab-panel-label ~ label {
+    position: absolute;
+    left: 0 !important;
+    top: unset;
+  }
+}
+.tab-panel > .tab-panel-label:nth-child(1) {
+  left: 0;
+}
+.tab-panel > .tab-panel-label:nth-child(9) {
+  left: 66.66666%;
+}
+.tab-panel > .tab-panel-label:hover {
+  cursor: pointer;
+}
+.tab-panel > h2 {
+  padding: 10px;
+  height: 44px;
+  outline: none;
+  font-size: 16px;
+  line-height: 24px;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > h2 {
+    width: 100% !important;
+    height: 44px;
+  }
+}
+.tab-panel > h2 ~ h2 {
+  position: absolute;
+  top: 0;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > h2 ~ h2 {
+    width: 100%;
+    position: static !important;
+  }
+}
+.tab-panel > h2:nth-child(3) {
+  left: 0;
+  border-bottom: 1px solid #e5e5e5;
+  border-top-left-radius: 6px;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > h2:nth-child(3) {
+    border-top-right-radius: 6px;
+  }
+}
+.tab-panel > h2:nth-child(7) {
+  border-bottom: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+  border-radius: 15px 100px 0px 0px;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > h2:nth-child(7) {
+    border-bottom: none;
+    border-left: none;
+    border-top: 1px solid #e5e5e5;
+    border-radius: 0px;
+  }
+}
+.tab-panel > h2:nth-child(11) {
+  left: 66.66666%;
+  border-bottom: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+  border-top-right-radius: 6px;
+  border-radius: 15px 100px 0px 0px;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > h2:nth-child(11) {
+    border-bottom: none;
+    border-left: none;
+    border-top: 1px solid #e5e5e5;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-radius: 0px;
+  }
+}
+.tab-panel > input {
+  opacity: 0;
+  position: absolute;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > input {
+    width: 100%;
+    height: 44px;
+  }
+}
+.tab-panel > input + h2 + .tab-panel-content {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+.tab-panel > input:checked + h2 {
+  background: #ffffff;
+  border-bottom: none;
+  color: #66d2a6;
+  font-weight: 800;
+  box-shadow: 10px -2px 4px 0px rgba(0, 0, 0, 0.07);
+  border-radius: 15px 100px 0px 0px;
+}
+
+.tab-panel > input + h2 {
+  transition: color 0.5s ease-in;
+  -webkit-transition: color 0.5s ease-in;
+}
+
+.tab-panel > input:hover + h2 {
+  color: white;
+}
+
+.tab-panel > input:checked:hover + h2 {
+  color: #66d2a6;
+}
+
+@media screen and (max-width: 45em) {
+  .tab-panel > input:checked + h2:nth-child(7),
+  .tab-panel > input:checked + h2:nth-child(11) {
+    border-top: none;
+  }
+  .tab-panel > input:checked + h2 {
+    border-radius: 0px;
+  }
+}
+.tab-panel > input:checked + h2 + .tab-panel-content {
+  position: static !important;
+  padding: 24px !important;
+  height: auto !important;
+  width: auto !important;
+}
+.tab-panel .three-tabs {
+  width: 33.33333%;
+  left: 33.33333%;
+}
+.tab-panel .two-tabs {
+  width: 50%;
+  left: 50%;
+}
+.tab-panel .tab-title {
+  margin: 0;
+  text-align: center;
+  background: #2cc185;
+  color: #0d9564;
+  box-sizing: border-box;
+  border-radius: 15px 100px 0px 0px;
+}
+
+.tab-panel .tab-panel-content {
+  background: #ffffff;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  /* min-height: 300px; */
+}
+@media screen and (max-width: 45em) {
+  .tab-panel .tab-panel-content {
+    display: block !important;
+    position: static !important;
+    padding: 1em !important;
+    height: auto !important;
+    width: auto !important;
+  }
+}
+/* tab doc style */
+
+.medic-pic {
+  border-radius: 50%;
+  width: 62%;
+  height: 90%;
+  margin: 0 auto;
+}
+
+.medic-content {
+  padding: 2%;
+}
+
+.label-group {
+  margin-bottom: 0.5em;
+}
+
+label {
+  font-weight: 500;
+}
+
+input::placeholder {
+  color: grey !important;
+  font-size: 80%;
+}
 </style>
