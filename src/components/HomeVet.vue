@@ -478,12 +478,14 @@ export default {
                 var yearsOld = Number(today.getFullYear()) - year;
                 var monthsOld = today.getMonth() - month;
                 console.log("Age : " + yearsOld + " years " + monthsOld + " months " + day + " days ")
-                if (yearsOld == 0 && monthsOld == 0) {
-                    return (day + " Days")
-                } else if (monthsOld == 0 && day == 0) {
-                    return (yearsOld + " Years")
-                } else if (yearsOld == 0 && day == 0) {
+                if (yearsOld == 0) {
                     return (monthsOld + " Months")
+                } else if (yearsOld > 0 && monthsOld >= 0) {
+                    return (yearsOld + " Years " + monthsOld + " Months")
+                } else if (yearsOld > 0 && monthsOld <0) {
+                    yearsOld = yearsOld - 1;
+                    monthsOld = 12 + monthsOld;
+                    return (yearsOld + " Years " + monthsOld + " Months")
                 } else {
                     return (yearsOld + " Years " + monthsOld + " Months")
                 }
