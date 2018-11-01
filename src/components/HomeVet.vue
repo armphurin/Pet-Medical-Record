@@ -92,7 +92,7 @@
                             <column>
                                 <div class="label-group">
                                     <label for="password">Password</label>
-                                    <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                                 </div>
                             </column>
                             <column>
@@ -420,9 +420,10 @@ export default {
         };
     },
     methods: {
-        validateInput() {
+        validateInput(data_type) {
             var count_input_empty = "";
-            if (!this.fullname) {
+            if(data_type == "user"){
+                if (!this.fullname) {
                 return false;
             }
             if (!this.lineid) {
@@ -438,6 +439,31 @@ export default {
                 return false;
             }
             return true;
+            }
+            if(data_type == "add_pet"){
+                if (!this.pet_name) {
+                return false;
+            }
+            if (!this.pet_type) {
+                return false;
+            }
+            if (!this.pet_breed) {
+                return false;
+            }
+            if (!this.pet_birth) {
+                return false;
+            }
+            if (!this.pet_gender) {
+                return false;
+            }
+            if (!this.pet_color) {
+                return false;
+            }
+            if (!this.pet_marking) {
+                return false;
+            }
+            return true;
+            }
         },
         calAgePet(e) {
             if (!e) {
@@ -478,6 +504,13 @@ export default {
             console.log(age);
         },
         updatePet() {
+            const toast = swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1200
+            });
+
             db.collection("users")
                 .doc(this.email)
                 .collection("pets")
@@ -501,31 +534,10 @@ export default {
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
-                timer: 1000
+                timer: 1200
             });
-            var count_input_empty = "";
-            if (!this.pet_name) {
-                count_input_empty = count_input_empty.concat("pet_name, ")
-            }
-            if (!this.pet_type) {
-                count_input_empty = count_input_empty.concat("pet_type, ")
-            }
-            if (!this.pet_breed) {
-                count_input_empty = count_input_empty.concat("pet_breed, ")
-            }
-            if (!this.pet_birth) {
-                count_input_empty = count_input_empty.concat("pet_birth, ")
-            }
-            if (!this.pet_gender) {
-                count_input_empty = count_input_empty.concat("pet_gender, ")
-            }
-            if (!this.pet_color) {
-                count_input_empty = count_input_empty.concat("pet_color, ")
-            }
-            if (!this.pet_marking) {
-                count_input_empty = count_input_empty.concat("pet_marking, ")
-            }
-            if (!count_input_empty) {
+            var checkInput = this.validateInput("add_pet");
+            if(checkInput){
                 db.collection("users")
                     .doc(this.email)
                     .collection("pets")
@@ -549,9 +561,7 @@ export default {
                             this.$router.go(this.$route.path);
                         })
                     });
-            }
-            if (count_input_empty) {
-                console.log(count_input_empty)
+            } else {
                 toast({
                     type: 'error',
                     title: 'Plaese Fill out empty field'
@@ -565,7 +575,7 @@ export default {
                 showConfirmButton: false,
                 timer: 1200
             });
-            var checkInput = this.validateInput();
+            var checkInput = this.validateInput("user");
             if (checkInput) {
                 if(this.password == this.confpassword){
                     db.collection("users")
