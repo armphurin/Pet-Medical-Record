@@ -328,7 +328,7 @@ body.body-registervet {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  margin-top: 3.5em;
+  margin-top: 4.5em;
 }
 .card.register-card {
   background: linear-gradient(
@@ -702,17 +702,19 @@ input::placeholder {
   font-size: 80%;
 }
 
-/*Common Responsive Portrait, Phone*/
-@media only screen and (max-width: 600px){
-  .wrapper{
+@media only screen and (min-width: 300px) and (max-width: 1400px){.wrapper{
     overflow: scroll;
   }
+}
+
+/*Common Responsive Portrait, Phone*/
+@media only screen and (max-width: 600px) and (orientation: Portrait){
   form.regis_content_vet{
     width: 150%;
     margin-left: -25%;
   }
   .obj-center{
-    margin-top: 250%;
+    margin-top: 625px;
     margin-bottom: 5%;
   }
   .logo_regis{
@@ -724,8 +726,24 @@ input::placeholder {
     height: 5em;
   }
 }
+
+/*Common Responsive Portrait, Higher Phone*/
+@media only screen and (max-width: 332px) and (orientation: Portrait){
+  .obj-center{
+    margin-top: 750px;
+  }
+}
+
+
+/*Common Responsive Portrait, Higher Phone*/
+@media only screen and (max-width: 600px) and (min-height: 700px) and (orientation: Portrait){
+  .obj-center{
+    margin-top: 570px;
+  }
+  }
+
 /*Common Responsive Portrait, Tablet*/
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 600px) and (orientation: Portrait){
   form.regis_content_vet{
     width: 140%;
     margin-left: -20%;
@@ -739,6 +757,51 @@ input::placeholder {
   }
 }
 
+/*Common Responsive Portrait, Larger Tablet*/
+@media only screen and (min-width: 1024px) and (orientation: Portrait){
+  .obj-center{
+    margin-top: -30%;
+  }
+}
 
+/*Common Responsive Landscape, Phone*/
+@media only screen and (max-width: 673px) and (orientation: Landscape){
+  .obj-center{
+    margin-top: 775px;
+    margin-bottom: 5%;
+  }
+}
+
+/*Common Responsive Landscape, Wider Phone*/
+@media only screen and (min-width: 673px) and (orientation: Landscape){
+  form.regis_content_vet{
+    width: 125%;
+    margin-left: -10%;
+  }
+  .obj-center{
+    margin-top: 400px;
+    margin-bottom: 5%;
+  }
+}
+
+/*Common Responsive Landscape, Widest Phone*/
+@media only screen and (min-width: 713px) and (orientation: Landscape){
+  form.regis_content_vet{
+    width: 190%;
+    margin-left: -45%;
+  }
+  .obj-center{
+    margin-top: 305px;
+    margin-bottom: 5%;
+  }
+}
+
+/*Common Responsive Landscape, Tablet*/
+@media only screen and (min-height: 700px) and (orientation: Landscape){
+  .obj-center{
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+}
 
 </style>
