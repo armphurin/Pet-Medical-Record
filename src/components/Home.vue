@@ -691,7 +691,7 @@ input::placeholder {
 /*Edit md width for each platform, .col flex basis removed.*/
 
 /*Common Mobile Portrait*/
-@media only screen and (min-width: 370px) and (max-width: 600px) {
+@media only screen and (min-width: 370px) and (max-width: 600px) and (orientation: portrait){
   .home-owner {
     margin-top: 10em;
     display: flex;

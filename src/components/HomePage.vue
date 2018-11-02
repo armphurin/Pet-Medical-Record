@@ -157,7 +157,7 @@ export default {
   position: absolute;
   right: 0;
   left: 0;
-  bottom: -162%;
+  bottom: -165%;
   z-index: -1;
 }
 
@@ -182,20 +182,37 @@ h6 {
 }
 
 /*Common Mobile Portrait*/
-@media only screen and (min-width: 370px) and (max-width: 600px) {
+ @media only screen and (min-width: 370px) and (max-width: 600px) and (orientation: portrait){
   .view.home-page {
     margin-top: 2em;
+  }
+  .svg-container-top{
+    height: 17em;
+  }
+  .svg-container-bottom{
+    bottom: -100em;
+    height: 6em;
   }
 }
 
 /*Samsung Galaxy S5 Portrait*/
 @media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+  .body-homepage{
+    margin-top: 5em;
+  }
   .view.home-page {
     margin-top: 1.5em;
   }
   .intro-section .btn {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+  .svg-container-top{
+    height: 15em;
+  }
+  .svg-container-bottom{
+    bottom: -99em;
+    height: 5em;
   }
 }
 
@@ -215,10 +232,52 @@ h6 {
   .intro-section.row {
     margin-bottom: 50px;
   }
+  .svg-container-bottom{
+    bottom: -105em;
+  }
+} 
+
+/*iPhone 6/7/8 Portrait*/
+@media only screen and (min-width: 375px) and (max-height: 670px) and (orientation: portrait) {
+  .svg-container-bottom{
+    bottom: -101em;
+  }
+}
+
+/*iPhone 6/7/8 Plus Portrait*/
+@media only screen and (min-width: 414px) and (max-height: 740px) and (orientation: portrait) {
+  .svg-container-bottom{
+    bottom: -98em;
+  }
+} 
+
+/*iPhone X Portrait*/
+@media only screen and (min-width: 375px) and (max-width: 400px) and (max-height: 815px) and (orientation: portrait) {
+  .svg-container-bottom{
+    bottom: -101em;
+  }
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 768px) and (max-height: 1025px) and (orientation: portrait) {
+  .svg-container-bottom{
+    bottom: -60em;
+  }
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px) and (max-height: 1400px) and (orientation: portrait) {
+  .svg-container-bottom{
+    bottom: -66em;
+    height: 15em;
+  }
 }
 
 /*Common Mobile Landscape*/
 @media only screen and (max-width: 770px) and (orientation: landscape) {
+  .body-homepage{
+    margin-top: 3em;
+  }
   .intro-section.row {
     width: 350px;
     height: 270px;
@@ -231,18 +290,37 @@ h6 {
   .mt-xl-5.col-md-6.col-xl-5 {
     padding-left: 50px;
   }
+  .svg-container-bottom{
+    bottom: -105em;
+  }
+  .svg-container-top{
+    height: 9em;
+  }
 }
 
 /*Pixel 2XL and iPhone X Landscape*/
 @media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
+  .body-homepage{
+    margin-top: 3.25em;
+  }
   .mt-xl-5.col-md-6.col-xl-5 {
     padding-top: 50px;
     margin-bottom: 20px;
+  }
+  .svg-container-bottom{
+    bottom: -60em;
   }
 }
 
 /*iPhone 5/SE Landscape*/
 @media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape) {
+  .view.home-page{
+    height: 20em;
+  }
+  .btn{
+    width: 23.5em;
+  }
+  
   .intro-section.row {
     width: 350px;
     height: 200px;
@@ -254,4 +332,37 @@ h6 {
     padding-top: 25px;
   }
 }
+
+/*iPad Landscape*/
+@media only screen and (min-width: 1000px) and (orientation: landscape){
+  .svg-container-top{
+    height: 22em;
+  }
+  .svg-container-bottom{
+    bottom: -66em;
+    height: 15em;
+  }
+}
+
+/*iPro Landscape*/
+@media only screen and (min-width: 1200px) and (orientation: landscape){
+  .svg-container-top{
+    height: 27em;
+  }
+  .svg-container-bottom{
+    bottom: -75em;
+    height: 20em;
+  }
+}
+
+/*Minimum required for Landscape*/
+@media only screen and (max-width: 600px) and (orientation: landscape) {
+  .svg-container-top{
+    display: none;
+  }
+  .svg-container-bottom{
+    display: none;
+  }
+}
+
 </style>

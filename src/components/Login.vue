@@ -435,7 +435,7 @@ form.login_content {
 }
 
 /*For mobile Portrait*/
-@media only screen and (max-width: 765px) and (orientation: portrait) {
+@media only screen and (max-width: 600px) and (orientation: portrait) {
   form.login_content {
     margin-top: 40%;
   }
