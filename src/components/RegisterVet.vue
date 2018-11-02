@@ -842,7 +842,7 @@ input::placeholder {
 }
 
 /*Common Responsive Landscape, Widest Phone*/
-@media only screen and (min-width: 713px) and (orientation: Landscape) {
+@media only screen and (min-width: 713px) and (max-width: 1000px) and  (orientation: Landscape) {
   form.regis_content_vet {
     width: 190%;
     margin-left: -45%;
@@ -850,6 +850,13 @@ input::placeholder {
   .obj-center {
     margin-top: 305px;
     margin-bottom: 5%;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (orientation: landscape){
+  form.regis_content_vet {
+    width: 100%;
+    margin-left: 0%;
   }
 }
 

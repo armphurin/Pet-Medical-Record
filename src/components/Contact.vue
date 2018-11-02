@@ -148,6 +148,7 @@ h6 {
 /* checkbox and radio style */
 input[type="checkbox"],
 input[type="radio"] {
+  
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -181,6 +182,7 @@ input[type="radio"] + label:after {
   content: "";
   display: block;
   left: 0;
+  
 }
 input[type="checkbox"] + label:before,
 input[type="radio"] + label:before {
@@ -190,6 +192,7 @@ input[type="radio"] + label:before {
   margin-top: -10px;
   border: 2px solid #d9d9d9;
   text-align: center;
+  
 }
 input[type="checkbox"] + label:after,
 input[type="radio"] + label:after {
@@ -202,6 +205,7 @@ input[type="radio"] + label:after {
   transform: scale(0);
   transform-origin: 50%;
   transition: transform 200ms ease-out;
+  
 }
 
 input[type="radio"]:checked + label:before {
@@ -236,6 +240,7 @@ input[type="checkbox"] + label:after {
   -o-transition: none;
   -webkit-transition: none;
   transition: none;
+  
 }
 input[type="checkbox"]:checked + label:before {
   -moz-animation: borderscale 200ms ease-in;
@@ -274,9 +279,21 @@ input[type="checkbox"]:checked + label:after {
 /*-----Mobile Device Edit-----*/
 
 /*Common Mobile Portrait*/
-@media only screen and (min-width: 370px) and (max-width: 600px) and (orientation: portrait) {
+@media only screen and (min-width: 360px) and (max-width: 600px) and (orientation: portrait) {
   .view.contact {
     margin-top: 3em;
+  }
+  .card{
+    top: 1.5em;
+  }
+  .form-check{
+    width: 20em;
+    left: -25px;
+  }
+  #form-subscribe.form-check.form-check-input{ /*Still Error*/
+    width: 15px;
+    left: 18em;
+    top: 0.15em;
   }
 }
 
@@ -284,6 +301,10 @@ input[type="checkbox"]:checked + label:after {
 @media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait) {
   .view.contact {
     height: 40em;
+  }
+  .form-check{
+    width: 18em;
+    left: -25px;
   }
 }
 

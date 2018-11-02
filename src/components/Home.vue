@@ -520,7 +520,11 @@ h6 {
   line-height: 1.7;
 }
 .home-owner {
-  margin-top: 3.5em;
+  margin-top: 3.5em;    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7em;
 }
 .btn-label {
   background-color: #e8c547 !important;
@@ -753,21 +757,25 @@ input::placeholder {
 
 /*Samsung Galaxy S5 and iPhone 5 Portrait*/
 @media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+  
   .home-owner {
     margin-top: 10em;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 11em;
+    
   }
   .intro-section .btn {
     width: 100%;
+    border-radius: 10px;
   }
   .intro-section .btn.btn-label {
     left: 32%;
     width: 9em;
     border-radius: 15px;
     height: 3em;
+    border-radius: 10px;
   }
   h3.content-label {
     left: 10%;
@@ -808,6 +816,13 @@ input::placeholder {
   .col {
     flex-basis: unset;
   }
+  .home-owner {
+    /*height: 35em;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20em;
+  }
 }
 
 /*iPad Pro Portrait*/
@@ -815,12 +830,23 @@ input::placeholder {
   .intro-section .btn.btn-label {
     left: 28%;
   }
+    .home-owner {
+    /*height: 35em;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 34em;
+  }
 }
 
 /*Common Mobile Landscape*/
 @media only screen and (max-width: 830px) and (orientation: landscape) {
   .home-owner {
-    height: 30em;
+    /* height: 30em; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 7em;
   }
   .intro-section .btn {
     width: 50%;
@@ -840,8 +866,16 @@ input::placeholder {
 
 /*Samsung Galaxy S5 and iPhone 5/SE Landscape*/
 @media only screen and (max-width: 640px) and (max-height: 360px) and (orientation: landscape) {
+  .intro-section.row{
+    margin-top: 1em;
+  }
+  
   .home-owner {
-    height: 35em;
+    /*height: 35em;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3em;
   }
   .intro-section .btn {
     width: 70%;
@@ -863,7 +897,11 @@ input::placeholder {
 /*Pixel 2XL and iPhone X Landscape*/
 @media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
   .home-owner {
-    height: 30em;
+    /* height: 30em; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 7em;
   }
   .intro-section .btn.btn-label {
     left: 19%;
