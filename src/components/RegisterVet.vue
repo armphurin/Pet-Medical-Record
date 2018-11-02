@@ -86,7 +86,6 @@
                                 </row>
                             </column>
                         </row>
-                        <loading :active.sync="visible"></loading>
                     </div>
                 </card-body>
             </card>
@@ -172,6 +171,7 @@ export default {
             confpassword: "",
             datebirth: "",
             visible: false,
+            file_pic: null
         };
     },
     components: {
@@ -190,9 +190,7 @@ export default {
     },
     methods: {
         register: function (e) {
-            let loader = this.$loading.show({
-                loader: 'dots'
-            });
+
             var count_input_empty = "";
             if (!this.fullname) {
                 count_input_empty = count_input_empty.concat("fullname, ")
@@ -223,8 +221,13 @@ export default {
             }
             if (!count_input_empty) {
                 if (this.password == this.confpassword) {
-
-                    console.log('password is equal')
+                    swal({
+                        title: "Loading ...",
+                        onOpen: () => {
+                            swal.showLoading()
+                        }
+                    })
+                    // console.log('password is equal')
                     firebase
                         .auth()
                         .createUserWithEmailAndPassword(this.email, this.password)
@@ -242,7 +245,10 @@ export default {
                                     user_type: "vet"
                                 }).then(
                                     user => {
-                                        loader.hide()
+                                        if (this.file_pic) {
+                                            this.detectFiles(this.file_pic)
+                                        }
+                                        console.log(this.file_pic);
                                         swal({
                                             title: "Register Status",
                                             text: `You are Register in Veterinary as ${this.email}`,
@@ -259,20 +265,38 @@ export default {
                                 )
                             },
                             err => {
-                                loader.hide()
-                                swal("Register Status", err.message, "error");
+                                swal({
+                                    title: "Register Status",
+                                    text: err.message,
+                                    type: "error",
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    onOpen: () => {
+                                        swal.hideLoading()
+                                    }
+                                })
                             }
                         );
                     e.preventDefault();
                 }
                 if (this.password != this.confpassword) {
-                    loader.hide()
-                    swal("Register Status", "Password is not match", "error");
+                    swal({
+                        title: "Register Status",
+                        text: "Password mismatch",
+                        type: "error",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             }
             if (count_input_empty) {
-                loader.hide()
-                swal("Register Status", "Please fill out empty field", "error");
+                swal({
+                    title: "Register Status",
+                    text: "Please fill out empty field",
+                    type: "error",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
             console.log(count_input_empty)
 
@@ -283,13 +307,14 @@ export default {
             });
         },
         upload(file) {
-            this.uploadTask = storage.ref("profile/imagenes").put(file);
+            this.uploadTask = storage.ref(this.email + "/profile").put(file);
         },
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
+            this.file_pic = files;
             if (!files.length) return;
             this.createImage(files[0]);
-            this.detectFiles(files);
+            // this.detectFiles(files);
         },
         createImage(file) {
             var image = new Image();

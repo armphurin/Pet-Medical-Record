@@ -8,7 +8,7 @@
                     <hr class="hr-light" />
                 </div>
                 <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true;">
+                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true, showImage()">
                         <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{fullname}}</h5>
                     </btn><br>
                 </div>
@@ -96,13 +96,9 @@
                                 </div>
                             </column>
                             <column>
-                                <div class="label-group" v-if="!password_change">
-                                    <label for="confpassword">Confirm Password</label>
-                                    <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confpassword" v-model="confpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                                </div>
-                                    <div class="label-group" v-if="password_change">
-                                        <label for="confpassword">Old Password</label>
-                                        <input class="form-control form-control-lg" type="password" placeholder="Old Password" id="Oldfpassword" v-model="oldpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <div class="label-group" v-if="password_change">
+                                    <label for="confpassword">Old Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Old Password" id="Oldfpassword" v-model="oldpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
@@ -143,7 +139,6 @@
                             </column>
                         </row>
                     </column>
-                    <loading :active.sync="visible"></loading>
                 </row>
             </modal-body>
             <modal-footer>
@@ -312,7 +307,6 @@
                             </column>
                         </row>
                     </column>
-                    <!-- <loading :active.sync="visible"></loading> -->
                 </row>
             </modal-body>
             <modal-footer>
@@ -329,6 +323,8 @@
 <script>
 import db from "./firebaseInit";
 import firebase from "firebase";
+const storage = firebase.storage();
+const storageRef = storage.ref();
 import swal from "sweetalert2";
 import {
     Container,
@@ -367,12 +363,6 @@ import {
 import {
     Datetime
 } from "vue-datetime";
-
-import Loading from 'vue-loading-overlay';
-// Import stylesheet
-import 'vue-loading-overlay/dist/vue-loading.css';
-import Vue from 'vue';
-Vue.use(Loading);
 
 export default {
     beforeCreate: function () {
@@ -413,7 +403,6 @@ export default {
         PageNav,
         PageItem,
         mdbInput,
-        Loading
     },
     data() {
         return {
@@ -428,7 +417,6 @@ export default {
             email: "",
             fullname: "",
             password: "",
-            confpassword: "",
             address: "",
             age: "",
             gender: "",
@@ -447,12 +435,24 @@ export default {
             oldpassword: "",
             newpassword: "",
             confnewpassword: "",
-            visible: false,
             popupAddPet: false,
-            password_change: false
+            password_change: false,
+            urlImage: null
         };
     },
     methods: {
+        showImage: function (e) {
+            // console.log("ShowImage")
+            storageRef.child('medic/imagenes').getDownloadURL().then(function (url) {
+                // document.querySelector('img').src = url;
+                // var urlImage
+                // alert(url);
+                // console.log(url);
+                // console.log(urlImage);
+                // this.urlImage = url;
+                // console.log(urlImage);
+            })
+        },
         changePassword() {
             this.password_change = true
 
@@ -477,8 +477,13 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.value) {
-                    let loader = this.$loading.show({
-                        loader: 'dots'
+                    swal({
+                        title: 'Loading ...',
+                        showConfirmButton: false,
+                        showCancelButton: false,
+                        onOpen: () => {
+                            swal.showLoading()
+                        }
                     });
                     db
                         .collection('users').doc(this.email).collection('pets')
@@ -487,7 +492,6 @@ export default {
                         .then(querySnapshot => {
                             querySnapshot.forEach(doc => {
                                 doc.ref.delete().then(doc => {
-                                    loader.hide()
                                     toast({
                                         type: 'success',
                                         title: 'Your pet has been deleted'
@@ -538,9 +542,6 @@ export default {
                         return false;
                     }
                     if (!this.telephone) {
-                        return false;
-                    }
-                    if (!this.confpassword) {
                         return false;
                     }
                     return true;
@@ -626,6 +627,12 @@ export default {
             console.log(age);
         },
         updatePet() {
+            swal({
+                title: 'Loading ...',
+                onOpen: () => {
+                    swal.showLoading()
+                }
+            });
             const toast = swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -655,7 +662,10 @@ export default {
             } else {
                 toast({
                     type: 'error',
-                    title: 'Plaese Fill out empty field'
+                    title: 'Plaese Fill out empty field',
+                    onOpen: () => {
+                        swal.hideLoading()
+                    }
                 });
             }
         },
@@ -668,6 +678,12 @@ export default {
             });
             var checkInput = this.validateInput("add_pet");
             if (checkInput) {
+                swal({
+                    title: 'Loading ...',
+                    onOpen: () => {
+                        swal.showLoading()
+                    }
+                });
                 db.collection("users")
                     .doc(this.email)
                     .collection("pets")
@@ -708,30 +724,29 @@ export default {
             var checkInput = this.validateInput("user");
             if (checkInput) {
                 if (!this.password_change) {
-                    if (this.password == this.confpassword) {
-                        db.collection("users")
-                            .doc(this.email)
-                            .update({
-                                fullname: this.fullname,
-                                line_id: this.lineid,
-                                telephone_number: this.telephone,
-                                address: this.address
+                    swal({
+                        title: 'Loading ...',
+                        onOpen: () => {
+                            swal.showLoading()
+                        }
+                    });
+                    db.collection("users")
+                        .doc(this.email)
+                        .update({
+                            fullname: this.fullname,
+                            line_id: this.lineid,
+                            telephone_number: this.telephone,
+                            address: this.address
+                        })
+                        .then(user => {
+                            toast({
+                                type: 'success',
+                                title: 'Update Profile Successfully'
+                            }).then(result => {
+                                this.popupProfile = false;
+                                this.$router.go(this.$route.path);
                             })
-                            .then(user => {
-                                toast({
-                                    type: 'success',
-                                    title: 'Update Profile Successfully'
-                                }).then(result => {
-                                    this.popupProfile = false;
-                                    this.$router.go(this.$route.path);
-                                })
-                            });
-                    } else {
-                        toast({
-                            type: 'error',
-                            title: 'Password mismatch'
                         });
-                    }
                 }
                 if (this.password_change) {
                     if (this.password != this.oldpassword) {
@@ -743,47 +758,55 @@ export default {
                     if (this.newpassword != this.confnewpassword) {
                         toast({
                             type: 'error',
-                            title: 'Old Password mismatch'
+                            title: 'New Password mismatch'
                         });
                     } else {
-                         swal({
-                             title : 'Loading ...',
-                             onOpen: () => {
-                                swal.showLoading()
-                            }
-                        });
-                        this.reAuthenticate(this.password).then(() => {
-                            var user = firebase.auth().currentUser;
-                            user.updatePassword(this.newpassword).then(() => {
-                                db.collection("users").doc(this.email).update({
-                                    password: this.newpassword
-                                }).then(() => {
-                                    toast({
-                                        type: 'success',
-                                        title: 'Update Profile Successfully'
-                                    }).then(result => {
-                                        this.popupProfile = false;
-                                        this.$router.go(this.$route.path);
+                        if (this.password != this.oldpassword) {
+                            toast({
+                                type: 'error',
+                                title: 'Old Password mismatch'
+                            });
+                        }
+                        if (this.password == this.oldpassword) {
+                            swal({
+                                title: 'Loading ...',
+                                onOpen: () => {
+                                    swal.showLoading()
+                                }
+                            });
+                            this.reAuthenticate(this.password).then(() => {
+                                var user = firebase.auth().currentUser;
+                                user.updatePassword(this.newpassword).then(() => {
+                                    db.collection("users").doc(this.email).update({
+                                        password: this.newpassword
+                                    }).then(() => {
+                                        toast({
+                                            type: 'success',
+                                            title: 'Update Profile Successfully'
+                                        }).then(result => {
+                                            this.popupProfile = false;
+                                            this.$router.go(this.$route.path);
+                                        }).catch((error) => {
+                                            toast({
+                                                type: 'error',
+                                                title: error.message
+                                            })
+                                        })
+
                                     }).catch((error) => {
                                         toast({
                                             type: 'error',
                                             title: error.message
                                         })
                                     })
-
                                 }).catch((error) => {
                                     toast({
                                         type: 'error',
                                         title: error.message
                                     })
                                 })
-                            }).catch((error) => {
-                                toast({
-                                    type: 'error',
-                                    title: error.message
-                                })
                             })
-                        })
+                        }
                     }
                 }
 

@@ -80,13 +80,12 @@
                                     <column>
                                         <div class="label-group">
                                             <label for="address">Address</label>
-                                            <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Hospital Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                            <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                         </div>
                                     </column>
                                 </row>
                             </column>
                         </row>
-                        <loading :active.sync="visible"></loading>
                     </div>
                 </card-body>
             </card>
@@ -143,12 +142,6 @@ import {
 import {
     Datetime
 } from "vue-datetime";
-import Loading from 'vue-loading-overlay';
-// Import stylesheet
-import 'vue-loading-overlay/dist/vue-loading.css';
-import Vue from 'vue';
-Vue.use(Loading);
-
 // ES6 Modules or TypeScript
 import swal from "sweetalert2";
 export default {
@@ -187,14 +180,10 @@ export default {
         MdMask,
         ViewWrapper,
         datetime: Datetime,
-        Loading
     },
     methods: {
         register: function (e) {
-            let loader = this.$loading.show({
-                loader: 'dots'
-            });
-            11
+
             var count_input_empty = "";
             if (!this.fullname) {
                 count_input_empty = count_input_empty.concat("fullname, ")
@@ -212,7 +201,7 @@ export default {
                 count_input_empty = count_input_empty.concat("confirm password, ")
             }
             if (!this.line_id) {
-                count_input_empty = count_input_empty.concat("vet_id, ")
+                count_input_empty = count_input_empty.concat("line_id, ")
             }
             if (!this.telephone) {
                 count_input_empty = count_input_empty.concat("telephone, ")
@@ -226,6 +215,12 @@ export default {
             if (!count_input_empty) {
                 if (this.password == this.confpassword) {
                     // console.log('password is equal')
+                    swal({
+                        title: 'Loading ...',
+                        onOpen: () => {
+                            swal.showLoading()
+                        }
+                    });
                     firebase
                         .auth()
                         .createUserWithEmailAndPassword(this.email, this.password)
@@ -243,7 +238,10 @@ export default {
                                     user_type: "owner"
                                 }).then(
                                     user => {
-                                        loader.hide();
+                                        if (this.file_pic) {
+                                            this.detectFiles(this.file_pic)
+                                        }
+                                        console.log(this.file_pic);
                                         swal({
                                             title: "Register Status",
                                             text: `You are Register as ${this.email}`,
@@ -252,28 +250,45 @@ export default {
                                             timer: 1500
                                         }).then(result => {
                                             this.$router.go({
-                                                path: "/home-owner"
-                                            })
-
+                                                path: this.$router.path
+                                            });
                                         });
                                     }
                                 )
                             },
                             err => {
-                                loader.hide();
-                                swal("Register Status", err.message, "error");
+                                swal({
+                                    title: "Register Status",
+                                    text: err.message,
+                                    type: "error",
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    onOpen: () => {
+                                        swal.hideLoading()
+                                    }
+                                })
                             }
                         );
                     e.preventDefault();
                 }
                 if (this.password != this.confpassword) {
-                    loader.hide();
-                    swal("Register Status", "Password is not match", "error");
+                    swal({
+                        title: "Register Status",
+                        text: "Password mismatch",
+                        type: "error",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             }
             if (count_input_empty) {
-                loader.hide();
-                swal("Register Status", "Please fill out empty field", "error");
+                swal({
+                    title: "Register Status",
+                    text: "Please fill out empty field",
+                    type: "error",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
             //   console.log(count_input_empty)
 
@@ -284,7 +299,7 @@ export default {
             });
         },
         upload(file) {
-            this.uploadTask = storage.ref("profile/imagenes").put(file);
+            this.uploadTask = storage.ref(this.email + "/profile").put(file);
         },
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;

@@ -55,7 +55,6 @@
                                 <!-- <btn v-on:click="login" type="button" color="elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</btn> -->
                                 <button v-on:click="login" class="btn btn-elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</button>
                             </row>
-                            <loading :active.sync="visible"></loading>
             </form>
         </container>
     </view-wrapper>
@@ -102,11 +101,6 @@ import {
     mdbNavbarBrand,
 
 } from "mdbvue";
-import Loading from 'vue-loading-overlay';
-// Import stylesheet
-import 'vue-loading-overlay/dist/vue-loading.css';
-import Vue from 'vue';
-Vue.use(Loading);
 
 import firebase from "firebase";
 // ES6 Modules or TypeScript
@@ -140,6 +134,12 @@ export default {
     },
     methods: {
         login: function (e) {
+            swal({
+                title: 'Loading ...',
+                onOpen: () => {
+                    swal.showLoading()
+                }
+            });
             firebase
                 .auth()
                 .signInWithEmailAndPassword(this.email, this.password)
@@ -150,7 +150,10 @@ export default {
                             text: `You are logged in as ${user.email}`,
                             type: "success",
                             showConfirmButton: false,
-                            timer: 1500
+                            timer: 1500,
+                            onOpen: () => {
+                                swal.hideLoading()
+                            }
                         }).then(result => {
 
                             this.$router.go({
@@ -160,7 +163,16 @@ export default {
                         });
                     },
                     err => {
-                        swal("Login Status", err.message, "error");
+                        swal({
+                            title: "Register Status",
+                            text: err.message,
+                            type: "error",
+                            showConfirmButton: false,
+                            timer: 1500,
+                            onOpen: () => {
+                                swal.hideLoading()
+                            }
+                        })
                     }
                 );
             e.preventDefault();
