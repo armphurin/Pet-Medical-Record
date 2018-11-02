@@ -213,7 +213,7 @@
             </modal-body>
             <modal-footer>
                 <btn color="default" @click.native="popupPet = false,show_pet.pop()">Close</btn>
-                <btn color="danger" @click.native="updatePet">Delete</btn>
+                <btn color="danger" @click.native="deletePet">Delete</btn>
                 <btn color="primary" @click.native="updatePet">Save changes</btn>
             </modal-footer>
         </div>
@@ -292,6 +292,7 @@
                             </column>
                         </row>
                     </column>
+                    <loading :active.sync="visible"></loading>
                 </row>
             </modal-body>
             <modal-footer>
@@ -347,6 +348,12 @@ import {
     Datetime
 } from "vue-datetime";
 
+import Loading from 'vue-loading-overlay';
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css';
+import Vue from 'vue';
+Vue.use(Loading);
+
 export default {
     beforeCreate: function () {
         document.body.className = "body-home";
@@ -385,7 +392,8 @@ export default {
         Pagination,
         PageNav,
         PageItem,
-        mdbInput
+        mdbInput,
+        Loading
     },
     data() {
         return {
@@ -420,61 +428,100 @@ export default {
         };
     },
     methods: {
+        deletePet() {
+            const toast = swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            swal({
+                title: 'Are you sure?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    let loader = this.$loading.show({
+                        loader: 'dots'
+                    });
+                    db
+                        .collection('users').doc(this.email).collection('pets')
+                        .where('pet_id', '==', this.show_pet[0].pet_id)
+                        .get()
+                        .then(querySnapshot => {
+                            querySnapshot.forEach(doc => {
+                                doc.ref.delete().then(doc => {
+                                    loader.hide()
+                                    toast({
+                                        type: 'success',
+                                        title: 'Your pet has been deleted'
+                                    }).then(result => {
+                                        this.$router.go(this.$route.path);
+                                    })
+                                })
+                            });
+                        });
+                }
+            })
+        },
         validateInput(data_type) {
             var count_input_empty = "";
-            if(data_type == "user"){
+            if (data_type == "user") {
                 if (!this.fullname) {
-                return false;
+                    return false;
+                }
+                if (!this.lineid) {
+                    return false;
+                }
+                if (!this.address) {
+                    return false;
+                }
+                if (!this.telephone) {
+                    return false;
+                }
+                if (!this.confpassword) {
+                    return false;
+                }
+                return true;
             }
-            if (!this.lineid) {
-                return false;
-            }
-            if (!this.address) {
-                return false;
-            }
-            if (!this.telephone) {
-                return false;
-            }
-            if (!this.confpassword) {
-                return false;
-            }
-            return true;
-            }
-            if(data_type == "add_pet"){
+            if (data_type == "add_pet") {
                 if (!this.pet_name) {
-                return false;
+                    return false;
+                }
+                if (!this.pet_type) {
+                    return false;
+                }
+                if (!this.pet_breed) {
+                    return false;
+                }
+                if (!this.pet_birth) {
+                    return false;
+                }
+                if (!this.pet_gender) {
+                    return false;
+                }
+                if (!this.pet_color) {
+                    return false;
+                }
+                if (!this.pet_marking) {
+                    return false;
+                }
+                return true;
             }
-            if (!this.pet_type) {
-                return false;
-            }
-            if (!this.pet_breed) {
-                return false;
-            }
-            if (!this.pet_birth) {
-                return false;
-            }
-            if (!this.pet_gender) {
-                return false;
-            }
-            if (!this.pet_color) {
-                return false;
-            }
-            if (!this.pet_marking) {
-                return false;
-            }
-            return true;
-            }
-            if(data_type == "update_pet"){
-            if (!this.show_pet[0].breed) {
-                return false;
-            }
-            if (!this.show_pet[0].color) {
-                return false;
-            }
-            if (!this.show_pet[0].marking) {
-                return false;
-            }
-            return true;
+            if (data_type == "update_pet") {
+                if (!this.show_pet[0].breed) {
+                    return false;
+                }
+                if (!this.show_pet[0].color) {
+                    return false;
+                }
+                if (!this.show_pet[0].marking) {
+                    return false;
+                }
+                return true;
             }
         },
         calAgePet(e) {
@@ -492,14 +539,14 @@ export default {
                 console.log("Age : " + yearsOld + " years " + monthsOld + " months " + day + " days ")
                 if (yearsOld == 0) {
                     return (monthsOld + " Months")
-                } else if (yearsOld > 0 && monthsOld >= 0) {
+                } else if (yearsOld > 0 && monthsOld > 0) {
                     return (yearsOld + " Years " + monthsOld + " Months")
-                } else if (yearsOld > 0 && monthsOld <0) {
+                } else if (yearsOld > 0 && monthsOld < 0) {
                     yearsOld = yearsOld - 1;
                     monthsOld = 12 + monthsOld;
                     return (yearsOld + " Years " + monthsOld + " Months")
                 } else {
-                    return (yearsOld + " Years " + monthsOld + " Months")
+                    return (yearsOld + " Years ")
                 }
             }
         },
@@ -522,28 +569,28 @@ export default {
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
-                timer: 1200
+                timer: 2000
             });
             var checkInput = this.validateInput("update_pet")
-            if(checkInput){
+            if (checkInput) {
                 db.collection("users")
-                .doc(this.email)
-                .collection("pets")
-                .doc(this.email + "_" + this.show_pet[0].name)
-                .update({
-                    breed: this.show_pet[0].breed,
-                    marking: this.show_pet[0].marking,
-                    color: this.show_pet[0].color
-                })
-                .then(user => {
-                    toast({
+                    .doc(this.email)
+                    .collection("pets")
+                    .doc(this.email + "_" + this.show_pet[0].name)
+                    .update({
+                        breed: this.show_pet[0].breed,
+                        marking: this.show_pet[0].marking,
+                        color: this.show_pet[0].color
+                    })
+                    .then(user => {
+                        toast({
                             type: 'success',
                             title: 'Update pet successfully'
                         }).then(result => {
                             this.popupAddPet = false;
                             this.$router.go(this.$route.path);
                         });
-                });
+                    });
             } else {
                 toast({
                     type: 'error',
@@ -556,10 +603,10 @@ export default {
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
-                timer: 1200
+                timer: 2000
             });
             var checkInput = this.validateInput("add_pet");
-            if(checkInput){
+            if (checkInput) {
                 db.collection("users")
                     .doc(this.email)
                     .collection("pets")
@@ -595,33 +642,33 @@ export default {
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
-                timer: 1200
+                timer: 2000
             });
             var checkInput = this.validateInput("user");
             if (checkInput) {
-                if(this.password == this.confpassword){
+                if (this.password == this.confpassword) {
                     db.collection("users")
-                    .doc(this.email)
-                    .update({
-                        fullname: this.fullname,
-                        line_id: this.lineid,
-                        telephone_number: this.telephone,
-                        address: this.address
-                    })
-                    .then(user => {
-                        toast({
-                            type: 'success',
-                            title: 'Update Profile Successfully'
-                        }).then(result => {
-                            this.popupProfile = false;
-                            this.$router.go(this.$route.path);
+                        .doc(this.email)
+                        .update({
+                            fullname: this.fullname,
+                            line_id: this.lineid,
+                            telephone_number: this.telephone,
+                            address: this.address
                         })
-                    });
+                        .then(user => {
+                            toast({
+                                type: 'success',
+                                title: 'Update Profile Successfully'
+                            }).then(result => {
+                                this.popupProfile = false;
+                                this.$router.go(this.$route.path);
+                            })
+                        });
                 } else {
                     toast({
-                    type: 'error',
-                    title: 'Password mismatch'
-                });
+                        type: 'error',
+                        title: 'Password mismatch'
+                    });
                 }
             } else {
                 toast({
