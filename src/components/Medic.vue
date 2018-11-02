@@ -287,6 +287,16 @@ body.body-medic {
   -o-background-size: cover;
   background-size: cover;
 }
+</style>
+
+<style scoped>
+body.body-medic {
+  background: url("../assets/bg_doc2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .medic-owner {
   margin-top: 3.5em;
 }

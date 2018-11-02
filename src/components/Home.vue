@@ -480,6 +480,41 @@ body.body-home {
   -o-background-size: cover;
   background-size: cover;
 }
+.vdatetime-input {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 13px;
+  border: 1px solid #ced4da;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  -webkit-writing-mode: horizontal-tb !important;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+</style>
+
+
+<style scoped>
+body.body-home {
+  background: url("../assets/bg_after.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 h6 {
   line-height: 1.7;
