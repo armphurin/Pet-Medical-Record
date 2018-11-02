@@ -11,7 +11,7 @@
                                 <!-- picture -->
                                 <div class="image-upload text-center">
                                     <label for="wizard-picturePro">
-                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                              <img :src="imageOwner" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
                             </label>
                                     <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
                         </div>
@@ -166,7 +166,7 @@ export default {
       progressUpload: 0,
       file: File,
       uploadTask: "",
-      image: "",
+      imageOwner: "",
       confpassword: "",
       datebirth: "",
       visible: false,
@@ -284,7 +284,7 @@ export default {
       });
     },
     upload(file) {
-      this.uploadTask = storage.ref("profile/imagenes").put(file);
+      this.uploadTask = storage.ref("profile2/imagenes").put(file);
     },
     onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
@@ -295,28 +295,16 @@ export default {
       // this.detectFiles(files);
     },
     createImage(file) {
-      var image = new Image();
+      var imageOwner = new Image();
       var reader = new FileReader();
       var vm = this;
       reader.onload = e => {
-        vm.image = e.target.result;
+        vm.imageOwner = e.target.result;
       };
       reader.readAsDataURL(file);
     },
     removeImage: function(e) {
-      this.image = "";
-    },
-    readURLPro: function(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        (reader.onload = function(e) {
-          $("#wizardPicturePreviewPro")
-            .attr("src", e.target.result)
-            .fadeIn("slow");
-        }),
-          reader.readAsDataURL(input.files[0]);
-        this.detectFiles(input.files);
-      }
+      this.imageOwner = "";
     }
   },
   watch: {

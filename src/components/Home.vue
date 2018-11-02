@@ -8,7 +8,7 @@
                     <hr class="hr-light" />
                 </div>
                 <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true;">
+                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true, showImage()">
                         <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>Name : ...</h5>
                     </btn><br>
                 </div>
@@ -408,6 +408,15 @@ export default {
     };
   },
   methods: {
+    showImage() {
+      firebase
+        .storage()
+        .ref("medic/imagenes")
+        .getDownloadURL()
+        .then(function(url) {
+          console.log(url);
+        });
+    },
     detectFiles(fileList) {
       Array.from(Array(fileList.length).keys()).map(x => {
         this.upload(fileList[x]);
