@@ -43,7 +43,7 @@
     </md-mask>
 
     <!-- Popup Profile-->
-    <modal v-if="popupProfile" @close="popupProfile = false" size="lg">
+    <modal v-if="popupProfile" @close="popupProfile = false, password_change= false" size="lg">
         <div class="popup-profile">
             <modal-header>
                 <modal-title>My Profile Card</modal-title>
@@ -96,9 +96,27 @@
                                 </div>
                             </column>
                             <column>
-                                <div class="label-group">
+                                <div class="label-group" v-if="!password_change">
                                     <label for="confpassword">Confirm Password</label>
                                     <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confpassword" v-model="confpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                                    <div class="label-group" v-if="password_change">
+                                        <label for="confpassword">Old Password</label>
+                                        <input class="form-control form-control-lg" type="password" placeholder="Old Password" id="Oldfpassword" v-model="oldpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row v-if="password_change">
+                            <column>
+                                <div class="label-group">
+                                    <label for="password">New Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Password" id="newpassword" v-model="newpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                            <column>
+                                <div class="label-group">
+                                    <label for="confpassword">Confirm New Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Confirm New Password" id="confnewpassword" v-model="confnewpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
@@ -125,10 +143,12 @@
                             </column>
                         </row>
                     </column>
+                    <loading :active.sync="visible"></loading>
                 </row>
             </modal-body>
             <modal-footer>
-                <btn color="default" @click.native="popupProfile = false">Close</btn>
+                <btn color="warning" @click.native="changePassword" v-if="!password_change">Change Password</btn>
+                <btn color="default" @click.native="popupProfile = false, password_change= false">Close</btn>
                 <btn color="primary" @click.native="updateProfile">Save changes</btn>
             </modal-footer>
         </div>
@@ -292,7 +312,7 @@
                             </column>
                         </row>
                     </column>
-                    <loading :active.sync="visible"></loading>
+                    <!-- <loading :active.sync="visible"></loading> -->
                 </row>
             </modal-body>
             <modal-footer>
@@ -424,10 +444,23 @@ export default {
             image: "",
             datebirth: "",
             petbirth: "",
-            popupAddPet: false
+            oldpassword: "",
+            newpassword: "",
+            confnewpassword: "",
+            visible: false,
+            popupAddPet: false,
+            password_change: false
         };
     },
     methods: {
+        changePassword() {
+            this.password_change = true
+
+        },
+        reAuthenticate(currentPassword) {
+            var cred = firebase.auth.EmailAuthProvider.credential(this.email, currentPassword);
+            return firebase.auth().currentUser.reauthenticateWithCredential(cred);
+        },
         deletePet() {
             const toast = swal.mixin({
                 toast: true,
@@ -470,23 +503,50 @@ export default {
         validateInput(data_type) {
             var count_input_empty = "";
             if (data_type == "user") {
-                if (!this.fullname) {
-                    return false;
+                if (this.password_change) {
+                    if (!this.fullname) {
+                        return false;
+                    }
+                    if (!this.lineid) {
+                        return false;
+                    }
+                    if (!this.address) {
+                        return false;
+                    }
+                    if (!this.telephone) {
+                        return false;
+                    }
+                    if (!this.oldpassword) {
+                        return false;
+                    }
+                    if (!this.newpassword) {
+                        return false;
+                    }
+                    if (!this.confnewpassword) {
+                        return false;
+                    }
+                    return true;
                 }
-                if (!this.lineid) {
-                    return false;
+                if (!this.password_change) {
+                    if (!this.fullname) {
+                        return false;
+                    }
+                    if (!this.lineid) {
+                        return false;
+                    }
+                    if (!this.address) {
+                        return false;
+                    }
+                    if (!this.telephone) {
+                        return false;
+                    }
+                    if (!this.confpassword) {
+                        return false;
+                    }
+                    return true;
                 }
-                if (!this.address) {
-                    return false;
-                }
-                if (!this.telephone) {
-                    return false;
-                }
-                if (!this.confpassword) {
-                    return false;
-                }
-                return true;
             }
+
             if (data_type == "add_pet") {
                 if (!this.pet_name) {
                     return false;
@@ -511,6 +571,7 @@ export default {
                 }
                 return true;
             }
+
             if (data_type == "update_pet") {
                 if (!this.show_pet[0].breed) {
                     return false;
@@ -646,30 +707,86 @@ export default {
             });
             var checkInput = this.validateInput("user");
             if (checkInput) {
-                if (this.password == this.confpassword) {
-                    db.collection("users")
-                        .doc(this.email)
-                        .update({
-                            fullname: this.fullname,
-                            line_id: this.lineid,
-                            telephone_number: this.telephone,
-                            address: this.address
-                        })
-                        .then(user => {
-                            toast({
-                                type: 'success',
-                                title: 'Update Profile Successfully'
-                            }).then(result => {
-                                this.popupProfile = false;
-                                this.$router.go(this.$route.path);
+                if (!this.password_change) {
+                    if (this.password == this.confpassword) {
+                        db.collection("users")
+                            .doc(this.email)
+                            .update({
+                                fullname: this.fullname,
+                                line_id: this.lineid,
+                                telephone_number: this.telephone,
+                                address: this.address
                             })
+                            .then(user => {
+                                toast({
+                                    type: 'success',
+                                    title: 'Update Profile Successfully'
+                                }).then(result => {
+                                    this.popupProfile = false;
+                                    this.$router.go(this.$route.path);
+                                })
+                            });
+                    } else {
+                        toast({
+                            type: 'error',
+                            title: 'Password mismatch'
                         });
-                } else {
-                    toast({
-                        type: 'error',
-                        title: 'Password mismatch'
-                    });
+                    }
                 }
+                if (this.password_change) {
+                    if (this.password != this.oldpassword) {
+                        toast({
+                            type: 'error',
+                            title: 'Old Password mismatch'
+                        });
+                    }
+                    if (this.newpassword != this.confnewpassword) {
+                        toast({
+                            type: 'error',
+                            title: 'Old Password mismatch'
+                        });
+                    } else {
+                         swal({
+                             title : 'Loading ...',
+                             onOpen: () => {
+                                swal.showLoading()
+                            }
+                        });
+                        this.reAuthenticate(this.password).then(() => {
+                            var user = firebase.auth().currentUser;
+                            user.updatePassword(this.newpassword).then(() => {
+                                db.collection("users").doc(this.email).update({
+                                    password: this.newpassword
+                                }).then(() => {
+                                    toast({
+                                        type: 'success',
+                                        title: 'Update Profile Successfully'
+                                    }).then(result => {
+                                        this.popupProfile = false;
+                                        this.$router.go(this.$route.path);
+                                    }).catch((error) => {
+                                        toast({
+                                            type: 'error',
+                                            title: error.message
+                                        })
+                                    })
+
+                                }).catch((error) => {
+                                    toast({
+                                        type: 'error',
+                                        title: error.message
+                                    })
+                                })
+                            }).catch((error) => {
+                                toast({
+                                    type: 'error',
+                                    title: error.message
+                                })
+                            })
+                        })
+                    }
+                }
+
             } else {
                 toast({
                     type: 'error',
