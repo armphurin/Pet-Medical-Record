@@ -128,8 +128,20 @@ export default {
   }
 };
 </script>
-
 <style>
+body.body-homepage {
+  background-image: url("../assets/baner_homepage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: calc(100vh - 60px);
+  margin: 0;
+  padding: 0;
+}
+</style>
+
+
+<style scoped>
 .btn-curve {
   border-radius: 15px;
 }
