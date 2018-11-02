@@ -263,35 +263,30 @@ input[type="checkbox"]:checked + label:after {
 /*-----Mobile Device Edit-----*/
 
 /*Common Mobile Portrait*/
-@media only screen and (min-width: 370px) and (max-width: 600px) and (orientation: portrait){
-  .view.contact{
+@media only screen and (min-width: 370px) and (max-width: 600px) and (orientation: portrait) {
+  .view.contact {
     margin-top: 3em;
   }
 }
 
 /*iPhone 5/SE Portrait*/
 @media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait) {
-  .view.contact{
+  .view.contact {
     height: 40em;
   }
 }
 
 /*Common Mobile Landscape*/
 @media only screen and (max-width: 830px) and (orientation: landscape) {
-  .view.contact{
+  .view.contact {
     height: 40em;
   }
 }
 
 /*Pixel 2XL and iPhone X Landscape*/
 @media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
-  .card{
+  .card {
     width: 41.5em;
   }
 }
-
-
-
-
-
 </style>

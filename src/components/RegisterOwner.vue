@@ -1,134 +1,133 @@
 <template>
-  <div class="wrapper">
+ <div class="wrapper">
     <container>
-    <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis">
-<form action="index.html" class="regis_content_vet">
-              <card class="w-50 d-flex justify-content-center register-card" style="margin:0 auto;z-index:2;">
-              <card-body>
-                <div class="bg-card">
-                <row style="padding:1em;">
-                    <column class="col-md-4">
-                        <!-- picture -->
-                        <div class="image-upload text-center">
-                            <label for="wizard-picturePro">
+        <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis">
+        <form action="index.html" class="regis_content_vet">
+            <card class="w-50 d-flex justify-content-center register-card" style="margin:0 auto;z-index:2;">
+                <card-body>
+                    <div class="bg-card">
+                        <row style="padding:1em;">
+                            <column class="col-md-4">
+                                <!-- picture -->
+                                <div class="image-upload text-center">
+                                    <label for="wizard-picturePro">
                               <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
                             </label>
-                            <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                                    <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
                         </div>
-                            <div class="label-group">
-                                <label for="fullname">Fullname</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <div class="label-group">
+                                        <label for="fullname">Fullname</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;" required>
                             </div>
-                        <row>
-                          <column>
-                            <div class="label-group">
-                              <label for="gender">Gender</label>
-                              <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                        <row>
+                                            <column>
+                                                <div class="label-group">
+                                                    <label for="gender">Gender</label>
+                                                    <select class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 <option>Male</option>
                                 <option>Female</option>
                               </select>
-                            </div>
-                          </column>
-                        </row>
-                        <row>
-                          <column>
-                              <div class="label-group">
-                                <label for="datetime">Date of Birth</label>
-                                <datetime v-model="datebirth"></datetime>
-                              </div>
-                          </column>
-                        </row>
-                    </column>
-                    <column class="col-md-8">
-                        <row>
-                            <column>
-                                <div class="label-group">
-                                    <label for="email">Email</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                                </div>
+                                            </column>
+                                        </row>
+                                        <row>
+                                            <column>
+                                                <div class="label-group">
+                                                    <label for="datetime">Date of Birth</label>
+                                                    <datetime v-model="datebirth"></datetime>
+                                                </div>
+                                            </column>
+                                        </row>
+                            </column>
+                            <column class="col-md-8">
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="email">Email</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Email" id="email" v-model="email" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
+                                    </column>
+                                </row>
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="password">Password</label>
+                                            <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                                    </column>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="confpassword">Confirm Password</label>
+                                            <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confpassword" v-model="confpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                                    </column>
+                                </row>
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="lineid">Line ID</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="line_id" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                                    </column>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="telephone">Telephone</label>
+                                            <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                                    </column>
+                                </row>
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="address">Address</label>
+                                            <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Hospital Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                        </div>
+                                    </column>
+                                </row>
                             </column>
                         </row>
-                        <row>
-                            <column>
-                                <div class="label-group">
-                                    <label for="password">Password</label>
-                                    <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                                </div>
-                            </column>
-                            <column>
-                                <div class="label-group">
-                                    <label for="confpassword">Confirm Password</label>
-                                    <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confpassword" v-model="confpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                                </div>
-                            </column>
-                        </row>
-                        <row>
-                            <column>
-                                <div class="label-group">
-                                    <label for="lineid">Line ID</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                                </div>
-                            </column>
-                            <column>
-                                <div class="label-group">
-                                    <label for="telephone">Telephone</label>
-                                    <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                                </div>
-                            </column>
-                        </row>
-                        <row>
-                            <column>
-                                <div class="label-group">
-                                    <label for="address">Address</label>
-                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
-                                </div>
-                            </column>
-                        </row>
-                    </column>
-                </row>
-
-                </div>
-              </card-body>
+                        <loading :active.sync="visible"></loading>
+                    </div>
+                </card-body>
             </card>
-</form>
-<div class="obj-center">
-                  <router-link to="/register"><button v-on:click="register" class="btn btn-elegant button-regis">Back</button></router-link>
-                  <button v-on:click="register" class="btn btn-elegant button-regis">Register</button>
+        </form>
+        <div class="obj-center">
+            <router-link to="/register"><button  class="btn btn-elegant button-regis">Back</button></router-link>
+            <button v-on:click="register" class="btn btn-elegant button-regis">Register</button>
+        </div>
+    </container>
+    <ul class="bg-bubbles">
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/dogfood2.svg" alt="cat"></li>
+        <li><img src="../assets/dog.svg" alt="cat"></li>
+        <li><img src="../assets/dog.svg" alt="cat"></li>
+        <li><img src="../assets/dogfood2.svg" alt="cat"></li>
+        <li><img src="../assets/dogfood.svg" alt="cat"></li>
+        <li><img src="../assets/dog.svg" alt="cat"></li>
+        <li><img src="../assets/dogfood2.svg" alt="cat"></li>
+        <li><img src="../assets/dog.svg" alt="cat"></li>
+        <li><img src="../assets/dogfood.svg" alt="cat"></li>
+        <li><img src="../assets/dog.svg" alt="cat"></li>
+    </ul>
+
 </div>
-            </container>
-<ul class="bg-bubbles">
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/dogfood2.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dogfood2.svg" alt="cat"></li>
-		<li><img src="../assets/dogfood.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dogfood2.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dogfood.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-	</ul>
-
-  </div>
-
 
 </template>
 
 <script>
+import db from "./firebaseInit.js";
 import firebase from "firebase";
 const storage = firebase.storage();
 const storageRef = storage.ref();
-
 import {
   Card,
   CardImg,
@@ -142,13 +141,18 @@ import {
   ViewWrapper
 } from "mdbvue";
 import { Datetime } from "vue-datetime";
+import Loading from "vue-loading-overlay";
+// Import stylesheet
+import "vue-loading-overlay/dist/vue-loading.css";
+import Vue from "vue";
+Vue.use(Loading);
 // ES6 Modules or TypeScript
 import swal from "sweetalert2";
 export default {
   beforeCreate: function() {
-    document.body.className = "body-registerowner";
+    document.body.className = "body-registervet";
   },
-  name: "register-owner",
+  name: "register-vet",
   data: function() {
     return {
       email: "",
@@ -156,13 +160,17 @@ export default {
       age: "",
       gender: "",
       fullname: "",
-      lineid: "",
+      line_id: "",
       telephone: "",
       address: "",
       progressUpload: 0,
       file: File,
       uploadTask: "",
-      image: ""
+      image: "",
+      confpassword: "",
+      datebirth: "",
+      visible: false,
+      file_pic: null
     };
   },
   components: {
@@ -176,37 +184,99 @@ export default {
     Column,
     MdMask,
     ViewWrapper,
-    datetime: Datetime
+    datetime: Datetime,
+    Loading
   },
   methods: {
     register: function(e) {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(
-          user => {
-            // console.log(user);
-            swal(
-              "Register Status",
-              `You are Register in Owner as ${user.email}`,
-              "success"
+      let loader = this.$loading.show({
+        loader: "dots"
+      });
+      11;
+      var count_input_empty = "";
+      console.log(this.file_pic);
+      if (!this.fullname) {
+        count_input_empty = count_input_empty.concat("fullname, ");
+      }
+      if (!this.gender) {
+        count_input_empty = count_input_empty.concat("gender, ");
+      }
+      if (!this.email) {
+        count_input_empty = count_input_empty.concat("email, ");
+      }
+      if (!this.password) {
+        count_input_empty = count_input_empty.concat("password, ");
+      }
+      if (!this.confpassword) {
+        count_input_empty = count_input_empty.concat("confirm password, ");
+      }
+      if (!this.line_id) {
+        count_input_empty = count_input_empty.concat("vet_id, ");
+      }
+      if (!this.telephone) {
+        count_input_empty = count_input_empty.concat("telephone, ");
+      }
+      if (!this.address) {
+        count_input_empty = count_input_empty.concat("address, ");
+      }
+      if (!this.datebirth) {
+        count_input_empty = count_input_empty.concat("datebirth, ");
+      }
+      if (!count_input_empty) {
+        if (this.password == this.confpassword) {
+          console.log("password is equal");
+          firebase
+            .auth()
+            .createUserWithEmailAndPassword(this.email, this.password)
+            .then(
+              user => {
+                db.collection("users")
+                  .doc(this.email)
+                  .set({
+                    email: this.email,
+                    gender: this.gender,
+                    password: this.password,
+                    fullname: this.fullname,
+                    line_id: this.line_id,
+                    telephone_number: this.telephone,
+                    address: this.address,
+                    datebirth: this.datebirth,
+                    user_type: "owner"
+                  })
+                  .then(user => {
+                    console.log(this.file_pic);
+                    this.detectFiles(this.file_pic);
+                    loader.hide();
+                    swal({
+                      title: "Register Status",
+                      text: `You are Register as ${this.email}`,
+                      type: "success",
+                      showConfirmButton: false,
+                      timer: 1500
+                    }).then(result => {
+                      this.$router.go({
+                        path: "/"
+                      });
+                    });
+                  });
+              },
+              err => {
+                loader.hide();
+                swal("Register Status", err.message, "error");
+              }
             );
-            this.$router.go({ path: this.$router.path });
-          },
-          db
-            .collection("profiles")
-            .doc(this.email)
-            .set({
-              profile_id: "new",
-              profile_name: "new",
-              dept: "new",
-              position: "new"
-            }),
-          err => {
-            swal("Register Status", err.message, "error");
-          }
-        );
-      e.preventDefault();
+          e.preventDefault();
+        }
+        if (this.password != this.confpassword) {
+          loader.hide();
+          swal("Register Status", "Password is not match", "error");
+        }
+      }
+      if (count_input_empty) {
+        loader.hide();
+        swal("Register Status", "Please fill out empty field", "error");
+      }
+      //   console.log(count_input_empty)
     },
     detectFiles(fileList) {
       Array.from(Array(fileList.length).keys()).map(x => {
@@ -214,19 +284,20 @@ export default {
       });
     },
     upload(file) {
-      this.uploadTask = storage.ref("medic/imagenes").put(file);
+      this.uploadTask = storage.ref("profile/imagenes").put(file);
     },
     onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
+      this.file_pic = files;
       if (!files.length) return;
+      console.log(this.file_pic);
       this.createImage(files[0]);
-      this.detectFiles(files);
+      // this.detectFiles(files);
     },
     createImage(file) {
       var image = new Image();
       var reader = new FileReader();
       var vm = this;
-
       reader.onload = e => {
         vm.image = e.target.result;
       };
@@ -238,7 +309,6 @@ export default {
     readURLPro: function(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
-
         (reader.onload = function(e) {
           $("#wizardPicturePreviewPro")
             .attr("src", e.target.result)
@@ -702,98 +772,98 @@ input::placeholder {
   font-size: 80%;
 }
 
-@media only screen and (min-width: 300px) and (max-width: 1400px){.wrapper{
+@media only screen and (min-width: 300px) and (max-width: 1400px) {
+  .wrapper {
     overflow: scroll;
   }
 }
 
 /*Common Responsive Portrait, Phone*/
-@media only screen and (max-width: 600px) and (orientation: Portrait){
-  form.regis_content_vet{
+@media only screen and (max-width: 600px) and (orientation: Portrait) {
+  form.regis_content_vet {
     width: 150%;
     margin-left: -25%;
   }
-  .obj-center{
+  .obj-center {
     margin-top: 600px;
     margin-bottom: 5%;
   }
-  .logo_regis{
+  .logo_regis {
     width: 10em;
     height: 5em;
   }
-  .btn{
+  .btn {
     width: 10em;
     height: 5em;
   }
 }
 
 /*Common Responsive Portrait, Higher Phone*/
-@media only screen and (max-width: 600px) and (min-height: 700px) and (orientation: Portrait){
-  .obj-center{
+@media only screen and (max-width: 600px) and (min-height: 700px) and (orientation: Portrait) {
+  .obj-center {
     margin-top: 550px;
   }
-  }
+}
 
 /*Common Responsive Portrait, Tablet*/
-@media only screen and (min-width: 600px) and (orientation: Portrait){
-  form.regis_content_vet{
+@media only screen and (min-width: 600px) and (orientation: Portrait) {
+  form.regis_content_vet {
     width: 140%;
     margin-left: -20%;
   }
-  .logo_regis{
+  .logo_regis {
     width: 10em;
     height: 5em;
   }
-  .obj-center{
+  .obj-center {
     margin-top: -10%;
   }
 }
 
 /*Common Responsive Portrait, Larger Tablet*/
-@media only screen and (min-width: 1024px) and (orientation: Portrait){
-  .obj-center{
+@media only screen and (min-width: 1024px) and (orientation: Portrait) {
+  .obj-center {
     margin-top: -30%;
   }
 }
 
 /*Common Responsive Landscape, Phone*/
-@media only screen and (max-width: 673px) and (orientation: Landscape){
-  .obj-center{
+@media only screen and (max-width: 673px) and (orientation: Landscape) {
+  .obj-center {
     margin-top: 775px;
     margin-bottom: 5%;
   }
 }
 
 /*Common Responsive Landscape, Wider Phone*/
-@media only screen and (min-width: 673px) and (orientation: Landscape){
-  form.regis_content_vet{
+@media only screen and (min-width: 673px) and (orientation: Landscape) {
+  form.regis_content_vet {
     width: 125%;
     margin-left: -10%;
   }
-  .obj-center{
+  .obj-center {
     margin-top: 400px;
     margin-bottom: 5%;
   }
 }
 
 /*Common Responsive Landscape, Widest Phone*/
-@media only screen and (min-width: 713px) and (orientation: Landscape){
-  form.regis_content_vet{
+@media only screen and (min-width: 713px) and (orientation: Landscape) {
+  form.regis_content_vet {
     width: 190%;
     margin-left: -45%;
   }
-  .obj-center{
+  .obj-center {
     margin-top: 305px;
     margin-bottom: 5%;
   }
 }
 
 /*Common Responsive Landscape, Tablet*/
-@media only screen and (min-height: 700px) and (orientation: Landscape){
-  .obj-center{
+@media only screen and (min-height: 700px) and (orientation: Landscape) {
+  .obj-center {
     margin-top: 5%;
     margin-bottom: 5%;
   }
 }
-
 </style>

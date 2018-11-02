@@ -103,11 +103,14 @@ import {
   Btn,
   mdbNavbarBrand
 } from "mdbvue";
-
+import Loading from "vue-loading-overlay";
+// Import stylesheet
+import "vue-loading-overlay/dist/vue-loading.css";
+import Vue from "vue";
+Vue.use(Loading);
 import firebase from "firebase";
 // ES6 Modules or TypeScript
 import swal from "sweetalert2";
-
 export default {
   beforeCreate: function() {
     document.body.className = "body-login";
@@ -145,17 +148,12 @@ export default {
               title: "Login Status",
               text: `You are logged in as ${user.email}`,
               type: "success",
-              confirmButtonColor: "#3085d6",
-              confirmButtonText: "Okay"
+              showConfirmButton: false,
+              timer: 1500
             }).then(result => {
-              if (result.value) {
-                swal(
-                  "Login Status",
-                  `You are logged in as ${user.email}`,
-                  "success"
-                );
-                this.$router.go({ path: this.$router.path });
-              }
+              this.$router.go({
+                path: this.$router.path
+              });
             });
           },
           err => {
