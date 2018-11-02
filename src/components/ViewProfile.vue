@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import db from './firebaseInit';
+import db from "./firebaseInit";
 export default {
-  name: 'view-profile',
+  name: "view-profile",
   data() {
     return {
       profile_id: null,
@@ -30,9 +30,8 @@ export default {
     };
   },
   beforeRouteEnter(to, from, next) {
-    db
-      .collection('profiles')
-      .where('profile_id', '==', to.params.profile_id)
+    db.collection("profiles")
+      .where("profile_id", "==", to.params.profile_id)
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
@@ -46,13 +45,12 @@ export default {
       });
   },
   watch: {
-    $route: 'fetchData'
+    $route: "fetchData"
   },
   methods: {
     fetchData() {
-      db
-        .collection('profiles')
-        .where('profile_id', '==', this.$route.params.profile_id)
+      db.collection("profiles")
+        .where("profile_id", "==", this.$route.params.profile_id)
         .get()
         .then(querySnapshot => {
           querySnapshot.forEach(doc => {
@@ -64,15 +62,14 @@ export default {
         });
     },
     deleteProfile() {
-      if (confirm('Are you sure?')) {
-        db
-          .collection('profiles')
-          .where('profile_id', '==', this.$route.params.profile_id)
+      if (confirm("Are you sure?")) {
+        db.collection("profiles")
+          .where("profile_id", "==", this.$route.params.profile_id)
           .get()
           .then(querySnapshot => {
             querySnapshot.forEach(doc => {
               doc.ref.delete();
-              this.$router.push('/');
+              this.$router.push("/");
             });
           });
       }

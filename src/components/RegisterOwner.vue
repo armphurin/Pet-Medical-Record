@@ -772,98 +772,98 @@ input::placeholder {
   font-size: 80%;
 }
 
-@media only screen and (min-width: 300px) and (max-width: 1400px){.wrapper{
+@media only screen and (min-width: 300px) and (max-width: 1400px) {
+  .wrapper {
     overflow: scroll;
   }
 }
 
 /*Common Responsive Portrait, Phone*/
-@media only screen and (max-width: 600px) and (orientation: Portrait){
-  form.regis_content_vet{
+@media only screen and (max-width: 600px) and (orientation: Portrait) {
+  form.regis_content_vet {
     width: 150%;
     margin-left: -25%;
   }
-  .obj-center{
+  .obj-center {
     margin-top: 600px;
     margin-bottom: 5%;
   }
-  .logo_regis{
+  .logo_regis {
     width: 10em;
     height: 5em;
   }
-  .btn{
+  .btn {
     width: 10em;
     height: 5em;
   }
 }
 
 /*Common Responsive Portrait, Higher Phone*/
-@media only screen and (max-width: 600px) and (min-height: 700px) and (orientation: Portrait){
-  .obj-center{
+@media only screen and (max-width: 600px) and (min-height: 700px) and (orientation: Portrait) {
+  .obj-center {
     margin-top: 550px;
   }
-  }
+}
 
 /*Common Responsive Portrait, Tablet*/
-@media only screen and (min-width: 600px) and (orientation: Portrait){
-  form.regis_content_vet{
+@media only screen and (min-width: 600px) and (orientation: Portrait) {
+  form.regis_content_vet {
     width: 140%;
     margin-left: -20%;
   }
-  .logo_regis{
+  .logo_regis {
     width: 10em;
     height: 5em;
   }
-  .obj-center{
+  .obj-center {
     margin-top: -10%;
   }
 }
 
 /*Common Responsive Portrait, Larger Tablet*/
-@media only screen and (min-width: 1024px) and (orientation: Portrait){
-  .obj-center{
+@media only screen and (min-width: 1024px) and (orientation: Portrait) {
+  .obj-center {
     margin-top: -30%;
   }
 }
 
 /*Common Responsive Landscape, Phone*/
-@media only screen and (max-width: 673px) and (orientation: Landscape){
-  .obj-center{
+@media only screen and (max-width: 673px) and (orientation: Landscape) {
+  .obj-center {
     margin-top: 775px;
     margin-bottom: 5%;
   }
 }
 
 /*Common Responsive Landscape, Wider Phone*/
-@media only screen and (min-width: 673px) and (orientation: Landscape){
-  form.regis_content_vet{
+@media only screen and (min-width: 673px) and (orientation: Landscape) {
+  form.regis_content_vet {
     width: 125%;
     margin-left: -10%;
   }
-  .obj-center{
+  .obj-center {
     margin-top: 400px;
     margin-bottom: 5%;
   }
 }
 
 /*Common Responsive Landscape, Widest Phone*/
-@media only screen and (min-width: 713px) and (orientation: Landscape){
-  form.regis_content_vet{
+@media only screen and (min-width: 713px) and (orientation: Landscape) {
+  form.regis_content_vet {
     width: 190%;
     margin-left: -45%;
   }
-  .obj-center{
+  .obj-center {
     margin-top: 305px;
     margin-bottom: 5%;
   }
 }
 
 /*Common Responsive Landscape, Tablet*/
-@media only screen and (min-height: 700px) and (orientation: Landscape){
-  .obj-center{
+@media only screen and (min-height: 700px) and (orientation: Landscape) {
+  .obj-center {
     margin-top: 5%;
     margin-bottom: 5%;
   }
 }
-
 </style>

@@ -430,7 +430,6 @@ body.body-register {
   }
 }
 
-
 @media only screen and (max-width: 600px) {
   .card.register {
     align-items: center;
@@ -467,15 +466,15 @@ body.body-register {
 
 /*Common Mobile Landscape*/
 @media only screen and (max-width: 770px) and (orientation: landscape) {
-  .row{
-    flex-wrap : unset;
-    margin-left : 20em;
+  .row {
+    flex-wrap: unset;
+    margin-left: 20em;
   }
 }
 
 /*Pixel 2XL and iPhone X Landscape*/
 @media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
-  .row{
+  .row {
     flex-wrap: unset;
     width: 40em;
     margin-left: 30em;
@@ -484,25 +483,22 @@ body.body-register {
 
 /*Pixel 2 Landscape*/
 @media only screen and (max-width: 740px) and (max-height: 420px) and (orientation: landscape) {
-  .row{
+  .row {
     margin-left: 25em;
   }
 }
 
 /*iPhone 5/SE Landscape*/
 @media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape) {
-  .row{
+  .row {
     margin-left: 15em;
   }
 }
 
 /*Samsung Galaxy S5 Landscape*/
 @media only screen and (min-width: 640px) and (max-height: 360px) and (orientation: landscape) {
-  .row{
-    margin-left: 20em
+  .row {
+    margin-left: 20em;
   }
 }
-
-
-
 </style>
