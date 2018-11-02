@@ -1,12 +1,14 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "@/components/Home";
+import HomeOwner from "@/components/HomeOwner";
+import HomeVet from "@/components/HomeVet";
 import ViewPet from "@/components/ViewPet";
 import NewPet from "@/components/NewPet";
 import EditPet from "@/components/EditPet";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
 import firebase from "firebase";
+import db from "../components/firebaseInit";
 import ViewProfile from "@/components/ViewProfile";
 import EditProfile from "@/components/EditProfile";
 import HomeProfile from "@/components/HomeProfile";
@@ -26,12 +28,22 @@ Vue.use(Router, axios, VueAxios, Datetime, VueSweetalert2);
 
 let router = new Router({
   routes: [
+    // {
+    //   path: "/",
+    //   name: "home-owner",
+    //   component: HomeOwner,
+    //   meta: {
+    //     requiresAuth: true,
+    //     requiresOwner: true
+    //   }
+    // },
     {
       path: "/",
-      name: "Home",
-      component: Home,
+      name: "home-vet",
+      component: HomeVet,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiresVet: true
       }
     },
     {
@@ -87,7 +99,7 @@ let router = new Router({
       name: "edit-profile",
       component: EditProfile,
       meta: {
-        requiresAuth: true
+         requiresAuth: true
       }
     },
     {
@@ -95,7 +107,7 @@ let router = new Router({
       name: "home-profile",
       component: HomeProfile,
       meta: {
-        requiresAuth: true
+         requiresAuth: true
       }
     },
     {
@@ -140,6 +152,7 @@ let router = new Router({
       component: Medic,
       meta: { requiresAuth: true }
     }
+
   ]
 });
 
