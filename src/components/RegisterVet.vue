@@ -122,59 +122,12 @@
 </template>
 
 <script>
-import db from "./firebaseInit.js";
+import db from './firebaseInit.js';
 import firebase from "firebase";
 const storage = firebase.storage();
 const storageRef = storage.ref();
 
 import {
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardText,
-  Btn,
-  Row,
-  Column,
-  MdMask,
-  ViewWrapper
-} from "mdbvue";
-import { Datetime } from "vue-datetime";
-import Loading from "vue-loading-overlay";
-// Import stylesheet
-import "vue-loading-overlay/dist/vue-loading.css";
-import Vue from "vue";
-Vue.use(Loading);
-// ES6 Modules or TypeScript
-import swal from "sweetalert2";
-export default {
-  beforeCreate: function() {
-    document.body.className = "body-registervet";
-  },
-  name: "register-vet",
-  data: function() {
-    return {
-      urlImageProfile: "",
-      email: "",
-      password: "",
-      age: "",
-      gender: "",
-      fullname: "",
-      vet_id: "",
-      telephone: "",
-      address: "",
-      progressUpload: 0,
-      file: File,
-      uploadTask: "",
-      image: "",
-      urlImageProfile: "",
-      confpassword: "",
-      datebirth: "",
-      visible: false,
-      file_pic: null
-    };
-  },
-  components: {
     Card,
     CardImg,
     CardBody,
@@ -184,248 +137,284 @@ export default {
     Row,
     Column,
     MdMask,
-    ViewWrapper,
-    datetime: Datetime,
-    Loading
-  },
-  methods: {
-    register: function(e) {
-      var count_input_empty = "";
-      if (!this.fullname) {
-        count_input_empty = count_input_empty.concat("fullname, ");
-      }
-      if (!this.gender) {
-        count_input_empty = count_input_empty.concat("gender, ");
-      }
-      if (!this.email) {
-        count_input_empty = count_input_empty.concat("email, ");
-      }
-      if (!this.password) {
-        count_input_empty = count_input_empty.concat("password, ");
-      }
-      if (!this.confpassword) {
-        count_input_empty = count_input_empty.concat("confirm password, ");
-      }
-      if (!this.vet_id) {
-        count_input_empty = count_input_empty.concat("vet_id, ");
-      }
-      if (!this.telephone) {
-        count_input_empty = count_input_empty.concat("telephone, ");
-      }
-      if (!this.address) {
-        count_input_empty = count_input_empty.concat("address, ");
-      }
-      if (!this.datebirth) {
-        count_input_empty = count_input_empty.concat("datebirth, ");
-      }
-      if (!count_input_empty) {
-        if (this.password == this.confpassword) {
-          if (this.file_pic) {
-            swal({
-              title: "Loading ...",
-              onOpen: () => {
-                swal.showLoading();
-              }
-            });
-            firebase
-              .auth()
-              .createUserWithEmailAndPassword(this.email, this.password)
-              .then(
-                user => {
-                  storage
-                    .ref(this.email + "/profile")
-                    .put(this.file_pic[0])
-                    .then(user => {
-                      storageRef
-                        .child(this.email + "/profile")
-                        .getDownloadURL()
-                        .then(url => {
-                          // this.urlImageProfile = url;
-                          console.log(url);
-                          db.collection("users")
-                            .doc(this.email)
-                            .set({
-                              email: this.email,
-                              gender: this.gender,
-                              password: this.password,
-                              fullname: this.fullname,
-                              vet_id: this.vet_id,
-                              telephone_number: this.telephone,
-                              address: this.address,
-                              datebirth: this.datebirth,
-                              urlImageProfile: url,
-                              user_type: "vet"
-                            })
-                            .then(user => {
-                              swal({
-                                title: "Register Status",
-                                text: `You are Register in Veterinary as ${
-                                  this.email
-                                }`,
-                                type: "success",
-                                showConfirmButton: false,
-                                timer: 1500
-                              }).then(result => {
-                                this.$router.go({
-                                  path: this.$router.path
-                                });
-                              });
-                            });
-                        });
-                    });
-                },
-                err => {
-                  swal({
-                    title: "Register Status",
-                    text: err.message,
-                    type: "error",
-                    showConfirmButton: false,
-                    timer: 1500,
-                    onOpen: () => {
-                      swal.hideLoading();
+    ViewWrapper
+} from "mdbvue";
+import {
+    Datetime
+} from "vue-datetime";
+// ES6 Modules or TypeScript
+import swal from "sweetalert2";
+export default {
+    beforeCreate: function () {
+        document.body.className = "body-registervet";
+    },
+    name: "register-vet",
+    data: function () {
+        return {
+            urlImageProfile: "",
+            email: "",
+            password: "",
+            age: "",
+            gender: "",
+            fullname: "",
+            vet_id: "",
+            telephone: "",
+            address: "",
+            progressUpload: 0,
+            file: File,
+            uploadTask: "",
+            image: "",
+            urlImageProfile: "",
+            confpassword: "",
+            datebirth: "",
+            file_pic: null
+        };
+    },
+    components: {
+        Card,
+        CardImg,
+        CardBody,
+        CardTitle,
+        CardText,
+        Btn,
+        Row,
+        Column,
+        MdMask,
+        ViewWrapper,
+        datetime: Datetime,
+    },
+    methods: {
+        register: function (e) {
+
+            var count_input_empty = "";
+            if (!this.fullname) {
+                count_input_empty = count_input_empty.concat("fullname, ")
+            }
+            if (!this.gender) {
+                count_input_empty = count_input_empty.concat("gender, ")
+            }
+            if (!this.email) {
+                count_input_empty = count_input_empty.concat("email, ")
+            }
+            if (!this.password) {
+                count_input_empty = count_input_empty.concat("password, ")
+            }
+            if (!this.confpassword) {
+                count_input_empty = count_input_empty.concat("confirm password, ")
+            }
+            if (!this.vet_id) {
+                count_input_empty = count_input_empty.concat("vet_id, ")
+            }
+            if (!this.telephone) {
+                count_input_empty = count_input_empty.concat("telephone, ")
+            }
+            if (!this.address) {
+                count_input_empty = count_input_empty.concat("address, ")
+            }
+            if (!this.datebirth) {
+                count_input_empty = count_input_empty.concat("datebirth, ")
+            }
+            if (!count_input_empty) {
+                if (this.password == this.confpassword) {
+                    if (this.file_pic) {
+                        swal({
+                            title: "Loading ...",
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                        firebase
+                            .auth()
+                            .createUserWithEmailAndPassword(this.email, this.password)
+                            .then(
+                                user => {
+                                    storage.ref(this.email + "/profile").put(this.file_pic[0]).then(user => {
+                                        storageRef.child(this.email+"/profile").getDownloadURL().then( url=> {
+                                            // this.urlImageProfile = url;
+                                            // console.log(url);
+                                            db.collection('users').doc(this.email).set({
+                                                email: this.email,
+                                                gender: this.gender,
+                                                password: this.password,
+                                                fullname: this.fullname,
+                                                vet_id: this.vet_id,
+                                                telephone_number: this.telephone,
+                                                address: this.address,
+                                                datebirth: this.datebirth,
+                                                urlImageProfile: url,
+                                                user_type: "vet"
+                                            }).then(user => {
+                                                swal({
+                                                    title: "Register Status",
+                                                    text: `You are Register in Veterinary as ${this.email}`,
+                                                    type: "success",
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                }).then(result => {
+                                                    localStorage.setItem("ownerUser", false);
+                                                    localStorage.setItem("vetUser", true);
+                                                    location.href = "/home_vet";
+                                                });
+
+                                            })
+
+                                        })
+                                    })
+
+                                },
+                                err => {
+                                    swal({
+                                        title: "Register Status",
+                                        text: err.message,
+                                        type: "error",
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                        onOpen: () => {
+                                            swal.hideLoading()
+                                        }
+                                    })
+                                }
+                            );
+                        e.preventDefault();
+
                     }
-                  });
+                    if (!this.file_pic) {
+                        swal({
+                            title: "Loading ...",
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                        firebase
+                            .auth()
+                            .createUserWithEmailAndPassword(this.email, this.password)
+                            .then(
+                                user => {
+                                    db.collection('users').doc(this.email).set({
+                                        email: this.email,
+                                        gender: this.gender,
+                                        password: this.password,
+                                        fullname: this.fullname,
+                                        vet_id: this.vet_id,
+                                        telephone_number: this.telephone,
+                                        address: this.address,
+                                        datebirth: this.datebirth,
+                                        user_type: "vet",
+                                        urlImageProfile: ""
+                                    }).then(user => {
+                                        swal({
+                                            title: "Register Status",
+                                            text: `You are Register in Veterinary as ${this.email}`,
+                                            type: "success",
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        }).then(result => {
+                                            localStorage.setItem("ownerUser", false);
+                                            localStorage.setItem("vetUser", true);
+                                            location.href = "/home_vet";
+                                        });
+
+                                    })
+
+                                },
+                                err => {
+                                    swal({
+                                        title: "Register Status",
+                                        text: err.message,
+                                        type: "error",
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                        onOpen: () => {
+                                            swal.hideLoading()
+                                        }
+                                    })
+                                })
+                        e.preventDefault();
+                    }
+
                 }
-              );
-            e.preventDefault();
-          }
-          if (!this.file_pic) {
-            swal({
-              title: "Loading ...",
-              onOpen: () => {
-                swal.showLoading();
-              }
-            });
-            firebase
-              .auth()
-              .createUserWithEmailAndPassword(this.email, this.password)
-              .then(
-                user => {
-                  db.collection("users")
-                    .doc(this.email)
-                    .set({
-                      email: this.email,
-                      gender: this.gender,
-                      password: this.password,
-                      fullname: this.fullname,
-                      vet_id: this.vet_id,
-                      telephone_number: this.telephone,
-                      address: this.address,
-                      datebirth: this.datebirth,
-                      user_type: "vet",
-                      urlImageProfile: ""
-                    })
-                    .then(user => {
-                      swal({
+                if (this.password != this.confpassword) {
+                    swal({
                         title: "Register Status",
-                        text: `You are Register in Veterinary as ${this.email}`,
-                        type: "success",
+                        text: "Password mismatch",
+                        type: "error",
                         showConfirmButton: false,
                         timer: 1500
-                      }).then(result => {
-                        this.$router.go({
-                          path: this.$router.path
-                        });
-                      });
-                    });
-                },
-                err => {
-                  swal({
+                    })
+                }
+            }
+            if (count_input_empty) {
+                swal({
                     title: "Register Status",
-                    text: err.message,
+                    text: "Please fill out empty field",
                     type: "error",
                     showConfirmButton: false,
-                    timer: 1500,
-                    onOpen: () => {
-                      swal.hideLoading();
-                    }
-                  });
-                }
-              );
-            e.preventDefault();
-          }
-        }
-        if (this.password != this.confpassword) {
-          swal({
-            title: "Register Status",
-            text: "Password mismatch",
-            type: "error",
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-      }
-      if (count_input_empty) {
-        swal({
-          title: "Register Status",
-          text: "Please fill out empty field",
-          type: "error",
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
-      console.log(count_input_empty);
-    },
-    detectFiles(fileList) {
-      Array.from(Array(fileList.length).keys()).map(x => {
-        this.upload(fileList[x]);
-      });
-    },
-    upload(file) {
-      this.uploadTask = storage.ref(this.email + "/profile").put(file);
-    },
-    onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      this.file_pic = files;
-      if (!files.length) return;
-      this.createImage(files[0]);
-      // this.detectFiles(files);
-    },
-    createImage(file) {
-      var image = new Image();
-      var reader = new FileReader();
-      var vm = this;
+                    timer: 1500
+                })
+            }
+            console.log(count_input_empty)
 
-      reader.onload = e => {
-        vm.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-    removeImage: function(e) {
-      this.image = "";
-    },
-    readURLPro: function(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        (reader.onload = function(e) {
-          $("#wizardPicturePreviewPro")
-            .attr("src", e.target.result)
-            .fadeIn("slow");
-        }),
-          reader.readAsDataURL(input.files[0]);
-        this.detectFiles(input.files);
-      }
-    }
-  },
-  watch: {
-    uploadTask: function() {
-      this.uploadTask.on(
-        "state_changed",
-        sp => {
-          this.progressUpload = Math.floor(
-            (sp.bytesTransferred / sp.totalBytes) * 100
-          );
         },
-        null,
-        () => {
-          this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-            this.$emit("url", downloadURL);
-          });
+        detectFiles(fileList) {
+            Array.from(Array(fileList.length).keys()).map(x => {
+                this.upload(fileList[x]);
+            });
+        },
+        upload(file) {
+            this.uploadTask = storage.ref(this.email + "/profile").put(file);
+        },
+        onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            this.file_pic = files;
+            if (!files.length) return;
+            this.createImage(files[0]);
+            // this.detectFiles(files);
+        },
+        createImage(file) {
+            var image = new Image();
+            var reader = new FileReader();
+            var vm = this;
+
+            reader.onload = e => {
+                vm.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        removeImage: function (e) {
+            this.image = "";
+        },
+        readURLPro: function (input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                (reader.onload = function (e) {
+                    $("#wizardPicturePreviewPro")
+                        .attr("src", e.target.result)
+                        .fadeIn("slow");
+                }),
+                reader.readAsDataURL(input.files[0]);
+                this.detectFiles(input.files);
+            }
         }
-      );
+    },
+    watch: {
+        uploadTask: function () {
+            this.uploadTask.on(
+                "state_changed",
+                sp => {
+                    this.progressUpload = Math.floor(
+                        (sp.bytesTransferred / sp.totalBytes) * 100
+                    );
+                },
+                null,
+                () => {
+                    this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+                        this.$emit("url", downloadURL);
+                    });
+                }
+            );
+        }
     }
-  }
 };
 </script>
 
