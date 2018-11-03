@@ -169,7 +169,7 @@ body.body-homepage {
   position: absolute;
   right: 0;
   left: 0;
-  bottom: -165%;
+  bottom: -75em;
   z-index: -1;
 }
 
@@ -272,6 +272,9 @@ h6 {
 
 /*iPad Portrait*/
 @media only screen and (min-width: 768px) and (max-height: 1025px) and (orientation: portrait) {
+  .svg-container-top {
+    bottom: 0em;
+  }
   .svg-container-bottom {
     bottom: -60em;
   }
@@ -279,6 +282,9 @@ h6 {
 
 /*iPad Pro Portrait*/
 @media only screen and (min-width: 1000px) and (max-height: 1400px) and (orientation: portrait) {
+  .svg-container-top {
+    bottom: 0em;
+  }
   .svg-container-bottom {
     bottom: -66em;
     height: 15em;
@@ -346,7 +352,7 @@ h6 {
 }
 
 /*iPad Landscape*/
-@media only screen and (min-width: 1000px) and (orientation: landscape) {
+@media only screen and (min-width: 1000px) and (max-width: 1200px) and (orientation: landscape) {
   .svg-container-top {
     height: 22em;
   }
@@ -357,7 +363,7 @@ h6 {
 }
 
 /*iPro Landscape*/
-@media only screen and (min-width: 1200px) and (orientation: landscape) {
+@media only screen and (min-width: 1200px) and (max-width: 1400px) and (orientation: landscape) {
   .svg-container-top {
     height: 27em;
   }
