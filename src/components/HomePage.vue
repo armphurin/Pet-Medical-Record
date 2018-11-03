@@ -27,7 +27,7 @@
     <container>
     <section class="my-5">
       <h2 class="h1-responsive font-weight-bold my-5 text-center">Why is it so great?</h2>
-      <p class="lead w-responsive mx-auto mb-5 text-center">Because it is easy to use when the data is centralize to access and can controllable.</p>
+      <p class="lead w-responsive mx-auto mb-5 text-center">Because it help both veterany and owner to easily track their pet medical record.</p>
       <row style="margin:2em;">
         <column md="6" class="text-center">
           <img src="../assets/easy.png" class="feature-icon text-center" />
@@ -42,8 +42,8 @@
           <img src="../assets/engage.png" class="feature-icon text-center" />
         </column>
         <column md="6" class="feature-text order-md-2">
-          <h2 class="font-weight-bold my-4 feature-text-bold">Centralize</h2>
-          <p class="mb-md-0 mb-5">Wherever you are, you can view your pet’s profile. To move the animal hospital, just browse the pet’s profile. No need to make a new pet record and transfer the data because of centralization.</p>
+          <h2 class="font-weight-bold my-4 feature-text-bold">Engagement</h2>
+          <p class="mb-md-0 mb-5">Our website is design simply and beutiful.</p>
         </column>
       </row>
       <row style="margin:2em;">
@@ -51,8 +51,8 @@
           <img src="../assets/control.png" class="feature-icon text-center" />
         </column>
         <column md="6" class="feature-text">
-          <h2 class="font-weight-bold my-4 feature-text-bold">Controllable</h2>
-          <p class="mb-md-0 mb-5">Control from anywhere just connect the internet, you can view the pet information from any device. Because our system is a Web Application.</p>
+          <h2 class="font-weight-bold my-4 feature-text-bold">Control</h2>
+          <p class="mb-md-0 mb-5">We control the system.</p>
         </column>
       </row>
     </section>
@@ -169,7 +169,7 @@ body.body-homepage {
   position: absolute;
   right: 0;
   left: 0;
-  bottom: -165%;
+  bottom: -73em;
   z-index: -1;
 }
 
@@ -272,6 +272,9 @@ h6 {
 
 /*iPad Portrait*/
 @media only screen and (min-width: 768px) and (max-height: 1025px) and (orientation: portrait) {
+  .svg-container-top {
+    bottom: 0em;
+  }
   .svg-container-bottom {
     bottom: -60em;
   }
@@ -279,6 +282,9 @@ h6 {
 
 /*iPad Pro Portrait*/
 @media only screen and (min-width: 1000px) and (max-height: 1400px) and (orientation: portrait) {
+  .svg-container-top {
+    bottom: 0em;
+  }
   .svg-container-bottom {
     bottom: -66em;
     height: 15em;
@@ -345,7 +351,7 @@ h6 {
   }
 }
 /*iPad Landscape*/
-@media only screen and (min-width: 1000px) and (orientation: landscape) {
+@media only screen and (min-width: 1000px) and (max-width: 1200px) and (orientation: landscape) {
   .svg-container-top {
     height: 22em;
   }
@@ -356,7 +362,7 @@ h6 {
 }
 
 /*iPro Landscape*/
-@media only screen and (min-width: 1200px) and (orientation: landscape) {
+@media only screen and (min-width: 1200px) and (max-width: 1400px) and (orientation: landscape) {
   .svg-container-top {
     height: 27em;
   }

@@ -981,9 +981,9 @@ input::placeholder {
 
 /*iPhone 5/SE Portrait*/
 @media only screen and (min-width: 320px) and (max-width: 600px) and (max-height: 570px) and (orientation: portrait) {
-  .obj-center {
-    margin-top: 800px;
-  }
+    .obj-center{
+        margin-top: 800px;  
+    }
 }
 
 /*Common Responsive Portrait, Higher Phone*/
@@ -1025,9 +1025,9 @@ input::placeholder {
 
 /*Common Responsive Landscape, for iPhone5SE*/
 @media only screen and (min-width: 560px) and (max-width: 673px) and (orientation: Landscape) {
-  .obj-center {
+    .obj-center {
     margin-top: 805px;
-  }
+    }
 }
 
 /*Common Responsive Landscape, Wider Phone*/
@@ -1062,10 +1062,11 @@ input::placeholder {
   }
 }
 
-@media only screen and (min-width: 1200px) and (orientation: landscape) {
+@media only screen and (min-width: 1200px) and (orientation: landscape){
   form.regis_content_vet {
     width: 100%;
     margin-left: 0%;
   }
 }
+
 </style>
