@@ -21,10 +21,10 @@
       <dropdown v-if="isLoggedIn" tag="li" class="nav-item dropdown-custom symbol-custom">
         <dropdown-toggle tag="a" navLink color="gray" slot="toggle" waves-fixed><span class="email white-text">{{currentUser}}</span></dropdown-toggle>
         <dropdown-menu right>
-          <dropdown-item v-if="this.$route.meta.requiresVet"><router-link to="/home_vet">My Home</router-link></dropdown-item>
-          <dropdown-item v-if="this.$route.meta.requiresVet"><router-link to="/medic">My Pet Record</router-link></dropdown-item>
-          <dropdown-item v-if="this.$route.meta.requiresOwner"><router-link to="/home_owner">My Home</router-link></dropdown-item>
-          <dropdown-item v-if="this.$route.meta.requiresOwner"><router-link to="/medic">My Pet Record</router-link></dropdown-item>
+          <dropdown-item v-if="this.vetUser"><router-link to="/home_vet">My Home</router-link></dropdown-item>
+          <dropdown-item v-if="this.ownerUser"><router-link to="/home_owner">My Home</router-link></dropdown-item>
+          <dropdown-item v-if="this.vetUser"><router-link to="/medic">My Pet Record</router-link></dropdown-item>
+          <dropdown-item v-if="this.ownerUser"><router-link to="/medic">My Pet Record</router-link></dropdown-item>
           <div class="dropdown-divider"></div>
           <dropdown-item><btn @click="logout" class="btn btn-elegant">Logout</btn></dropdown-item>
         </dropdown-menu>
@@ -67,17 +67,18 @@ export default {
     return {
       isLoggedIn: false,
       currentUser: false,
-      ownerUser: false,
-      vetUser: false
+      ownerUser: null,
+      vetUser: null
     };
-  },
-  updated() {
-    alert("bef create");
   },
   created() {
     if (firebase.auth().currentUser) {
       this.isLoggedIn = true;
       this.currentUser = firebase.auth().currentUser.email;
+      // if (this.$route.meta.requiresOwner || this.$route.meta.requiresVet) {
+      //   this.ownerUser = this.$route.meta.requiresOwner;
+      //   this.vetUser = this.$route.meta.requiresVet;
+      // }
     }
   },
   methods: {
@@ -86,6 +87,8 @@ export default {
         .auth()
         .signOut()
         .then(() => {
+          localStorage.removeItem("ownerUser");
+          localStorage.removeItem("vetUser");
           this.$router.go({ path: this.$router.path });
         });
     }
@@ -94,6 +97,14 @@ export default {
     if (firebase.auth().currentUser) {
       this.isLoggedIn = true;
       this.currentUser = firebase.auth().currentUser.email;
+      // alert(
+      //   "owner:" +
+      //     localStorage.getItem("ownerUser") +
+      //     ", vet:" +
+      //     localStorage.getItem("vetUser")
+      // );
+      this.ownerUser = JSON.parse(localStorage.getItem("ownerUser"));
+      this.vetUser = JSON.parse(localStorage.getItem("vetUser"));
     }
   }
 };
