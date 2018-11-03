@@ -930,7 +930,7 @@ h6 {
     padding-bottom: 0.5%;
     padding-left: 1%;
     padding-right: 1%;
-    border-radius: 20%;
+    border-radius: 10px;
     position: relative;
     left: 17%;
     color: black;
@@ -1221,12 +1221,18 @@ input::placeholder {
     .col {
         flex-basis: unset;
     }
+    .home-owner{
+        height: 56em;
+    }
 }
 
 /*iPad Pro Portrait*/
 @media only screen and (min-width: 1000px) and (orientation: portrait) {
     .intro-section .btn.btn-label {
         left: 28%;
+    }
+    .home-owner{
+        height: 77em;
     }
 }
 
@@ -1280,6 +1286,14 @@ input::placeholder {
         flex-basis: unset;
     }
 }
+
+/*Common Responsive Landscape, Tablet*/
+@media only screen and (min-width: 700px) and (max-height: 1024px) and (orientation: Landscape) {
+  .home-owner{
+    height: 56em;
+  }
+}
+
 
 /*Pixel 2XL and iPhone X Landscape*/
 @media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
