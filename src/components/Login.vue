@@ -130,10 +130,9 @@ export default {
               .then(result => {
                 console.log(this.profiletype);
                 if (this.profiletype == "vet") {
-                  console.log("Vet type profile is Vet");
-                  this.$router.go({
-                    path: "/home_vet"
-                  });
+                  localStorage.setItem("ownerUser", false);
+                  localStorage.setItem("vetUser", true);
+                  location.href = "/home_vet";
                 } else if (this.profiletype == "owner") {
                   localStorage.setItem("ownerUser", true);
                   localStorage.setItem("vetUser", false);
