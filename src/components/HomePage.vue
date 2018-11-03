@@ -27,14 +27,14 @@
     <container>
     <section class="my-5">
       <h2 class="h1-responsive font-weight-bold my-5 text-center">Why is it so great?</h2>
-      <p class="lead w-responsive mx-auto mb-5 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+      <p class="lead w-responsive mx-auto mb-5 text-center">Because it is easy to use when the data is centralize to access and can controllable from any device.</p>
       <row style="margin:2em;">
         <column md="6" class="text-center">
           <img src="../assets/easy.png" class="feature-icon text-center" />
         </column>
         <column md="6" class="feature-text">
           <h2 class="font-weight-bold my-4 feature-text-bold">Easy</h2>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+          <p class="mb-md-0 mb-5">Easy to view pet profile. Don’t waste time for making a pet record. Browse the history of treatment easily, not complicated. Easy to check vaccines. Fast and easy to access.</p>
         </column>
       </row>
       <row style="margin:2em;">
@@ -42,8 +42,8 @@
           <img src="../assets/engage.png" class="feature-icon text-center" />
         </column>
         <column md="6" class="feature-text order-md-2">
-          <h2 class="font-weight-bold my-4 feature-text-bold">Engagement</h2>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+          <h2 class="font-weight-bold my-4 feature-text-bold">Centralize</h2>
+          <p class="mb-md-0 mb-5">Wherever you are, you can view your pet’s profile. To move the animal hospital, just browse the pet’s profile. No need to make a new pet record and transfer the data because of centralization.</p>
         </column>
       </row>
       <row style="margin:2em;">
@@ -51,8 +51,8 @@
           <img src="../assets/control.png" class="feature-icon text-center" />
         </column>
         <column md="6" class="feature-text">
-          <h2 class="font-weight-bold my-4 feature-text-bold">Controll</h2>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+          <h2 class="font-weight-bold my-4 feature-text-bold">Controllable</h2>
+          <p class="mb-md-0 mb-5">Control from anywhere just connect the internet, you can view the pet information from any device. Because our system is a Web Application.</p>
         </column>
       </row>
     </section>
@@ -169,7 +169,7 @@ body.body-homepage {
   position: absolute;
   right: 0;
   left: 0;
-  bottom: -165%;
+  bottom: -75em;
   z-index: -1;
 }
 
@@ -202,7 +202,7 @@ h6 {
     height: 17em;
   }
   .svg-container-bottom {
-    bottom: -100em;
+    bottom: -105em;
     height: 6em;
   }
 }
@@ -223,7 +223,7 @@ h6 {
     height: 15em;
   }
   .svg-container-bottom {
-    bottom: -99em;
+    bottom: -103em;
     height: 5em;
   }
 }
@@ -245,7 +245,7 @@ h6 {
     margin-bottom: 50px;
   }
   .svg-container-bottom {
-    bottom: -105em;
+    bottom: -111em;
   }
 }
 
@@ -259,26 +259,32 @@ h6 {
 /*iPhone 6/7/8 Plus Portrait*/
 @media only screen and (min-width: 414px) and (max-height: 740px) and (orientation: portrait) {
   .svg-container-bottom {
-    bottom: -98em;
+    bottom: -104em;
   }
 }
 
 /*iPhone X Portrait*/
 @media only screen and (min-width: 375px) and (max-width: 400px) and (max-height: 815px) and (orientation: portrait) {
   .svg-container-bottom {
-    bottom: -101em;
+    bottom: -103em;
   }
 }
 
 /*iPad Portrait*/
 @media only screen and (min-width: 768px) and (max-height: 1025px) and (orientation: portrait) {
+  .svg-container-top {
+    bottom: 0em;
+  }
   .svg-container-bottom {
-    bottom: -60em;
+    bottom: -64em;
   }
 }
 
 /*iPad Pro Portrait*/
 @media only screen and (min-width: 1000px) and (max-height: 1400px) and (orientation: portrait) {
+  .svg-container-top {
+    bottom: 0em;
+  }
   .svg-container-bottom {
     bottom: -66em;
     height: 15em;
@@ -344,9 +350,8 @@ h6 {
     padding-top: 25px;
   }
 }
-
 /*iPad Landscape*/
-@media only screen and (min-width: 1000px) and (orientation: landscape) {
+@media only screen and (min-width: 1000px) and (max-width: 1200px) and (orientation: landscape) {
   .svg-container-top {
     height: 22em;
   }
@@ -357,7 +362,7 @@ h6 {
 }
 
 /*iPro Landscape*/
-@media only screen and (min-width: 1200px) and (orientation: landscape) {
+@media only screen and (min-width: 1200px) and (max-width: 1400px) and (orientation: landscape) {
   .svg-container-top {
     height: 27em;
   }

@@ -54,7 +54,7 @@
                         <!-- picture -->
                         <div class="image-upload">
                             <label for="wizard-picturePro">
-                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                              <img :src="image ='https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/medic%2Fimagenes?alt=media&token=a2b421d2-0aa4-4cff-aa8d-7cd6dd2e4aca'" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
                             </label>
                             <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
                         </div>
@@ -837,23 +837,23 @@ export default {
             var vm = this;
 
             reader.onload = e => {
-                vm.image = e.target.result;
+                 this.image = e.target.result;
             };
-            reader.readAsDataURL(file);
+             reader.readAsDataURL(file);
         },
-        readURLPro: function (input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        // readURLPro: function (input) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
 
-                (reader.onload = function (e) {
-                    $("#wizardPicturePreviewPro")
-                        .attr("src", e.target.result)
-                        .fadeIn("slow");
-                }),
-                reader.readAsDataURL(input.files[0]);
-                this.detectFiles(input.files);
-            }
-        }
+        //         (reader.onload = function (e) {
+        //             $("#wizardPicturePreviewPro")
+        //                 .attr("src", e.target.result)
+        //                 .fadeIn("slow");
+        //         }),
+        //         reader.readAsDataURL(input.files[0]);
+        //         this.detectFiles(input.files);
+        //     }
+        // }
     },
     created() {
         db.collection("users")
@@ -930,7 +930,7 @@ h6 {
     padding-bottom: 0.5%;
     padding-left: 1%;
     padding-right: 1%;
-    border-radius: 20%;
+    border-radius: 10px;
     position: relative;
     left: 17%;
     color: black;
@@ -1221,12 +1221,18 @@ input::placeholder {
     .col {
         flex-basis: unset;
     }
+    .home-owner{
+        height: 56em;
+    }
 }
 
 /*iPad Pro Portrait*/
 @media only screen and (min-width: 1000px) and (orientation: portrait) {
     .intro-section .btn.btn-label {
         left: 28%;
+    }
+    .home-owner{
+        height: 77em;
     }
 }
 
@@ -1280,6 +1286,14 @@ input::placeholder {
         flex-basis: unset;
     }
 }
+
+/*Common Responsive Landscape, Tablet*/
+@media only screen and (min-width: 700px) and (max-height: 1024px) and (orientation: Landscape) {
+  .home-owner{
+    height: 56em;
+  }
+}
+
 
 /*Pixel 2XL and iPhone X Landscape*/
 @media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
