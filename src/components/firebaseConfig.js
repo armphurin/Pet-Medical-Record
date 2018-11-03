@@ -5,4 +5,5 @@ export default {
   projectId: "pet-medical-record-22d9a",
   storageBucket: "pet-medical-record-22d9a.appspot.com",
   messagingSenderId: "89596850596"
+  // >>>>>>> Thanadul
 };
