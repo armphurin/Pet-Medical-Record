@@ -147,7 +147,7 @@ export default {
     beforeCreate: function () {
         document.body.className = "body-registervet";
     },
-    name: "register-vet",
+    name: "register-owner",
     data: function () {
         return {
             email: "",

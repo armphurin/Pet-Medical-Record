@@ -238,7 +238,7 @@ export default {
                                     storage.ref(this.email + "/profile").put(this.file_pic[0]).then(user => {
                                         storageRef.child(this.email+"/profile").getDownloadURL().then( url=> {
                                             // this.urlImageProfile = url;
-                                            console.log(url);
+                                            // console.log(url);
                                             db.collection('users').doc(this.email).set({
                                                 email: this.email,
                                                 gender: this.gender,
