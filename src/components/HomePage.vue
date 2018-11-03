@@ -344,7 +344,6 @@ h6 {
     padding-top: 25px;
   }
 }
-
 /*iPad Landscape*/
 @media only screen and (min-width: 1000px) and (orientation: landscape) {
   .svg-container-top {
