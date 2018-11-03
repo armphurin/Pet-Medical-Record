@@ -109,12 +109,12 @@ let router = new Router({
       component: Medic,
       meta: { requiresAuth: true }
     }
-  ]
+  ],
+  mode: "history"
 });
 
 // Nav Guard
 router.beforeEach((to, from, next) => {
-  alert("to : " + to.params.name);
   // Check for requiresAuth guard
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // Check if NO logged user
@@ -136,17 +136,6 @@ router.beforeEach((to, from, next) => {
     // Check if NO logged user
     if (firebase.auth().currentUser) {
       // Go to login
-      console.log("check if guest");
-      if (to.query.profiletype == "owner") {
-        console.log("owner");
-      } else {
-        console.log("out owner" + to.query.profiletype);
-      }
-      if (to.matched.some(record => record.meta.requiresVet)) {
-        console.log("vet type");
-      } else if (to.matched.some(record => record.meta.requiresOwner)) {
-        console.log("owner type");
-      }
       next();
       // next({
       //   path: "/",

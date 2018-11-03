@@ -152,7 +152,6 @@ export default {
               .get()
               .then(doc => {
                 this.profiletype = doc.data().user_type;
-                //   return this.profiletype;
                 console.log(this.profiletype);
               })
               .then(() => {
@@ -175,22 +174,9 @@ export default {
                     path: "/home_vet"
                   });
                 } else if (this.profiletype == "owner") {
-                  alert(" Owner type profile is owner");
-                  //   this.$router.go({
-                  //     path: "/home_owner"
-                  //   });
-                  //   this.$router.replace({
-                  //     path: "/login",
-                  //     query: { profiletype: "owner" }
-                  //   });
-                  //   this.$router.replace({
-                  //     name: "login",
-                  //     params: { profiletype: this.profiletype }
-                  //   });
-
-                  //   alert(this.$router.params.profiletype);
-                  alert(this.profiletype + " Owner Query");
-                  this.$router.push("/home_owner");
+                  localStorage.setItem("ownerUser", true);
+                  localStorage.setItem("vetUser", false);
+                  location.href = "/home_owner";
                   //   this.$router.go({
                   //     path: "/home_owner"
                   //   });
