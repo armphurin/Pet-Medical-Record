@@ -27,14 +27,14 @@
     <container>
     <section class="my-5">
       <h2 class="h1-responsive font-weight-bold my-5 text-center">Why is it so great?</h2>
-      <p class="lead w-responsive mx-auto mb-5 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+      <p class="lead w-responsive mx-auto mb-5 text-center">Because it help both veterany and owner to easily track their pet medical record.</p>
       <row style="margin:2em;">
         <column md="6" class="text-center">
           <img src="../assets/easy.png" class="feature-icon text-center" />
         </column>
         <column md="6" class="feature-text">
           <h2 class="font-weight-bold my-4 feature-text-bold">Easy</h2>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+          <p class="mb-md-0 mb-5">You can do anything in few steps in our website.</p>
         </column>
       </row>
       <row style="margin:2em;">
@@ -43,7 +43,7 @@
         </column>
         <column md="6" class="feature-text order-md-2">
           <h2 class="font-weight-bold my-4 feature-text-bold">Engagement</h2>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+          <p class="mb-md-0 mb-5">Our website is design simply and beutiful.</p>
         </column>
       </row>
       <row style="margin:2em;">
@@ -51,8 +51,8 @@
           <img src="../assets/control.png" class="feature-icon text-center" />
         </column>
         <column md="6" class="feature-text">
-          <h2 class="font-weight-bold my-4 feature-text-bold">Controll</h2>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+          <h2 class="font-weight-bold my-4 feature-text-bold">Control</h2>
+          <p class="mb-md-0 mb-5">We control the system.</p>
         </column>
       </row>
     </section>
@@ -169,7 +169,7 @@ body.body-homepage {
   position: absolute;
   right: 0;
   left: 0;
-  bottom: -75em;
+  bottom: -73em;
   z-index: -1;
 }
 
