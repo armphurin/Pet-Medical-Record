@@ -24,7 +24,7 @@ Vue.use(Router, axios, VueAxios, Datetime, VueSweetalert2);
 let router = new Router({
   routes: [
     {
-      path: "/้home_owner",
+      path: "/home_owner",
       name: "home-owner",
       component: HomeOwner,
       meta: {
@@ -49,7 +49,8 @@ let router = new Router({
       component: Login,
       meta: {
         requiresGuest: true
-      }
+      },
+      props: true
     },
     {
       path: "/register",
@@ -113,6 +114,7 @@ let router = new Router({
 
 // Nav Guard
 router.beforeEach((to, from, next) => {
+  alert("to : " + to.params.name);
   // Check for requiresAuth guard
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // Check if NO logged user
@@ -120,7 +122,7 @@ router.beforeEach((to, from, next) => {
       // Go to login
       console.log("check if auth");
       next({
-        path: "/login",
+        path: "/",
         query: {
           redirect: to.fullPath
         }
@@ -135,6 +137,11 @@ router.beforeEach((to, from, next) => {
     if (firebase.auth().currentUser) {
       // Go to login
       console.log("check if guest");
+      if (to.query.profiletype == "owner") {
+        console.log("owner");
+      } else {
+        console.log("out owner" + to.query.profiletype);
+      }
       if (to.matched.some(record => record.meta.requiresVet)) {
         console.log("vet type");
       } else if (to.matched.some(record => record.meta.requiresOwner)) {
