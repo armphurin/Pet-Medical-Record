@@ -8,33 +8,40 @@
                     <hr class="hr-light" />
                 </div>
                 <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12" v-if="urlImageProfile">
-                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true, showImage()">
-                        <h5 style="display:inline; margin-top:1em;"><img :src="urlImageProfile" style="width:15%;display:inline;margin-right:1em;"/>{{fullname}}</h5>
+                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true">
+                        <h5 style="display:inline; margin-top:1em;"><img :src="urlImageProfile" style="width:2.3em;height:2.3em;display:inline;margin-right:1em;border-radius:50%;"/>{{fullname}}</h5>
                     </btn><br>
-                    
+
                 </div>
-                <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12" v-if="!urlImageProfile">
-                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true, showImage()">
-                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{fullname}}</h5>
-                    </btn><br>
-                    
+                    <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12" v-if="!urlImageProfile">
+                        <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true">
+                            <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:2.3em;height:2.3em;display:inline;margin-right:1em;"/>{{fullname}}</h5>
+                        </btn><br>
+
                 </div>
-                    <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                        <div>
-                            <h3 class="content-label">My Pet List</h3>
-                            <btn type="button" class="btn btn-label text-center" @click.native="popupAddPet=true;">Add Pet</btn><br>
-                        </div>
-                        </div>
                         <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                            <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
-                                <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
-                                    <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
-                                </btn><br>
+                            <div>
+                                <h3 class="content-label">My Pet List</h3>
+                                <btn type="button" class="btn btn-label text-center" @click.native="popupAddPet=true;">Add Pet</btn><br>
+                        </div>
+                            </div>
+                            <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
+                                <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
+                                    <btn type="button" v-if="pet.imagePet" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                        <h5 style="display:inline; margin-top:1em;"><img :src="pet.imagePet"  style="width:2.3em;height:2.3em;display:inline;margin-right:1em;border-radius:50%;"/>{{pet.name}}</h5>
+                                    </btn>
+                                    <btn type="button" v-if="!pet.imagePet && pet.pet_cat" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_cat.png"  style="width:2.3em;height:2.3em;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
+                                    </btn>
+                                    <btn type="button" v-if="!pet.imagePet && pet.pet_dog" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_dog2.png"  style="width:2.3em;height:2.3em;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
+                                    </btn>
+                                    <br>
                              </div>
 
-                                <!-- hide area -->
-                                <!-- <input type="checkbox" class="read-more-state read-more" id="pet-hidden" /> -->
-                                <!-- <div class="read-more-wrap">
+                                    <!-- hide area -->
+                                    <!-- <input type="checkbox" class="read-more-state read-more" id="pet-hidden" /> -->
+                                    <!-- <div class="read-more-wrap">
                                     <div class="read-more-target">
                                         <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
                                             <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
@@ -43,8 +50,8 @@
                                </div>
                                         </div>
                                     </div> -->
-                                <!-- <label for="pet-hidden" class="read-more-trigger"></label> -->
-                            </div>
+                                    <!-- <label for="pet-hidden" class="read-more-trigger"></label> -->
+                                </div>
             </row>
         </container>
     </md-mask>
@@ -169,7 +176,7 @@
                         <!-- picture -->
                         <div class="image-upload">
                             <label for="wizard-picturePro">
-                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                              <img :src="show_pet[0].imagePet" class="picture-src picturePro" id="wizardPicturePreviewPro"  style="object-fit: cover; border-radius: 50%;"/>
                             </label>
                             <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
                         </div>
@@ -254,9 +261,9 @@
                         <!-- picture -->
                         <div class="image-upload">
                             <label for="wizard-picturePro">
-                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                              <img :src="showImagePet" class="picture-src picturePro" id="wizardPicturePreviewPro" style="object-fit: cover; border-radius: 50%;"/>
                             </label>
-                            <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                            <input type="file" multiple accept="image/jpeg" @change="onImagePetChange" id="wizard-picturePro" />
                         </div>
                             <div class="label-group">
                                 <label for="petname">Pet Name</label>
@@ -444,22 +451,25 @@ export default {
             confnewpassword: "",
             popupAddPet: false,
             password_change: false,
-            urlImage: null
+            urlImageProfile: null,
+            urlImagePet: null,
+            addImagePet: null,
+            showImagePet: null
         };
     },
     methods: {
-        showImage: function (e) {
-            // console.log("ShowImage")
-            storageRef.child('medic/imagenes').getDownloadURL().then(function (url) {
-                // document.querySelector('img').src = url;
-                // var urlImage
-                // alert(url);
-                // console.log(url);
-                // console.log(urlImage);
-                // this.urlImage = url;
-                // console.log(urlImage);
-            })
-        },
+        // showImage: function (e) {
+        //     // console.log("ShowImage")
+        //     storageRef.child('medic/imagenes').getDownloadURL().then(function (url) {
+        //         // document.querySelector('img').src = url;
+        //         // var urlImage
+        //         // alert(url);
+        //         // console.log(url);
+        //         // console.log(urlImage);
+        //         // this.urlImage = url;
+        //         // console.log(urlImage);
+        //     })
+        // },
         changePassword() {
             this.password_change = true
 
@@ -685,35 +695,142 @@ export default {
             });
             var checkInput = this.validateInput("add_pet");
             if (checkInput) {
-                swal({
-                    title: 'Loading ...',
-                    onOpen: () => {
-                        swal.showLoading()
-                    }
-                });
-                db.collection("users")
-                    .doc(this.email)
-                    .collection("pets")
-                    .doc(this.email + "_" + this.pet_name)
-                    .set({
-                        pet_id: this.email + "_" + this.pet_name,
-                        pet_name: this.pet_name,
-                        breed: this.pet_breed,
-                        gender: this.pet_gender,
-                        marking: this.pet_marking,
-                        dob: this.pet_birth,
-                        color: this.pet_color,
-                        pet_type: this.pet_type
-                    })
-                    .then(doc => {
-                        toast({
-                            type: 'success',
-                            title: 'Add pet successfully'
-                        }).then(result => {
-                            this.popupAddPet = false;
-                            this.$router.go(this.$route.path);
-                        })
+                    swal({
+                        title: 'Loading ...',
+                        onOpen: () => {
+                            swal.showLoading()
+                        }
                     });
+                console.log(this.addImagePet)
+                if (this.addImagePet) {
+                    if(this.pet_type == 'cat'){
+                        console.log(this.addImagePet, this.showImagePet)
+                    storage.ref(this.email+"/"+this.email + "_" + this.pet_name+"/pets").put(this.addImagePet[0]).then(user => {
+                        storageRef.child(this.email+"/"+this.email + "_" + this.pet_name+"/pets").getDownloadURL().then(url => {
+                            console.log(url);
+                            db.collection("users")
+                                .doc(this.email)
+                                .collection("pets")
+                                .doc(this.email + "_" + this.pet_name)
+                                .set({
+                                    pet_id: this.email + "_" + this.pet_name,
+                                    pet_name: this.pet_name,
+                                    breed: this.pet_breed,
+                                    gender: this.pet_gender,
+                                    marking: this.pet_marking,
+                                    dob: this.pet_birth,
+                                    color: this.pet_color,
+                                    pet_type: this.pet_type,
+                                    urlImagePet: url,
+                                    pet_cat: true
+                                })
+                                .then(doc => {
+                                    toast({
+                                        type: 'success',
+                                        title: 'Add pet successfully'
+                                    }).then(result => {
+                                        this.popupAddPet = false;
+                                        this.$router.go(this.$route.path);
+                                    })
+                                });
+                        })
+                    })
+
+                    }
+                    if(this.pet_type == 'dog'){
+                        console.log(this.addImagePet, this.showImagePet)
+                    storage.ref(this.email+"/"+this.email + "_" + this.pet_name+"/pets").put(this.addImagePet[0]).then(user => {
+                        storageRef.child(this.email+"/"+this.email + "_" + this.pet_name+"/pets").getDownloadURL().then(url => {
+                            console.log(url);
+                            db.collection("users")
+                                .doc(this.email)
+                                .collection("pets")
+                                .doc(this.email + "_" + this.pet_name)
+                                .set({
+                                    pet_id: this.email + "_" + this.pet_name,
+                                    pet_name: this.pet_name,
+                                    breed: this.pet_breed,
+                                    gender: this.pet_gender,
+                                    marking: this.pet_marking,
+                                    dob: this.pet_birth,
+                                    color: this.pet_color,
+                                    pet_type: this.pet_type,
+                                    urlImagePet: url,
+                                    pet_dog: true
+                                })
+                                .then(doc => {
+                                    toast({
+                                        type: 'success',
+                                        title: 'Add pet successfully'
+                                    }).then(result => {
+                                        this.popupAddPet = false;
+                                        this.$router.go(this.$route.path);
+                                    })
+                                });
+                        })
+                    })
+                    }
+                    
+                    
+                }
+                if (!this.addImagePet) {
+                   if(this.pet_type == 'cat'){
+                        db.collection("users")
+                        .doc(this.email)
+                        .collection("pets")
+                        .doc(this.email + "_" + this.pet_name)
+                        .set({
+                            pet_id: this.email + "_" + this.pet_name,
+                            pet_name: this.pet_name,
+                            breed: this.pet_breed,
+                            gender: this.pet_gender,
+                            marking: this.pet_marking,
+                            dob: this.pet_birth,
+                            color: this.pet_color,
+                            pet_type: this.pet_type,
+                            urlImagePet: "",
+                            pet_cat: true
+                        })
+                        .then(doc => {
+                            toast({
+                                type: 'success',
+                                title: 'Add pet successfully'
+                            }).then(result => {
+                                this.popupAddPet = false;
+                                this.$router.go(this.$route.path);
+                            })
+                        });
+
+                   }
+                   if(this.pet_type == 'dog'){
+                        db.collection("users")
+                        .doc(this.email)
+                        .collection("pets")
+                        .doc(this.email + "_" + this.pet_name)
+                        .set({
+                            pet_id: this.email + "_" + this.pet_name,
+                            pet_name: this.pet_name,
+                            breed: this.pet_breed,
+                            gender: this.pet_gender,
+                            marking: this.pet_marking,
+                            dob: this.pet_birth,
+                            color: this.pet_color,
+                            pet_type: this.pet_type,
+                            urlImagePet: "",
+                            pet_dog: true
+                        })
+                        .then(doc => {
+                            toast({
+                                type: 'success',
+                                title: 'Add pet successfully'
+                            }).then(result => {
+                                this.popupAddPet = false;
+                                this.$router.go(this.$route.path);
+                            })
+                        });
+
+                   }
+                }
             } else {
                 toast({
                     type: 'error',
@@ -833,20 +950,41 @@ export default {
             this.uploadTask = storage.ref("medic/imagenes").put(file);
         },
         onFileChange(e) {
+            console.log("click")
             var files = e.target.files || e.dataTransfer.files;
+            this.urlImageProfile = files
             if (!files.length) return;
-            this.createImage(files[0]);
-            this.detectFiles(files);
+            this.createImage(files[0], "profile");
+            // this.detectFiles(files);
         },
-        createImage(file) {
+        onImagePetChange(e) {
+            console.log("click")
+            var files = e.target.files || e.dataTransfer.files;
+            this.addImagePet = files
+            if (!files.length) return;
+            this.createImage(files[0], "add_pet");
+            // this.detectFiles(files);
+        },
+        createImage(file, type) {
             var image = new Image();
+
             var reader = new FileReader();
             var vm = this;
+            if (type == "add_pet") {
+                var showImagePet = new Image();
+                reader.onload = e => {
+                    vm.showImagePet = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+            if (type == "profile") {
+                var urlImageProfile = new Image();
+                reader.onload = e => {
+                    this.urlImageProfile = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
 
-            reader.onload = e => {
-                 this.image = e.target.result;
-            };
-             reader.readAsDataURL(file);
         },
         // readURLPro: function (input) {
         //     if (input.files && input.files[0]) {
@@ -881,7 +1019,10 @@ export default {
                         gender: doc.data().gender,
                         marking: doc.data().marking,
                         type: doc.data().pet_type,
-                        age: this.calAgePet(doc.data().dob)
+                        age: this.calAgePet(doc.data().dob),
+                        imagePet: doc.data().urlImagePet,
+                        pet_dog: doc.data().pet_dog,
+                        pet_cat: doc.data().pet_cat
                     };
                     console.log(doc.data());
                     this.pets.push(data);
