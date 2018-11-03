@@ -66,32 +66,42 @@
                 <row style="padding:1em;">
                     <column class="col-md-4">
                         <!-- picture -->
-                        <div class="image-upload">
+                        <div class="image-upload" v-if="!password_change">
                             <label for="wizard-picturePro">
                               <img :src="urlImageProfile" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
                             </label>
                             <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
                         </div>
-                            <div class="label-group">
-                                <label for="fullname">Fullname</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            <div class="image-upload" v-if="password_change">
+                                <label for="wizard-picturePro">
+                              <img :src="urlImageProfile" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                            </label>
+                                <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" disabled/>
+                        </div>
+                                <div class="label-group" v-if="!password_change">
+                                    <label for="fullname">Fullname</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-                                <row>
-                                    <column>
-                                        <div class="label-group">
-                                            <label for="gender">Gender</label>
-                                            <input class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    <div class="label-group" v-if="password_change">
+                                        <label for="fullname">Fullname</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                                    </column>
-                                </row>
-                                <row>
-                                    <column>
-                                        <div class="label-group">
-                                            <label for="datetime">Age</label>
-                                            <input  class="form-control form-control-lg" type="text" v-model="age"  style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        <row>
+                                            <column>
+                                                <div class="label-group">
+                                                    <label for="gender">Gender</label>
+                                                    <input class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                            </div>
+                                            </column>
+                                        </row>
+                                        <row>
+                                            <column>
+                                                <div class="label-group">
+                                                    <label for="datetime">Age</label>
+                                                    <input  class="form-control form-control-lg" type="text" v-model="age"  style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                               </div>
-                                    </column>
-                                </row>
+                                            </column>
+                                        </row>
                     </column>
                     <column class="col-md-8">
                         <row>
@@ -132,23 +142,35 @@
                         </row>
                         <row>
                             <column>
-                                <div class="label-group">
+                                <div class="label-group" v-if="!password_change">
                                     <label for="lineid">Line ID</label>
                                     <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
+                                    <div class="label-group" v-if="password_change">
+                                        <label for="lineid">Line ID</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                </div>
                             </column>
                             <column>
-                                <div class="label-group">
+                                <div class="label-group" v-if="!password_change">
                                     <label for="telephone">Telephone</label>
                                     <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                                    <div class="label-group" v-if="password_change">
+                                        <label for="telephone">Telephone</label>
+                                        <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                                 </div>
                             </column>
                         </row>
                         <row>
                             <column>
-                                <div class="label-group">
+                                <div class="label-group" v-if="password_change">
                                     <label for="address">Address</label>
-                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled></textarea>
+                                </div>
+                                <div class="label-group" v-if="!password_change">
+                                    <label for="address">Address</label>
+                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" ></textarea>
                                 </div>
                             </column>
                         </row>
@@ -454,7 +476,8 @@ export default {
             urlImageProfile: null,
             urlImagePet: null,
             addImagePet: null,
-            showImagePet: null
+            showImagePet: null,
+            file_pic: null
         };
     },
     methods: {
@@ -502,22 +525,47 @@ export default {
                             swal.showLoading()
                         }
                     });
-                    db
-                        .collection('users').doc(this.email).collection('pets')
-                        .where('pet_id', '==', this.show_pet[0].pet_id)
-                        .get()
-                        .then(querySnapshot => {
-                            querySnapshot.forEach(doc => {
-                                doc.ref.delete().then(doc => {
-                                    toast({
-                                        type: 'success',
-                                        title: 'Your pet has been deleted'
-                                    }).then(result => {
-                                        this.$router.go(this.$route.path);
+                    if (!this.show_pet[0].imagePet) {
+                        db
+                            .collection('users').doc(this.email).collection('pets')
+                            .where('pet_id', '==', this.show_pet[0].pet_id)
+                            .get()
+                            .then(querySnapshot => {
+                                querySnapshot.forEach(doc => {
+                                    doc.ref.delete().then(doc => {
+                                        toast({
+                                            type: 'success',
+                                            title: 'Your pet has been deleted'
+                                        }).then(result => {
+                                            this.$router.go(this.$route.path);
+                                        })
                                     })
-                                })
+                                });
                             });
-                        });
+                    }
+                    if (this.show_pet[0].imagePet) {
+                        var imagepet = storageRef.child(this.email + "/" + this.email + "_" +this.show_pet[0].name +"/pets");
+                        db
+                            .collection('users').doc(this.email).collection('pets')
+                            .where('pet_id', '==', this.show_pet[0].pet_id)
+                            .get()
+                            .then(querySnapshot => {
+                                querySnapshot.forEach(doc => {
+                                    doc.ref.delete().then(doc => {
+                                        
+                                        imagepet.delete().then(user => {
+                                            toast({
+                                                type: 'success',
+                                                title: 'Your pet has been deleted'
+                                            }).then(result => {
+                                                this.$router.go(this.$route.path);
+                                            })
+                                        })
+                                    })
+                                });
+                            });
+                    }
+
                 }
             })
         },
@@ -695,141 +743,140 @@ export default {
             });
             var checkInput = this.validateInput("add_pet");
             if (checkInput) {
-                    swal({
-                        title: 'Loading ...',
-                        onOpen: () => {
-                            swal.showLoading()
-                        }
-                    });
+                swal({
+                    title: 'Loading ...',
+                    onOpen: () => {
+                        swal.showLoading()
+                    }
+                });
                 console.log(this.addImagePet)
                 if (this.addImagePet) {
-                    if(this.pet_type == 'cat'){
+                    if (this.pet_type == 'cat') {
                         console.log(this.addImagePet, this.showImagePet)
-                    storage.ref(this.email+"/"+this.email + "_" + this.pet_name+"/pets").put(this.addImagePet[0]).then(user => {
-                        storageRef.child(this.email+"/"+this.email + "_" + this.pet_name+"/pets").getDownloadURL().then(url => {
-                            console.log(url);
-                            db.collection("users")
-                                .doc(this.email)
-                                .collection("pets")
-                                .doc(this.email + "_" + this.pet_name)
-                                .set({
-                                    pet_id: this.email + "_" + this.pet_name,
-                                    pet_name: this.pet_name,
-                                    breed: this.pet_breed,
-                                    gender: this.pet_gender,
-                                    marking: this.pet_marking,
-                                    dob: this.pet_birth,
-                                    color: this.pet_color,
-                                    pet_type: this.pet_type,
-                                    urlImagePet: url,
-                                    pet_cat: true
-                                })
-                                .then(doc => {
-                                    toast({
-                                        type: 'success',
-                                        title: 'Add pet successfully'
-                                    }).then(result => {
-                                        this.popupAddPet = false;
-                                        this.$router.go(this.$route.path);
+                        storage.ref(this.email + "/" + this.email + "_" + this.pet_name + "/pets").put(this.addImagePet[0]).then(user => {
+                            storageRef.child(this.email + "/" + this.email + "_" + this.pet_name + "/pets").getDownloadURL().then(url => {
+                                console.log(url);
+                                db.collection("users")
+                                    .doc(this.email)
+                                    .collection("pets")
+                                    .doc(this.email + "_" + this.pet_name)
+                                    .set({
+                                        pet_id: this.email + "_" + this.pet_name,
+                                        pet_name: this.pet_name,
+                                        breed: this.pet_breed,
+                                        gender: this.pet_gender,
+                                        marking: this.pet_marking,
+                                        dob: this.pet_birth,
+                                        color: this.pet_color,
+                                        pet_type: this.pet_type,
+                                        urlImagePet: url,
+                                        pet_cat: true
                                     })
-                                });
+                                    .then(doc => {
+                                        toast({
+                                            type: 'success',
+                                            title: 'Add pet successfully'
+                                        }).then(result => {
+                                            this.popupAddPet = false;
+                                            this.$router.go(this.$route.path);
+                                        })
+                                    });
+                            })
                         })
-                    })
 
                     }
-                    if(this.pet_type == 'dog'){
+                    if (this.pet_type == 'dog') {
                         console.log(this.addImagePet, this.showImagePet)
-                    storage.ref(this.email+"/"+this.email + "_" + this.pet_name+"/pets").put(this.addImagePet[0]).then(user => {
-                        storageRef.child(this.email+"/"+this.email + "_" + this.pet_name+"/pets").getDownloadURL().then(url => {
-                            console.log(url);
-                            db.collection("users")
-                                .doc(this.email)
-                                .collection("pets")
-                                .doc(this.email + "_" + this.pet_name)
-                                .set({
-                                    pet_id: this.email + "_" + this.pet_name,
-                                    pet_name: this.pet_name,
-                                    breed: this.pet_breed,
-                                    gender: this.pet_gender,
-                                    marking: this.pet_marking,
-                                    dob: this.pet_birth,
-                                    color: this.pet_color,
-                                    pet_type: this.pet_type,
-                                    urlImagePet: url,
-                                    pet_dog: true
-                                })
-                                .then(doc => {
-                                    toast({
-                                        type: 'success',
-                                        title: 'Add pet successfully'
-                                    }).then(result => {
-                                        this.popupAddPet = false;
-                                        this.$router.go(this.$route.path);
+                        storage.ref(this.email + "/" + this.email + "_" + this.pet_name + "/pets").put(this.addImagePet[0]).then(user => {
+                            storageRef.child(this.email + "/" + this.email + "_" + this.pet_name + "/pets").getDownloadURL().then(url => {
+                                console.log(url);
+                                db.collection("users")
+                                    .doc(this.email)
+                                    .collection("pets")
+                                    .doc(this.email + "_" + this.pet_name)
+                                    .set({
+                                        pet_id: this.email + "_" + this.pet_name,
+                                        pet_name: this.pet_name,
+                                        breed: this.pet_breed,
+                                        gender: this.pet_gender,
+                                        marking: this.pet_marking,
+                                        dob: this.pet_birth,
+                                        color: this.pet_color,
+                                        pet_type: this.pet_type,
+                                        urlImagePet: url,
+                                        pet_dog: true
                                     })
-                                });
+                                    .then(doc => {
+                                        toast({
+                                            type: 'success',
+                                            title: 'Add pet successfully'
+                                        }).then(result => {
+                                            this.popupAddPet = false;
+                                            this.$router.go(this.$route.path);
+                                        })
+                                    });
+                            })
                         })
-                    })
                     }
-                    
-                    
+
                 }
                 if (!this.addImagePet) {
-                   if(this.pet_type == 'cat'){
+                    if (this.pet_type == 'cat') {
                         db.collection("users")
-                        .doc(this.email)
-                        .collection("pets")
-                        .doc(this.email + "_" + this.pet_name)
-                        .set({
-                            pet_id: this.email + "_" + this.pet_name,
-                            pet_name: this.pet_name,
-                            breed: this.pet_breed,
-                            gender: this.pet_gender,
-                            marking: this.pet_marking,
-                            dob: this.pet_birth,
-                            color: this.pet_color,
-                            pet_type: this.pet_type,
-                            urlImagePet: "",
-                            pet_cat: true
-                        })
-                        .then(doc => {
-                            toast({
-                                type: 'success',
-                                title: 'Add pet successfully'
-                            }).then(result => {
-                                this.popupAddPet = false;
-                                this.$router.go(this.$route.path);
+                            .doc(this.email)
+                            .collection("pets")
+                            .doc(this.email + "_" + this.pet_name)
+                            .set({
+                                pet_id: this.email + "_" + this.pet_name,
+                                pet_name: this.pet_name,
+                                breed: this.pet_breed,
+                                gender: this.pet_gender,
+                                marking: this.pet_marking,
+                                dob: this.pet_birth,
+                                color: this.pet_color,
+                                pet_type: this.pet_type,
+                                urlImagePet: "",
+                                pet_cat: true
                             })
-                        });
+                            .then(doc => {
+                                toast({
+                                    type: 'success',
+                                    title: 'Add pet successfully'
+                                }).then(result => {
+                                    this.popupAddPet = false;
+                                    this.$router.go(this.$route.path);
+                                })
+                            });
 
-                   }
-                   if(this.pet_type == 'dog'){
+                    }
+                    if (this.pet_type == 'dog') {
                         db.collection("users")
-                        .doc(this.email)
-                        .collection("pets")
-                        .doc(this.email + "_" + this.pet_name)
-                        .set({
-                            pet_id: this.email + "_" + this.pet_name,
-                            pet_name: this.pet_name,
-                            breed: this.pet_breed,
-                            gender: this.pet_gender,
-                            marking: this.pet_marking,
-                            dob: this.pet_birth,
-                            color: this.pet_color,
-                            pet_type: this.pet_type,
-                            urlImagePet: "",
-                            pet_dog: true
-                        })
-                        .then(doc => {
-                            toast({
-                                type: 'success',
-                                title: 'Add pet successfully'
-                            }).then(result => {
-                                this.popupAddPet = false;
-                                this.$router.go(this.$route.path);
+                            .doc(this.email)
+                            .collection("pets")
+                            .doc(this.email + "_" + this.pet_name)
+                            .set({
+                                pet_id: this.email + "_" + this.pet_name,
+                                pet_name: this.pet_name,
+                                breed: this.pet_breed,
+                                gender: this.pet_gender,
+                                marking: this.pet_marking,
+                                dob: this.pet_birth,
+                                color: this.pet_color,
+                                pet_type: this.pet_type,
+                                urlImagePet: "",
+                                pet_dog: true
                             })
-                        });
+                            .then(doc => {
+                                toast({
+                                    type: 'success',
+                                    title: 'Add pet successfully'
+                                }).then(result => {
+                                    this.popupAddPet = false;
+                                    this.$router.go(this.$route.path);
+                                })
+                            });
 
-                   }
+                    }
                 }
             } else {
                 toast({
@@ -854,23 +901,53 @@ export default {
                             swal.showLoading()
                         }
                     });
-                    db.collection("users")
-                        .doc(this.email)
-                        .update({
-                            fullname: this.fullname,
-                            line_id: this.lineid,
-                            telephone_number: this.telephone,
-                            address: this.address
-                        })
-                        .then(user => {
-                            toast({
-                                type: 'success',
-                                title: 'Update Profile Successfully'
-                            }).then(result => {
-                                this.popupProfile = false;
-                                this.$router.go(this.$route.path);
+                    if (this.file_pic) {
+                        storage.ref(this.email + "/profile").put(this.file_pic[0]).then(user => {
+                            storageRef.child(this.email + "/profile").getDownloadURL().then(url => {
+                                db.collection("users")
+                                    .doc(this.email)
+                                    .update({
+                                        fullname: this.fullname,
+                                        line_id: this.lineid,
+                                        telephone_number: this.telephone,
+                                        address: this.address,
+                                        urlImageProfile: url
+                                    })
+                                    .then(user => {
+                                        toast({
+                                            type: 'success',
+                                            title: 'Update Profile Successfully'
+                                        }).then(result => {
+                                            this.popupProfile = false;
+                                            this.$router.go(this.$route.path);
+                                        })
+                                    });
                             })
-                        });
+                        })
+
+                    }
+                    if (!this.file_pic) {
+                        db.collection("users")
+                            .doc(this.email)
+                            .update({
+                                fullname: this.fullname,
+                                line_id: this.lineid,
+                                telephone_number: this.telephone,
+                                address: this.address
+                            })
+                            .then(user => {
+                                toast({
+                                    type: 'success',
+                                    title: 'Update Profile Successfully'
+                                }).then(result => {
+                                    this.popupProfile = false;
+                                    this.$router.go(this.$route.path);
+                                })
+                            });
+                        this.file_pic == null;
+
+                    }
+
                 }
                 if (this.password_change) {
                     if (this.password != this.oldpassword) {
@@ -952,7 +1029,7 @@ export default {
         onFileChange(e) {
             console.log("click")
             var files = e.target.files || e.dataTransfer.files;
-            this.urlImageProfile = files
+            this.file_pic = files
             if (!files.length) return;
             this.createImage(files[0], "profile");
             // this.detectFiles(files);
