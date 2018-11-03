@@ -86,7 +86,6 @@
                                 </row>
                             </column>
                         </row>
-
                     </div>
                 </card-body>
             </card>
@@ -143,6 +142,11 @@ import {
 import {
     Datetime
 } from "vue-datetime";
+import Loading from 'vue-loading-overlay';
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css';
+import Vue from 'vue';
+Vue.use(Loading);
 // ES6 Modules or TypeScript
 import swal from "sweetalert2";
 export default {
@@ -152,6 +156,7 @@ export default {
     name: "register-vet",
     data: function () {
         return {
+            urlImageProfile: "",
             email: "",
             password: "",
             age: "",
@@ -164,8 +169,11 @@ export default {
             file: File,
             uploadTask: "",
             image: "",
+            urlImageProfile: "",
             confpassword: "",
-            datebirth: ""
+            datebirth: "",
+            visible: false,
+            file_pic: null
         };
     },
     components: {
@@ -179,84 +187,180 @@ export default {
         Column,
         MdMask,
         ViewWrapper,
-        datetime: Datetime
+        datetime: Datetime,
+        Loading
     },
     methods: {
         register: function (e) {
-          var count_input_empty = "";
-          if(!this.fullname){
-            count_input_empty = count_input_empty.concat("fullname, ")
-          }
-          if(!this.gender){
-            count_input_empty = count_input_empty.concat("gender, ")
-          }
-          if(!this.email){
-            count_input_empty = count_input_empty.concat("email, ")
-          }
-          if(!this.password){
-            count_input_empty = count_input_empty.concat("password, ")
-          }
-          if(!this.confpassword){
-            count_input_empty = count_input_empty.concat("confirm password, ")
-          }
-          if(!this.vet_id){
-            count_input_empty = count_input_empty.concat("vet_id, ")
-          }
-          if(!this.telephone){
-            count_input_empty = count_input_empty.concat("telephone, ")
-          }
-          if(!this.address){
-            count_input_empty = count_input_empty.concat("address, ")
-          }
-          if(!this.datebirth){
-            count_input_empty = count_input_empty.concat("datebirth, ")
-          }
-          if(!count_input_empty){
-            if(this.password == this.confpassword){
-            console.log('password is equal')
-            firebase
-                .auth()
-                .createUserWithEmailAndPassword(this.email, this.password)
-                .then(
-                    user => {
-                        db.collection('users').doc(this.email).set({
-                            email: this.email,
-                            gender: this.gender,
-                            password: this.password,
-                            fullname: this.fullname,
-                            vet_id: this.vet_id,
-                            telephone_number: this.telephone,
-                            address: this.address,
-                            datebirth: this.datebirth,
-                            user_type: "vet"
-                        }).then(
-                            user => {
-                                swal(
-                                    "Register Status",
-                                    `You are Register in Veterinary as ${this.email}`,
-                                    "success"
-                                );
-                                this.$router.go({
-                                    path: this.$router.path
-                                });
+
+            var count_input_empty = "";
+            if (!this.fullname) {
+                count_input_empty = count_input_empty.concat("fullname, ")
+            }
+            if (!this.gender) {
+                count_input_empty = count_input_empty.concat("gender, ")
+            }
+            if (!this.email) {
+                count_input_empty = count_input_empty.concat("email, ")
+            }
+            if (!this.password) {
+                count_input_empty = count_input_empty.concat("password, ")
+            }
+            if (!this.confpassword) {
+                count_input_empty = count_input_empty.concat("confirm password, ")
+            }
+            if (!this.vet_id) {
+                count_input_empty = count_input_empty.concat("vet_id, ")
+            }
+            if (!this.telephone) {
+                count_input_empty = count_input_empty.concat("telephone, ")
+            }
+            if (!this.address) {
+                count_input_empty = count_input_empty.concat("address, ")
+            }
+            if (!this.datebirth) {
+                count_input_empty = count_input_empty.concat("datebirth, ")
+            }
+            if (!count_input_empty) {
+                if (this.password == this.confpassword) {
+                    if (this.file_pic) {
+                        swal({
+                            title: "Loading ...",
+                            onOpen: () => {
+                                swal.showLoading()
                             }
-                        )
-                    },
-                    err => {
-                        swal("Register Status", err.message, "error");
+                        })
+                        firebase
+                            .auth()
+                            .createUserWithEmailAndPassword(this.email, this.password)
+                            .then(
+                                user => {
+                                    storage.ref(this.email + "/profile").put(this.file_pic[0]).then(user => {
+                                        storageRef.child(this.email+"/profile").getDownloadURL().then( url=> {
+                                            // this.urlImageProfile = url;
+                                            console.log(url);
+                                            db.collection('users').doc(this.email).set({
+                                                email: this.email,
+                                                gender: this.gender,
+                                                password: this.password,
+                                                fullname: this.fullname,
+                                                vet_id: this.vet_id,
+                                                telephone_number: this.telephone,
+                                                address: this.address,
+                                                datebirth: this.datebirth,
+                                                urlImageProfile: url,
+                                                user_type: "vet"
+                                            }).then(user => {
+                                                swal({
+                                                    title: "Register Status",
+                                                    text: `You are Register in Veterinary as ${this.email}`,
+                                                    type: "success",
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                }).then(result => {
+                                                    this.$router.go({
+                                                        path: this.$router.path
+                                                    });
+                                                });
+
+                                            })
+
+                                        })
+                                    })
+
+                                },
+                                err => {
+                                    swal({
+                                        title: "Register Status",
+                                        text: err.message,
+                                        type: "error",
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                        onOpen: () => {
+                                            swal.hideLoading()
+                                        }
+                                    })
+                                }
+                            );
+                        e.preventDefault();
+
                     }
-                );
-            e.preventDefault();
-          }
-          if(this.password != this.confpassword){
-              swal("Register Status", "Password is not match", "error");
-          } 
-          }
-          if(count_input_empty){
-             swal("Register Status", "Please fill out empty field", "error");
-          }
-          console.log(count_input_empty)
-            
+                    if (!this.file_pic) {
+                        swal({
+                            title: "Loading ...",
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                        firebase
+                            .auth()
+                            .createUserWithEmailAndPassword(this.email, this.password)
+                            .then(
+                                user => {
+                                    db.collection('users').doc(this.email).set({
+                                        email: this.email,
+                                        gender: this.gender,
+                                        password: this.password,
+                                        fullname: this.fullname,
+                                        vet_id: this.vet_id,
+                                        telephone_number: this.telephone,
+                                        address: this.address,
+                                        datebirth: this.datebirth,
+                                        user_type: "vet",
+                                        urlImageProfile: ""
+                                    }).then(user => {
+                                        swal({
+                                            title: "Register Status",
+                                            text: `You are Register in Veterinary as ${this.email}`,
+                                            type: "success",
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        }).then(result => {
+                                            this.$router.go({
+                                                path: this.$router.path
+                                            });
+                                        });
+
+                                    })
+
+                                },
+                                err => {
+                                    swal({
+                                        title: "Register Status",
+                                        text: err.message,
+                                        type: "error",
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                        onOpen: () => {
+                                            swal.hideLoading()
+                                        }
+                                    })
+                                })
+                        e.preventDefault();
+                    }
+
+                }
+                if (this.password != this.confpassword) {
+                    swal({
+                        title: "Register Status",
+                        text: "Password mismatch",
+                        type: "error",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            }
+            if (count_input_empty) {
+                swal({
+                    title: "Register Status",
+                    text: "Please fill out empty field",
+                    type: "error",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+            console.log(count_input_empty)
+
         },
         detectFiles(fileList) {
             Array.from(Array(fileList.length).keys()).map(x => {
@@ -264,13 +368,14 @@ export default {
             });
         },
         upload(file) {
-            this.uploadTask = storage.ref("profile/imagenes").put(file);
+            this.uploadTask = storage.ref(this.email + "/profile").put(file);
         },
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
+            this.file_pic = files;
             if (!files.length) return;
             this.createImage(files[0]);
-            this.detectFiles(files);
+            // this.detectFiles(files);
         },
         createImage(file) {
             var image = new Image();
@@ -321,6 +426,62 @@ export default {
 </script>
 
 <style>
+body.body-registervet {
+    min-height: 100%;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background: rgb(52, 160, 217);
+    /* Old browsers */
+    background: -moz-linear-gradient(top,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
+    /* IE6-9 */
+}
+
+.vdatetime-input {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 13px;
+    border: 1px solid #ced4da;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    -webkit-writing-mode: horizontal-tb !important;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+</style><style scoped>
 form.regis_content_vet {
     /* margin-top: 7em;
   margin-bottom: 5em;
@@ -377,14 +538,14 @@ body.body-registervet {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    margin-top: 3.5em;
+    margin-top: 4.5em;
 }
 
 .card.register-card {
     background: linear-gradient(rgba(255, 255, 255, 0.2),
         rgba(255, 255, 255, 0.2));
     border-radius: 2em;
-    height: 107%;
+    /* height: 107%; */
 }
 
 .circle-button {
@@ -781,5 +942,114 @@ label {
 input::placeholder {
     color: grey !important;
     font-size: 80%;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 1400px) {
+    .wrapper {
+        overflow: scroll;
+    }
+}
+
+/*Common Responsive Portrait, Phone*/
+@media only screen and (max-width: 600px) and (orientation: Portrait) {
+    form.regis_content_vet {
+        width: 150%;
+        margin-left: -25%;
+    }
+
+    .obj-center {
+        margin-top: 625px;
+        margin-bottom: 5%;
+    }
+
+    .logo_regis {
+        width: 10em;
+        height: 5em;
+    }
+
+    .btn {
+        width: 10em;
+        height: 5em;
+    }
+}
+
+/*Common Responsive Portrait, Higher Phone*/
+@media only screen and (max-width: 332px) and (orientation: Portrait) {
+    .obj-center {
+        margin-top: 750px;
+    }
+}
+
+/*Common Responsive Portrait, Higher Phone*/
+@media only screen and (max-width: 600px) and (min-height: 700px) and (orientation: Portrait) {
+    .obj-center {
+        margin-top: 570px;
+    }
+}
+
+/*Common Responsive Portrait, Tablet*/
+@media only screen and (min-width: 600px) and (orientation: Portrait) {
+    form.regis_content_vet {
+        width: 140%;
+        margin-left: -20%;
+    }
+
+    .logo_regis {
+        width: 10em;
+        height: 5em;
+    }
+
+    .obj-center {
+        margin-top: -10%;
+    }
+}
+
+/*Common Responsive Portrait, Larger Tablet*/
+@media only screen and (min-width: 1024px) and (orientation: Portrait) {
+    .obj-center {
+        margin-top: -30%;
+    }
+}
+
+/*Common Responsive Landscape, Phone*/
+@media only screen and (max-width: 673px) and (orientation: Landscape) {
+    .obj-center {
+        margin-top: 775px;
+        margin-bottom: 5%;
+    }
+}
+
+/*Common Responsive Landscape, Wider Phone*/
+@media only screen and (min-width: 673px) and (orientation: Landscape) {
+    form.regis_content_vet {
+        width: 125%;
+        margin-left: -10%;
+    }
+
+    .obj-center {
+        margin-top: 400px;
+        margin-bottom: 5%;
+    }
+}
+
+/*Common Responsive Landscape, Widest Phone*/
+@media only screen and (min-width: 713px) and (orientation: Landscape) {
+    form.regis_content_vet {
+        width: 190%;
+        margin-left: -45%;
+    }
+
+    .obj-center {
+        margin-top: 305px;
+        margin-bottom: 5%;
+    }
+}
+
+/*Common Responsive Landscape, Tablet*/
+@media only screen and (min-height: 700px) and (orientation: Landscape) {
+    .obj-center {
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
 }
 </style>

@@ -4,7 +4,7 @@
 <Footer color="stylish-color-dark" class="page-footer font-small">
   <div class="footer-copyright text-center py-3">
     <container fluid>
-      &copy; 2018 Copyright: Pet Medical Record</a>
+      &copy; 2018 Copyright: Pet Medical Record.
     </container>
   </div>
   </Footer>
@@ -55,7 +55,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>
 
 
