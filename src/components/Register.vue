@@ -129,8 +129,41 @@ export default {
   }
 };
 </script>
-
 <style>
+body.body-register {
+  min-height: 100%;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background: rgb(52, 160, 217); /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
+}
+</style>
+
+<style scoped>
 form.regis_content {
   margin-top: 17%;
   /* margin-bottom: 5em; */
@@ -440,8 +473,7 @@ body.body-register {
   }
   form.regis_content {
     margin-top: 7em;
-    /* margin-bottom: 5em; */
-    margin-left: 5em;
+    margin-left: 6em;
     margin-right: 5em;
     height: 50%;
     z-index: 2;
@@ -458,11 +490,48 @@ body.body-register {
   }
   form.regis_content {
     margin-top: 7em;
-    /* margin-bottom: 5em; */
-    margin-left: 5em;
+    margin-left: 4em;
     margin-right: 5em;
     height: 50%;
     z-index: 2;
+  }
+}
+
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 770px) and (orientation: landscape) {
+  .row {
+    flex-wrap: unset;
+    margin-left: 20em;
+  }
+}
+
+/*Pixel 2XL and iPhone X Landscape*/
+@media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
+  .row {
+    flex-wrap: unset;
+    width: 40em;
+    margin-left: 30em;
+  }
+}
+
+/*Pixel 2 Landscape*/
+@media only screen and (max-width: 740px) and (max-height: 420px) and (orientation: landscape) {
+  .row {
+    margin-left: 25em;
+  }
+}
+
+/*iPhone 5/SE Landscape*/
+@media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape) {
+  .row {
+    margin-left: 15em;
+  }
+}
+
+/*Samsung Galaxy S5 Landscape*/
+@media only screen and (min-width: 640px) and (max-height: 360px) and (orientation: landscape) {
+  .row {
+    margin-left: 20em;
   }
 }
 </style>

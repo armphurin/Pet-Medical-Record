@@ -106,6 +106,10 @@ body.body-contact {
   -o-background-size: cover;
   background-size: cover;
 }
+</style>
+
+
+<style scoped>
 
 .view.contact {
   background-image: url("");
@@ -259,4 +263,34 @@ input[type="checkbox"]:checked + label:after {
   }
 }
 /* checkbox and radio style */
+
+/*-----Mobile Device Edit-----*/
+
+/*Common Mobile Portrait*/
+@media only screen and (min-width: 370px) and (max-width: 600px) and (orientation: portrait) {
+  .view.contact {
+    margin-top: 3em;
+  }
+}
+
+/*iPhone 5/SE Portrait*/
+@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait) {
+  .view.contact {
+    height: 40em;
+  }
+}
+
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 830px) and (orientation: landscape) {
+  .view.contact {
+    height: 40em;
+  }
+}
+
+/*Pixel 2XL and iPhone X Landscape*/
+@media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
+  .card {
+    width: 41.5em;
+  }
+}
 </style>

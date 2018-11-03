@@ -15,14 +15,14 @@
       <!-- right -->
       <navbar-nav right>
     <form class="form-inline">
-      <input class="form-control mr-auto p-2" type="text" placeholder="Search" aria-label="Search">
+      <input class="form-control p-2" type="text" placeholder="Search" aria-label="Search" style="margin-right:10px;">
     <navbar-item v-if="!isLoggedIn"><router-link to="/login">Login</router-link></navbar-item>
     <navbar-item v-if="!isLoggedIn"><router-link to="/register">Register</router-link></navbar-item>
       <dropdown v-if="isLoggedIn" tag="li" class="nav-item dropdown-custom symbol-custom">
         <dropdown-toggle tag="a" navLink color="gray" slot="toggle" waves-fixed><span class="email white-text">{{currentUser}}</span></dropdown-toggle>
         <dropdown-menu right>
           <dropdown-item><router-link to="/">My Home</router-link></dropdown-item>
-          <dropdown-item><router-link to="/home_profile">My Pet Record</router-link></dropdown-item>
+          <dropdown-item><router-link to="/medic">My Pet Record</router-link></dropdown-item>
           <div class="dropdown-divider"></div>
           <dropdown-item><btn @click="logout" class="btn btn-elegant">Logout</btn></dropdown-item>
         </dropdown-menu>
@@ -102,7 +102,7 @@ a {
 }
 
 .dropdown-custom {
-  margin-left: 1em;
+  margin-left: 0em;
 }
 .symbol-custom {
   color: white !important;

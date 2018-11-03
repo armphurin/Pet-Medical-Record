@@ -126,7 +126,6 @@ import db from './firebaseInit.js';
 import firebase from "firebase";
 const storage = firebase.storage();
 const storageRef = storage.ref();
-
 import {
     Card,
     CardImg,
@@ -356,6 +355,65 @@ export default {
 </script>
 
 <style>
+body.body-registervet {
+  min-height: 100%;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background: rgb(52, 160, 217); /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgb(52, 160, 217) 0%,
+    rgb(23, 169, 149) 56%,
+    rgb(23, 169, 149) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
+}
+
+.vdatetime-input {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 13px;
+  border: 1px solid #ced4da;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  -webkit-writing-mode: horizontal-tb !important;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+</style>
+
+<style scoped>
 form.regis_content_vet {
     /* margin-top: 7em;
   margin-bottom: 5em;
@@ -408,18 +466,20 @@ body.body-registervet {
 }
 
 .obj-center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    margin-top: 3.5em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 4.5em;
 }
 
 .card.register-card {
-    background: linear-gradient(rgba(255, 255, 255, 0.2),
-        rgba(255, 255, 255, 0.2));
-    border-radius: 2em;
-    height: 107%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.2)
+  );
+  border-radius: 2em;
+  /*height: 107%;*/
 }
 
 .circle-button {
@@ -816,5 +876,100 @@ label {
 input::placeholder {
     color: grey !important;
     font-size: 80%;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 1400px) {
+  .wrapper {
+    overflow: scroll;
+  }
+}
+
+/*Common Responsive Portrait, Phone*/
+@media only screen and (max-width: 600px) and (orientation: Portrait) {
+  form.regis_content_vet {
+    width: 150%;
+    margin-left: -25%;
+  }
+  .obj-center {
+    margin-top: 600px;
+    margin-bottom: 5%;
+  }
+  .logo_regis {
+    width: 10em;
+    height: 5em;
+  }
+  .btn {
+    width: 10em;
+    height: 5em;
+  }
+}
+
+/*Common Responsive Portrait, Higher Phone*/
+@media only screen and (max-width: 600px) and (min-height: 700px) and (orientation: Portrait) {
+  .obj-center {
+    margin-top: 550px;
+  }
+}
+
+/*Common Responsive Portrait, Tablet*/
+@media only screen and (min-width: 600px) and (orientation: Portrait) {
+  form.regis_content_vet {
+    width: 140%;
+    margin-left: -20%;
+  }
+  .logo_regis {
+    width: 10em;
+    height: 5em;
+  }
+  .obj-center {
+    margin-top: -10%;
+  }
+}
+
+/*Common Responsive Portrait, Larger Tablet*/
+@media only screen and (min-width: 1024px) and (orientation: Portrait) {
+  .obj-center {
+    margin-top: -30%;
+  }
+}
+
+/*Common Responsive Landscape, Phone*/
+@media only screen and (max-width: 673px) and (orientation: Landscape) {
+  .obj-center {
+    margin-top: 775px;
+    margin-bottom: 5%;
+  }
+}
+
+/*Common Responsive Landscape, Wider Phone*/
+@media only screen and (min-width: 673px) and (orientation: Landscape) {
+  form.regis_content_vet {
+    width: 125%;
+    margin-left: -10%;
+  }
+  .obj-center {
+    margin-top: 400px;
+    margin-bottom: 5%;
+  }
+}
+
+/*Common Responsive Landscape, Widest Phone*/
+@media only screen and (min-width: 713px) and (orientation: Landscape) {
+  form.regis_content_vet {
+    width: 190%;
+    margin-left: -45%;
+  }
+  .obj-center {
+    margin-top: 305px;
+    margin-bottom: 5%;
+  }
+}
+
+/*Common Responsive Landscape, Tablet*/
+@media only screen and (min-height: 700px) and (orientation: Landscape) {
+  .obj-center {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
 }
 </style>

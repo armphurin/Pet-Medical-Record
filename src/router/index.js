@@ -16,6 +16,7 @@ import HomePage from "@/components/HomePage";
 import RegisterOwner from "@/components/RegisterOwner";
 import RegisterVet from "@/components/RegisterVet";
 import Contact from "@/components/Contact";
+import Medic from "@/components/Medic";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import Datetime from "vue-datetime";
@@ -144,6 +145,12 @@ let router = new Router({
       name: "contact",
       component: Contact,
       meta: {}
+    },
+    {
+      path: "/medic",
+      name: "medic",
+      component: Medic,
+      meta: { requiresAuth: true }
     }
 
   ]
