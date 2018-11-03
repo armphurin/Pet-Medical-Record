@@ -34,7 +34,7 @@
         </column>
         <column md="6" class="feature-text">
           <h2 class="font-weight-bold my-4 feature-text-bold">Easy</h2>
-          <p class="mb-md-0 mb-5">You can do anything in few steps in our website.</p>
+          <p class="mb-md-0 mb-5">Easy to view pet profile. Don’t waste time for making a pet record. Browse the history of treatment easily, not complicated. Easy to check vaccines. Fast and easy to access.</p>
         </column>
       </row>
       <row style="margin:2em;">
