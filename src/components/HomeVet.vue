@@ -200,7 +200,7 @@
                             <label for="wizard-picturePro">
                               <img :src="show_pet[0].imagePet" class="picture-src picturePro" id="wizardPicturePreviewPro"  style="object-fit: cover; border-radius: 50%;"/>
                             </label>
-                            <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                            <input type="file" multiple accept="image/jpeg" @change="onImagePetUpdate" id="wizard-picturePro" />
                         </div>
                             <div class="label-group">
                                 <label for="petname">Pet Name</label>
@@ -477,22 +477,11 @@ export default {
             urlImagePet: null,
             addImagePet: null,
             showImagePet: null,
-            file_pic: null
+            file_pic: null,
+            petimage_pic: null
         };
     },
     methods: {
-        // showImage: function (e) {
-        //     // console.log("ShowImage")
-        //     storageRef.child('medic/imagenes').getDownloadURL().then(function (url) {
-        //         // document.querySelector('img').src = url;
-        //         // var urlImage
-        //         // alert(url);
-        //         // console.log(url);
-        //         // console.log(urlImage);
-        //         // this.urlImage = url;
-        //         // console.log(urlImage);
-        //     })
-        // },
         changePassword() {
             this.password_change = true
 
@@ -544,7 +533,7 @@ export default {
                             });
                     }
                     if (this.show_pet[0].imagePet) {
-                        var imagepet = storageRef.child(this.email + "/" + this.email + "_" +this.show_pet[0].name +"/pets");
+                        var imagepet = storageRef.child(this.email + "/" + this.email + "_" + this.show_pet[0].name + "/pets");
                         db
                             .collection('users').doc(this.email).collection('pets')
                             .where('pet_id', '==', this.show_pet[0].pet_id)
@@ -552,7 +541,7 @@ export default {
                             .then(querySnapshot => {
                                 querySnapshot.forEach(doc => {
                                     doc.ref.delete().then(doc => {
-                                        
+
                                         imagepet.delete().then(user => {
                                             toast({
                                                 type: 'success',
@@ -706,24 +695,53 @@ export default {
             });
             var checkInput = this.validateInput("update_pet")
             if (checkInput) {
-                db.collection("users")
-                    .doc(this.email)
-                    .collection("pets")
-                    .doc(this.email + "_" + this.show_pet[0].name)
-                    .update({
-                        breed: this.show_pet[0].breed,
-                        marking: this.show_pet[0].marking,
-                        color: this.show_pet[0].color
+                if (this.petimage_pic) {
+                    storage.ref(this.email + "/" + this.email + "_" + this.show_pet[0].name + "/pets").put(this.petimage_pic[0]).then(user => {
+                        storageRef.child(this.email + "/" + this.email + "_" + this.show_pet[0].name + "/pets").getDownloadURL().then(url => {
+                            db.collection("users")
+                                .doc(this.email)
+                                .collection("pets")
+                                .doc(this.email + "_" + this.show_pet[0].name)
+                                .update({
+                                    breed: this.show_pet[0].breed,
+                                    marking: this.show_pet[0].marking,
+                                    color: this.show_pet[0].color,
+                                    urlImagePet: url
+                                })
+                                .then(user => {
+                                    this.petimage_pic = null;
+                                    toast({
+                                        type: 'success',
+                                        title: 'Update pet successfully'
+                                    }).then(result => {
+                                        this.popupAddPet = false;
+                                        this.$router.go(this.$route.path);
+                                    });
+                                });
+                        })
                     })
-                    .then(user => {
-                        toast({
-                            type: 'success',
-                            title: 'Update pet successfully'
-                        }).then(result => {
-                            this.popupAddPet = false;
-                            this.$router.go(this.$route.path);
+                }
+                if (!this.petimage_pic) {
+                    db.collection("users")
+                        .doc(this.email)
+                        .collection("pets")
+                        .doc(this.email + "_" + this.show_pet[0].name)
+                        .update({
+                            breed: this.show_pet[0].breed,
+                            marking: this.show_pet[0].marking,
+                            color: this.show_pet[0].color
+                        })
+                        .then(user => {
+                            toast({
+                                type: 'success',
+                                title: 'Update pet successfully'
+                            }).then(result => {
+                                this.popupAddPet = false;
+                                this.$router.go(this.$route.path);
+                            });
                         });
-                    });
+                }
+
             } else {
                 toast({
                     type: 'error',
@@ -752,10 +770,8 @@ export default {
                 console.log(this.addImagePet)
                 if (this.addImagePet) {
                     if (this.pet_type == 'cat') {
-                        console.log(this.addImagePet, this.showImagePet)
                         storage.ref(this.email + "/" + this.email + "_" + this.pet_name + "/pets").put(this.addImagePet[0]).then(user => {
                             storageRef.child(this.email + "/" + this.email + "_" + this.pet_name + "/pets").getDownloadURL().then(url => {
-                                console.log(url);
                                 db.collection("users")
                                     .doc(this.email)
                                     .collection("pets")
@@ -786,10 +802,8 @@ export default {
 
                     }
                     if (this.pet_type == 'dog') {
-                        console.log(this.addImagePet, this.showImagePet)
                         storage.ref(this.email + "/" + this.email + "_" + this.pet_name + "/pets").put(this.addImagePet[0]).then(user => {
                             storageRef.child(this.email + "/" + this.email + "_" + this.pet_name + "/pets").getDownloadURL().then(url => {
-                                console.log(url);
                                 db.collection("users")
                                     .doc(this.email)
                                     .collection("pets")
@@ -1042,6 +1056,14 @@ export default {
             this.createImage(files[0], "add_pet");
             // this.detectFiles(files);
         },
+        onImagePetUpdate(e) {
+            console.log("click")
+            var files = e.target.files || e.dataTransfer.files;
+            this.petimage_pic = files
+            if (!files.length) return;
+            this.createImage(files[0], "update");
+            // this.detectFiles(files);
+        },
         createImage(file, type) {
             var image = new Image();
 
@@ -1058,6 +1080,13 @@ export default {
                 var urlImageProfile = new Image();
                 reader.onload = e => {
                     this.urlImageProfile = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+            if (type == "update") {
+                var urlImageProfile = new Image();
+                reader.onload = e => {
+                    this.show_pet[0].imagePet = e.target.result;
                 };
                 reader.readAsDataURL(file);
             }
