@@ -142,11 +142,6 @@ import {
 import {
     Datetime
 } from "vue-datetime";
-import Loading from 'vue-loading-overlay';
-// Import stylesheet
-import 'vue-loading-overlay/dist/vue-loading.css';
-import Vue from 'vue';
-Vue.use(Loading);
 // ES6 Modules or TypeScript
 import swal from "sweetalert2";
 export default {
@@ -172,7 +167,6 @@ export default {
             urlImageProfile: "",
             confpassword: "",
             datebirth: "",
-            visible: false,
             file_pic: null
         };
     },
@@ -188,7 +182,6 @@ export default {
         MdMask,
         ViewWrapper,
         datetime: Datetime,
-        Loading
     },
     methods: {
         register: function (e) {
