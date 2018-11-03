@@ -122,51 +122,11 @@
 </template>
 
 <script>
-import db from "./firebaseInit.js";
+import db from './firebaseInit.js';
 import firebase from "firebase";
 const storage = firebase.storage();
 const storageRef = storage.ref();
 import {
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardText,
-  Btn,
-  Row,
-  Column,
-  MdMask,
-  ViewWrapper
-} from "mdbvue";
-import { Datetime } from "vue-datetime";
-// ES6 Modules or TypeScript
-import swal from "sweetalert2";
-export default {
-  beforeCreate: function() {
-    document.body.className = "body-registervet";
-  },
-  name: "register-vet",
-  data: function() {
-    return {
-      email: "",
-      password: "",
-      age: "",
-      gender: "",
-      fullname: "",
-      line_id: "",
-      telephone: "",
-      address: "",
-      progressUpload: 0,
-      file: File,
-      uploadTask: "",
-      image: "",
-      confpassword: "",
-      datebirth: "",
-      visible: false,
-      file_pic: null
-    };
-  },
-  components: {
     Card,
     CardImg,
     CardBody,
@@ -289,9 +249,9 @@ export default {
                                                     showConfirmButton: false,
                                                     timer: 1500
                                                 }).then(result => {
-                                                    this.$router.go({
-                                                        path: this.$router.path
-                                                    });
+                                                    localStorage.setItem("ownerUser", true);
+                                                    localStorage.setItem("vetUser", false);
+                                                    location.href = "/home_owner";
                                                 });
 
                                             })
@@ -316,147 +276,141 @@ export default {
                         e.preventDefault();
 
                     }
-                  });
+                     if (!this.file_pic) {
+                        swal({
+                            title: "Loading ...",
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                        firebase
+                            .auth()
+                            .createUserWithEmailAndPassword(this.email, this.password)
+                            .then(
+                                user => {
+                                    db.collection('users').doc(this.email).set({
+                                        email: this.email,
+                                        gender: this.gender,
+                                        password: this.password,
+                                        fullname: this.fullname,
+                                        line_id: this.line_id,
+                                        telephone_number: this.telephone,
+                                        address: this.address,
+                                        datebirth: this.datebirth,
+                                        user_type: "owner",
+                                        urlImageProfile: ""
+                                    }).then(user => {
+                                        swal({
+                                            title: "Register Status",
+                                            text: `You are Register in Veterinary as ${this.email}`,
+                                            type: "success",
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        }).then(result => {
+                                            localStorage.setItem("ownerUser", true);
+                                            localStorage.setItem("vetUser", false);
+                                            location.href = "/home_owner";
+                                        });
+
+                                    })
+
+                                },
+                                err => {
+                                    swal({
+                                        title: "Register Status",
+                                        text: err.message,
+                                        type: "error",
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                        onOpen: () => {
+                                            swal.hideLoading()
+                                        }
+                                    })
+                                })
+                        e.preventDefault();
+                    }
                 }
-              );
-            e.preventDefault();
-          }
-          if (!this.file_pic) {
-            swal({
-              title: "Loading ...",
-              onOpen: () => {
-                swal.showLoading();
-              }
-            });
-            firebase
-              .auth()
-              .createUserWithEmailAndPassword(this.email, this.password)
-              .then(
-                user => {
-                  db.collection("users")
-                    .doc(this.email)
-                    .set({
-                      email: this.email,
-                      gender: this.gender,
-                      password: this.password,
-                      fullname: this.fullname,
-                      line_id: this.line_id,
-                      telephone_number: this.telephone,
-                      address: this.address,
-                      datebirth: this.datebirth,
-                      user_type: "owner",
-                      urlImageProfile: ""
-                    })
-                    .then(user => {
-                      swal({
+                if (this.password != this.confpassword) {
+                    swal({
                         title: "Register Status",
-                        text: `You are Register in Veterinary as ${this.email}`,
-                        type: "success",
+                        text: "Password mismatch",
+                        type: "error",
                         showConfirmButton: false,
                         timer: 1500
-                      }).then(result => {
-                        this.$router.go({
-                          path: this.$router.path
-                        });
-                      });
-                    });
-                },
-                err => {
-                  swal({
+                    })
+                }
+            }
+            if (count_input_empty) {
+                swal({
                     title: "Register Status",
-                    text: err.message,
+                    text: "Please fill out empty field",
                     type: "error",
                     showConfirmButton: false,
-                    timer: 1500,
-                    onOpen: () => {
-                      swal.hideLoading();
-                    }
-                  });
-                }
-              );
-            e.preventDefault();
-          }
-        }
-        if (this.password != this.confpassword) {
-          swal({
-            title: "Register Status",
-            text: "Password mismatch",
-            type: "error",
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-      }
-      if (count_input_empty) {
-        swal({
-          title: "Register Status",
-          text: "Please fill out empty field",
-          type: "error",
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
-      //   console.log(count_input_empty)
-    },
-    detectFiles(fileList) {
-      Array.from(Array(fileList.length).keys()).map(x => {
-        this.upload(fileList[x]);
-      });
-    },
-    upload(file) {
-      this.uploadTask = storage.ref(this.email + "/profile").put(file);
-    },
-    onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0]);
-      this.detectFiles(files);
-    },
-    createImage(file) {
-      var image = new Image();
-      var reader = new FileReader();
-      var vm = this;
+                    timer: 1500
+                })
+            }
+            //   console.log(count_input_empty)
 
-      reader.onload = e => {
-        vm.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-    removeImage: function(e) {
-      this.image = "";
-    },
-    readURLPro: function(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        (reader.onload = function(e) {
-          $("#wizardPicturePreviewPro")
-            .attr("src", e.target.result)
-            .fadeIn("slow");
-        }),
-          reader.readAsDataURL(input.files[0]);
-        this.detectFiles(input.files);
-      }
-    }
-  },
-  watch: {
-    uploadTask: function() {
-      this.uploadTask.on(
-        "state_changed",
-        sp => {
-          this.progressUpload = Math.floor(
-            (sp.bytesTransferred / sp.totalBytes) * 100
-          );
         },
-        null,
-        () => {
-          this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-            this.$emit("url", downloadURL);
-          });
+        detectFiles(fileList) {
+            Array.from(Array(fileList.length).keys()).map(x => {
+                this.upload(fileList[x]);
+            });
+        },
+        upload(file) {
+            this.uploadTask = storage.ref(this.email + "/profile").put(file);
+        },
+        onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length) return;
+            this.createImage(files[0]);
+            this.detectFiles(files);
+        },
+        createImage(file) {
+            var image = new Image();
+            var reader = new FileReader();
+            var vm = this;
+
+            reader.onload = e => {
+                vm.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        removeImage: function (e) {
+            this.image = "";
+        },
+        readURLPro: function (input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                (reader.onload = function (e) {
+                    $("#wizardPicturePreviewPro")
+                        .attr("src", e.target.result)
+                        .fadeIn("slow");
+                }),
+                reader.readAsDataURL(input.files[0]);
+                this.detectFiles(input.files);
+            }
         }
-      );
+    },
+    watch: {
+        uploadTask: function () {
+            this.uploadTask.on(
+                "state_changed",
+                sp => {
+                    this.progressUpload = Math.floor(
+                        (sp.bytesTransferred / sp.totalBytes) * 100
+                    );
+                },
+                null,
+                () => {
+                    this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+                        this.$emit("url", downloadURL);
+                    });
+                }
+            );
+        }
     }
-  }
 };
 </script>
 
