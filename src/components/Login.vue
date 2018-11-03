@@ -175,14 +175,28 @@ export default {
                     path: "/home_vet"
                   });
                 } else if (this.profiletype == "owner") {
-                  console.log("Owner type profile is owner");
-                  this.$router.go({
-                    path: "/home_owner"
-                  });
+                  alert(" Owner type profile is owner");
+                  //   this.$router.go({
+                  //     path: "/home_owner"
+                  //   });
+                  //   this.$router.replace({
+                  //     path: "/login",
+                  //     query: { profiletype: "owner" }
+                  //   });
+                  //   this.$router.replace({
+                  //     name: "login",
+                  //     params: { profiletype: this.profiletype }
+                  //   });
+
+                  //   alert(this.$router.params.profiletype);
+                  alert(this.profiletype + " Owner Query");
+                  this.$router.push("/home_owner");
+                  //   this.$router.go({
+                  //     path: "/home_owner"
+                  //   });
                 } else {
                   alert("error not found profile type");
                 }
-
                 //   this.$router.go({
                 //     path: this.$router.path
                 //   });

@@ -418,20 +418,23 @@ export default {
     };
   },
   methods: {
-    calculateAge(){
+    calculateAge() {
       var today = new Date();
       var dob = this.datebirth.split("-");
       var year = Number(dob[0]);
-      var month = Number(dob[1])-1;
+      var month = Number(dob[1]) - 1;
       var split_day = dob[2].split("T");
       var day = Number(split_day[0]);
       var age = today.getFullYear() - year;
-      if (today.getMonth() < month || (today.getMonth() == month && today.getDate() < day)) {
+      if (
+        today.getMonth() < month ||
+        (today.getMonth() == month && today.getDate() < day)
+      ) {
         age--;
       }
       this.age = age;
       console.log(age);
-    }, 
+    },
     updatePet() {
       db.collection("users")
         .doc(this.email)
@@ -555,13 +558,12 @@ export default {
         console.log(this.email);
       });
   },
-   mounted() {
+  mounted() {
     db.collection("users")
       .doc(firebase.auth().currentUser.email)
       .get()
       .then(doc => {
-        this.datebirth = doc.data().datebirth,
-        this.calculateAge();
+        (this.datebirth = doc.data().datebirth), this.calculateAge();
         this.fullname = doc.data().fullname;
         this.lineid = doc.data().line_id;
         this.address = doc.data().address;
@@ -569,7 +571,6 @@ export default {
         this.telephone = doc.data().telephone_number;
         this.gender = doc.data().gender;
         console.log("Document data:", doc.data());
-        
       });
   }
 };
