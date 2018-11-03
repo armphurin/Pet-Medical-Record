@@ -1,11 +1,9 @@
 <template>
-
   <div class="wrapper">
 <form action="index.html" class="regis_content">
               <card class="register">
               <card-body class="text-center">
                 <div class="bg-card">
-  <!-- <img src="../assets/logo.png" alt="Pet Medic" class="logo_regis" style="margin:0 auto;margin-bottom:2%;"> -->
                 <row>
                   <column class="col-md-2"></column>
                   <column class="col-md-4">
@@ -84,8 +82,6 @@ export default {
   name: "register",
   data: function() {
     return {
-      email: "",
-      password: ""
     };
   },
   components: {
@@ -101,31 +97,6 @@ export default {
     ViewWrapper
   },
   methods: {
-    register: function(e) {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(
-          user => {
-            // console.log(user);
-            alert(`Account Created for ${user.email}`);
-            this.$router.go({ path: this.$router.path });
-          },
-          db
-            .collection("profiles")
-            .doc(this.email)
-            .set({
-              profile_id: "new",
-              profile_name: "new",
-              dept: "new",
-              position: "new"
-            }),
-          err => {
-            alert(err.message);
-          }
-        );
-      e.preventDefault();
-    }
   }
 };
 </script>
