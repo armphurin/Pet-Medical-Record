@@ -904,6 +904,13 @@ input::placeholder {
   }
 }
 
+/*iPhone 5/SE Portrait*/
+@media only screen and (min-width: 320px) and (max-width: 600px) and (max-height: 570px) and (orientation: portrait) {
+    .obj-center{
+        margin-top: 800px;  
+    }
+}
+
 /*Common Responsive Portrait, Higher Phone*/
 @media only screen and (max-width: 600px) and (min-height: 700px) and (orientation: Portrait) {
   .obj-center {
@@ -939,6 +946,13 @@ input::placeholder {
     margin-top: 775px;
     margin-bottom: 5%;
   }
+}
+
+/*Common Responsive Landscape, for iPhone5SE*/
+@media only screen and (min-width: 560px) and (max-width: 673px) and (orientation: Landscape) {
+    .obj-center {
+    margin-top: 805px;
+    }
 }
 
 /*Common Responsive Landscape, Wider Phone*/
