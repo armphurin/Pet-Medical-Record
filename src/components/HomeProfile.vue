@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import db from './firebaseInit';
+import db from "./firebaseInit";
 export default {
-  name: 'home-profile',
+  name: "home-profile",
   data() {
     return {
       profiles: [],
@@ -27,9 +27,8 @@ export default {
     };
   },
   created() {
-    db
-      .collection('profiles')
-      .orderBy('dept')
+    db.collection("profiles")
+      .orderBy("dept")
       .get()
       .then(querySnapshot => {
         this.loading = false;

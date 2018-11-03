@@ -1,6 +1,12 @@
 <template>
 
   <div>
+    <!-- svg curve -->
+    <div class="svg-container-top">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1366 246">
+      <ellipse cx="686" cy="270" rx="782" ry="248" style="fill:#fff;"/>
+      </svg>
+    </div>
     <!--ViewWrapper-->
     <view-wrapper class="home-page">
       <md-mask class="d-flex justify-content-center align-items-center">
@@ -10,92 +16,91 @@
               <h1 class="h1-responsive font-weight-bold mt-sm-5">Pet Medical Record System</h1>
               <hr class="hr-light"/>
               <h6 class="mb-4">This website is Pet Medical Record make it simple in few step.</h6>
-              <router-link to="/register"><btn color="white">Register</btn></router-link>
-              <btn outline="white">Learn more</btn>
+              <router-link to="/register"><btn color="white" style="color:#17A995 !important;" class="btn-curve">Register</btn></router-link>
+              <btn color="default" class="btn-curve">Learn more</btn>
             </div>
-            <column md="6" xl="5" class="mt-xl-5">
-              <img src="../assets/iphone.png" class="img-fluid animated bounce infinite w-50" style="height:100%;width:100%;margin:0 auto;"/>
-            </column>
           </row>
         </container>
       </md-mask>
     </view-wrapper>
     <!--/.ViewWrapper-->
     <container>
-    <section class="text-center my-5">
-      <h2 class="h1-responsive font-weight-bold my-5">Why is it so great?</h2>
-      <p class="lead w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-      <row>
-        <column md="4">
-          <fa icon="area-chart" size="3x" class="red-text"/>
-          <h5 class="font-weight-bold my-4">Analytics</h5>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
-        </column>
-        <column md="4">
-          <fa icon="book" size="3x" class="cyan-text"/>
-          <h5 class="font-weight-bold my-4">Tutorials</h5>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
-        </column>
-        <column md="4">
-          <fa icon="comments-o" size="3x" class="orange-text"/>
-          <h5 class="font-weight-bold my-4">Support</h5>
-          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
-        </column>
-      </row>
-    </section>
-  </container>
-
-  <container>
     <section class="my-5">
-      <h2 class="h1-responsive font-weight-bold text-center my-5">Why is it so great?</h2>
-      <p class="lead w-responsive text-center mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-      <row>
-        <column lg="5" class="text-center text-lg-left">
-          <img  class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/screens-section.jpg" alt="Sample image" />
+      <h2 class="h1-responsive font-weight-bold my-5 text-center">Why is it so great?</h2>
+      <p class="lead w-responsive mx-auto mb-5 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+      <row style="margin:2em;">
+        <column md="6" class="text-center">
+          <img src="../assets/easy.png" class="feature-icon text-center" />
         </column>
-        <column lg="7">
-          <row class="mb-3">
-            <column size="1">
-              <fa icon="mail-forward" size="lg" class="indigo-text"/>
-            </column>
-            <column xl="10" md="11" size="10">
-              <h5 class="font-weight-bold mb-3">Safety</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam, quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
-            </column>
-          </row>
-          <row class="mb-3">
-            <column size="1">
-              <fa icon="mail-forward" size="lg" class="indigo-text"/>
-            </column>
-            <column xl="10" md="11" size="10">
-              <h5 class="font-weight-bold mb-3">Technology</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam, quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
-            </column>
-          </row>
-          <row class="mb-3">
-            <column size="1">
-              <fa icon="mail-forward" size="lg" class="indigo-text"/>
-            </column>
-            <column xl="10" md="11" size="10">
-              <h5 class="font-weight-bold mb-3">Finance</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam, quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
-            </column>
-          </row>
+        <column md="6" class="feature-text">
+          <h2 class="font-weight-bold my-4 feature-text-bold">Easy</h2>
+          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+        </column>
+      </row>
+      <row style="margin:2em;">
+        <column md="6" class="text-center order-md-3">
+          <img src="../assets/engage.png" class="feature-icon text-center" />
+        </column>
+        <column md="6" class="feature-text order-md-2">
+          <h2 class="font-weight-bold my-4 feature-text-bold">Engagement</h2>
+          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
+        </column>
+      </row>
+      <row style="margin:2em;">
+        <column md="6" class="text-center">
+          <img src="../assets/control.png" class="feature-icon text-center" />
+        </column>
+        <column md="6" class="feature-text">
+          <h2 class="font-weight-bold my-4 feature-text-bold">Controll</h2>
+          <p class="mb-md-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.</p>
         </column>
       </row>
     </section>
   </container>
-
+  <br/><br/>
+<div class="svg-container-bottom">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1366 290">
+    <image width="1366" height="351" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAABVYAAAFfAQMAAACftwWKAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABlBMVEUXqZUAAABMHWedAAAAAWJLR0QB/wIt3gAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IKGxEWFTZRQG0AAABQSURBVHja7cEBAQAAAIIg/69uSEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8G7r1AABJwQebQAAAABJRU5ErkJggg=="/>
+    <ellipse class="cls-1" cx="686" cy="-33" rx="782" ry="248" style="fill:#fff;"/>
+</svg>
+    </div>
   </div>
 
 </template>
 
 <script>
-import { Container, Row, Column, Navbar, NavbarCollapse, NavbarNav, NavbarItem, mdbInput, ViewWrapper, MdMask, Btn, mdbNavbarBrand, Card, CardImg, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardUp, CardAvatar, CardGroup, Fa } from 'mdbvue';
+import {
+  Container,
+  Row,
+  Column,
+  Navbar,
+  NavbarCollapse,
+  NavbarNav,
+  NavbarItem,
+  mdbInput,
+  ViewWrapper,
+  MdMask,
+  Btn,
+  mdbNavbarBrand,
+  Card,
+  CardImg,
+  CardHeader,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardFooter,
+  CardUp,
+  CardAvatar,
+  CardGroup,
+  Fa
+} from "mdbvue";
 
-import firebase from 'firebase';
+import firebase from "firebase";
 export default {
-  name: 'home-page',
+  beforeCreate: function() {
+    document.body.className = "body-homepage";
+  },
+  name: "home-page",
   components: {
     Container,
     Row,
@@ -109,109 +114,230 @@ export default {
     MdMask,
     Btn,
     mdbNavbarBrand,
-    Card, CardImg, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardUp, CardAvatar, CardGroup,
+    Card,
+    CardImg,
+    CardHeader,
+    CardBody,
+    CardTitle,
+    CardText,
+    CardFooter,
+    CardUp,
+    CardAvatar,
+    CardGroup,
     Fa
   }
 };
 </script>
-
 <style>
-html{
+body.body-homepage {
+  background-image: url("../assets/baner_homepage.png");
+  background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat:no-repeat;
-  background: rgb(52,160,217); /* Old browsers */
-  background: -moz-linear-gradient(top, rgb(52,160,217) 0%, rgb(23,169,149) 56%, rgb(23,169,149) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgb(52,160,217) 0%,rgb(23,169,149) 56%,rgb(23,169,149) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgb(52,160,217) 0%,rgb(23,169,149) 56%,rgb(23,169,149) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
+  background-position: center center;
+  height: calc(100vh - 60px);
+  margin: 0;
+  padding: 0;
 }
-body { 
-    background-color: transparent;
+</style>
+
+
+<style scoped>
+.btn-curve {
+  border-radius: 15px;
+}
+.feature-icon {
+  width: 55%;
+  height: 100%;
+}
+.feature-text {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.feature-text-bold {
+  color: #2bbbad !important;
+}
+
+.svg-container-top {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: -12%;
+  z-index: -1;
+}
+
+.svg-container-bottom {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: -165%;
+  z-index: -1;
 }
 
 .view.home-page {
-  background-image: url('');
+  background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   height: calc(100vh - 60px);
 }
+body.body-homepage {
+  background-image: url("../assets/baner_homepage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: calc(100vh - 60px);
+  margin: 0;
+  padding: 0;
+}
 h6 {
   line-height: 1.7;
 }
 
-/*Common Mobile Portrait*/ 
-@media only screen and (min-width: 370px) and (max-width: 600px){
-  .view.home-page{
+/*Common Mobile Portrait*/
+@media only screen and (min-width: 370px) and (max-width: 600px) and (orientation: portrait) {
+  .view.home-page {
     margin-top: 2em;
+  }
+  .svg-container-top {
+    height: 17em;
+  }
+  .svg-container-bottom {
+    bottom: -100em;
+    height: 6em;
   }
 }
 
 /*Samsung Galaxy S5 Portrait*/
-@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait){
-  .view.home-page{
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+  .body-homepage {
+    margin-top: 5em;
+  }
+  .view.home-page {
     margin-top: 1.5em;
   }
-  .intro-section .btn{
+  .intro-section .btn {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+  .svg-container-top {
+    height: 15em;
+  }
+  .svg-container-bottom {
+    bottom: -99em;
+    height: 5em;
   }
 }
 
 /*iPhone 5/SE Portrait*/
-@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait){
-  .view.home-page{
+@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait) {
+  .view.home-page {
     height: calc(100vh - 0px);
   }
-  .mt-xl-5.col-md-6.col-xl-5{
+  .mt-xl-5.col-md-6.col-xl-5 {
     bottom: 80px;
     width: 200px;
   }
-  .img-fluid{
+  .img-fluid {
     left: 45px;
     top: 60px;
   }
-  .intro-section.row{
+  .intro-section.row {
     margin-bottom: 50px;
+  }
+  .svg-container-bottom {
+    bottom: -105em;
+  }
+}
+
+/*iPhone 6/7/8 Portrait*/
+@media only screen and (min-width: 375px) and (max-height: 670px) and (orientation: portrait) {
+  .svg-container-bottom {
+    bottom: -101em;
+  }
+}
+
+/*iPhone 6/7/8 Plus Portrait*/
+@media only screen and (min-width: 414px) and (max-height: 740px) and (orientation: portrait) {
+  .svg-container-bottom {
+    bottom: -98em;
+  }
+}
+
+/*iPhone X Portrait*/
+@media only screen and (min-width: 375px) and (max-width: 400px) and (max-height: 815px) and (orientation: portrait) {
+  .svg-container-bottom {
+    bottom: -101em;
+  }
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 768px) and (max-height: 1025px) and (orientation: portrait) {
+  .svg-container-bottom {
+    bottom: -60em;
+  }
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px) and (max-height: 1400px) and (orientation: portrait) {
+  .svg-container-bottom {
+    bottom: -66em;
+    height: 15em;
   }
 }
 
 /*Common Mobile Landscape*/
-@media only screen and (max-width: 770px) and (orientation: landscape){
-  .intro-section.row{
+@media only screen and (max-width: 770px) and (orientation: landscape) {
+  .body-homepage {
+    margin-top: 3em;
+  }
+  .intro-section.row {
     width: 350px;
     height: 270px;
     margin-bottom: 20px;
   }
-  .img-fluid{
+  .img-fluid {
     left: 245px;
     bottom: 300px;
   }
-  .mt-xl-5.col-md-6.col-xl-5{
+  .mt-xl-5.col-md-6.col-xl-5 {
     padding-left: 50px;
+  }
+  .svg-container-bottom {
+    bottom: -105em;
+  }
+  .svg-container-top {
+    height: 9em;
   }
 }
 
 /*Pixel 2XL and iPhone X Landscape*/
-@media only screen and (min-width: 810px) and (max-height : 420px)and (orientation: landscape){
-  .mt-xl-5.col-md-6.col-xl-5{
+@media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
+  .body-homepage {
+    margin-top: 3.25em;
+  }
+  .mt-xl-5.col-md-6.col-xl-5 {
     padding-top: 50px;
     margin-bottom: 20px;
+  }
+  .svg-container-bottom {
+    bottom: -60em;
   }
 }
 
 /*iPhone 5/SE Landscape*/
-@media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape){
-  .intro-section.row{
+@media only screen and (max-width: 570px) and (max-height: 330px) and (orientation: landscape) {
+  .view.home-page {
+    height: 20em;
+  }
+  .btn {
+    width: 23.5em;
+  }
+
+  .intro-section.row {
     width: 350px;
     height: 200px;
   }
-  .mt-xl-5.col-md-6.col-xl-5{
+  .mt-xl-5.col-md-6.col-xl-5 {
     width: 270px;
     top: 40px;
     left: 40px;
@@ -219,4 +345,35 @@ h6 {
   }
 }
 
+/*iPad Landscape*/
+@media only screen and (min-width: 1000px) and (orientation: landscape) {
+  .svg-container-top {
+    height: 22em;
+  }
+  .svg-container-bottom {
+    bottom: -66em;
+    height: 15em;
+  }
+}
+
+/*iPro Landscape*/
+@media only screen and (min-width: 1200px) and (orientation: landscape) {
+  .svg-container-top {
+    height: 27em;
+  }
+  .svg-container-bottom {
+    bottom: -75em;
+    height: 20em;
+  }
+}
+
+/*Minimum required for Landscape*/
+@media only screen and (max-width: 600px) and (orientation: landscape) {
+  .svg-container-top {
+    display: none;
+  }
+  .svg-container-bottom {
+    display: none;
+  }
+}
 </style>

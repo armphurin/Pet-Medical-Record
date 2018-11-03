@@ -1,0 +1,770 @@
+<template>
+<div class="medic-owner">
+    <md-mask class="d-flex justify-content-center align-items-center">
+        <container>
+          	<div class="header-button">
+              <div class="scrolling-wrapper-flexbox text-center">
+                <!-- pet 1 -->
+  <label class="text-white" style="margin-top:1.3em;margin-left: 0em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 1</label>
+  <!-- pet 2 to n -->
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+</div>
+            </div>
+<div class="doc-section text-center white-text">
+</div>
+        </container>
+    </md-mask>
+      <div>
+<container>
+<div class="tab-wrapper"> 
+   <div class="tab-panel">
+      <label for="tab-1" tabindex="0" class="tab-panel-label three-tabs"></label>
+      <input id="tab-1" type="radio" name="tabs" checked="true" aria-hidden="true" />
+      <h2 class="tab-title three-tabs">Profile</h2>
+
+      <div class="tab-panel-content">
+          <row class="medic-content">
+            <column md="4">
+            <row class="text-center">
+              <column>
+              <img src="../assets/pic_cat.png" class="medic-pic" />
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="pettype">Pet Type</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="marking">Marking</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="marking" v-model="marking" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            </column>
+            <column md="8">
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="petname">Pet Name</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="age">Age</label>
+                                <input class="form-control form-control-lg" type="text" value="18 Year" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+              <column>
+                            <div class="label-group">
+                                <label for="gender">Gender</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Gender" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="breed">Breed</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="color">Color</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" v-model="color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            </column>
+          </row>
+          <row>
+            <column>
+                                <div class="label-group">
+                                    <label for="contact">Contact</label>
+                                    <textarea class="form-control" id="contact" v-model="contact" rows="5" placeholder="Contact" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                </div>
+            </column>
+          </row>
+      </div>
+
+      <label for="tab-2" tabindex="0" class="tab-panel-label three-tabs"></label>
+      <input id="tab-2" type="radio" name="tabs" aria-hidden="true" />
+      <h2 class="tab-title three-tabs">Medic</h2>
+
+      <div class="tab-panel-content">
+        Second
+      </div>
+
+      <label for="tab-3" tabindex="0" class="tab-panel-label three-tabs"></label>
+      <input id="tab-3" type="radio" name="tabs" aria-hidden="true" />
+      <h2 class="tab-title three-tabs">Vact</h2>
+
+      <div class="tab-panel-content">
+          Third
+      </div>
+   </div>
+</div>
+</container>
+</div>
+</div>
+<!--/.ViewWrapper-->
+</template>
+
+<script>
+import db from "./firebaseInit";
+import firebase from "firebase";
+import {
+  Container,
+  Row,
+  Column,
+  Navbar,
+  NavbarCollapse,
+  NavbarNav,
+  NavbarItem,
+  mdbInput,
+  ViewWrapper,
+  MdMask,
+  Btn,
+  mdbNavbarBrand,
+  Card,
+  CardImg,
+  CardHeader,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardFooter,
+  CardUp,
+  CardAvatar,
+  CardGroup,
+  Fa,
+  Modal,
+  ModalHeader,
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
+  Pagination,
+  PageNav,
+  PageItem
+} from "mdbvue";
+
+import { Datetime } from "vue-datetime";
+
+export default {
+  beforeCreate: function() {
+    document.body.className = "body-medic";
+  },
+  name: "medic",
+  components: {
+    Container,
+    Row,
+    Column,
+    Navbar,
+    NavbarCollapse,
+    NavbarNav,
+    NavbarItem,
+    mdbInput,
+    ViewWrapper,
+    MdMask,
+    Btn,
+    mdbNavbarBrand,
+    Card,
+    CardImg,
+    CardHeader,
+    CardBody,
+    CardTitle,
+    CardText,
+    CardFooter,
+    CardUp,
+    CardAvatar,
+    CardGroup,
+    Fa,
+    Modal,
+    ModalHeader,
+    ModalTitle,
+    ModalBody,
+    ModalFooter,
+    datetime: Datetime,
+    Pagination,
+    PageNav,
+    PageItem,
+    mdbInput
+  },
+  data() {
+    return {
+      pets: [],
+      loading: true,
+      popupProfile: false,
+      popupPet: false,
+      progressUpload: 0,
+      file: File,
+      uploadTask: "",
+      image: "",
+      datebirth: "",
+      petbirth: "",
+      selected: false
+    };
+  },
+  methods: {
+    selectHeader(e) {
+      alert("section");
+      this.selected = true;
+      var allelement = document.getElementsByClassName("selectedHeader");
+      console.log(allelement);
+      for (var i = 0; i < allelement.length; i++) {
+        console.log("inloop" + i);
+        allelement[i].classList.remove("selectedHeader");
+      }
+      e.target.className += " selectedHeader";
+      console.log(e.target.className);
+    }
+  },
+  created() {
+    db.collection("users")
+      .doc(firebase.auth().currentUser.email)
+      .collection("pets")
+      .orderBy("pet_id")
+      .get()
+      .then(querySnapshot => {
+        this.loading = false;
+        querySnapshot.forEach(doc => {
+          const data = {
+            id: doc.id,
+            pet_id: doc.data().pet_id,
+            pet_name: doc.data().pet_name,
+            dept: doc.data().dept,
+            position: doc.data().position
+          };
+          this.pets.push(data);
+        });
+      });
+    document
+      .getElementsByClassName("vdatetime-input")
+      .setAttribute("placeholder", "Enter your number");
+  },
+  mounted() {
+    var area_select = document.querySelector(".scrolling-wrapper-flexbox");
+    console.log(area_select.classList);
+    var selectH = document.getElementsByClassName("card-header");
+    if (selectH.length < 10) {
+      area_select.classList.add("scrolling-wrapper-flexbox-min");
+    } else {
+      area_select.classList.remove("scrolling-wrapper-flexbox-min");
+    }
+  }
+};
+</script>
+
+<style>
+body.body-medic {
+  background: url("../assets/bg_doc2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
+
+<style scoped>
+body.body-medic {
+  background: url("../assets/bg_doc2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.medic-owner {
+  margin-top: 3.5em;
+}
+
+/* checkbox and radio style */
+input[type="checkbox"],
+input[type="radio"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+input[type="checkbox"]:hover + label:before,
+input[type="radio"]:hover + label:before {
+  border-color: #999;
+}
+input[type="checkbox"]:active + label:before,
+input[type="radio"]:active + label:before {
+  transition-duration: 0;
+  filter: brightness(0.2);
+}
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  position: relative;
+  padding-left: 26px;
+  font-weight: normal;
+}
+input[type="checkbox"] + label:before,
+input[type="checkbox"] + label:after,
+input[type="radio"] + label:before,
+input[type="radio"] + label:after {
+  box-sizing: content-box;
+  position: absolute;
+  content: "";
+  display: block;
+  left: 0;
+}
+input[type="checkbox"] + label:before,
+input[type="radio"] + label:before {
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: -10px;
+  border: 2px solid #d9d9d9;
+  text-align: center;
+}
+input[type="checkbox"] + label:after,
+input[type="radio"] + label:after {
+  background-color: #00bad2;
+  top: 50%;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  transform: scale(0);
+  transform-origin: 50%;
+  transition: transform 200ms ease-out;
+}
+
+input[type="radio"]:checked + label:before {
+  -moz-animation: borderscale 300ms ease-in;
+  -webkit-animation: borderscale 300ms ease-in;
+  animation: borderscale 300ms ease-in;
+  background-color: #fff;
+}
+input[type="radio"]:checked + label:after {
+  transform: scale(1);
+}
+input[type="radio"] + label:before,
+input[type="radio"] + label:after {
+  border-radius: 50%;
+}
+
+input[type="checkbox"] + label:after {
+  background-color: transparent;
+  top: 50%;
+  left: 5px;
+  width: 7px;
+  height: 4px;
+  margin-top: -5px;
+  border-style: solid;
+  border-color: #00bad2;
+  border-width: 0 0 3px 3px;
+  -moz-transform: rotate(-45deg) scale(0);
+  -ms-transform: rotate(-45deg) scale(0);
+  -webkit-transform: rotate(-45deg) scale(0);
+  transform: rotate(-45deg) scale(0);
+  -moz-transition: none;
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+}
+input[type="checkbox"]:checked + label:before {
+  -moz-animation: borderscale 200ms ease-in;
+  -webkit-animation: borderscale 200ms ease-in;
+  animation: borderscale 200ms ease-in;
+}
+input[type="checkbox"]:checked + label:after {
+  content: "";
+  -moz-transform: rotate(-45deg) scale(1);
+  -ms-transform: rotate(-45deg) scale(1);
+  -webkit-transform: rotate(-45deg) scale(1);
+  transform: rotate(-45deg) scale(1);
+  -moz-transition: -moz-transform 200ms ease-out;
+  -o-transition: -o-transform 200ms ease-out;
+  -webkit-transition: -webkit-transform 200ms ease-out;
+  transition: transform 200ms ease-out;
+}
+
+@-moz-keyframes borderscale {
+  50% {
+    box-shadow: 0 0 0 2px #999;
+  }
+}
+@-webkit-keyframes borderscale {
+  50% {
+    box-shadow: 0 0 0 2px #999;
+  }
+}
+@keyframes borderscale {
+  50% {
+    box-shadow: 0 0 0 2px #999;
+  }
+}
+/* checkbox and radio style */
+
+/* dot style */
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.scrolling-wrapper .card-header {
+  display: inline-block;
+  color: white;
+  border-radius: 50%;
+}
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.scrolling-wrapper-flexbox-min {
+  justify-content: center;
+}
+
+.scrolling-wrapper-flexbox:first-child {
+  z-index: 1;
+}
+.scrolling-wrapper-flexbox .card-header {
+  flex: 0 0 auto;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  margin-right: 0.3em;
+  margin-left: 0.3em;
+  color: white;
+  border-radius: 50%;
+}
+
+.card-header {
+  border: 2px solid #c2c2c2;
+  width: 50px;
+  height: 50px;
+  font-size: 100%;
+  padding: 33px;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1);
+  transition: all 200ms ease-in;
+  transform: scale(1);
+}
+
+.card-header:hover {
+  border: 2px solid #e8c547;
+  box-shadow: 0px 0px 5px #000000;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.5);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.5);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.5);
+  transition: all 200ms ease-in;
+  transform: scale(1.5);
+  z-index: 2;
+  position: relative;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  margin-bottom: 1em;
+}
+
+.selectedHeader {
+  border: 2px solid #e8c547;
+  box-shadow: 0px 0px 5px #000000;
+  width: 100px;
+  height: 100px;
+  margin-left: 100px;
+}
+
+.scrolling-wrapper,
+.scrolling-wrapper-flexbox {
+  height: 100%;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+.scrolling-wrapper::-webkit-scrollbar,
+.scrolling-wrapper-flexbox::-webkit-scrollbar {
+  display: none;
+}
+
+.img-scroll-dog {
+  background: url("../assets/pic_dog2.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.img-scroll-cat {
+  background: url("../assets/pic_cat.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+/* dot style */
+
+/* tab doc style */
+.tab-wrapper {
+  width: 100%;
+  margin: 40px auto;
+  /* display: inline-block; */
+}
+@media screen and (max-width: 45em) {
+  .tab-wrapper {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* panel style */
+.tab-panel {
+  position: relative;
+  /* border: solid 1px #e5e5e5; */
+  border-radius: 6px;
+  font-family: "Open sans", sans-serif;
+}
+.tab-panel > .tab-panel-label {
+  position: absolute;
+  z-index: 1;
+  padding: 10px;
+  height: 44px;
+  outline: none;
+  font-size: 16px;
+  line-height: 24px;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > .tab-panel-label {
+    width: 100% !important;
+    height: 44px;
+  }
+}
+.tab-panel > .tab-panel-label ~ label {
+  position: absolute;
+  top: 0;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > .tab-panel-label ~ label {
+    position: absolute;
+    left: 0 !important;
+    top: unset;
+  }
+}
+.tab-panel > .tab-panel-label:nth-child(1) {
+  left: 0;
+}
+.tab-panel > .tab-panel-label:nth-child(9) {
+  left: 66.66666%;
+}
+.tab-panel > .tab-panel-label:hover {
+  cursor: pointer;
+}
+.tab-panel > h2 {
+  padding: 10px;
+  height: 44px;
+  outline: none;
+  font-size: 16px;
+  line-height: 24px;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > h2 {
+    width: 100% !important;
+    height: 44px;
+  }
+}
+.tab-panel > h2 ~ h2 {
+  position: absolute;
+  top: 0;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > h2 ~ h2 {
+    width: 100%;
+    position: static !important;
+  }
+}
+.tab-panel > h2:nth-child(3) {
+  left: 0;
+  border-bottom: 1px solid #e5e5e5;
+  border-top-left-radius: 6px;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > h2:nth-child(3) {
+    border-top-right-radius: 6px;
+  }
+}
+.tab-panel > h2:nth-child(7) {
+  border-bottom: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+  border-radius: 15px 100px 0px 0px;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > h2:nth-child(7) {
+    border-bottom: none;
+    border-left: none;
+    border-top: 1px solid #e5e5e5;
+    border-radius: 0px;
+  }
+}
+.tab-panel > h2:nth-child(11) {
+  left: 66.66666%;
+  border-bottom: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+  border-top-right-radius: 6px;
+  border-radius: 15px 100px 0px 0px;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > h2:nth-child(11) {
+    border-bottom: none;
+    border-left: none;
+    border-top: 1px solid #e5e5e5;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-radius: 0px;
+  }
+}
+.tab-panel > input {
+  opacity: 0;
+  position: absolute;
+}
+@media screen and (max-width: 45em) {
+  .tab-panel > input {
+    width: 100%;
+    height: 44px;
+  }
+}
+.tab-panel > input + h2 + .tab-panel-content {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+.tab-panel > input:checked + h2 {
+  background: #ffffff;
+  border-bottom: none;
+  color: #66d2a6;
+  font-weight: 800;
+  box-shadow: 10px -2px 4px 0px rgba(0, 0, 0, 0.07);
+  border-radius: 15px 100px 0px 0px;
+}
+
+.tab-panel > input + h2 {
+  transition: color 0.5s ease-in;
+  -webkit-transition: color 0.5s ease-in;
+}
+
+.tab-panel > input:hover + h2 {
+  color: white;
+}
+
+.tab-panel > input:checked:hover + h2 {
+  color: #66d2a6;
+}
+
+@media screen and (max-width: 45em) {
+  .tab-panel > input:checked + h2:nth-child(7),
+  .tab-panel > input:checked + h2:nth-child(11) {
+    border-top: none;
+  }
+  .tab-panel > input:checked + h2 {
+    border-radius: 0px;
+  }
+}
+.tab-panel > input:checked + h2 + .tab-panel-content {
+  position: static !important;
+  padding: 24px !important;
+  height: auto !important;
+  width: auto !important;
+}
+.tab-panel .three-tabs {
+  width: 33.33333%;
+  left: 33.33333%;
+}
+.tab-panel .two-tabs {
+  width: 50%;
+  left: 50%;
+}
+.tab-panel .tab-title {
+  margin: 0;
+  text-align: center;
+  background: #2cc185;
+  color: #0d9564;
+  box-sizing: border-box;
+  border-radius: 15px 100px 0px 0px;
+}
+
+.tab-panel .tab-panel-content {
+  background: #ffffff;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  /* min-height: 300px; */
+}
+@media screen and (max-width: 45em) {
+  .tab-panel .tab-panel-content {
+    display: block !important;
+    position: static !important;
+    padding: 1em !important;
+    height: auto !important;
+    width: auto !important;
+  }
+}
+/* tab doc style */
+
+.medic-pic {
+  border-radius: 50%;
+  width: 62%;
+  height: 90%;
+  margin: 0 auto;
+}
+
+.medic-content {
+  padding: 2%;
+}
+
+.label-group {
+  margin-bottom: 0.5em;
+}
+
+label {
+  font-weight: 500;
+}
+
+input::placeholder {
+  color: grey !important;
+  font-size: 80%;
+}
+</style>

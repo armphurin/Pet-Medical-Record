@@ -9,16 +9,6 @@
               <!--Grid row-->
               <row class="pt-lg-5 mt-lg-5">
                 <!--Grid column-->
-                <column md="6" class="mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
-                  <h1 class="display-4 font-weight-bold">Lorem ipsum</h1>
-                  <hr class="hr-light">
-                  <h6 class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga
-                  nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea
-                  dolor molestiae, quisquam iste.</h6>
-                  <btn outline="white">Learn more</btn>
-                </column>
-                <!--Grid column-->
-                <!--Grid column-->
                 <column md="6" xl="5" class="mb-4">
                   <!--Form-->
                   <card>
@@ -33,13 +23,13 @@
                       <!--Body-->
                       <div class="md-form">
                       <!--Input with icon prefix-->
-                        <mdb-input type="text" icon="user" iconClass="grey-text" label="Your name" id="form-name"/>
+                        <mdb-input type="text" icon="user" iconClass="grey-text" label="Topic Contact" id="form-topic"/>
                         <mdb-input type="text" icon="envelope" iconClass="grey-text" label="Your mail" id="form-email"/>
                         <!--Textarea with icon prefix-->
-                        <md-textarea icon="pencil" iconClass="grey-text" label="Your message" id="form-text" :rows="3"/>
+                        <md-textarea icon="pencil" iconClass="grey-text" label="Your Contact Detail" id="form-detail" :rows="3"/>
                       </div>
                       <div class="text-center mt-3">
-                        <btn color="indigo">Send</btn>
+                        <btn color="dark-green">Send</btn>
                         <hr>
                         <fieldset class="form-check">
                           <mdb-input type="checkbox" label="Subscribe me to the newsletter" id="form-subscribe" inline/>
@@ -49,6 +39,9 @@
                   </card>
                   <!--/.Form-->
                 </column>
+                <!--Grid column-->
+                <!--Grid column-->
+                
                 <!--Grid column-->
               </row>
               <!--Grid row-->
@@ -81,6 +74,9 @@ import {
 } from "mdbvue";
 import firebase from "firebase";
 export default {
+  beforeCreate: function() {
+    document.body.className = "body-contact";
+  },
   name: "contact",
   components: {
     Navbar,
@@ -103,38 +99,17 @@ export default {
 </script>
 
 <style>
-html {
-  background-size: cover;
-  height: 100%;
+body.body-contact {
+  background: url("../assets/bg_contact.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-repeat: no-repeat;
-  background: rgb(52, 160, 217); /* Old browsers */
-  background: -moz-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  ); /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
 }
-body {
-  background-color: transparent;
-}
+</style>
+
+
+<style scoped>
 
 .view.contact {
   background-image: url("");
@@ -288,4 +263,34 @@ input[type="checkbox"]:checked + label:after {
   }
 }
 /* checkbox and radio style */
+
+/*-----Mobile Device Edit-----*/
+
+/*Common Mobile Portrait*/
+@media only screen and (min-width: 370px) and (max-width: 600px) and (orientation: portrait) {
+  .view.contact {
+    margin-top: 3em;
+  }
+}
+
+/*iPhone 5/SE Portrait*/
+@media only screen and (max-width: 320px) and (max-height: 570px) and (orientation: portrait) {
+  .view.contact {
+    height: 40em;
+  }
+}
+
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 830px) and (orientation: landscape) {
+  .view.contact {
+    height: 40em;
+  }
+}
+
+/*Pixel 2XL and iPhone X Landscape*/
+@media only screen and (min-width: 810px) and (max-height: 420px) and (orientation: landscape) {
+  .card {
+    width: 41.5em;
+  }
+}
 </style>

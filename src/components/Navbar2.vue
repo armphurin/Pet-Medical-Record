@@ -6,26 +6,29 @@
   </mdb-navbar-brand>
   <navbar-collapse>
     <navbar-nav>
-      <navbar-item v-if="!isLoggedIn"><router-link to="/home_page">Home</router-link></navbar-item>
-      <navbar-item v-if="!isLoggedIn"><router-link to="/pre_load">test</router-link></navbar-item>
-      <navbar-item v-if="!isLoggedIn"><router-link to="/contact">Contact</router-link></navbar-item>
-      <navbar-item v-if="!isLoggedIn"><router-link to="/login">Login</router-link></navbar-item>
-      <navbar-item v-if="!isLoggedIn"><router-link to="/register">Register</router-link></navbar-item>
-      <navbar-item v-if="isLoggedIn"><router-link to="/">All Pet</router-link></navbar-item>
-      <navbar-item v-if="isLoggedIn"><router-link to="/home_profile">All Profile</router-link></navbar-item>
-      <dropdown v-if="isLoggedIn" tag="li" class="nav-item">
-        <dropdown-toggle tag="a" navLink color="indigo" slot="toggle" waves-fixed><span class="email black-text">{{currentUser}}</span></dropdown-toggle>
-        <dropdown-menu>
-          <dropdown-item><router-link to="/home_profile">My Profile</router-link></dropdown-item>
-          <dropdown-item><router-link to="/">My Pet</router-link></dropdown-item>
-          <dropdown-item><button v-on:click="logout" class="btn">Logout</button></dropdown-item>
+      <!-- left -->
+      <navbar-item><router-link to="/home_page">Home</router-link></navbar-item>
+      <navbar-item><router-link to="/contact">Contact</router-link></navbar-item>
+    </navbar-nav>
+      <!-- <navbar-item v-if="!isLoggedIn"><router-link to="/login">Login</router-link></navbar-item>
+      <navbar-item v-if="!isLoggedIn"><router-link to="/register">Register</router-link></navbar-item> -->
+      <!-- right -->
+      <navbar-nav right>
+    <form class="form-inline">
+      <input class="form-control p-2" type="text" placeholder="Search" aria-label="Search" style="margin-right:10px;">
+    <navbar-item v-if="!isLoggedIn"><router-link to="/login">Login</router-link></navbar-item>
+    <navbar-item v-if="!isLoggedIn"><router-link to="/register">Register</router-link></navbar-item>
+      <dropdown v-if="isLoggedIn" tag="li" class="nav-item dropdown-custom symbol-custom">
+        <dropdown-toggle tag="a" navLink color="gray" slot="toggle" waves-fixed><span class="email white-text">{{currentUser}}</span></dropdown-toggle>
+        <dropdown-menu right>
+          <dropdown-item><router-link to="/">My Home</router-link></dropdown-item>
+          <dropdown-item><router-link to="/medic">My Pet Record</router-link></dropdown-item>
+          <div class="dropdown-divider"></div>
+          <dropdown-item><btn @click="logout" class="btn btn-elegant">Logout</btn></dropdown-item>
         </dropdown-menu>
       </dropdown>
-    </navbar-nav>
-
-    <form class="form-inline">
-      <input class="form-control mr-auto p-2" type="text" placeholder="Search" aria-label="Search">
     </form>
+    </navbar-nav>
   </navbar-collapse>
 </navbar>
 </header>
@@ -96,6 +99,13 @@ a {
 }
 .stylish-color {
   background-color: hsl(220, 33%, 11%, 0.6) !important;
+}
+
+.dropdown-custom {
+  margin-left: 0em;
+}
+.symbol-custom {
+  color: white !important;
 }
 </style>
 
