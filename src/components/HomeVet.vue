@@ -7,10 +7,17 @@
                     <h1 class="h1-responsive font-weight-bold mt-sm-5">Welcome ...</h1>
                     <hr class="hr-light" />
                 </div>
-                <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
+                <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12" v-if="urlImageProfile">
+                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true, showImage()">
+                        <h5 style="display:inline; margin-top:1em;"><img :src="urlImageProfile" style="width:15%;display:inline;margin-right:1em;"/>{{fullname}}</h5>
+                    </btn><br>
+                    
+                </div>
+                <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12" v-if="!urlImageProfile">
                     <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true, showImage()">
                         <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{fullname}}</h5>
                     </btn><br>
+                    
                 </div>
                     <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
                         <div>
@@ -54,7 +61,7 @@
                         <!-- picture -->
                         <div class="image-upload">
                             <label for="wizard-picturePro">
-                              <img :src="image ='https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/medic%2Fimagenes?alt=media&token=a2b421d2-0aa4-4cff-aa8d-7cd6dd2e4aca'" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                              <img :src="urlImageProfile" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
                             </label>
                             <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
                         </div>
@@ -898,6 +905,7 @@ export default {
                 this.password = doc.data().password;
                 this.telephone = doc.data().telephone_number;
                 this.gender = doc.data().gender;
+                this.urlImageProfile = doc.data().urlImageProfile;
                 console.log("Document data:", doc.data());
 
             });
