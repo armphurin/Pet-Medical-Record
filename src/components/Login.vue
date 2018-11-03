@@ -1,6 +1,5 @@
 <template>
-
-  <!-- <div>
+<!-- <div>
     <div class="container">
     <div class="row">
       <div class="col s12 m8 offset-m2">
@@ -25,7 +24,6 @@
   </div>
   </div> -->
 
-
 <!-- <div class="container">
   <div class="row">
     <div class="col-sm-4" style="text-align:center;">
@@ -40,52 +38,51 @@
   </div>
 </div> -->
 
-  <div class="wrapper">
+<div class="wrapper">
     <view-wrapper>
         <container class="px-md-3 px-sm-0">
-          <form action="index.html" class="login_content">
-          <row>
-              <img src="../assets/logo.png" alt="Pet Medic" class="logo_login">
+            <form action="index.html" class="login_content">
+                <row>
+                    <img src="../assets/logo.png" alt="Pet Medic" class="logo_login">
           </row>
-          <row class="areaDistance">
-              <input class="form-control form-control-lg" type="email" placeholder="email" id="email" v-model="email" style="width:300px;margin: 0 auto;border-radius: 13px;">
+                    <row class="areaDistance">
+                        <input class="form-control form-control-lg" type="email" placeholder="email" id="email" v-model="email" style="width:300px;margin: 0 auto;border-radius: 13px;">
           </row>
-          <row class="areaDistance">
-              <input class="form-control form-control-lg" type="password" placeholder="password" id="password" v-model="password" style="width:300px;margin: 0 auto;border-radius: 13px;">            
+                        <row class="areaDistance">
+                            <input class="form-control form-control-lg" type="password" placeholder="password" id="password" v-model="password" style="width:300px;margin: 0 auto;border-radius: 13px;">
           </row>
-          <row class="areaDistance">
-              <!-- <btn v-on:click="login" type="button" color="elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</btn> -->
-              <button v-on:click="login" class="btn btn-elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</button>
-          </row>
-          </form>
+                            <row class="areaDistance">
+                                <!-- <btn v-on:click="login" type="button" color="elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</btn> -->
+                                <button v-on:click="login" class="btn btn-elegant" style="width:300px;margin: 0 auto;border-radius: 13px;">Login</button>
+                            </row>
+            </form>
         </container>
     </view-wrapper>
 
-<ul class="bg-bubbles">
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/cat.svg" alt="cat"></li>
-		<li><img src="../assets/dogfood2.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dogfood2.svg" alt="cat"></li>
-		<li><img src="../assets/dogfood.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dogfood2.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-		<li><img src="../assets/dogfood.svg" alt="cat"></li>
-		<li><img src="../assets/dog.svg" alt="cat"></li>
-	</ul>
+    <ul class="bg-bubbles">
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/cat.svg" alt="cat"></li>
+        <li><img src="../assets/dogfood2.svg" alt="cat"></li>
+        <li><img src="../assets/dog.svg" alt="cat"></li>
+        <li><img src="../assets/dog.svg" alt="cat"></li>
+        <li><img src="../assets/dogfood2.svg" alt="cat"></li>
+        <li><img src="../assets/dogfood.svg" alt="cat"></li>
+        <li><img src="../assets/dog.svg" alt="cat"></li>
+        <li><img src="../assets/dogfood2.svg" alt="cat"></li>
+        <li><img src="../assets/dog.svg" alt="cat"></li>
+        <li><img src="../assets/dogfood.svg" alt="cat"></li>
+        <li><img src="../assets/dog.svg" alt="cat"></li>
+    </ul>
 
-  </div>
-
+</div>
 </template>
 
 <script>
@@ -103,14 +100,12 @@ import {
   Btn,
   mdbNavbarBrand
 } from "mdbvue";
-import Loading from "vue-loading-overlay";
-// Import stylesheet
-import "vue-loading-overlay/dist/vue-loading.css";
-import Vue from "vue";
-Vue.use(Loading);
+
 import firebase from "firebase";
 // ES6 Modules or TypeScript
 import swal from "sweetalert2";
+import db from "./firebaseInit";
+
 export default {
   beforeCreate: function() {
     document.body.className = "body-login";
@@ -134,30 +129,76 @@ export default {
     return {
       email: "",
       password: "",
-      text: ""
+      text: "",
+      profiletype: ""
     };
   },
   methods: {
+    getData() {},
     login: function(e) {
+      swal({
+        title: "Loading ...",
+        onOpen: () => {
+          swal.showLoading();
+        }
+      });
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            swal({
-              title: "Login Status",
-              text: `You are logged in as ${user.email}`,
-              type: "success",
-              showConfirmButton: false,
-              timer: 1500
-            }).then(result => {
-              this.$router.go({
-                path: this.$router.path
+            db.collection("users")
+              .doc(this.email)
+              .get()
+              .then(doc => {
+                this.profiletype = doc.data().user_type;
+                //   return this.profiletype;
+                console.log(this.profiletype);
+              })
+              .then(() => {
+                swal({
+                  title: "Login Status",
+                  text: `You are logged in as ${user.email}`,
+                  type: "success",
+                  showConfirmButton: false,
+                  timer: 1500,
+                  onOpen: () => {
+                    swal.hideLoading();
+                  }
+                });
+              })
+              .then(result => {
+                console.log(this.profiletype);
+                if (this.profiletype == "vet") {
+                  console.log("Vet type profile is Vet");
+                  this.$router.go({
+                    path: "/home_vet"
+                  });
+                } else if (this.profiletype == "owner") {
+                  console.log("Owner type profile is owner");
+                  this.$router.go({
+                    path: "/home_owner"
+                  });
+                } else {
+                  alert("error not found profile type");
+                }
+
+                //   this.$router.go({
+                //     path: this.$router.path
+                //   });
               });
-            });
           },
           err => {
-            swal("Login Status", err.message, "error");
+            swal({
+              title: "Register Status",
+              text: err.message,
+              type: "error",
+              showConfirmButton: false,
+              timer: 1500,
+              onOpen: () => {
+                swal.hideLoading();
+              }
+            });
           }
         );
       e.preventDefault();
@@ -177,26 +218,31 @@ body.body-login {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  background: rgb(52, 160, 217); /* Old browsers */
+  background: rgb(52, 160, 217);
+  /* Old browsers */
   background: -moz-linear-gradient(
     top,
     rgb(52, 160, 217) 0%,
     rgb(23, 169, 149) 56%,
     rgb(23, 169, 149) 100%
-  ); /* FF3.6-15 */
+  );
+  /* FF3.6-15 */
   background: -webkit-linear-gradient(
     top,
     rgb(52, 160, 217) 0%,
     rgb(23, 169, 149) 56%,
     rgb(23, 169, 149) 100%
-  ); /* Chrome10-25,Safari5.1-6 */
+  );
+  /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(
     to bottom,
     rgb(52, 160, 217) 0%,
     rgb(23, 169, 149) 56%,
     rgb(23, 169, 149) 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
+  );
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
+  /* IE6-9 */
 }
 </style>
 
@@ -242,6 +288,7 @@ body.body-login {
   height: 100%;
   z-index: 1;
 }
+
 .bg-bubbles li {
   position: absolute;
   list-style: none;
@@ -253,9 +300,11 @@ body.body-login {
   animation: square 23s infinite;
   transition-timing-function: linear;
 }
+
 .bg-bubbles li:nth-child(1) {
   left: 10%;
 }
+
 .bg-bubbles li:nth-child(2) {
   left: 20%;
   width: 40px;
@@ -265,11 +314,13 @@ body.body-login {
   -webkit-animation-duration: 17s;
   animation-duration: 17s;
 }
+
 .bg-bubbles li:nth-child(3) {
   left: 25%;
   -webkit-animation-delay: 2s;
   animation-delay: 2s;
 }
+
 .bg-bubbles li:nth-child(4) {
   left: 40%;
   width: 30px;
@@ -277,9 +328,11 @@ body.body-login {
   -webkit-animation-duration: 22s;
   animation-duration: 22s;
 }
+
 .bg-bubbles li:nth-child(5) {
   left: 70%;
 }
+
 .bg-bubbles li:nth-child(6) {
   left: 80%;
   width: 60px;
@@ -287,6 +340,7 @@ body.body-login {
   -webkit-animation-delay: 1s;
   animation-delay: 1s;
 }
+
 .bg-bubbles li:nth-child(7) {
   left: 32%;
   width: 80px;
@@ -294,6 +348,7 @@ body.body-login {
   -webkit-animation-delay: 5s;
   animation-delay: 5s;
 }
+
 .bg-bubbles li:nth-child(8) {
   left: 55%;
   width: 20px;
@@ -303,6 +358,7 @@ body.body-login {
   -webkit-animation-duration: 40s;
   animation-duration: 40s;
 }
+
 .bg-bubbles li:nth-child(9) {
   left: 25%;
   width: 10px;
@@ -312,6 +368,7 @@ body.body-login {
   -webkit-animation-duration: 40s;
   animation-duration: 40s;
 }
+
 .bg-bubbles li:nth-child(10) {
   left: 90%;
   width: 80px;
@@ -323,6 +380,7 @@ body.body-login {
 .bg-bubbles li:nth-child(11) {
   left: 65%;
 }
+
 .bg-bubbles li:nth-child(12) {
   left: 50%;
   width: 40px;
@@ -332,11 +390,13 @@ body.body-login {
   -webkit-animation-duration: 17s;
   animation-duration: 17s;
 }
+
 .bg-bubbles li:nth-child(13) {
   left: 45%;
   -webkit-animation-delay: 2s;
   animation-delay: 2s;
 }
+
 .bg-bubbles li:nth-child(14) {
   left: 60%;
   width: 30px;
@@ -344,9 +404,11 @@ body.body-login {
   -webkit-animation-duration: 22s;
   animation-duration: 22s;
 }
+
 .bg-bubbles li:nth-child(15) {
   left: 25%;
 }
+
 .bg-bubbles li:nth-child(16) {
   left: 15%;
   width: 60px;
@@ -354,6 +416,7 @@ body.body-login {
   -webkit-animation-delay: 1s;
   animation-delay: 1s;
 }
+
 .bg-bubbles li:nth-child(17) {
   left: 5%;
   width: 80px;
@@ -361,6 +424,7 @@ body.body-login {
   -webkit-animation-delay: 5s;
   animation-delay: 5s;
 }
+
 .bg-bubbles li:nth-child(18) {
   left: 0%;
   width: 20px;
@@ -370,6 +434,7 @@ body.body-login {
   -webkit-animation-duration: 40s;
   animation-duration: 40s;
 }
+
 .bg-bubbles li:nth-child(19) {
   left: 75%;
   width: 10px;
@@ -379,6 +444,7 @@ body.body-login {
   -webkit-animation-duration: 40s;
   animation-duration: 40s;
 }
+
 .bg-bubbles li:nth-child(20) {
   left: 63%;
   width: 60px;
@@ -392,16 +458,19 @@ body.body-login {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
+
   100% {
     -webkit-transform: translateY(-400px) rotate(600deg);
     transform: translateY(-400px) rotate(600deg);
   }
 }
+
 @keyframes square {
   0% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
+
   100% {
     -webkit-transform: translateY(-400px) rotate(600deg);
     transform: translateY(-400px) rotate(600deg);
@@ -424,26 +493,31 @@ body.body-login {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  background: rgb(52, 160, 217); /* Old browsers */
+  background: rgb(52, 160, 217);
+  /* Old browsers */
   background: -moz-linear-gradient(
     top,
     rgb(52, 160, 217) 0%,
     rgb(23, 169, 149) 56%,
     rgb(23, 169, 149) 100%
-  ); /* FF3.6-15 */
+  );
+  /* FF3.6-15 */
   background: -webkit-linear-gradient(
     top,
     rgb(52, 160, 217) 0%,
     rgb(23, 169, 149) 56%,
     rgb(23, 169, 149) 100%
-  ); /* Chrome10-25,Safari5.1-6 */
+  );
+  /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(
     to bottom,
     rgb(52, 160, 217) 0%,
     rgb(23, 169, 149) 56%,
     rgb(23, 169, 149) 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
+  );
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
+  /* IE6-9 */
 }
 
 form {
@@ -490,9 +564,11 @@ form.login_content {
     margin-top: 2.5em;
     width: 230px;
   }
+
   .logo_login {
     height: 120px;
   }
+
   button.btn {
     padding-left: 110px;
     padding-right: 110px;

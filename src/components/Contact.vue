@@ -224,13 +224,6 @@ input[type="checkbox"]:checked + label:after {
 
 
 <style scoped>
-/* body.body-contact {
-  background: url("../assets/bg_contact.png") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-} */
 
 .view.contact {
   background-image: url("");

@@ -1,14 +1,11 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "@/components/Home";
-import ViewPet from "@/components/ViewPet";
-import NewPet from "@/components/NewPet";
-import EditPet from "@/components/EditPet";
+import HomeOwner from "@/components/HomeOwner";
+import HomeVet from "@/components/HomeVet";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
 import firebase from "firebase";
-import ViewProfile from "@/components/ViewProfile";
-import EditProfile from "@/components/EditProfile";
+import db from "../components/firebaseInit";
 import HomeProfile from "@/components/HomeProfile";
 import HomePage from "@/components/HomePage";
 import RegisterOwner from "@/components/RegisterOwner";
@@ -27,11 +24,23 @@ Vue.use(Router, axios, VueAxios, Datetime, VueSweetalert2);
 let router = new Router({
   routes: [
     {
-      path: "/",
-      name: "Home",
-      component: Home,
+      path: "/้home_owner",
+      name: "home-owner",
+      component: HomeOwner,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiresOwner: true,
+        requiresGuest: false
+      }
+    },
+    {
+      path: "/home_vet",
+      name: "home-vet",
+      component: HomeVet,
+      meta: {
+        requiresAuth: true,
+        requiresVet: true,
+        requiresGuest: false
       }
     },
     {
@@ -51,55 +60,22 @@ let router = new Router({
       }
     },
     {
-      path: "/new",
-      name: "new-pet",
-      component: NewPet,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/edit/:pet_id",
-      name: "edit-pet",
-      component: EditPet,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/pet/:pet_id",
-      name: "view-pet",
-      component: ViewPet,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/profile/:profile_id",
-      name: "view-profile",
-      component: ViewProfile,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/edit/:profile_id",
-      name: "edit-profile",
-      component: EditProfile,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
       path: "/home_profile",
       name: "home-profile",
       component: HomeProfile,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiresGuest: false
       }
     },
     {
       path: "/home_page",
+      name: "home-page",
+      component: HomePage,
+      meta: {}
+    },
+    {
+      path: "/",
       name: "home-page",
       component: HomePage,
       meta: {}
@@ -115,14 +91,6 @@ let router = new Router({
     {
       path: "/register_vet",
       name: "register-vet",
-      component: RegisterVet,
-      meta: {
-        requiresGuest: true
-      }
-    },
-    {
-      path: "/pre_load",
-      name: "pre-load",
       component: RegisterVet,
       meta: {
         requiresGuest: true
@@ -150,6 +118,7 @@ router.beforeEach((to, from, next) => {
     // Check if NO logged user
     if (!firebase.auth().currentUser) {
       // Go to login
+      console.log("check if auth");
       next({
         path: "/login",
         query: {
@@ -158,24 +127,34 @@ router.beforeEach((to, from, next) => {
       });
     } else {
       // Proceed to route
+      console.log("check else auth");
       next();
     }
   } else if (to.matched.some(record => record.meta.requiresGuest)) {
     // Check if NO logged user
     if (firebase.auth().currentUser) {
       // Go to login
-      next({
-        path: "/",
-        query: {
-          redirect: to.fullPath
-        }
-      });
+      console.log("check if guest");
+      if (to.matched.some(record => record.meta.requiresVet)) {
+        console.log("vet type");
+      } else if (to.matched.some(record => record.meta.requiresOwner)) {
+        console.log("owner type");
+      }
+      next();
+      // next({
+      //   path: "/",
+      //   query: {
+      //     redirect: to.fullPath
+      //   }
+      // });
     } else {
       // Proceed to route
+      console.log("check else guest");
       next();
     }
   } else {
     // Proceed to route
+    console.log("check other");
     next();
   }
 });

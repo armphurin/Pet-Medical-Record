@@ -21,8 +21,10 @@
       <dropdown v-if="isLoggedIn" tag="li" class="nav-item dropdown-custom symbol-custom">
         <dropdown-toggle tag="a" navLink color="gray" slot="toggle" waves-fixed><span class="email white-text">{{currentUser}}</span></dropdown-toggle>
         <dropdown-menu right>
-          <dropdown-item><router-link to="/">My Home</router-link></dropdown-item>
-          <dropdown-item><router-link to="/medic">My Pet Record</router-link></dropdown-item>
+          <dropdown-item v-if="$route.meta.requiresVet"><router-link to="/home_vet">My Home</router-link></dropdown-item>
+          <dropdown-item v-if="$route.meta.requiresVet"><router-link to="/medic">My Pet Record</router-link></dropdown-item>
+          <dropdown-item v-if="$route.meta.requiresOwner"><router-link to="/home_owner">My Home</router-link></dropdown-item>
+          <dropdown-item v-if="$route.meta.requiresOwner"><router-link to="/medic">My Pet Record</router-link></dropdown-item>
           <div class="dropdown-divider"></div>
           <dropdown-item><btn @click="logout" class="btn btn-elegant">Logout</btn></dropdown-item>
         </dropdown-menu>
