@@ -307,7 +307,7 @@ export default {
                                         address: this.address,
                                         datebirth: this.datebirth,
                                         user_type: "vet",
-                                        profileImageUrl: this.profileImageUrl
+                                        urlImageProfile: ""
                                     }).then(user => {
                                         swal({
                                             title: "Register Status",

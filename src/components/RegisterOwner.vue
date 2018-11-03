@@ -164,7 +164,8 @@ export default {
             image: "",
             confpassword: "",
             datebirth: "",
-            visible: false
+            visible: false,
+            file_pic: null
         };
     },
     components: {
@@ -213,37 +214,95 @@ export default {
             }
             if (!count_input_empty) {
                 if (this.password == this.confpassword) {
-                    // console.log('password is equal')
-                    swal({
-                        title: 'Loading ...',
-                        onOpen: () => {
-                            swal.showLoading()
-                        }
-                    });
-                    firebase
-                        .auth()
-                        .createUserWithEmailAndPassword(this.email, this.password)
-                        .then(
-                            user => {
-                                db.collection('users').doc(this.email).set({
-                                    email: this.email,
-                                    gender: this.gender,
-                                    password: this.password,
-                                    fullname: this.fullname,
-                                    line_id: this.line_id,
-                                    telephone_number: this.telephone,
-                                    address: this.address,
-                                    datebirth: this.datebirth,
-                                    user_type: "owner"
-                                }).then(
-                                    user => {
-                                        if (this.file_pic) {
-                                            this.detectFiles(this.file_pic)
+                    if (this.file_pic) {
+                        swal({
+                            title: "Loading ...",
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                        firebase
+                            .auth()
+                            .createUserWithEmailAndPassword(this.email, this.password)
+                            .then(
+                                user => {
+                                    storage.ref(this.email + "/profile").put(this.file_pic[0]).then(user => {
+                                        storageRef.child(this.email+"/profile").getDownloadURL().then( url=> {
+                                            // this.urlImageProfile = url;
+                                            console.log(url);
+                                            db.collection('users').doc(this.email).set({
+                                                email: this.email,
+                                                gender: this.gender,
+                                                password: this.password,
+                                                fullname: this.fullname,
+                                                line_id: this.line_id,
+                                                telephone_number: this.telephone,
+                                                address: this.address,
+                                                datebirth: this.datebirth,
+                                                urlImageProfile: url,
+                                                user_type: "owner"
+                                            }).then(user => {
+                                                swal({
+                                                    title: "Register Status",
+                                                    text: `You are Register as ${this.email}`,
+                                                    type: "success",
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                }).then(result => {
+                                                    this.$router.go({
+                                                        path: this.$router.path
+                                                    });
+                                                });
+
+                                            })
+
+                                        })
+                                    })
+
+                                },
+                                err => {
+                                    swal({
+                                        title: "Register Status",
+                                        text: err.message,
+                                        type: "error",
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                        onOpen: () => {
+                                            swal.hideLoading()
                                         }
-                                        console.log(this.file_pic);
+                                    })
+                                }
+                            );
+                        e.preventDefault();
+
+                    }
+                     if (!this.file_pic) {
+                        swal({
+                            title: "Loading ...",
+                            onOpen: () => {
+                                swal.showLoading()
+                            }
+                        })
+                        firebase
+                            .auth()
+                            .createUserWithEmailAndPassword(this.email, this.password)
+                            .then(
+                                user => {
+                                    db.collection('users').doc(this.email).set({
+                                        email: this.email,
+                                        gender: this.gender,
+                                        password: this.password,
+                                        fullname: this.fullname,
+                                        line_id: this.line_id,
+                                        telephone_number: this.telephone,
+                                        address: this.address,
+                                        datebirth: this.datebirth,
+                                        user_type: "owner",
+                                        urlImageProfile: ""
+                                    }).then(user => {
                                         swal({
                                             title: "Register Status",
-                                            text: `You are Register as ${this.email}`,
+                                            text: `You are Register in Veterinary as ${this.email}`,
                                             type: "success",
                                             showConfirmButton: false,
                                             timer: 1500
@@ -252,23 +311,24 @@ export default {
                                                 path: this.$router.path
                                             });
                                         });
-                                    }
-                                )
-                            },
-                            err => {
-                                swal({
-                                    title: "Register Status",
-                                    text: err.message,
-                                    type: "error",
-                                    showConfirmButton: false,
-                                    timer: 1500,
-                                    onOpen: () => {
-                                        swal.hideLoading()
-                                    }
+
+                                    })
+
+                                },
+                                err => {
+                                    swal({
+                                        title: "Register Status",
+                                        text: err.message,
+                                        type: "error",
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                        onOpen: () => {
+                                            swal.hideLoading()
+                                        }
+                                    })
                                 })
-                            }
-                        );
-                    e.preventDefault();
+                        e.preventDefault();
+                    }
                 }
                 if (this.password != this.confpassword) {
                     swal({
