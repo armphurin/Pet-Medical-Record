@@ -2,7 +2,9 @@
 <header>
 <navbar class="stylish-color" position="top" dark>
   <mdb-navbar-brand>
-    <router-link to="/" class="brand-logo">Pet Medic</router-link>
+    <router-link v-if="this.vetUser && isLoggedIn" to="/home_vet" class="brand-logo">Pet Medic</router-link>
+    <router-link v-if="this.ownerUser && isLoggedIn" to="/home_owner" class="brand-logo">Pet Medic</router-link>
+    <router-link v-if="!isLoggedIn" to="/login" class="brand-logo">Pet Medic</router-link>
   </mdb-navbar-brand>
   <navbar-collapse>
     <navbar-nav>
@@ -21,8 +23,8 @@
       <dropdown v-if="isLoggedIn" tag="li" class="nav-item dropdown-custom symbol-custom">
         <dropdown-toggle tag="a" navLink color="gray" slot="toggle" waves-fixed><span class="email white-text">{{currentUser}}</span></dropdown-toggle>
         <dropdown-menu right>
-          <dropdown-item v-if="this.vetUser"><router-link to="/home_vet">My Home</router-link></dropdown-item>
-          <dropdown-item v-if="this.ownerUser"><router-link to="/home_owner">My Home</router-link></dropdown-item>
+          <dropdown-item v-if="this.vetUser"><router-link to="/home_vet">Dashboard</router-link></dropdown-item>
+          <dropdown-item v-if="this.ownerUser"><router-link to="/home_owner">Dashboard</router-link></dropdown-item>
           <dropdown-item v-if="this.vetUser"><router-link to="/medic">My Pet Record</router-link></dropdown-item>
           <dropdown-item v-if="this.ownerUser"><router-link to="/medic">My Pet Record</router-link></dropdown-item>
           <div class="dropdown-divider"></div>
