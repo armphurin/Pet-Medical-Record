@@ -1,7 +1,7 @@
 <template>
 <footer>
 <!-- Footer -->
-<Footer color="stylish-color-dark" class="page-footer font-small">
+<Footer color="stylish-color-dark" class="page-footer font-small mt-5">
   <div class="footer-copyright text-center py-3">
     <container fluid>
       &copy; 2018 Copyright: Pet Medical Record.

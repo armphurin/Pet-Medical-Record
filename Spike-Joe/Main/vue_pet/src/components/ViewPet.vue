@@ -18,10 +18,9 @@
 </template>
 
 <script>
-import db from "./firebaseInit";
-import firebase from "firebase";
+import db from './firebaseInit';
 export default {
-  name: "view-pet",
+  name: 'view-pet',
   data() {
     return {
       pet_id: null,
@@ -31,10 +30,9 @@ export default {
     };
   },
   beforeRouteEnter(to, from, next) {
-    db.collection("users")
-      .doc(firebase.auth().currentUser.email)
-      .collection("pets")
-      .where("pet_id", "==", to.params.pet_id)
+    db
+      .collection('pets')
+      .where('pet_id', '==', to.params.pet_id)
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
@@ -48,14 +46,13 @@ export default {
       });
   },
   watch: {
-    $route: "fetchData"
+    $route: 'fetchData'
   },
   methods: {
     fetchData() {
-      db.collection("users")
-        .doc(firebase.auth().currentUser.email)
-        .collection("pets")
-        .where("pet_id", "==", this.$route.params.pet_id)
+      db
+        .collection('pets')
+        .where('pet_id', '==', this.$route.params.pet_id)
         .get()
         .then(querySnapshot => {
           querySnapshot.forEach(doc => {
@@ -67,16 +64,15 @@ export default {
         });
     },
     deletePet() {
-      if (confirm("Are you sure?")) {
-        db.collection("users")
-          .doc(firebase.auth().currentUser.email)
-          .collection("pets")
-          .where("pet_id", "==", this.$route.params.pet_id)
+      if (confirm('Are you sure?')) {
+        db
+          .collection('pets')
+          .where('pet_id', '==', this.$route.params.pet_id)
           .get()
           .then(querySnapshot => {
             querySnapshot.forEach(doc => {
               doc.ref.delete();
-              this.$router.push("/");
+              this.$router.push('/');
             });
           });
       }
