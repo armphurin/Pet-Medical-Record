@@ -5,8 +5,6 @@ import HomeVet from "@/components/HomeVet";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
 import firebase from "firebase";
-import db from "../components/firebaseInit";
-import HomeProfile from "@/components/HomeProfile";
 import HomePage from "@/components/HomePage";
 import RegisterOwner from "@/components/RegisterOwner";
 import RegisterVet from "@/components/RegisterVet";
@@ -58,15 +56,6 @@ let router = new Router({
       component: Register,
       meta: {
         requiresGuest: true
-      }
-    },
-    {
-      path: "/home_profile",
-      name: "home-profile",
-      component: HomeProfile,
-      meta: {
-        requiresAuth: true,
-        requiresGuest: false
       }
     },
     {

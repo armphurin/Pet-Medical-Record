@@ -1168,6 +1168,9 @@ body.body-home {
   -o-background-size: cover;
   background-size: cover;
 }
+</style>
+
+<style scoped>
 
 h6 {
   line-height: 1.7;

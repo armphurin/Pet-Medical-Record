@@ -143,12 +143,12 @@
                         <row>
                             <column>
                                 <div class="label-group" v-if="!password_change">
-                                    <label for="lineid">Line ID</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <label for="lineid">Medical License</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Medical License" id="lineid" v-model="vetid" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                                     <div class="label-group" v-if="password_change">
-                                        <label for="lineid">Line ID</label>
-                                        <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        <label for="lineid">Medical License</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Medical License" id="lineid" v-model="vetid" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                                 </div>
                             </column>
                             <column>
@@ -456,7 +456,7 @@ export default {
             address: "",
             age: "",
             gender: "",
-            lineid: "",
+            vetid: "",
             telephone: "",
             pets: [],
             loading: true,
@@ -1092,19 +1092,6 @@ export default {
             }
 
         },
-        // readURLPro: function (input) {
-        //     if (input.files && input.files[0]) {
-        //         var reader = new FileReader();
-
-        //         (reader.onload = function (e) {
-        //             $("#wizardPicturePreviewPro")
-        //                 .attr("src", e.target.result)
-        //                 .fadeIn("slow");
-        //         }),
-        //         reader.readAsDataURL(input.files[0]);
-        //         this.detectFiles(input.files);
-        //     }
-        // }
     },
     created() {
         db.collection("users")
@@ -1147,7 +1134,7 @@ export default {
                 this.datebirth = doc.data().datebirth,
                     this.calculateAge();
                 this.fullname = doc.data().fullname;
-                this.lineid = doc.data().line_id;
+                this.vetid = doc.data().vet_id;
                 this.address = doc.data().address;
                 this.password = doc.data().password;
                 this.telephone = doc.data().telephone_number;
@@ -1168,6 +1155,10 @@ body.body-home {
     -o-background-size: cover;
     background-size: cover;
 }
+</style>
+
+
+<style scoped>
 
 h6 {
     line-height: 1.7;
