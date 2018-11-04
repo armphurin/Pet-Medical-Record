@@ -7,43 +7,57 @@
                     <h1 class="h1-responsive font-weight-bold mt-sm-5">Welcome ...</h1>
                     <hr class="hr-light" />
                 </div>
-                <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true;">
-                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{fullname}}</h5>
+                <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12" v-if="urlImageProfile">
+                    <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true">
+                        <h5 style="display:inline; margin-top:1em;"><img :src="urlImageProfile" style="width:2.3em;height:2.3em;display:inline;margin-right:1em;border-radius:50%;"/>{{fullname}}</h5>
                     </btn><br>
+
                 </div>
-                    <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                        <div>
-                            <h3 class="content-label">My Pet List</h3>
-                            <btn type="button" class="btn btn-label text-center" @click.native="popupAddPet=true;">Add Pet</btn><br>
+                    <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12" v-if="!urlImageProfile">
+                        <btn type="button" class="btn btn-profile text-left" @click.native="popupProfile=true">
+                            <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:2.3em;height:2.3em;display:inline;margin-right:1em;"/>{{fullname}}</h5>
+                        </btn><br>
+
+                </div>
+                        <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
+                            <div>
+                                <h3 class="content-label">My Pet List</h3>
+                                <btn type="button" class="btn btn-label text-center" @click.native="popupAddPet=true;">Add Pet</btn><br>
                         </div>
-                    </div>
-                    <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
-                             <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
-                              <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
-                              </btn><br>
-                             </div>
-                            
-                            <!-- hide area -->
-                            <input type="checkbox" class="read-more-state read-more" id="pet-hidden" />
-                            <div class="read-more-wrap">
-                              <div class="read-more-target">
-                               <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
-                              <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
-                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
-                              </btn><br>
-                               </div>
-                              </div>
                             </div>
-                              <label for="pet-hidden" class="read-more-trigger"></label>
-                    </div>
+                            <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
+                                <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
+                                    <btn type="button" v-if="pet.imagePet" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                        <h5 style="display:inline; margin-top:1em;"><img :src="pet.imagePet"  style="width:2.3em;height:2.3em;display:inline;margin-right:1em;border-radius:50%;"/>{{pet.name}}</h5>
+                                    </btn>
+                                    <btn type="button" v-if="!pet.imagePet && pet.pet_cat" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_cat.png"  style="width:2.3em;height:2.3em;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
+                                    </btn>
+                                    <btn type="button" v-if="!pet.imagePet && pet.pet_dog" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                        <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_dog2.png"  style="width:2.3em;height:2.3em;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
+                                    </btn>
+                                    <br>
+                             </div>
+
+                                    <!-- hide area -->
+                                    <!-- <input type="checkbox" class="read-more-state read-more" id="pet-hidden" /> -->
+                                    <!-- <div class="read-more-wrap">
+                                    <div class="read-more-target">
+                                        <div v-for="pet in pets" v-bind:key="pet.id" class="collection-item">
+                                            <btn type="button" class="btn btn-pet text-left" @click.native="popupPet=true,show_pet.push(pet)">
+                                                <h5 style="display:inline; margin-top:1em;"><img src="../assets/pic_owner.png" style="width:15%;display:inline;margin-right:1em;"/>{{pet.name}}</h5>
+                                            </btn><br>
+                               </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <label for="pet-hidden" class="read-more-trigger"></label> -->
+                                </div>
             </row>
         </container>
     </md-mask>
 
     <!-- Popup Profile-->
-    <modal v-if="popupProfile" @close="popupProfile = false" size="lg">
+    <modal v-if="popupProfile" @close="popupProfile = false, password_change= false" size="lg">
         <div class="popup-profile">
             <modal-header>
                 <modal-title>My Profile Card</modal-title>
@@ -52,32 +66,42 @@
                 <row style="padding:1em;">
                     <column class="col-md-4">
                         <!-- picture -->
-                        <div class="image-upload">
+                        <div class="image-upload" v-if="!password_change">
                             <label for="wizard-picturePro">
-                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                              <img :src="urlImageProfile" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
                             </label>
                             <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
                         </div>
-                            <div class="label-group">
-                                <label for="fullname">Fullname</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            <div class="image-upload" v-if="password_change">
+                                <label for="wizard-picturePro">
+                              <img :src="urlImageProfile" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                            </label>
+                                <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" disabled/>
+                        </div>
+                                <div class="label-group" v-if="!password_change">
+                                    <label for="fullname">Fullname</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-                        <row>
-                          <column>
-                            <div class="label-group">
-                              <label for="gender">Gender</label>
-                              <input class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>      
+                                    <div class="label-group" v-if="password_change">
+                                        <label for="fullname">Fullname</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Full name" id="fullname" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                          </column>
-                        </row>
-                        <row>
-                          <column>
-                              <div class="label-group">
-                                <label for="datetime">Age</label>
-                                <input  class="form-control form-control-lg" type="text" v-model="age"  style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        <row>
+                                            <column>
+                                                <div class="label-group">
+                                                    <label for="gender">Gender</label>
+                                                    <input class="form-control form-control-lg show-placeholder" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                            </div>
+                                            </column>
+                                        </row>
+                                        <row>
+                                            <column>
+                                                <div class="label-group">
+                                                    <label for="datetime">Age</label>
+                                                    <input  class="form-control form-control-lg" type="text" v-model="age"  style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                               </div>
-                          </column>
-                        </row>
+                                            </column>
+                                        </row>
                     </column>
                     <column class="col-md-8">
                         <row>
@@ -92,35 +116,61 @@
                             <column>
                                 <div class="label-group">
                                     <label for="password">Password</label>
-                                    <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" v-model="password" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                </div>
+                            </column>
+                            <column>
+                                <div class="label-group" v-if="password_change">
+                                    <label for="confpassword">Old Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Old Password" id="Oldfpassword" v-model="oldpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row v-if="password_change">
+                            <column>
+                                <div class="label-group">
+                                    <label for="password">New Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Password" id="newpassword" v-model="newpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                             <column>
                                 <div class="label-group">
-                                    <label for="confpassword">Confirm Password</label>
-                                    <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confpassword" v-model="confpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <label for="confpassword">Confirm New Password</label>
+                                    <input class="form-control form-control-lg" type="password" placeholder="Confirm New Password" id="confnewpassword" v-model="confnewpassword" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
                         <row>
                             <column>
-                                <div class="label-group">
+                                <div class="label-group" v-if="!password_change">
                                     <label for="lineid">Line ID</label>
                                     <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
+                                    <div class="label-group" v-if="password_change">
+                                        <label for="lineid">Line ID</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Line ID" id="lineid" v-model="lineid" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                </div>
                             </column>
                             <column>
-                                <div class="label-group">
+                                <div class="label-group" v-if="!password_change">
                                     <label for="telephone">Telephone</label>
                                     <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                                    <div class="label-group" v-if="password_change">
+                                        <label for="telephone">Telephone</label>
+                                        <input class="form-control form-control-lg" type="number" placeholder="Telephone" id="telephone" v-model="telephone" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                                 </div>
                             </column>
                         </row>
                         <row>
                             <column>
-                                <div class="label-group">
+                                <div class="label-group" v-if="password_change">
                                     <label for="address">Address</label>
-                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled></textarea>
+                                </div>
+                                <div class="label-group" v-if="!password_change">
+                                    <label for="address">Address</label>
+                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" ></textarea>
                                 </div>
                             </column>
                         </row>
@@ -128,7 +178,8 @@
                 </row>
             </modal-body>
             <modal-footer>
-                <btn color="default" @click.native="popupProfile = false">Close</btn>
+                <btn color="warning" @click.native="changePassword" v-if="!password_change">Change Password</btn>
+                <btn color="default" @click.native="popupProfile = false, password_change= false">Close</btn>
                 <btn color="primary" @click.native="updateProfile">Save changes</btn>
             </modal-footer>
         </div>
@@ -147,56 +198,56 @@
                         <!-- picture -->
                         <div class="image-upload">
                             <label for="wizard-picturePro">
-                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                              <img :src="show_pet[0].imagePet" class="picture-src picturePro" id="wizardPicturePreviewPro"  style="object-fit: cover; border-radius: 50%;"/>
                             </label>
-                            <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                            <input type="file" multiple accept="image/jpeg" @change="onImagePetUpdate" id="wizard-picturePro" />
                         </div>
                             <div class="label-group">
                                 <label for="petname">Pet Name</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="show_pet[0].name" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="show_pet[0].name" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                        <row>
-                          <column>
-                              <div class="label-group">
-                                <label for="petbirth">Date of Birth</label>
-                                <datetime v-model="show_pet[0].dob"></datetime>
-                              </div>
-                          </column>
-                          <column>
-                            <div class="label-group">
-                              <label for="petgender">Gender</label>
-                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="show_pet[0].gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="petbirth">Age</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Age" id="petage" v-model="show_pet[0].age" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        </div>
+                                    </column>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="petgender">Gender</label>
+                                            <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="show_pet[0].gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                                 <option>Male</option>
                                 <option>Female</option>
                               </select>
-                            </div>
-                          </column>
-                        </row>
+                                        </div>
+                                    </column>
+                                </row>
                     </column>
                     <column class="col-md-7">
-                    <row class="text-center">
-                      <column>
-                      <mdb-input type="radio" name="pettype" id="dog" label="Dog"  v-if="show_pet[0].type=='dog'" checked disabled/>
-                      <mdb-input type="radio" name="pettype" id="dog" label="Dog"  v-if="show_pet[0].type=='cat'" disabled />
-                      </column>
-                      <column>
-                      <mdb-input type="radio" name="pettype" id="cat" label="Cat" v-if="show_pet[0].type=='dog'" disabled/>
-                      <mdb-input type="radio" name="pettype" id="cat" label="Cat" v-if="show_pet[0].type=='cat'" checked disabled/>
-                      </column>
-                    </row>
+                        <row class="text-center">
+                            <column>
+                                <mdb-input type="radio" name="pettype" id="dog" label="Dog" v-if="show_pet[0].type=='dog'" checked disabled />
+                                <mdb-input type="radio" name="pettype" id="dog" label="Dog" v-if="show_pet[0].type=='cat'" disabled />
+                            </column>
+                            <column>
+                                <mdb-input type="radio" name="pettype" id="cat" label="Cat" v-if="show_pet[0].type=='dog'" disabled />
+                                <mdb-input type="radio" name="pettype" id="cat" label="Cat" v-if="show_pet[0].type=='cat'" checked disabled />
+                            </column>
+                        </row>
                         <row>
                             <column>
                                 <div class="label-group">
-                                  <label for="breed">Breed</label>
-                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="show_pet[0].breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <label for="breed">Breed</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="show_pet[0].breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
                         <row>
                             <column>
-                              <div class="label-group">
-                                <label for="colour">Colour</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="show_pet[0].color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <div class="label-group">
+                                    <label for="colour">Colour</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="show_pet[0].color" style="width:100%;margin: 0 auto;border-radius: 13px;">
                               </div>
                             </column>
                         </row>
@@ -213,8 +264,8 @@
             </modal-body>
             <modal-footer>
                 <btn color="default" @click.native="popupPet = false,show_pet.pop()">Close</btn>
-                <btn color="danger"  @click.native="updatePet">Delete</btn>
-                <btn color="primary"  @click.native="updatePet">Save changes</btn>
+                <btn color="danger" @click.native="deletePet">Delete</btn>
+                <btn color="primary" @click.native="updatePet">Save changes</btn>
             </modal-footer>
         </div>
     </modal>
@@ -232,54 +283,54 @@
                         <!-- picture -->
                         <div class="image-upload">
                             <label for="wizard-picturePro">
-                              <img :src="image" class="picture-src picturePro" id="wizardPicturePreviewPro" @change="onFileChange" style="object-fit: cover; border-radius: 50%;"/>
+                              <img :src="showImagePet" class="picture-src picturePro" id="wizardPicturePreviewPro" style="object-fit: cover; border-radius: 50%;"/>
                             </label>
-                            <input type="file" multiple accept="image/jpeg" @change="onFileChange" id="wizard-picturePro" />
+                            <input type="file" multiple accept="image/jpeg" @change="onImagePetChange" id="wizard-picturePro" />
                         </div>
                             <div class="label-group">
                                 <label for="petname">Pet Name</label>
                                 <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="pet_name" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-                        <row>
-                          <column>
-                              <div class="label-group">
-                                <label for="petbirth">Date of Birth</label>
-                                <datetime v-model="pet_birth"></datetime>
-                              </div>
-                          </column>
-                          <column>
-                            <div class="label-group">
-                              <label for="petgender">Gender</label>
-                              <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="pet_gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="petbirth">Date of Birth</label>
+                                            <datetime v-model="pet_birth"></datetime>
+                                        </div>
+                                    </column>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="petgender">Gender</label>
+                                            <select class="form-control form-control-lg show-placeholder" id="petgender" v-model="pet_gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 <option>Male</option>
                                 <option>Female</option>
                               </select>
-                            </div>
-                          </column>
-                        </row>
+                                        </div>
+                                    </column>
+                                </row>
                     </column>
                     <column class="col-md-7">
-                    <row class="text-center">
-                      <column>
-                      <mdb-input type="radio" name="pet_type" id="dog" label="Dog" value="dog" @click.native="pet_type='dog'"/>
-                      </column>
-                      <column>
-                      <mdb-input type="radio" name="pet_type" id="cat" label="Cat" value="cat"  @click.native="pet_type='cat'"/>
-                      </column>
-                    </row>
+                        <row class="text-center">
+                            <column>
+                                <mdb-input type="radio" name="pet_type" id="dog" label="Dog" value="dog" @click.native="pet_type='dog'" />
+                            </column>
+                            <column>
+                                <mdb-input type="radio" name="pet_type" id="cat" label="Cat" value="cat" @click.native="pet_type='cat'" />
+                            </column>
+                        </row>
                         <row>
                             <column>
                                 <div class="label-group">
-                                  <label for="breed">Breed</label>
-                                  <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="pet_breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <label for="breed">Breed</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="pet_breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                             </column>
                         </row>
                         <row>
                             <column>
-                              <div class="label-group">
-                                <label for="colour">Colour</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Colour" id="color" v-model="pet_color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <div class="label-group">
+                                    <label for="colour">Colour</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Colour" id="color" v-model="pet_color" style="width:100%;margin: 0 auto;border-radius: 13px;">
                               </div>
                             </column>
                         </row>
@@ -308,49 +359,10 @@
 <script>
 import db from "./firebaseInit";
 import firebase from "firebase";
-
+const storage = firebase.storage();
+const storageRef = storage.ref();
+import swal from "sweetalert2";
 import {
-  Container,
-  Row,
-  Column,
-  Navbar,
-  NavbarCollapse,
-  NavbarNav,
-  NavbarItem,
-  mdbInput,
-  ViewWrapper,
-  MdMask,
-  Btn,
-  mdbNavbarBrand,
-  Card,
-  CardImg,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  CardText,
-  CardFooter,
-  CardUp,
-  CardAvatar,
-  CardGroup,
-  Fa,
-  Modal,
-  ModalHeader,
-  ModalTitle,
-  ModalBody,
-  ModalFooter,
-  Pagination,
-  PageNav,
-  PageItem
-} from "mdbvue";
-
-import { Datetime } from "vue-datetime";
-
-export default {
-  beforeCreate: function() {
-    document.body.className = "body-home";
-  },
-  name: "home-owner",
-  components: {
     Container,
     Row,
     Column,
@@ -379,200 +391,772 @@ export default {
     ModalTitle,
     ModalBody,
     ModalFooter,
-    datetime: Datetime,
     Pagination,
     PageNav,
-    PageItem,
-    mdbInput
-  },
-  data() {
-    return {
-      pet_type: "",
-      show_pet: [],
-      pet_name: "",
-      pet_gender: "",
-      pet_breed: "",
-      pet_color: "",
-      pet_birth: "",
-      pet_marking: "",
-      email: "",
-      fullname: "",
-      password: "",
-      confpassword: "",
-      address: "",
-      age: "",
-      gender: "",
-      lineid: "",
-      telephone: "",
-      pets: [],
-      loading: true,
-      popupProfile: false,
-      popupPet: false,
-      progressUpload: 0,
-      file: File,
-      uploadTask: "",
-      image: "",
-      datebirth: "",
-      petbirth: "",
-      popupAddPet: false
-    };
-  },
-  methods: {
-    calculateAge() {
-      var today = new Date();
-      var dob = this.datebirth.split("-");
-      var year = Number(dob[0]);
-      var month = Number(dob[1]) - 1;
-      var split_day = dob[2].split("T");
-      var day = Number(split_day[0]);
-      var age = today.getFullYear() - year;
-      if (
-        today.getMonth() < month ||
-        (today.getMonth() == month && today.getDate() < day)
-      ) {
-        age--;
-      }
-      this.age = age;
-      console.log(age);
-    },
-    updatePet() {
-      db.collection("users")
-        .doc(this.email)
-        .collection("pets")
-        .doc(this.email + "_" + this.show_pet[0].name)
-        .update({
-          // pet_name: this.show_pet[0].name,
-          breed: this.show_pet[0].breed,
-          gender: this.show_pet[0].gender,
-          marking: this.show_pet[0].marking,
-          dob: this.show_pet[0].dob,
-          color: this.show_pet[0].color
-        })
-        .then(user => {
-          alert(`Pet Updated for ${this.show_pet[0].name}`);
-          this.popupPet = false;
-          this.show_pet.pop();
-          this.$router.go(this.$route.path);
-        });
-    },
-    add_pet() {
-      db.collection("users")
-        .doc(this.email)
-        .collection("pets")
-        .doc(this.email + "_" + this.pet_name)
-        .set({
-          pet_id: this.email + "_" + this.pet_name,
-          pet_name: this.pet_name,
-          breed: this.pet_breed,
-          gender: this.pet_gender,
-          marking: this.pet_marking,
-          dob: this.pet_birth,
-          color: this.pet_color,
-          pet_type: this.pet_type
-        })
-        .then(doc => {
-          console.log(this.fullname + " Add " + this.pet_name);
-          alert(`Account Add ${this.pet_name}`);
-          this.popupAddPet = false;
-          this.$router.go(this.$route.path);
-        });
-    },
-    updateProfile() {
-      db.collection("users")
-        .doc(this.email)
-        .update({
-          password: this.password,
-          fullname: this.fullname,
-          age: this.age,
-          line_id: this.lineid,
-          telephone_number: this.telephone,
-          address: this.address
-        })
-        .then(user => {
-          alert(`Account Updated for ${this.email}`);
-          this.popupProfile = false;
-        });
-    },
-    detectFiles(fileList) {
-      Array.from(Array(fileList.length).keys()).map(x => {
-        this.upload(fileList[x]);
-      });
-    },
-    upload(file) {
-      this.uploadTask = storage.ref("medic/imagenes").put(file);
-    },
-    onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0]);
-      this.detectFiles(files);
-    },
-    createImage(file) {
-      var image = new Image();
-      var reader = new FileReader();
-      var vm = this;
+    PageItem
+} from "mdbvue";
 
-      reader.onload = e => {
-        vm.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-    readURLPro: function(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
+import {
+    Datetime
+} from "vue-datetime";
 
-        (reader.onload = function(e) {
-          $("#wizardPicturePreviewPro")
-            .attr("src", e.target.result)
-            .fadeIn("slow");
-        }),
-          reader.readAsDataURL(input.files[0]);
-        this.detectFiles(input.files);
-      }
+export default {
+    beforeCreate: function () {
+        document.body.className = "body-home";
+    },
+    name: "home-owner",
+    components: {
+        Container,
+        Row,
+        Column,
+        Navbar,
+        NavbarCollapse,
+        NavbarNav,
+        NavbarItem,
+        mdbInput,
+        ViewWrapper,
+        MdMask,
+        Btn,
+        mdbNavbarBrand,
+        Card,
+        CardImg,
+        CardHeader,
+        CardBody,
+        CardTitle,
+        CardText,
+        CardFooter,
+        CardUp,
+        CardAvatar,
+        CardGroup,
+        Fa,
+        Modal,
+        ModalHeader,
+        ModalTitle,
+        ModalBody,
+        ModalFooter,
+        datetime: Datetime,
+        Pagination,
+        PageNav,
+        PageItem,
+        mdbInput,
+    },
+    data() {
+        return {
+            pet_type: "",
+            show_pet: [],
+            pet_name: "",
+            pet_gender: "",
+            pet_breed: "",
+            pet_color: "",
+            pet_birth: "",
+            pet_marking: "",
+            email: "",
+            fullname: "",
+            password: "",
+            address: "",
+            age: "",
+            gender: "",
+            lineid: "",
+            telephone: "",
+            pets: [],
+            loading: true,
+            popupProfile: false,
+            popupPet: false,
+            progressUpload: 0,
+            file: File,
+            uploadTask: "",
+            image: "",
+            datebirth: "",
+            petbirth: "",
+            oldpassword: "",
+            newpassword: "",
+            confnewpassword: "",
+            popupAddPet: false,
+            password_change: false,
+            urlImageProfile: null,
+            urlImagePet: null,
+            addImagePet: null,
+            showImagePet: null,
+            file_pic: null,
+            petimage_pic: null
+        };
+    },
+    methods: {
+        changePassword() {
+            this.password_change = true
+
+        },
+        reAuthenticate(currentPassword) {
+            var cred = firebase.auth.EmailAuthProvider.credential(this.email, currentPassword);
+            return firebase.auth().currentUser.reauthenticateWithCredential(cred);
+        },
+        deletePet() {
+            const toast = swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            swal({
+                title: 'Are you sure?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    swal({
+                        title: 'Loading ...',
+                        showConfirmButton: false,
+                        showCancelButton: false,
+                        onOpen: () => {
+                            swal.showLoading()
+                        }
+                    });
+                    if (!this.show_pet[0].imagePet) {
+                        db
+                            .collection('users').doc(this.email).collection('pets')
+                            .where('pet_id', '==', this.show_pet[0].pet_id)
+                            .get()
+                            .then(querySnapshot => {
+                                querySnapshot.forEach(doc => {
+                                    doc.ref.delete().then(doc => {
+                                        toast({
+                                            type: 'success',
+                                            title: 'Your pet has been deleted'
+                                        }).then(result => {
+                                            this.$router.go(this.$route.path);
+                                        })
+                                    })
+                                });
+                            });
+                    }
+                    if (this.show_pet[0].imagePet) {
+                        var imagepet = storageRef.child(this.email + "/" + this.email + "_" + this.show_pet[0].name + "/pets");
+                        db
+                            .collection('users').doc(this.email).collection('pets')
+                            .where('pet_id', '==', this.show_pet[0].pet_id)
+                            .get()
+                            .then(querySnapshot => {
+                                querySnapshot.forEach(doc => {
+                                    doc.ref.delete().then(doc => {
+
+                                        imagepet.delete().then(user => {
+                                            toast({
+                                                type: 'success',
+                                                title: 'Your pet has been deleted'
+                                            }).then(result => {
+                                                this.$router.go(this.$route.path);
+                                            })
+                                        })
+                                    })
+                                });
+                            });
+                    }
+
+                }
+            })
+        },
+        validateInput(data_type) {
+            var count_input_empty = "";
+            if (data_type == "user") {
+                if (this.password_change) {
+                    if (!this.fullname) {
+                        return false;
+                    }
+                    if (!this.lineid) {
+                        return false;
+                    }
+                    if (!this.address) {
+                        return false;
+                    }
+                    if (!this.telephone) {
+                        return false;
+                    }
+                    if (!this.oldpassword) {
+                        return false;
+                    }
+                    if (!this.newpassword) {
+                        return false;
+                    }
+                    if (!this.confnewpassword) {
+                        return false;
+                    }
+                    return true;
+                }
+                if (!this.password_change) {
+                    if (!this.fullname) {
+                        return false;
+                    }
+                    if (!this.lineid) {
+                        return false;
+                    }
+                    if (!this.address) {
+                        return false;
+                    }
+                    if (!this.telephone) {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+
+            if (data_type == "add_pet") {
+                if (!this.pet_name) {
+                    return false;
+                }
+                if (!this.pet_type) {
+                    return false;
+                }
+                if (!this.pet_breed) {
+                    return false;
+                }
+                if (!this.pet_birth) {
+                    return false;
+                }
+                if (!this.pet_gender) {
+                    return false;
+                }
+                if (!this.pet_color) {
+                    return false;
+                }
+                if (!this.pet_marking) {
+                    return false;
+                }
+                return true;
+            }
+
+            if (data_type == "update_pet") {
+                if (!this.show_pet[0].breed) {
+                    return false;
+                }
+                if (!this.show_pet[0].color) {
+                    return false;
+                }
+                if (!this.show_pet[0].marking) {
+                    return false;
+                }
+                return true;
+            }
+        },
+        calAgePet(e) {
+            if (!e) {
+                return 0;
+            } else {
+                var today = new Date();
+                var dob = e.split("-");
+                var year = Number(dob[0]);
+                var month = Number(dob[1]) - 1;
+                var split_day = dob[2].split("T");
+                var day = Number(today.getDate()) - Number(split_day[0]);
+                var yearsOld = Number(today.getFullYear()) - year;
+                var monthsOld = today.getMonth() - month;
+                console.log("Age : " + yearsOld + " years " + monthsOld + " months " + day + " days ")
+                if (yearsOld == 0) {
+                    return (monthsOld + " Months")
+                } else if (yearsOld > 0 && monthsOld > 0) {
+                    return (yearsOld + " Years " + monthsOld + " Months")
+                } else if (yearsOld > 0 && monthsOld < 0) {
+                    yearsOld = yearsOld - 1;
+                    monthsOld = 12 + monthsOld;
+                    return (yearsOld + " Years " + monthsOld + " Months")
+                } else {
+                    return (yearsOld + " Years ")
+                }
+            }
+        },
+        calculateAge() {
+            var today = new Date();
+            var dob = this.datebirth.split("-");
+            var year = Number(dob[0]);
+            var month = Number(dob[1]) - 1;
+            var split_day = dob[2].split("T");
+            var day = Number(split_day[0]);
+            var age = today.getFullYear() - year;
+            if (today.getMonth() < month || (today.getMonth() == month && today.getDate() < day)) {
+                age--;
+            }
+            this.age = age;
+            console.log(age);
+        },
+        updatePet() {
+            swal({
+                title: 'Loading ...',
+                onOpen: () => {
+                    swal.showLoading()
+                }
+            });
+            const toast = swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            var checkInput = this.validateInput("update_pet")
+            if (checkInput) {
+                if (this.petimage_pic) {
+                    storage.ref(this.email + "/" + this.email + "_" + this.show_pet[0].name + "/pets").put(this.petimage_pic[0]).then(user => {
+                        storageRef.child(this.email + "/" + this.email + "_" + this.show_pet[0].name + "/pets").getDownloadURL().then(url => {
+                            db.collection("users")
+                                .doc(this.email)
+                                .collection("pets")
+                                .doc(this.email + "_" + this.show_pet[0].name)
+                                .update({
+                                    breed: this.show_pet[0].breed,
+                                    marking: this.show_pet[0].marking,
+                                    color: this.show_pet[0].color,
+                                    urlImagePet: url
+                                })
+                                .then(user => {
+                                    this.petimage_pic = null;
+                                    toast({
+                                        type: 'success',
+                                        title: 'Update pet successfully'
+                                    }).then(result => {
+                                        this.popupAddPet = false;
+                                        this.$router.go(this.$route.path);
+                                    });
+                                });
+                        })
+                    })
+                }
+                if (!this.petimage_pic) {
+                    db.collection("users")
+                        .doc(this.email)
+                        .collection("pets")
+                        .doc(this.email + "_" + this.show_pet[0].name)
+                        .update({
+                            breed: this.show_pet[0].breed,
+                            marking: this.show_pet[0].marking,
+                            color: this.show_pet[0].color
+                        })
+                        .then(user => {
+                            toast({
+                                type: 'success',
+                                title: 'Update pet successfully'
+                            }).then(result => {
+                                this.popupAddPet = false;
+                                this.$router.go(this.$route.path);
+                            });
+                        });
+                }
+
+            } else {
+                toast({
+                    type: 'error',
+                    title: 'Plaese Fill out empty field',
+                    onOpen: () => {
+                        swal.hideLoading()
+                    }
+                });
+            }
+        },
+        add_pet() {
+            const toast = swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            var checkInput = this.validateInput("add_pet");
+            if (checkInput) {
+                swal({
+                    title: 'Loading ...',
+                    onOpen: () => {
+                        swal.showLoading()
+                    }
+                });
+                console.log(this.addImagePet)
+                if (this.addImagePet) {
+                    if (this.pet_type == 'cat') {
+                        storage.ref(this.email + "/" + this.email + "_" + this.pet_name + "/pets").put(this.addImagePet[0]).then(user => {
+                            storageRef.child(this.email + "/" + this.email + "_" + this.pet_name + "/pets").getDownloadURL().then(url => {
+                                db.collection("users")
+                                    .doc(this.email)
+                                    .collection("pets")
+                                    .doc(this.email + "_" + this.pet_name)
+                                    .set({
+                                        pet_id: this.email + "_" + this.pet_name,
+                                        pet_name: this.pet_name,
+                                        breed: this.pet_breed,
+                                        gender: this.pet_gender,
+                                        marking: this.pet_marking,
+                                        dob: this.pet_birth,
+                                        color: this.pet_color,
+                                        pet_type: this.pet_type,
+                                        urlImagePet: url,
+                                        pet_cat: true
+                                    })
+                                    .then(doc => {
+                                        toast({
+                                            type: 'success',
+                                            title: 'Add pet successfully'
+                                        }).then(result => {
+                                            this.popupAddPet = false;
+                                            this.$router.go(this.$route.path);
+                                        })
+                                    });
+                            })
+                        })
+
+                    }
+                    if (this.pet_type == 'dog') {
+                        storage.ref(this.email + "/" + this.email + "_" + this.pet_name + "/pets").put(this.addImagePet[0]).then(user => {
+                            storageRef.child(this.email + "/" + this.email + "_" + this.pet_name + "/pets").getDownloadURL().then(url => {
+                                db.collection("users")
+                                    .doc(this.email)
+                                    .collection("pets")
+                                    .doc(this.email + "_" + this.pet_name)
+                                    .set({
+                                        pet_id: this.email + "_" + this.pet_name,
+                                        pet_name: this.pet_name,
+                                        breed: this.pet_breed,
+                                        gender: this.pet_gender,
+                                        marking: this.pet_marking,
+                                        dob: this.pet_birth,
+                                        color: this.pet_color,
+                                        pet_type: this.pet_type,
+                                        urlImagePet: url,
+                                        pet_dog: true
+                                    })
+                                    .then(doc => {
+                                        toast({
+                                            type: 'success',
+                                            title: 'Add pet successfully'
+                                        }).then(result => {
+                                            this.popupAddPet = false;
+                                            this.$router.go(this.$route.path);
+                                        })
+                                    });
+                            })
+                        })
+                    }
+
+                }
+                if (!this.addImagePet) {
+                    if (this.pet_type == 'cat') {
+                        db.collection("users")
+                            .doc(this.email)
+                            .collection("pets")
+                            .doc(this.email + "_" + this.pet_name)
+                            .set({
+                                pet_id: this.email + "_" + this.pet_name,
+                                pet_name: this.pet_name,
+                                breed: this.pet_breed,
+                                gender: this.pet_gender,
+                                marking: this.pet_marking,
+                                dob: this.pet_birth,
+                                color: this.pet_color,
+                                pet_type: this.pet_type,
+                                urlImagePet: "",
+                                pet_cat: true
+                            })
+                            .then(doc => {
+                                toast({
+                                    type: 'success',
+                                    title: 'Add pet successfully'
+                                }).then(result => {
+                                    this.popupAddPet = false;
+                                    this.$router.go(this.$route.path);
+                                })
+                            });
+
+                    }
+                    if (this.pet_type == 'dog') {
+                        db.collection("users")
+                            .doc(this.email)
+                            .collection("pets")
+                            .doc(this.email + "_" + this.pet_name)
+                            .set({
+                                pet_id: this.email + "_" + this.pet_name,
+                                pet_name: this.pet_name,
+                                breed: this.pet_breed,
+                                gender: this.pet_gender,
+                                marking: this.pet_marking,
+                                dob: this.pet_birth,
+                                color: this.pet_color,
+                                pet_type: this.pet_type,
+                                urlImagePet: "",
+                                pet_dog: true
+                            })
+                            .then(doc => {
+                                toast({
+                                    type: 'success',
+                                    title: 'Add pet successfully'
+                                }).then(result => {
+                                    this.popupAddPet = false;
+                                    this.$router.go(this.$route.path);
+                                })
+                            });
+
+                    }
+                }
+            } else {
+                toast({
+                    type: 'error',
+                    title: 'Plaese Fill out empty field'
+                })
+            }
+        },
+        updateProfile() {
+            const toast = swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            var checkInput = this.validateInput("user");
+            if (checkInput) {
+                if (!this.password_change) {
+                    swal({
+                        title: 'Loading ...',
+                        onOpen: () => {
+                            swal.showLoading()
+                        }
+                    });
+                    if (this.file_pic) {
+                        storage.ref(this.email + "/profile").put(this.file_pic[0]).then(user => {
+                            storageRef.child(this.email + "/profile").getDownloadURL().then(url => {
+                                db.collection("users")
+                                    .doc(this.email)
+                                    .update({
+                                        fullname: this.fullname,
+                                        line_id: this.lineid,
+                                        telephone_number: this.telephone,
+                                        address: this.address,
+                                        urlImageProfile: url
+                                    })
+                                    .then(user => {
+                                        toast({
+                                            type: 'success',
+                                            title: 'Update Profile Successfully'
+                                        }).then(result => {
+                                            this.popupProfile = false;
+                                            this.$router.go(this.$route.path);
+                                        })
+                                    });
+                            })
+                        })
+
+                    }
+                    if (!this.file_pic) {
+                        db.collection("users")
+                            .doc(this.email)
+                            .update({
+                                fullname: this.fullname,
+                                line_id: this.lineid,
+                                telephone_number: this.telephone,
+                                address: this.address
+                            })
+                            .then(user => {
+                                toast({
+                                    type: 'success',
+                                    title: 'Update Profile Successfully'
+                                }).then(result => {
+                                    this.popupProfile = false;
+                                    this.$router.go(this.$route.path);
+                                })
+                            });
+                        this.file_pic == null;
+
+                    }
+
+                }
+                if (this.password_change) {
+                    if (this.password != this.oldpassword) {
+                        toast({
+                            type: 'error',
+                            title: 'Old Password mismatch'
+                        });
+                    }
+                    if (this.newpassword != this.confnewpassword) {
+                        toast({
+                            type: 'error',
+                            title: 'New Password mismatch'
+                        });
+                    } else {
+                        if (this.password != this.oldpassword) {
+                            toast({
+                                type: 'error',
+                                title: 'Old Password mismatch'
+                            });
+                        }
+                        if (this.password == this.oldpassword) {
+                            swal({
+                                title: 'Loading ...',
+                                onOpen: () => {
+                                    swal.showLoading()
+                                }
+                            });
+                            this.reAuthenticate(this.password).then(() => {
+                                var user = firebase.auth().currentUser;
+                                user.updatePassword(this.newpassword).then(() => {
+                                    db.collection("users").doc(this.email).update({
+                                        password: this.newpassword
+                                    }).then(() => {
+                                        toast({
+                                            type: 'success',
+                                            title: 'Update Profile Successfully'
+                                        }).then(result => {
+                                            this.popupProfile = false;
+                                            this.$router.go(this.$route.path);
+                                        }).catch((error) => {
+                                            toast({
+                                                type: 'error',
+                                                title: error.message
+                                            })
+                                        })
+
+                                    }).catch((error) => {
+                                        toast({
+                                            type: 'error',
+                                            title: error.message
+                                        })
+                                    })
+                                }).catch((error) => {
+                                    toast({
+                                        type: 'error',
+                                        title: error.message
+                                    })
+                                })
+                            })
+                        }
+                    }
+                }
+
+            } else {
+                toast({
+                    type: 'error',
+                    title: 'Plaese Fill out empty field'
+                });
+            }
+        },
+        detectFiles(fileList) {
+            Array.from(Array(fileList.length).keys()).map(x => {
+                this.upload(fileList[x]);
+            });
+        },
+        upload(file) {
+            this.uploadTask = storage.ref("medic/imagenes").put(file);
+        },
+        onFileChange(e) {
+            console.log("click")
+            var files = e.target.files || e.dataTransfer.files;
+            this.file_pic = files
+            if (!files.length) return;
+            this.createImage(files[0], "profile");
+            // this.detectFiles(files);
+        },
+        onImagePetChange(e) {
+            console.log("click")
+            var files = e.target.files || e.dataTransfer.files;
+            this.addImagePet = files
+            if (!files.length) return;
+            this.createImage(files[0], "add_pet");
+            // this.detectFiles(files);
+        },
+        onImagePetUpdate(e) {
+            console.log("click")
+            var files = e.target.files || e.dataTransfer.files;
+            this.petimage_pic = files
+            if (!files.length) return;
+            this.createImage(files[0], "update");
+            // this.detectFiles(files);
+        },
+        createImage(file, type) {
+            var image = new Image();
+
+            var reader = new FileReader();
+            var vm = this;
+            if (type == "add_pet") {
+                var showImagePet = new Image();
+                reader.onload = e => {
+                    vm.showImagePet = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+            if (type == "profile") {
+                var urlImageProfile = new Image();
+                reader.onload = e => {
+                    this.urlImageProfile = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+            if (type == "update") {
+                var urlImageProfile = new Image();
+                reader.onload = e => {
+                    this.show_pet[0].imagePet = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+        },
+        // readURLPro: function (input) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
+
+        //         (reader.onload = function (e) {
+        //             $("#wizardPicturePreviewPro")
+        //                 .attr("src", e.target.result)
+        //                 .fadeIn("slow");
+        //         }),
+        //         reader.readAsDataURL(input.files[0]);
+        //         this.detectFiles(input.files);
+        //     }
+        // }
+    },
+    created() {
+        db.collection("users")
+            .doc(firebase.auth().currentUser.email)
+            .collection("pets")
+            .orderBy("pet_id")
+            .get()
+            .then(querySnapshot => {
+                this.loading = false;
+                querySnapshot.forEach(doc => {
+                    const data = {
+                        id: doc.id,
+                        pet_id: doc.data().pet_id,
+                        name: doc.data().pet_name,
+                        breed: doc.data().breed,
+                        color: doc.data().color,
+                        // dob: doc.data().dob,
+                        gender: doc.data().gender,
+                        marking: doc.data().marking,
+                        type: doc.data().pet_type,
+                        age: this.calAgePet(doc.data().dob),
+                        imagePet: doc.data().urlImagePet,
+                        pet_dog: doc.data().pet_dog,
+                        pet_cat: doc.data().pet_cat
+                    };
+                    console.log(doc.data());
+                    this.pets.push(data);
+
+                });
+                this.email = firebase.auth().currentUser.email;
+                console.log(this.email);
+                // console.log(this.pets[0].age)
+            });
+    },
+    mounted() {
+        db.collection("users")
+            .doc(firebase.auth().currentUser.email)
+            .get()
+            .then(doc => {
+                this.datebirth = doc.data().datebirth,
+                    this.calculateAge();
+                this.fullname = doc.data().fullname;
+                this.lineid = doc.data().line_id;
+                this.address = doc.data().address;
+                this.password = doc.data().password;
+                this.telephone = doc.data().telephone_number;
+                this.gender = doc.data().gender;
+                this.urlImageProfile = doc.data().urlImageProfile;
+                console.log("Document data:", doc.data());
+
+            });
     }
-  },
-  created() {
-    db.collection("users")
-      .doc(firebase.auth().currentUser.email)
-      .collection("pets")
-      .orderBy("pet_id")
-      .get()
-      .then(querySnapshot => {
-        this.loading = false;
-        querySnapshot.forEach(doc => {
-          const data = {
-            id: doc.id,
-            pet_id: doc.data().pet_id,
-            name: doc.data().pet_name,
-            breed: doc.data().breed,
-            color: doc.data().color,
-            dob: doc.data().dob,
-            gender: doc.data().gender,
-            marking: doc.data().marking,
-            type: doc.data().pet_type
-          };
-          console.log(doc.data());
-          this.pets.push(data);
-        });
-        this.email = firebase.auth().currentUser.email;
-        console.log(this.email);
-      });
-  },
-  mounted() {
-    db.collection("users")
-      .doc(firebase.auth().currentUser.email)
-      .get()
-      .then(doc => {
-        (this.datebirth = doc.data().datebirth), this.calculateAge();
-        this.fullname = doc.data().fullname;
-        this.lineid = doc.data().line_id;
-        this.address = doc.data().address;
-        this.password = doc.data().password;
-        this.telephone = doc.data().telephone_number;
-        this.gender = doc.data().gender;
-        console.log("Document data:", doc.data());
-      });
-  }
 };
 </script>
 
