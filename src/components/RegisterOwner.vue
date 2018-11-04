@@ -364,7 +364,8 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
             this.createImage(files[0]);
-            this.detectFiles(files);
+            this.file_pic = files
+            // this.detectFiles(files);
         },
         createImage(file) {
             var image = new Image();
