@@ -65,8 +65,8 @@
                                 <row>
                                     <column>
                                         <div class="label-group">
-                                            <label for="lineid">Veterinary ID</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Veterinary ID" id="lineid" v-model="vet_id" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                            <label for="lineid">Medical License</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Medical License" id="lineid" v-model="vet_id" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                 </div>
                                     </column>
                                     <column>
