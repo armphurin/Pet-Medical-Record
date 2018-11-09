@@ -208,7 +208,7 @@ h6 {
 }
 
 /*Samsung Galaxy S5 Portrait*/
-@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+@media only screen and (max-width: 360px) and (max-height: 700px) and (orientation: portrait) {
   .body-homepage {
     margin-top: 5em;
   }
@@ -223,8 +223,11 @@ h6 {
     height: 15em;
   }
   .svg-container-bottom {
-    bottom: -103em;
+    margin-bottom: -3em;
+    margin-left: -14px;
+    margin-right: -14px;
     height: 5em;
+    position: unset;
   }
 }
 
