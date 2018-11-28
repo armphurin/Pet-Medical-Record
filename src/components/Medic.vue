@@ -118,81 +118,64 @@
 
       <div class="tab-panel-content">
         <!-- Medic Content -->
-         <h1>Vue Select - Custom Labels</h1>
   <v-select label="countryName" :options="options"></v-select>
-            <row class="medic-content">
-            <column md="4">
-            <row class="text-center">
-              <column>
-              <img src="../assets/pic_cat.png" class="medic-pic" />
-              </column>
-            </row>
-            <row>
-              <column>
-                            <div class="label-group">
+  <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
+  <row>
+    <column md="6">
+                                <div class="label-group">
                                 <label for="pettype">Pet Type</label>
                                 <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-              </column>
-            </row>
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="marking">Marking</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="marking" v-model="marking" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-              </column>
-            </row>
-            </column>
-            <column md="8">
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="petname">Pet Name</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-              </column>
-            </row>
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="age">Age</label>
-                                <input class="form-control form-control-lg" type="text" value="18 Year" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-              </column>
-              <column>
-                            <div class="label-group">
-                                <label for="gender">Gender</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Gender" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-              </column>
-            </row>
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="breed">Breed</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-              </column>
-            </row>
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="color">Color</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" v-model="color" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-              </column>
-            </row>
-            </column>
-          </row>
-          <row>
-            <column>
+    </column>
+    <column md="3">
                                 <div class="label-group">
-                                    <label for="contact">Contact</label>
-                                    <textarea class="form-control" id="contact" v-model="contact" rows="5" placeholder="Contact" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
-                                </div>
-            </column>
-          </row>
+                                <label for="pettype">Pet Type</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+    </column>
+    <column md="3">
+                                <div class="label-group">
+                                <label for="pettype">Pet Type</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+    </column>
+  </row>
+  <row>
+    <column md="12">
+                                    <div class="label-group">
+                                <label for="pettype">Pet Type</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+    </column>
+  </row>
+  <row>
+    <column md="4">
+    <h3>Subjective Findings</h3>
+    </column>
+    <column md="3">
+    <h3>Subjective 1</h3>
+    </column>
+    <column md="2">
+    <h3>Subjective 2</h3>
+    </column>
+    <column md="3">
+    <h3>Subjective 3</h3>
+    </column>
+  </row>
+  <row>
+    <column md="4">
+    <h5>Appertive: </h5>
+    </column>
+    <column md="3">
+    <mdb-input type="radio" name="pet_type" id="cat" value="cat" @click.native="pet_type='cat'" />
+    </column>
+    <column md="2">
+    <mdb-input type="radio" name="pet_type" id="cat" value="cat" @click.native="pet_type='cat'" />
+    </column>
+    <column md="3">
+    <mdb-input type="radio" name="pet_type" id="cat" value="cat" @click.native="pet_type='cat'" />
+    </column>
+  </row>
       </div>
 
       <label for="tab-3" tabindex="0" class="tab-panel-label three-tabs"></label>
