@@ -117,7 +117,82 @@
       <h2 class="tab-title three-tabs">Medic</h2>
 
       <div class="tab-panel-content">
-        Second
+        <!-- Medic Content -->
+         <h1>Vue Select - Custom Labels</h1>
+  <v-select label="countryName" :options="options"></v-select>
+            <row class="medic-content">
+            <column md="4">
+            <row class="text-center">
+              <column>
+              <img src="../assets/pic_cat.png" class="medic-pic" />
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="pettype">Pet Type</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="marking">Marking</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="marking" v-model="marking" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            </column>
+            <column md="8">
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="petname">Pet Name</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="age">Age</label>
+                                <input class="form-control form-control-lg" type="text" value="18 Year" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+              <column>
+                            <div class="label-group">
+                                <label for="gender">Gender</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Gender" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="breed">Breed</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            <row>
+              <column>
+                            <div class="label-group">
+                                <label for="color">Color</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" v-model="color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+              </column>
+            </row>
+            </column>
+          </row>
+          <row>
+            <column>
+                                <div class="label-group">
+                                    <label for="contact">Contact</label>
+                                    <textarea class="form-control" id="contact" v-model="contact" rows="5" placeholder="Contact" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                </div>
+            </column>
+          </row>
       </div>
 
       <label for="tab-3" tabindex="0" class="tab-panel-label three-tabs"></label>
@@ -226,7 +301,17 @@ export default {
       image: "",
       datebirth: "",
       petbirth: "",
-      selected: false
+      selected: false,
+       options: [
+      { countryCode: "AU", countryName: "Australia" },
+      { countryCode: "CA", countryName: "Canada" },
+      { countryCode: "CN", countryName: "China" },
+      { countryCode: "DE", countryName: "Germany" },
+      { countryCode: "JP", countryName: "Japan" },
+      { countryCode: "MX", countryName: "Mexico" },
+      { countryCode: "CH", countryName: "Switzerland" },
+      { countryCode: "US", countryName: "United States" }
+    ]
     };
   },
   methods: {
