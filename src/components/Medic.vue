@@ -2,231 +2,368 @@
 <div class="medic-owner">
     <md-mask class="d-flex justify-content-center align-items-center">
         <container>
-          	<div class="header-button">
-              <div class="scrolling-wrapper-flexbox text-center">
-                <!-- pet 1 -->
-  <label class="text-white" style="margin-top:1.3em;margin-left: 0em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 1</label>
-  <!-- pet 2 to n -->
-  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
-<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
-  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
-  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
-<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
-  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
-  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
-<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
-  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
-  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
-<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
-  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
-  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
-<label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
-  <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
-</div>
+            <div class="header-button">
+                <div class="scrolling-wrapper-flexbox text-center">
+                    <!-- pet 1 -->
+                    <label class="text-white" style="margin-top:1.3em;margin-left: 0em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 1</label>
+                    <!-- pet 2 to n -->
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
+                    <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 4</label>
+                </div>
             </div>
-<div class="doc-section text-center white-text">
-</div>
+            <div class="doc-section text-center white-text">
+            </div>
         </container>
     </md-mask>
-      <div>
-<container>
-<div class="tab-wrapper"> 
-   <div class="tab-panel">
-      <label for="tab-1" tabindex="0" class="tab-panel-label three-tabs"></label>
-      <input id="tab-1" type="radio" name="tabs" checked="true" aria-hidden="true" />
-      <h2 class="tab-title three-tabs">Profile</h2>
+    <div>
+        <container>
+            <div class="tab-wrapper">
+                <div class="tab-panel">
+                    <label for="tab-1" tabindex="0" class="tab-panel-label three-tabs"></label>
+                    <input id="tab-1" type="radio" name="tabs" checked="true" aria-hidden="true" />
+                    <h2 class="tab-title three-tabs">Profile</h2>
 
-      <div class="tab-panel-content">
-          <row class="medic-content">
-            <column md="4">
-            <row class="text-center">
-              <column>
-              <img src="../assets/pic_cat.png" class="medic-pic" />
+                    <div class="tab-panel-content">
+                        <row class="medic-content">
+                            <column md="4">
+                                <row class="text-center">
+                                    <column>
+                                        <img src="../assets/pic_cat.png" class="medic-pic" />
               </column>
-            </row>
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="pettype">Pet Type</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </row>
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="pettype">Pet Type</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-              </column>
-            </row>
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="marking">Marking</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="marking" v-model="marking" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    </column>
+                                </row>
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="marking">Marking</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="marking" v-model="marking" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-              </column>
-            </row>
-            </column>
-            <column md="8">
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="petname">Pet Name</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    </column>
+                                </row>
+                            </column>
+                            <column md="8">
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="petname">Pet Name</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="petname" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-              </column>
-            </row>
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="age">Age</label>
-                                <input class="form-control form-control-lg" type="text" value="18 Year" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    </column>
+                                </row>
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="age">Age</label>
+                                            <input class="form-control form-control-lg" type="text" value="18 Year" placeholder="Age" id="age" v-model="age" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-              </column>
-              <column>
-                            <div class="label-group">
-                                <label for="gender">Gender</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Gender" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    </column>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="gender">Gender</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Gender" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-              </column>
-            </row>
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="breed">Breed</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    </column>
+                                </row>
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="breed">Breed</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-              </column>
-            </row>
-            <row>
-              <column>
-                            <div class="label-group">
-                                <label for="color">Color</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" v-model="color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    </column>
+                                </row>
+                                <row>
+                                    <column>
+                                        <div class="label-group">
+                                            <label for="color">Color</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" v-model="color" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-              </column>
-            </row>
-            </column>
-          </row>
-          <row>
-            <column>
+                                    </column>
+                                </row>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
                                 <div class="label-group">
                                     <label for="contact">Contact</label>
                                     <textarea class="form-control" id="contact" v-model="contact" rows="5" placeholder="Contact" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                 </div>
-            </column>
-          </row>
-      </div>
+                            </column>
+                        </row>
+                    </div>
 
-      <label for="tab-2" tabindex="0" class="tab-panel-label three-tabs"></label>
-      <input id="tab-2" type="radio" name="tabs" aria-hidden="true" />
-      <h2 class="tab-title three-tabs">Medic</h2>
+                    <label for="tab-2" tabindex="0" class="tab-panel-label three-tabs"></label>
+                    <input id="tab-2" type="radio" name="tabs" aria-hidden="true" />
+                    <h2 class="tab-title three-tabs">Medic</h2>
 
-      <div class="tab-panel-content">
-        <!-- Medic Content -->
-  <v-select label="countryName" id="medicSelect" :options="options"></v-select>
-  <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
-  <row>
-    <column md="6">
-                                <div class="label-group">
-                                <label for="pettype">Animal ID#</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Animal ID#" id="petid" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                    <div class="tab-panel-content">
+                        <!-- Medic Content -->
+                        <v-select label="countryName" id="medicSelect" :options="options"></v-select>
+                        <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
+                        <h2 class="h2-responsive"><strong>Subjective Finding</strong></h2>
+                        <hr style="width:100%;margin-bottom:1em;">
+                        <row>
+                          <column md="6">
+
+                            <div class="table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th align="center">Subjective Finding</th>
+                                            <th align="center">Normal</th>
+                                            <th align="center">Abnormal</th>
+                                            <th align="center">N/A</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td align="center">Appetite</td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" @click.native="select_appet='norm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" @click.native="select_appet='abnorm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" @click.native="select_appet='na'" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">Drinking</td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" @click.native="select_drink='norm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" @click.native="select_drink='abnorm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" @click.native="select_drink='na'" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">Coughing</td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" @click.native="select_cough='norm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" @click.native="select_cough='abnorm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" @click.native="select_cough='na'" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">Sneezing</td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" @click.native="select_sneez='norm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" @click.native="select_sneez='abnorm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" @click.native="select_sneez='na'" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">Attitude</td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" @click.native="select_att='norm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" @click.native="select_att='abnorm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" @click.native="select_att='na'" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">Vomiting</td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" @click.native="select_vom='norm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" @click.native="select_vom='abnorm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" @click.native="select_vom='na'" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">Bowels</td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" @click.native="select_bow='norm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" @click.native="select_bow='abnorm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" @click.native="select_bow='na'" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">Urination</td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" @click.native="select_uri='norm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" @click.native="select_uri='abnorm'" />
+                                            </td>
+                                            <td align="center">
+                                                <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" @click.native="select_uri='na'" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-    </column>
-    <column md="3">
-                                                <div class="label-group">
-                                                    <label for="petdate">Case Date</label>
-                                                    <datetime v-model="petdate"></datetime>
-                                                </div>
-    </column>
-    <column md="3">
-                                                <div class="label-group">
-                                                    <label for="pettime">Case Time</label>
-                                                    <datetime type="time" v-model="pettime"></datetime>
-                                                </div>
-    </column>
-  </row>
-  <row>
-    <column md="12">
+
+                            </column>
+                            <column md="6">
+                                                    <row>
+                            <column md="12">
+                                <div class="label-group">
+                                    <label for="pettype">Animal ID#</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Animal ID#" id="petid" v-model="petid" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                            </column>
+                            <column md="6">
+                                <div class="label-group">
+                                    <label for="petdate">Case Date</label>
+                                    <datetime v-model="petdate"></datetime>
+                                </div>
+                            </column>
+                            <column md="6">
+                                <div class="label-group">
+                                    <label for="pettime">Case Time</label>
+                                    <datetime type="time" v-model="pettime"></datetime>
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column md="12">
                                 <div class="label-group">
                                     <label for="spnote">Special Note</label>
                                     <textarea class="form-control" id="spnote" v-model="contact" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                 </div>
-    </column>
-  </row>
-  <row>
+                            </column>
+                        </row>                          
+                            </column>
+                        </row>
+                        <h2 class="h2-responsive"><strong>Objective Finding</strong></h2>
+                        <hr style="width:100%;margin-bottom:1em;">
+                        <row>
+                          <column md="6">
+                          <div class="label-group">
+                                    <label for="pettemp">Temp:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Temperature" id="pettemp" v-model="pettemp" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                          </column>
+                          <column md="6">
+                          <div class="label-group">
+                                    <label for="petweight">Weight:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Weight" id="pettweight" v-model="petweight" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                          </column>
+                            <column md="12">
+                                <div class="label-group">
+                                    <label for="note">Note:</label>
+                                    <textarea class="form-control" id="note" v-model="note" rows="5" placeholder="Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                </div>
+                            </column>
+                            <column md="12">
+                          <div class="label-group">
+                                    <label for="petdig">Dignos:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Dignos" id="petdig" v-model="petdig" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                            </column>
+                            <column md="12">
+                          <div class="label-group">
+                                    <label for="pettreat">Treatment/Test:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Treatment and Test" id="pettreat" v-model="pettreat" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                            </column>
+                            <column md="12">
+                          <div class="label-group">
+                                    <label for="petmedic">Medication:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Medication" id="petmedic" v-model="petmedic" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                            </column>
+                            <column md="12">
+                          <div class="label-group">
+                                    <label for="petex">Exercise:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Exercise" id="petex" v-model="petex" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                            </column>
+                            <column md="12">
+                          <div class="label-group">
+                                    <label for="petdirect">Directory Direction:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Directory Direction" id="petdirect" v-model="petdirect" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                            </column>
+                            <column md="12">
+                          <div class="label-group">
+                                    <label for="recheck">Recheck Note:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="recheck" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                            </column>
+                            <column md="12">
+                          <div class="label-group">
+                                    <label for="addition">Additional Instruction:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="addition" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                            </column>
+                            <column md="6">
+                          <div class="label-group">
+                                    <label for="vetsig">Veterinary Signature:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="vetsig" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                            </column>
+                            <column md="6">
+                          <div class="label-group">
+                                    <label for="hossig">Hospital Signature:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" v-model="hossig" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                            </column>
+                        </row>
+                        <row>
+                          <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
+                        </row>
+                        <row style="float:right;">
+                <btn color="default" @click.native="popupAddPet = false">Reset</btn>
+                <btn color="primary" @click.native="add_pet">Submit</btn>
+                        </row>
+                    </div>
 
-<div class="table-responsive">
-	<table>
-		<thead>
-			<tr>
-				<th align="center">Subjective Finding</th>
-				<th align="center">Normal</th>
-				<th align="center">Abnormal</th>
-				<th align="center">N/A</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td align="center">Appetite</td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" @click.native="select_appet='norm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" @click.native="select_appet='abnorm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" @click.native="select_appet='na'" /></td>
-			</tr>
-			<tr>
-				<td align="center">Drinking</td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" @click.native="select_drink='norm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" @click.native="select_drink='abnorm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" @click.native="select_drink='na'" /></td>
-			</tr>
-			<tr>
-				<td align="center">Coughing</td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" @click.native="select_cough='norm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" @click.native="select_cough='abnorm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" @click.native="select_cough='na'" /></td>
-			</tr>
-			<tr>
-				<td align="center">Sneezing</td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" @click.native="select_sneez='norm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" @click.native="select_sneez='abnorm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" @click.native="select_sneez='na'" /></td>
-			</tr>
-			<tr>
-				<td align="center">Attitude</td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" @click.native="select_att='norm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" @click.native="select_att='abnorm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" @click.native="select_att='na'" /></td>
-			</tr>
-			<tr>
-				<td align="center">Vomiting</td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" @click.native="select_vom='norm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" @click.native="select_vom='abnorm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" @click.native="select_vom='na'" /></td>
-			</tr>
-			<tr>
-				<td align="center">Bowels</td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" @click.native="select_bow='norm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" @click.native="select_bow='abnorm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" @click.native="select_bow='na'" /></td>
-			</tr>
-			<tr>
-				<td align="center">Urination</td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" @click.native="select_uri='norm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" @click.native="select_uri='abnorm'" /></td>
-				<td align="center"><mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" @click.native="select_uri='na'" /></td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+                    <label for="tab-3" tabindex="0" class="tab-panel-label three-tabs"></label>
+                    <input id="tab-3" type="radio" name="tabs" aria-hidden="true" />
+                    <h2 class="tab-title three-tabs">Vact</h2>
 
-  </row>
-      </div>
-
-      <label for="tab-3" tabindex="0" class="tab-panel-label three-tabs"></label>
-      <input id="tab-3" type="radio" name="tabs" aria-hidden="true" />
-      <h2 class="tab-title three-tabs">Vact</h2>
-
-      <div class="tab-panel-content">
-          Third
-      </div>
-   </div>
-</div>
-</container>
-</div>
+                    <div class="tab-panel-content">
+                        Third
+                    </div>
+                </div>
+            </div>
+        </container>
+    </div>
 </div>
 <!--/.ViewWrapper-->
 </template>
@@ -235,48 +372,6 @@
 import db from "./firebaseInit";
 import firebase from "firebase";
 import {
-  Container,
-  Row,
-  Column,
-  Navbar,
-  NavbarCollapse,
-  NavbarNav,
-  NavbarItem,
-  mdbInput,
-  ViewWrapper,
-  MdMask,
-  Btn,
-  mdbNavbarBrand,
-  Card,
-  CardImg,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  CardText,
-  CardFooter,
-  CardUp,
-  CardAvatar,
-  CardGroup,
-  Fa,
-  Modal,
-  ModalHeader,
-  ModalTitle,
-  ModalBody,
-  ModalFooter,
-  Pagination,
-  PageNav,
-  PageItem,
-  mdbTable, mdbTblHead, mdbTblBody 
-} from "mdbvue";
-
-import { Datetime } from "vue-datetime";
-
-export default {
-  beforeCreate: function() {
-    document.body.className = "body-medic";
-  },
-  name: "medic",
-  components: {
     Container,
     Row,
     Column,
@@ -305,615 +400,734 @@ export default {
     ModalTitle,
     ModalBody,
     ModalFooter,
-    datetime: Datetime,
     Pagination,
     PageNav,
     PageItem,
-    mdbInput,
-    mdbTable, mdbTblHead, mdbTblBody 
-  },
-  data() {
-    return {
-      pets: [],
-      loading: true,
-      popupProfile: false,
-      popupPet: false,
-      progressUpload: 0,
-      file: File,
-      uploadTask: "",
-      image: "",
-      datebirth: "",
-      petbirth: "",
-      selected: false,
-       options: [
-      { countryCode: "AU", countryName: "Australia" },
-      { countryCode: "CA", countryName: "Canada" },
-      { countryCode: "CN", countryName: "China" },
-      { countryCode: "DE", countryName: "Germany" },
-      { countryCode: "JP", countryName: "Japan" },
-      { countryCode: "MX", countryName: "Mexico" },
-      { countryCode: "CH", countryName: "Switzerland" },
-      { countryCode: "US", countryName: "United States" }
-    ]
-    };
-  },
-  methods: {
-    selectHeader(e) {
-      alert("section");
-      this.selected = true;
-      var allelement = document.getElementsByClassName("selectedHeader");
-      console.log(allelement);
-      for (var i = 0; i < allelement.length; i++) {
-        console.log("inloop" + i);
-        allelement[i].classList.remove("selectedHeader");
-      }
-      e.target.className += " selectedHeader";
-      console.log(e.target.className);
+    mdbTable,
+    mdbTblHead,
+    mdbTblBody
+} from "mdbvue";
+
+import {
+    Datetime
+} from "vue-datetime";
+
+export default {
+    beforeCreate: function () {
+        document.body.className = "body-medic";
+    },
+    name: "medic",
+    components: {
+        Container,
+        Row,
+        Column,
+        Navbar,
+        NavbarCollapse,
+        NavbarNav,
+        NavbarItem,
+        mdbInput,
+        ViewWrapper,
+        MdMask,
+        Btn,
+        mdbNavbarBrand,
+        Card,
+        CardImg,
+        CardHeader,
+        CardBody,
+        CardTitle,
+        CardText,
+        CardFooter,
+        CardUp,
+        CardAvatar,
+        CardGroup,
+        Fa,
+        Modal,
+        ModalHeader,
+        ModalTitle,
+        ModalBody,
+        ModalFooter,
+        datetime: Datetime,
+        Pagination,
+        PageNav,
+        PageItem,
+        mdbInput,
+        mdbTable,
+        mdbTblHead,
+        mdbTblBody
+    },
+    data() {
+        return {
+            pets: [],
+            loading: true,
+            popupProfile: false,
+            popupPet: false,
+            progressUpload: 0,
+            file: File,
+            uploadTask: "",
+            image: "",
+            datebirth: "",
+            petbirth: "",
+            selected: false,
+            options: [{
+                    countryCode: "AU",
+                    countryName: "Australia"
+                },
+                {
+                    countryCode: "CA",
+                    countryName: "Canada"
+                },
+                {
+                    countryCode: "CN",
+                    countryName: "China"
+                },
+                {
+                    countryCode: "DE",
+                    countryName: "Germany"
+                },
+                {
+                    countryCode: "JP",
+                    countryName: "Japan"
+                },
+                {
+                    countryCode: "MX",
+                    countryName: "Mexico"
+                },
+                {
+                    countryCode: "CH",
+                    countryName: "Switzerland"
+                },
+                {
+                    countryCode: "US",
+                    countryName: "United States"
+                }
+            ]
+        };
+    },
+    methods: {
+        selectHeader(e) {
+            alert("section");
+            this.selected = true;
+            var allelement = document.getElementsByClassName("selectedHeader");
+            console.log(allelement);
+            for (var i = 0; i < allelement.length; i++) {
+                console.log("inloop" + i);
+                allelement[i].classList.remove("selectedHeader");
+            }
+            e.target.className += " selectedHeader";
+            console.log(e.target.className);
+        }
+    },
+    created() {
+        db.collection("users")
+            .doc(firebase.auth().currentUser.email)
+            .collection("pets")
+            .orderBy("pet_id")
+            .get()
+            .then(querySnapshot => {
+                this.loading = false;
+                querySnapshot.forEach(doc => {
+                    const data = {
+                        id: doc.id,
+                        pet_id: doc.data().pet_id,
+                        pet_name: doc.data().pet_name,
+                        dept: doc.data().dept,
+                        position: doc.data().position
+                    };
+                    this.pets.push(data);
+                });
+            });
+        document
+            .getElementsByClassName("vdatetime-input")
+            .setAttribute("placeholder", "Enter your number");
+    },
+    mounted() {
+        var area_select = document.querySelector(".scrolling-wrapper-flexbox");
+        console.log(area_select.classList);
+        var selectH = document.getElementsByClassName("card-header");
+        if (selectH.length < 10) {
+            area_select.classList.add("scrolling-wrapper-flexbox-min");
+        } else {
+            area_select.classList.remove("scrolling-wrapper-flexbox-min");
+        }
     }
-  },
-  created() {
-    db.collection("users")
-      .doc(firebase.auth().currentUser.email)
-      .collection("pets")
-      .orderBy("pet_id")
-      .get()
-      .then(querySnapshot => {
-        this.loading = false;
-        querySnapshot.forEach(doc => {
-          const data = {
-            id: doc.id,
-            pet_id: doc.data().pet_id,
-            pet_name: doc.data().pet_name,
-            dept: doc.data().dept,
-            position: doc.data().position
-          };
-          this.pets.push(data);
-        });
-      });
-    document
-      .getElementsByClassName("vdatetime-input")
-      .setAttribute("placeholder", "Enter your number");
-  },
-  mounted() {
-    var area_select = document.querySelector(".scrolling-wrapper-flexbox");
-    console.log(area_select.classList);
-    var selectH = document.getElementsByClassName("card-header");
-    if (selectH.length < 10) {
-      area_select.classList.add("scrolling-wrapper-flexbox-min");
-    } else {
-      area_select.classList.remove("scrolling-wrapper-flexbox-min");
-    }
-  }
 };
 </script>
 
 <style>
 body.body-medic {
-  background: url("../assets/bg_doc2.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    background: url("../assets/bg_doc2.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .vdatetime-input {
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 13px;
-  border: 1px solid #ced4da;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  text-rendering: auto;
-  color: initial;
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: start;
-  margin: 0em;
-  font: 400 13.3333px Arial;
-  -webkit-writing-mode: horizontal-tb !important;
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
-  line-height: 1.5;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 13px;
+    border: 1px solid #ced4da;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    -webkit-writing-mode: horizontal-tb !important;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
 }
 </style>
 
 <style scoped>
-
 body.body-medic {
-  background: url("../assets/bg_doc2.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    background: url("../assets/bg_doc2.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
 .medic-owner {
-  margin-top: 3.5em;
+    margin-top: 3.5em;
 }
 
 /* checkbox and radio style */
 input[type="checkbox"],
 input[type="radio"] {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-input[type="checkbox"]:hover + label:before,
-input[type="radio"]:hover + label:before {
-  border-color: #999;
-}
-input[type="checkbox"]:active + label:before,
-input[type="radio"]:active + label:before {
-  transition-duration: 0;
-  filter: brightness(0.2);
-}
-input[type="checkbox"] + label,
-input[type="radio"] + label {
-  position: relative;
-  padding-left: 26px;
-  font-weight: normal;
-}
-input[type="checkbox"] + label:before,
-input[type="checkbox"] + label:after,
-input[type="radio"] + label:before,
-input[type="radio"] + label:after {
-  box-sizing: content-box;
-  position: absolute;
-  content: "";
-  display: block;
-  left: 0;
-}
-input[type="checkbox"] + label:before,
-input[type="radio"] + label:before {
-  top: 50%;
-  width: 16px;
-  height: 16px;
-  margin-top: -10px;
-  border: 2px solid #d9d9d9;
-  text-align: center;
-}
-input[type="checkbox"] + label:after,
-input[type="radio"] + label:after {
-  background-color: #00bad2;
-  top: 50%;
-  left: 6px;
-  width: 8px;
-  height: 8px;
-  margin-top: -4px;
-  transform: scale(0);
-  transform-origin: 50%;
-  transition: transform 200ms ease-out;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
 
-input[type="radio"]:checked + label:before {
-  -moz-animation: borderscale 300ms ease-in;
-  -webkit-animation: borderscale 300ms ease-in;
-  animation: borderscale 300ms ease-in;
-  background-color: #fff;
-}
-input[type="radio"]:checked + label:after {
-  transform: scale(1);
-}
-input[type="radio"] + label:before,
-input[type="radio"] + label:after {
-  border-radius: 50%;
+input[type="checkbox"]:hover+label:before,
+input[type="radio"]:hover+label:before {
+    border-color: #999;
 }
 
-input[type="checkbox"] + label:after {
-  background-color: transparent;
-  top: 50%;
-  left: 5px;
-  width: 7px;
-  height: 4px;
-  margin-top: -5px;
-  border-style: solid;
-  border-color: #00bad2;
-  border-width: 0 0 3px 3px;
-  -moz-transform: rotate(-45deg) scale(0);
-  -ms-transform: rotate(-45deg) scale(0);
-  -webkit-transform: rotate(-45deg) scale(0);
-  transform: rotate(-45deg) scale(0);
-  -moz-transition: none;
-  -o-transition: none;
-  -webkit-transition: none;
-  transition: none;
+input[type="checkbox"]:active+label:before,
+input[type="radio"]:active+label:before {
+    transition-duration: 0;
+    filter: brightness(0.2);
 }
-input[type="checkbox"]:checked + label:before {
-  -moz-animation: borderscale 200ms ease-in;
-  -webkit-animation: borderscale 200ms ease-in;
-  animation: borderscale 200ms ease-in;
+
+input[type="checkbox"]+label,
+input[type="radio"]+label {
+    position: relative;
+    padding-left: 26px;
+    font-weight: normal;
 }
-input[type="checkbox"]:checked + label:after {
-  content: "";
-  -moz-transform: rotate(-45deg) scale(1);
-  -ms-transform: rotate(-45deg) scale(1);
-  -webkit-transform: rotate(-45deg) scale(1);
-  transform: rotate(-45deg) scale(1);
-  -moz-transition: -moz-transform 200ms ease-out;
-  -o-transition: -o-transform 200ms ease-out;
-  -webkit-transition: -webkit-transform 200ms ease-out;
-  transition: transform 200ms ease-out;
+
+input[type="checkbox"]+label:before,
+input[type="checkbox"]+label:after,
+input[type="radio"]+label:before,
+input[type="radio"]+label:after {
+    box-sizing: content-box;
+    position: absolute;
+    content: "";
+    display: block;
+    left: 0;
+}
+
+input[type="checkbox"]+label:before,
+input[type="radio"]+label:before {
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -10px;
+    border: 2px solid #d9d9d9;
+    text-align: center;
+}
+
+input[type="checkbox"]+label:after,
+input[type="radio"]+label:after {
+    background-color: #00bad2;
+    top: 50%;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    transform: scale(0);
+    transform-origin: 50%;
+    transition: transform 200ms ease-out;
+}
+
+input[type="radio"]:checked+label:before {
+    -moz-animation: borderscale 300ms ease-in;
+    -webkit-animation: borderscale 300ms ease-in;
+    animation: borderscale 300ms ease-in;
+    background-color: #fff;
+}
+
+input[type="radio"]:checked+label:after {
+    transform: scale(1);
+}
+
+input[type="radio"]+label:before,
+input[type="radio"]+label:after {
+    border-radius: 50%;
+}
+
+input[type="checkbox"]+label:after {
+    background-color: transparent;
+    top: 50%;
+    left: 5px;
+    width: 7px;
+    height: 4px;
+    margin-top: -5px;
+    border-style: solid;
+    border-color: #00bad2;
+    border-width: 0 0 3px 3px;
+    -moz-transform: rotate(-45deg) scale(0);
+    -ms-transform: rotate(-45deg) scale(0);
+    -webkit-transform: rotate(-45deg) scale(0);
+    transform: rotate(-45deg) scale(0);
+    -moz-transition: none;
+    -o-transition: none;
+    -webkit-transition: none;
+    transition: none;
+}
+
+input[type="checkbox"]:checked+label:before {
+    -moz-animation: borderscale 200ms ease-in;
+    -webkit-animation: borderscale 200ms ease-in;
+    animation: borderscale 200ms ease-in;
+}
+
+input[type="checkbox"]:checked+label:after {
+    content: "";
+    -moz-transform: rotate(-45deg) scale(1);
+    -ms-transform: rotate(-45deg) scale(1);
+    -webkit-transform: rotate(-45deg) scale(1);
+    transform: rotate(-45deg) scale(1);
+    -moz-transition: -moz-transform 200ms ease-out;
+    -o-transition: -o-transform 200ms ease-out;
+    -webkit-transition: -webkit-transform 200ms ease-out;
+    transition: transform 200ms ease-out;
 }
 
 @-moz-keyframes borderscale {
-  50% {
-    box-shadow: 0 0 0 2px #999;
-  }
+    50% {
+        box-shadow: 0 0 0 2px #999;
+    }
 }
+
 @-webkit-keyframes borderscale {
-  50% {
-    box-shadow: 0 0 0 2px #999;
-  }
+    50% {
+        box-shadow: 0 0 0 2px #999;
+    }
 }
+
 @keyframes borderscale {
-  50% {
-    box-shadow: 0 0 0 2px #999;
-  }
+    50% {
+        box-shadow: 0 0 0 2px #999;
+    }
 }
+
 /* checkbox and radio style */
 
 /* dot style */
 .scrolling-wrapper {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
+
 .scrolling-wrapper .card-header {
-  display: inline-block;
-  color: white;
-  border-radius: 50%;
+    display: inline-block;
+    color: white;
+    border-radius: 50%;
 }
 
 .scrolling-wrapper-flexbox {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  align-items: center;
-  /* justify-content: center; */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    align-items: center;
+    /* justify-content: center; */
 }
 
 .scrolling-wrapper-flexbox-min {
-  justify-content: center;
+    justify-content: center;
 }
 
 .scrolling-wrapper-flexbox:first-child {
-  z-index: 1;
+    z-index: 1;
 }
+
 .scrolling-wrapper-flexbox .card-header {
-  flex: 0 0 auto;
-  margin-top: 0.3em;
-  margin-bottom: 0.3em;
-  margin-right: 0.3em;
-  margin-left: 0.3em;
-  color: white;
-  border-radius: 50%;
+    flex: 0 0 auto;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    margin-right: 0.3em;
+    margin-left: 0.3em;
+    color: white;
+    border-radius: 50%;
 }
 
 .card-header {
-  border: 2px solid #c2c2c2;
-  width: 50px;
-  height: 50px;
-  font-size: 100%;
-  padding: 33px;
-  -webkit-transition: all 200ms ease-in;
-  -webkit-transform: scale(1);
-  -ms-transition: all 200ms ease-in;
-  -ms-transform: scale(1);
-  -moz-transition: all 200ms ease-in;
-  -moz-transform: scale(1);
-  transition: all 200ms ease-in;
-  transform: scale(1);
+    border: 2px solid #c2c2c2;
+    width: 50px;
+    height: 50px;
+    font-size: 100%;
+    padding: 33px;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
 }
 
 .card-header:hover {
-  border: 2px solid #e8c547;
-  box-shadow: 0px 0px 5px #000000;
-  -webkit-transition: all 200ms ease-in;
-  -webkit-transform: scale(1.5);
-  -ms-transition: all 200ms ease-in;
-  -ms-transform: scale(1.5);
-  -moz-transition: all 200ms ease-in;
-  -moz-transform: scale(1.5);
-  transition: all 200ms ease-in;
-  transform: scale(1.5);
-  z-index: 2;
-  position: relative;
-  margin-left: 1.5em;
-  margin-right: 1.5em;
-  margin-bottom: 1em;
+    border: 2px solid #e8c547;
+    box-shadow: 0px 0px 5px #000000;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.5);
+    z-index: 2;
+    position: relative;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    margin-bottom: 1em;
 }
 
 .selectedHeader {
-  border: 2px solid #e8c547;
-  box-shadow: 0px 0px 5px #000000;
-  width: 100px;
-  height: 100px;
-  margin-left: 100px;
+    border: 2px solid #e8c547;
+    box-shadow: 0px 0px 5px #000000;
+    width: 100px;
+    height: 100px;
+    margin-left: 100px;
 }
 
 .scrolling-wrapper,
 .scrolling-wrapper-flexbox {
-  height: 100%;
-  width: 100%;
-  -webkit-overflow-scrolling: touch;
+    height: 100%;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
+
 .scrolling-wrapper::-webkit-scrollbar,
 .scrolling-wrapper-flexbox::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .img-scroll-dog {
-  background: url("../assets/pic_dog2.png");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    background: url("../assets/pic_dog2.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .img-scroll-cat {
-  background: url("../assets/pic_cat.png");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    background: url("../assets/pic_cat.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
 /* dot style */
 
 /* tab doc style */
 .tab-wrapper {
-  width: 100%;
-  margin: 40px auto;
-  /* display: inline-block; */
-}
-@media screen and (max-width: 45em) {
-  .tab-wrapper {
     width: 100%;
-    display: block;
-  }
+    margin: 40px auto;
+    /* display: inline-block; */
+}
+
+@media screen and (max-width: 45em) {
+    .tab-wrapper {
+        width: 100%;
+        display: block;
+    }
 }
 
 /* panel style */
 .tab-panel {
-  position: relative;
-  /* border: solid 1px #e5e5e5; */
-  border-radius: 6px;
-  font-family: "Open sans", sans-serif;
+    position: relative;
+    /* border: solid 1px #e5e5e5; */
+    border-radius: 6px;
+    font-family: "Open sans", sans-serif;
 }
-.tab-panel > .tab-panel-label {
-  position: absolute;
-  z-index: 1;
-  padding: 10px;
-  height: 44px;
-  outline: none;
-  font-size: 16px;
-  line-height: 24px;
-  box-sizing: border-box;
-}
-@media screen and (max-width: 45em) {
-  .tab-panel > .tab-panel-label {
-    width: 100% !important;
-    height: 44px;
-  }
-}
-.tab-panel > .tab-panel-label ~ label {
-  position: absolute;
-  top: 0;
-}
-@media screen and (max-width: 45em) {
-  .tab-panel > .tab-panel-label ~ label {
+
+.tab-panel>.tab-panel-label {
     position: absolute;
-    left: 0 !important;
-    top: unset;
-  }
-}
-.tab-panel > .tab-panel-label:nth-child(1) {
-  left: 0;
-}
-.tab-panel > .tab-panel-label:nth-child(9) {
-  left: 66.66666%;
-}
-.tab-panel > .tab-panel-label:hover {
-  cursor: pointer;
-}
-.tab-panel > h2 {
-  padding: 10px;
-  height: 44px;
-  outline: none;
-  font-size: 16px;
-  line-height: 24px;
-}
-@media screen and (max-width: 45em) {
-  .tab-panel > h2 {
-    width: 100% !important;
+    z-index: 1;
+    padding: 10px;
     height: 44px;
-  }
+    outline: none;
+    font-size: 16px;
+    line-height: 24px;
+    box-sizing: border-box;
 }
-.tab-panel > h2 ~ h2 {
-  position: absolute;
-  top: 0;
-}
+
 @media screen and (max-width: 45em) {
-  .tab-panel > h2 ~ h2 {
-    width: 100%;
-    position: static !important;
-  }
+    .tab-panel>.tab-panel-label {
+        width: 100% !important;
+        height: 44px;
+    }
 }
-.tab-panel > h2:nth-child(3) {
-  left: 0;
-  border-bottom: 1px solid #e5e5e5;
-  border-top-left-radius: 6px;
+
+.tab-panel>.tab-panel-label~label {
+    position: absolute;
+    top: 0;
 }
+
 @media screen and (max-width: 45em) {
-  .tab-panel > h2:nth-child(3) {
+    .tab-panel>.tab-panel-label~label {
+        position: absolute;
+        left: 0 !important;
+        top: unset;
+    }
+}
+
+.tab-panel>.tab-panel-label:nth-child(1) {
+    left: 0;
+}
+
+.tab-panel>.tab-panel-label:nth-child(9) {
+    left: 66.66666%;
+}
+
+.tab-panel>.tab-panel-label:hover {
+    cursor: pointer;
+}
+
+.tab-panel>h2 {
+    padding: 10px;
+    height: 44px;
+    outline: none;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@media screen and (max-width: 45em) {
+    .tab-panel>h2 {
+        width: 100% !important;
+        height: 44px;
+    }
+}
+
+.tab-panel>h2~h2 {
+    position: absolute;
+    top: 0;
+}
+
+@media screen and (max-width: 45em) {
+    .tab-panel>h2~h2 {
+        width: 100%;
+        position: static !important;
+    }
+}
+
+.tab-panel>h2:nth-child(3) {
+    left: 0;
+    border-bottom: 1px solid #e5e5e5;
+    border-top-left-radius: 6px;
+}
+
+@media screen and (max-width: 45em) {
+    .tab-panel>h2:nth-child(3) {
+        border-top-right-radius: 6px;
+    }
+}
+
+.tab-panel>h2:nth-child(7) {
+    border-bottom: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+    border-radius: 15px 100px 0px 0px;
+}
+
+@media screen and (max-width: 45em) {
+    .tab-panel>h2:nth-child(7) {
+        border-bottom: none;
+        border-left: none;
+        border-top: 1px solid #e5e5e5;
+        border-radius: 0px;
+    }
+}
+
+.tab-panel>h2:nth-child(11) {
+    left: 66.66666%;
+    border-bottom: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
     border-top-right-radius: 6px;
-  }
+    border-radius: 15px 100px 0px 0px;
 }
-.tab-panel > h2:nth-child(7) {
-  border-bottom: 1px solid #e5e5e5;
-  border-left: 1px solid #e5e5e5;
-  border-radius: 15px 100px 0px 0px;
-}
+
 @media screen and (max-width: 45em) {
-  .tab-panel > h2:nth-child(7) {
+    .tab-panel>h2:nth-child(11) {
+        border-bottom: none;
+        border-left: none;
+        border-top: 1px solid #e5e5e5;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+        border-radius: 0px;
+    }
+}
+
+.tab-panel>input {
+    opacity: 0;
+    position: absolute;
+}
+
+@media screen and (max-width: 45em) {
+    .tab-panel>input {
+        width: 100%;
+        height: 44px;
+    }
+}
+
+.tab-panel>input+h2+.tab-panel-content {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+
+.tab-panel>input:checked+h2 {
+    background: #ffffff;
     border-bottom: none;
-    border-left: none;
-    border-top: 1px solid #e5e5e5;
-    border-radius: 0px;
-  }
-}
-.tab-panel > h2:nth-child(11) {
-  left: 66.66666%;
-  border-bottom: 1px solid #e5e5e5;
-  border-left: 1px solid #e5e5e5;
-  border-top-right-radius: 6px;
-  border-radius: 15px 100px 0px 0px;
-}
-@media screen and (max-width: 45em) {
-  .tab-panel > h2:nth-child(11) {
-    border-bottom: none;
-    border-left: none;
-    border-top: 1px solid #e5e5e5;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
-    border-radius: 0px;
-  }
-}
-.tab-panel > input {
-  opacity: 0;
-  position: absolute;
-}
-@media screen and (max-width: 45em) {
-  .tab-panel > input {
-    width: 100%;
-    height: 44px;
-  }
-}
-.tab-panel > input + h2 + .tab-panel-content {
-  position: absolute !important;
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 0 !important;
-  border: 0 !important;
-  height: 1px !important;
-  width: 1px !important;
-  overflow: hidden;
-}
-.tab-panel > input:checked + h2 {
-  background: #ffffff;
-  border-bottom: none;
-  color: #66d2a6;
-  font-weight: 800;
-  box-shadow: 10px -2px 4px 0px rgba(0, 0, 0, 0.07);
-  border-radius: 15px 100px 0px 0px;
+    color: #66d2a6;
+    font-weight: 800;
+    box-shadow: 10px -2px 4px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 15px 100px 0px 0px;
 }
 
-.tab-panel > input + h2 {
-  transition: color 0.5s ease-in;
-  -webkit-transition: color 0.5s ease-in;
+.tab-panel>input+h2 {
+    transition: color 0.5s ease-in;
+    -webkit-transition: color 0.5s ease-in;
 }
 
-.tab-panel > input:hover + h2 {
-  color: white;
+.tab-panel>input:hover+h2 {
+    color: white;
 }
 
-.tab-panel > input:checked:hover + h2 {
-  color: #66d2a6;
+.tab-panel>input:checked:hover+h2 {
+    color: #66d2a6;
 }
 
 @media screen and (max-width: 45em) {
-  .tab-panel > input:checked + h2:nth-child(7),
-  .tab-panel > input:checked + h2:nth-child(11) {
-    border-top: none;
-  }
-  .tab-panel > input:checked + h2 {
-    border-radius: 0px;
-  }
+
+    .tab-panel>input:checked+h2:nth-child(7),
+    .tab-panel>input:checked+h2:nth-child(11) {
+        border-top: none;
+    }
+
+    .tab-panel>input:checked+h2 {
+        border-radius: 0px;
+    }
 }
-.tab-panel > input:checked + h2 + .tab-panel-content {
-  position: static !important;
-  padding: 24px !important;
-  height: auto !important;
-  width: auto !important;
+
+.tab-panel>input:checked+h2+.tab-panel-content {
+    position: static !important;
+    padding: 24px !important;
+    height: auto !important;
+    width: auto !important;
 }
+
 .tab-panel .three-tabs {
-  width: 33.33333%;
-  left: 33.33333%;
+    width: 33.33333%;
+    left: 33.33333%;
 }
+
 .tab-panel .two-tabs {
-  width: 50%;
-  left: 50%;
+    width: 50%;
+    left: 50%;
 }
+
 .tab-panel .tab-title {
-  margin: 0;
-  text-align: center;
-  background: #2cc185;
-  color: #0d9564;
-  box-sizing: border-box;
-  border-radius: 15px 100px 0px 0px;
+    margin: 0;
+    text-align: center;
+    background: #2cc185;
+    color: #0d9564;
+    box-sizing: border-box;
+    border-radius: 15px 100px 0px 0px;
 }
 
 .tab-panel .tab-panel-content {
-  background: #ffffff;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  /* min-height: 300px; */
+    background: #ffffff;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* min-height: 300px; */
 }
+
 @media screen and (max-width: 45em) {
-  .tab-panel .tab-panel-content {
-    display: block !important;
-    position: static !important;
-    padding: 1em !important;
-    height: auto !important;
-    width: auto !important;
-  }
+    .tab-panel .tab-panel-content {
+        display: block !important;
+        position: static !important;
+        padding: 1em !important;
+        height: auto !important;
+        width: auto !important;
+    }
 }
+
 /* tab doc style */
 
 .medic-pic {
-  border-radius: 50%;
-  width: 62%;
-  height: 90%;
-  margin: 0 auto;
+    border-radius: 50%;
+    width: 62%;
+    height: 90%;
+    margin: 0 auto;
 }
 
 .medic-content {
-  padding: 2%;
+    padding: 2%;
 }
 
 .label-group {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 label {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 input::placeholder {
-  color: grey !important;
-  font-size: 80%;
+    color: grey !important;
+    font-size: 80%;
 }
 
 /* dropdown medic custom */
-#medicSelect{
-   background: none !important;
-   border-radius: 4px;
-   border: none !important;
+#medicSelect {
+    background: none !important;
+    border-radius: 4px;
+    border: none !important;
 }
 
 /*table style */
 /* *, *:before, *:after {
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
-			box-sizing: border-box;
+
+box-sizing: border-box;
 }
 html {
 	font-size: 1.125em;
@@ -928,7 +1142,9 @@ body {
 	line-height: 1.42857143;
   padding:1em;
 } */
-small {color:#808080;}
+small {
+    color: #808080;
+}
 
 /* button {
 	bottom:1px;
@@ -946,138 +1162,266 @@ small {color:#808080;}
 button:hover {background:#0085a6; color:#fff;} */
 
 /* Tables */
-	/* Responsive scroll-y table */
-.table-responsive {min-height:.01%;	overflow-x:auto;}
+/* Responsive scroll-y table */
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
+
 @media screen and (max-width: 801px) {
-	.table-responsive {width:100%; overflow-y:hidden; -ms-overflow-style:-ms-autohiding-scrollbar;}
+    .table-responsive {
+        width: 100%;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
 }
-	/* Default table */
+
+/* Default table */
 table {
-	border-collapse:collapse;
-	border-spacing:0;
-	-webkit-box-shadow:0px 7px 6px -6px rgba(0,0,0,.28);
-	   -moz-box-shadow:0px 7px 6px -6px rgba(0,0,0,.28);
-			    box-shadow:0px 7px 6px -6px rgba(0,0,0,.28);
-	margin-bottom:40px;
-	margin-top:2em;	
-  /* margin-left: 2em;
+    border-collapse: collapse;
+    border-spacing: 0;
+    -webkit-box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, .28);
+    -moz-box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, .28);
+    box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, .28);
+    margin-bottom: 40px;
+    margin-top: 2em;
+    /* margin-left: 2em;
   margin-right: 2em; */
-	width:100%; 
-	max-width:100%;
+    width: 100%;
+    max-width: 100%;
 }
-table thead tr {border-bottom:3px solid #0085a6; color:#000;}
-table tfoot tr {border-top:3px solid #0085a6;}
-table thead th, table tfoot th {
-	background-color:#fff;
-	color:#000;
-	font-size:.83333em;
-	line-height:1.8;
-	padding: 15px 14px 13px 14px;
-	position:relative;
-	text-align:center;
-	text-transform:uppercase;	
+
+table thead tr {
+    border-bottom: 3px solid #0085a6;
+    color: #000;
 }
-table tbody tr {background-color:#fff;}
-table tbody tr:hover {background-color:#eee; color:#000;}
-table th, table td {
-	border:1px solid #bfbfbf;
-	/* padding:10px 14px; */
-	position:relative;
-	vertical-align:middle;
+
+table tfoot tr {
+    border-top: 3px solid #0085a6;
 }
-caption {font-size:1.111em; font-weight:300; padding:10px 0;}
+
+table thead th,
+table tfoot th {
+    background-color: #fff;
+    color: #000;
+    font-size: .83333em;
+    line-height: 1.8;
+    padding: 15px 14px 13px 14px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+table tbody tr {
+    background-color: #fff;
+}
+
+table tbody tr:hover {
+    background-color: #eee;
+    color: #000;
+}
+
+table th,
+table td {
+    border: 1px solid #bfbfbf;
+    /* padding:10px 14px; */
+    position: relative;
+    vertical-align: middle;
+}
+
+caption {
+    font-size: 1.111em;
+    font-weight: 300;
+    padding: 10px 0;
+}
 
 @media (max-width:1024px) {
-	table {font-size: .944444em;}
-}
-@media (max-width:767px) {
-	table {font-size: 1em;}
+    table {
+        font-size: .944444em;
+    }
 }
 
- /* Responsive table full */
+@media (max-width:767px) {
+    table {
+        font-size: 1em;
+    }
+}
+
+/* Responsive table full */
 @media (max-width: 767px) {
-	.table-responsive-full {box-shadow:none;}
-	.table-responsive-full thead tr, 
-	.table-responsive-full tfoot tr {display:none;}
-	.table-responsive-full tbody tr {
-		-webkit-box-shadow:0px 7px 6px -6px rgba(0,0,0,.28);
-		   -moz-box-shadow:0px 7px 6px -6px rgba(0,0,0,.28);
-				    box-shadow:0px 7px 6px -6px rgba(0,0,0,.28);
-		margin-bottom:20px;
-	}
-	.table-responsive-full tbody tr:last-child {margin-bottom:0;}
-	.table-responsive-full tr,
-	.table-responsive-full td {display:block;}
-	.table-responsive-full td {
-		background-color:#fff;
-		border-top:none;
-		position:relative;
-		padding-left:50%;
-	}
-	.table-responsive-full td:hover {background-color:#eee; color:#000;}
-	.table-responsive-full td:hover:before {color:hsl(0, 0%, 40%);}
-	
-	.table-responsive-full td:first-child {
-		border-top:1px solid #bfbfbf;
-		border-bottom: 3px solid #0085a6;
-		border-radius: 4px 4px 0 0;
-		color: #000;
-		font-size: 1.11111em;
-		font-weight: bold;
-	}
-	.table-responsive-full td:before {
-		content: attr(data-label);
-		display: inline-block;
-		color: hsl(0, 0%, 60%);
-		font-size: 14px;
-		font-weight: normal;
-		margin-left: -100%;
-		text-transform: uppercase;
-		width: 100%;
-		white-space:nowrap;
-	}
+    .table-responsive-full {
+        box-shadow: none;
+    }
+
+    .table-responsive-full thead tr,
+    .table-responsive-full tfoot tr {
+        display: none;
+    }
+
+    .table-responsive-full tbody tr {
+        -webkit-box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, .28);
+        -moz-box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, .28);
+        box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, .28);
+        margin-bottom: 20px;
+    }
+
+    .table-responsive-full tbody tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .table-responsive-full tr,
+    .table-responsive-full td {
+        display: block;
+    }
+
+    .table-responsive-full td {
+        background-color: #fff;
+        border-top: none;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .table-responsive-full td:hover {
+        background-color: #eee;
+        color: #000;
+    }
+
+    .table-responsive-full td:hover:before {
+        color: hsl(0, 0%, 40%);
+    }
+
+    .table-responsive-full td:first-child {
+        border-top: 1px solid #bfbfbf;
+        border-bottom: 3px solid #0085a6;
+        border-radius: 4px 4px 0 0;
+        color: #000;
+        font-size: 1.11111em;
+        font-weight: bold;
+    }
+
+    .table-responsive-full td:before {
+        content: attr(data-label);
+        display: inline-block;
+        color: hsl(0, 0%, 60%);
+        font-size: 14px;
+        font-weight: normal;
+        margin-left: -100%;
+        text-transform: uppercase;
+        width: 100%;
+        white-space: nowrap;
+    }
 }
+
 @media (max-width: 360px) {
-	.table-responsive-full td {padding-left:14px;}
-	.table-responsive-full td:before {display:block; margin-bottom:.5em; margin-left:0;}
+    .table-responsive-full td {
+        padding-left: 14px;
+    }
+
+    .table-responsive-full td:before {
+        display: block;
+        margin-bottom: .5em;
+        margin-left: 0;
+    }
 }
-	/* Sort table */
-.sort-table-arrows {float:right; transition:.3s ease;}
-.sort-table-arrows button {margin:0; padding:4px 8px;}
-.sort-table th.title, .sort-table th.composer {width:20% !important;}
-.sort-table th.lyrics, .sort-table th.arranger, .sort-table th.set, .sort-table th.info {width:15% !important;}
-.sort-table .title {font-weight: bold;}
-.sort-table .title small {font-weight:normal;}
+
+/* Sort table */
+.sort-table-arrows {
+    float: right;
+    transition: .3s ease;
+}
+
+.sort-table-arrows button {
+    margin: 0;
+    padding: 4px 8px;
+}
+
+.sort-table th.title,
+.sort-table th.composer {
+    width: 20% !important;
+}
+
+.sort-table th.lyrics,
+.sort-table th.arranger,
+.sort-table th.set,
+.sort-table th.info {
+    width: 15% !important;
+}
+
+.sort-table .title {
+    font-weight: bold;
+}
+
+.sort-table .title small {
+    font-weight: normal;
+}
 
 @media (max-width:1024px) {
-	.sort-table th,.sort-table-arrows {text-align:center;}
-	.sort-table-arrows {float:none; padding:8px 0 0; position:relative; right:0px;}
-	.sort-table-arrows button {bottom:0;}
+
+    .sort-table th,
+    .sort-table-arrows {
+        text-align: center;
+    }
+
+    .sort-table-arrows {
+        float: none;
+        padding: 8px 0 0;
+        position: relative;
+        right: 0px;
+    }
+
+    .sort-table-arrows button {
+        bottom: 0;
+    }
 }
+
 @media (max-width:767px) {
-	.sort-table thead tr {border-bottom:none; display:block; margin:10px 0; text-align:center;}
-	.sort-table thead tr th.arranger {display:none;}
-	.sort-table th {
-		border-bottom:1px solid #bfbfbf;
-		border-radius:4px;
-		display:inline-block;
-		font-size:.75em;
-		line-height:1;
-		margin:3px 0;
-		padding:10px;
-	}
-	.sort-table th.title, .sort-table th.composer, .sort-table th.lyrics, .sort-table th.set, .sort-table th.info {width: 100px !important;}
-	.sort-table td.title:before {display:none;}
-	.sort-table td.title {letter-spacing:.03em; padding-left:14px;}
+    .sort-table thead tr {
+        border-bottom: none;
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .sort-table thead tr th.arranger {
+        display: none;
+    }
+
+    .sort-table th {
+        border-bottom: 1px solid #bfbfbf;
+        border-radius: 4px;
+        display: inline-block;
+        font-size: .75em;
+        line-height: 1;
+        margin: 3px 0;
+        padding: 10px;
+    }
+
+    .sort-table th.title,
+    .sort-table th.composer,
+    .sort-table th.lyrics,
+    .sort-table th.set,
+    .sort-table th.info {
+        width: 100px !important;
+    }
+
+    .sort-table td.title:before {
+        display: none;
+    }
+
+    .sort-table td.title {
+        letter-spacing: .03em;
+        padding-left: 14px;
+    }
 }
 
 /* custom label */
 .hidden {
-  color: white !important;
-  /* padding: 0px !important; */
+    color: white !important;
+    padding-left: 50px !important;
 }
+
 .table-center {
-  margin-left:auto; 
-  margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>
