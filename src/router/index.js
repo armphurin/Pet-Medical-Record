@@ -17,7 +17,10 @@ import Datetime from "vue-datetime";
 import "vue-datetime/dist/vue-datetime.css";
 import VueSweetalert2 from "vue-sweetalert2";
 import vSelect from 'vue-select';
+import VueBootstrapTypeahead from 'vue-bootstrap-typeahead'
 
+// Global registration
+Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead)
 Vue.use(Router, axios, VueAxios, Datetime, VueSweetalert2);
 Vue.component('v-select', vSelect)
 
