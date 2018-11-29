@@ -118,7 +118,7 @@
 
       <div class="tab-panel-content">
         <!-- Medic Content -->
-  <v-select label="countryName" :options="options"></v-select>
+  <v-select label="countryName" id="medicSelect" :options="options"></v-select>
   <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
   <row>
     <column md="6">
@@ -154,10 +154,10 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Title</th>
-				<th>Composer</th>
-				<th>Lyrics</th>
-				<th>Info</th>
+				<th>Subjective Finding</th>
+				<th>Normal</th>
+				<th>Abnormal</th>
+				<th>N/A</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -856,6 +856,13 @@ label {
 input::placeholder {
   color: grey !important;
   font-size: 80%;
+}
+
+/* dropdown medic custom */
+#medicSelect{
+   background: none !important;
+   border-radius: 4px;
+   border: none !important;
 }
 
 /*table style */
