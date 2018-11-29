@@ -358,7 +358,70 @@
                     <h2 class="tab-title three-tabs">Vact</h2>
 
                     <div class="tab-panel-content">
-                        Third
+                        <h2 class="h2-responsive"><strong>Vactsine Plan</strong></h2>
+                        <hr style="width:100%;margin-bottom:1em;">
+                        <row>
+                            <column md="2">
+                              <mdb-card class="vacts">
+    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+    <mdb-card-body>
+      <mdb-card-title>Vactsine</mdb-card-title>
+      <mdb-card-text>Vactsine disease</mdb-card-text>
+      <mdb-btn color="primary">Plan</mdb-btn>
+    </mdb-card-body>
+  </mdb-card><br>
+                            </column>
+                            <column md="2">
+<mdb-card class="vacts">
+    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+    <mdb-card-body>
+      <mdb-card-title>Vactsine</mdb-card-title>
+      <mdb-card-text>Vactsine disease</mdb-card-text>
+      <mdb-btn color="primary">Plan</mdb-btn>
+    </mdb-card-body>
+  </mdb-card><br>
+                            </column>
+                            <column md="2">
+                              <mdb-card class="vacts">
+    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+    <mdb-card-body>
+      <mdb-card-title>Vactsine</mdb-card-title>
+      <mdb-card-text>Vactsine disease</mdb-card-text>
+      <mdb-btn color="primary">Plan</mdb-btn>
+    </mdb-card-body>
+  </mdb-card><br>
+                            </column>
+                            <column md="2">
+                              <mdb-card class="vacts">
+    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+    <mdb-card-body>
+      <mdb-card-title>Vactsine</mdb-card-title>
+      <mdb-card-text>Vactsine disease</mdb-card-text>
+      <mdb-btn color="primary">Plan</mdb-btn>
+    </mdb-card-body>
+  </mdb-card><br>
+                            </column>
+                            <column md="2">
+<mdb-card class="vacts">
+    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+    <mdb-card-body>
+      <mdb-card-title>Vactsine</mdb-card-title>
+      <mdb-card-text>Vactsine disease</mdb-card-text>
+      <mdb-btn color="primary">Plan</mdb-btn>
+    </mdb-card-body>
+  </mdb-card><br>
+                            </column>
+                            <column md="2">
+                              <mdb-card class="vacts">
+    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+    <mdb-card-body>
+      <mdb-card-title>Vactsine</mdb-card-title>
+      <mdb-card-text>Vactsine disease</mdb-card-text>
+      <mdb-btn color="primary">Plan</mdb-btn>
+    </mdb-card-body>
+  </mdb-card><br>
+                            </column>
+                        </row>
                     </div>
                 </div>
             </div>
@@ -405,7 +468,13 @@ import {
     PageItem,
     mdbTable,
     mdbTblHead,
-    mdbTblBody
+    mdbTblBody,
+          mdbCard,
+      mdbCardImage,
+      mdbCardBody,
+      mdbCardTitle,
+      mdbCardText,
+      mdbBtn
 } from "mdbvue";
 
 import {
@@ -453,7 +522,13 @@ export default {
         mdbInput,
         mdbTable,
         mdbTblHead,
-        mdbTblBody
+        mdbTblBody,
+              mdbCard,
+      mdbCardImage,
+      mdbCardBody,
+      mdbCardTitle,
+      mdbCardText,
+      mdbBtn
     },
     data() {
         return {
@@ -1423,5 +1498,9 @@ caption {
 .table-center {
     margin-left: auto;
     margin-right: auto;
+}
+
+.card.vacts{
+    width:100%;
 }
 </style>
