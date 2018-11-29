@@ -10,6 +10,7 @@ import RegisterOwner from "@/components/RegisterOwner";
 import RegisterVet from "@/components/RegisterVet";
 import Contact from "@/components/Contact";
 import Medic from "@/components/Medic";
+import SearchPage from "@/components/SearchPage";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import Datetime from "vue-datetime";
@@ -102,6 +103,12 @@ let router = new Router({
       name: "medic",
       component: Medic,
       meta: { requiresAuth: true }
+    },
+    {
+      path: "/search_result",
+      name: "search-page",
+      component: SearchPage,
+      meta: {}
     }
   ],
   mode: "history"
