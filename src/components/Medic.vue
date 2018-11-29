@@ -123,29 +123,29 @@
   <row>
     <column md="6">
                                 <div class="label-group">
-                                <label for="pettype">Pet Type</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                <label for="pettype">Animal ID#</label>
+                                <input class="form-control form-control-lg" type="text" placeholder="Animal ID#" id="petid" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
     </column>
     <column md="3">
-                                <div class="label-group">
-                                <label for="pettype">Pet Type</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
+                                                <div class="label-group">
+                                                    <label for="petdate">Case Date</label>
+                                                    <datetime v-model="petdate"></datetime>
+                                                </div>
     </column>
     <column md="3">
-                                <div class="label-group">
-                                <label for="pettype">Pet Type</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
+                                                <div class="label-group">
+                                                    <label for="pettime">Case Time</label>
+                                                    <datetime type="time" v-model="pettime"></datetime>
+                                                </div>
     </column>
   </row>
   <row>
     <column md="12">
-                                    <div class="label-group">
-                                <label for="pettype">Pet Type</label>
-                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pettype" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
+                                <div class="label-group">
+                                    <label for="spnote">Special Note</label>
+                                    <textarea class="form-control" id="spnote" v-model="contact" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                </div>
     </column>
   </row>
   <row>
@@ -154,42 +154,60 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Subjective Finding</th>
-				<th>Normal</th>
-				<th>Abnormal</th>
-				<th>N/A</th>
+				<th align="center">Subjective Finding</th>
+				<th align="center">Normal</th>
+				<th align="center">Abnormal</th>
+				<th align="center">N/A</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>1ος Παγκόσμιος</td>
-				<td>Λοΐζος, Μ.</td>
-				<td>Νεγρεπόντης, Μ.</td>
-				<td>28 Οκτ., 17 Νοε.</td>
+				<td align="center">Appetite</td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" @click.native="select_appet='norm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" @click.native="select_appet='abnorm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" @click.native="select_appet='na'" /></td>
 			</tr>
 			<tr>
-				<td>2ος Παγκόσμιος</td>
-				<td>Λοΐζος, Μ.</td>
-				<td>Νεγρεπόντης, Μ.</td>
-				<td>28 Οκτ., 17 Νοε.</td>
+				<td align="center">Drinking</td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" @click.native="select_drink='norm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" @click.native="select_drink='abnorm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" @click.native="select_drink='na'" /></td>
 			</tr>
 			<tr>
-				<td>3ος Παγκόσμιος</td>
-				<td>Λοΐζος, Μ.</td>
-				<td>Νεγρεπόντης, Μ.</td>
-				<td>28 Οκτ., 17 Νοε.</td>
+				<td align="center">Coughing</td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" @click.native="select_cough='norm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" @click.native="select_cough='abnorm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" @click.native="select_cough='na'" /></td>
 			</tr>
 			<tr>
-				<td>4ος Παγκόσμιος</td>
-				<td>Λοΐζος, Μ.</td>
-				<td>Νεγρεπόντης, Μ.</td>
-				<td>28 Οκτ., 17 Νοε.</td>
+				<td align="center">Sneezing</td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" @click.native="select_sneez='norm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" @click.native="select_sneez='abnorm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" @click.native="select_sneez='na'" /></td>
 			</tr>
 			<tr>
-				<td>5ος Παγκόσμιος</td>
-				<td>Λοΐζος, Μ.</td>
-				<td>Νεγρεπόντης, Μ.</td>
-				<td>28 Οκτ., 17 Νοε.</td>
+				<td align="center">Attitude</td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" @click.native="select_att='norm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" @click.native="select_att='abnorm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" @click.native="select_att='na'" /></td>
+			</tr>
+			<tr>
+				<td align="center">Vomiting</td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" @click.native="select_vom='norm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" @click.native="select_vom='abnorm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" @click.native="select_vom='na'" /></td>
+			</tr>
+			<tr>
+				<td align="center">Bowels</td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" @click.native="select_bow='norm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" @click.native="select_bow='abnorm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" @click.native="select_bow='na'" /></td>
+			</tr>
+			<tr>
+				<td align="center">Urination</td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" @click.native="select_uri='norm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" @click.native="select_uri='abnorm'" /></td>
+				<td align="center"><mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" @click.native="select_uri='na'" /></td>
 			</tr>
 		</tbody>
 	</table>
@@ -377,9 +395,35 @@ body.body-medic {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.vdatetime-input {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 13px;
+  border: 1px solid #ced4da;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  -webkit-writing-mode: horizontal-tb !important;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
 </style>
 
 <style scoped>
+
 body.body-medic {
   background: url("../assets/bg_doc2.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -916,6 +960,8 @@ table {
 			    box-shadow:0px 7px 6px -6px rgba(0,0,0,.28);
 	margin-bottom:40px;
 	margin-top:2em;	
+  /* margin-left: 2em;
+  margin-right: 2em; */
 	width:100%; 
 	max-width:100%;
 }
@@ -928,14 +974,14 @@ table thead th, table tfoot th {
 	line-height:1.8;
 	padding: 15px 14px 13px 14px;
 	position:relative;
-	text-align:left;
+	text-align:center;
 	text-transform:uppercase;	
 }
 table tbody tr {background-color:#fff;}
 table tbody tr:hover {background-color:#eee; color:#000;}
 table th, table td {
 	border:1px solid #bfbfbf;
-	padding:10px 14px;
+	/* padding:10px 14px; */
 	position:relative;
 	vertical-align:middle;
 }
@@ -1023,5 +1069,15 @@ caption {font-size:1.111em; font-weight:300; padding:10px 0;}
 	.sort-table th.title, .sort-table th.composer, .sort-table th.lyrics, .sort-table th.set, .sort-table th.info {width: 100px !important;}
 	.sort-table td.title:before {display:none;}
 	.sort-table td.title {letter-spacing:.03em; padding-left:14px;}
+}
+
+/* custom label */
+.hidden {
+  color: white !important;
+  /* padding: 0px !important; */
+}
+.table-center {
+  margin-left:auto; 
+  margin-right:auto;
 }
 </style>
