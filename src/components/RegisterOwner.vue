@@ -475,6 +475,7 @@ body.body-registervet {
 </style>
 
 <style scoped>
+
 form.regis_content_vet {
   /* margin-top: 7em;
   margin-bottom: 5em;
