@@ -10,14 +10,20 @@ import RegisterOwner from "@/components/RegisterOwner";
 import RegisterVet from "@/components/RegisterVet";
 import Contact from "@/components/Contact";
 import Medic from "@/components/Medic";
+import SearchPage from "@/components/SearchPage";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import Datetime from "vue-datetime";
 // You need a specific loader for CSS files
 import "vue-datetime/dist/vue-datetime.css";
 import VueSweetalert2 from "vue-sweetalert2";
+import vSelect from 'vue-select';
+import VueBootstrapTypeahead from 'vue-bootstrap-typeahead'
 
+// Global registration
+Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead)
 Vue.use(Router, axios, VueAxios, Datetime, VueSweetalert2);
+Vue.component('v-select', vSelect)
 
 let router = new Router({
   routes: [
@@ -97,6 +103,12 @@ let router = new Router({
       name: "medic",
       component: Medic,
       meta: { requiresAuth: true }
+    },
+    {
+      path: "/search_result",
+      name: "search-page",
+      component: SearchPage,
+      meta: {}
     }
   ],
   mode: "history"

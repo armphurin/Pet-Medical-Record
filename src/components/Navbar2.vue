@@ -17,7 +17,8 @@
       <!-- right -->
       <navbar-nav right>
     <form class="form-inline">
-      <input class="form-control p-2" type="text" placeholder="Search" aria-label="Search" style="margin-right:10px;">
+      <!-- <input class="form-control p-2" type="text" placeholder="Search" aria-label="Search" style="margin-right:10px;"> -->
+      <vue-bootstrap-typeahead v-model="query" :data="['Canada', 'USA', 'Mexico']" placeholder="Search" style="margin-right:10px;"/>
     <navbar-item v-if="!isLoggedIn"><router-link to="/login">Login</router-link></navbar-item>
     <navbar-item v-if="!isLoggedIn"><router-link to="/register">Register</router-link></navbar-item>
       <dropdown v-if="isLoggedIn" tag="li" class="nav-item dropdown-custom symbol-custom">
