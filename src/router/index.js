@@ -11,6 +11,7 @@ import RegisterVet from "@/components/RegisterVet";
 import Contact from "@/components/Contact";
 import Medic from "@/components/Medic";
 import SearchPage from "@/components/SearchPage";
+import FriendPage from "@/components/FriendPage"
 import axios from "axios";
 import VueAxios from "vue-axios";
 import Datetime from "vue-datetime";
@@ -105,9 +106,16 @@ let router = new Router({
       meta: { requiresAuth: true }
     },
     {
-      path: "/search_result",
+      path: "/search_result/:search_text",
       name: "search-page",
       component: SearchPage,
+      meta: {},
+      props: true
+    },
+    {
+      path: "/friend",
+      name: "friend-page",
+      component: FriendPage,
       meta: {}
     }
   ],
