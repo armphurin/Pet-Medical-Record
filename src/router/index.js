@@ -106,6 +106,13 @@ let router = new Router({
       meta: { requiresAuth: true }
     },
     {
+      path: "/search_result",
+      name: "search-page",
+      component: SearchPage,
+      meta: {},
+      props: true
+    },
+    {
       path: "/search_result/:search_text",
       name: "search-page",
       component: SearchPage,

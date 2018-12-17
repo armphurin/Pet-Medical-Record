@@ -33,11 +33,13 @@
                     <mdb-col md="9">
                         <h4 class="font-weight-bold dark-grey-text">Sattaya Singkul</h4>
                         <div class="d-flex justify-content-between">
-                            <mdb-col col="11" class="text-truncate pl-0 mb-3">
+                            <mdb-col col="9" class="text-truncate pl-0 mb-3">
                                 <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
                                 <p class="dark-grey-text">Hospital: Mahidol Hospital</p>
                             </mdb-col>
-                            <a><mdb-icon icon="angle-double-right"/></a>
+                            <mdb-col col="3" style="display:inline-grid">
+                                <mdb-btn color="info">Add Friend</mdb-btn>
+                            </mdb-col>
                         </div>
                     </mdb-col>
                 </mdb-row>
@@ -56,11 +58,13 @@
                     <mdb-col md="9">
                         <h4 class="font-weight-bold dark-grey-text">Phurin Setanya</h4>
                         <div class="d-flex justify-content-between">
-                            <mdb-col col="11" class="text-truncate pl-0 mb-3">
+                            <mdb-col col="9" class="text-truncate pl-0 mb-3">
                                 <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
                                 <p class="dark-grey-text">Hospital: Setanya Hospital</p>
                             </mdb-col>
-                            <a><mdb-icon icon="angle-double-right"/></a>
+                            <mdb-col col="3" style="display:inline-grid">
+                                <mdb-btn color="info">Add Friend</mdb-btn>
+                            </mdb-col>
                         </div>
                     </mdb-col>
                 </mdb-row>
@@ -79,11 +83,13 @@
                     <mdb-col md="9">
                         <h4 class="font-weight-bold dark-grey-text">Nai Thana</h4>
                         <div class="d-flex justify-content-between">
-                            <mdb-col col="11" class="text-truncate pl-0 mb-3">
+                            <mdb-col col="9" class="text-truncate pl-0 mb-3">
                                 <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
                                 <p class="dark-grey-text">Hospital: Yala Hospital</p>
                             </mdb-col>
-                            <a><mdb-icon icon="angle-double-right"/></a>
+                            <mdb-col col="3" style="display:inline-grid">
+                                <mdb-btn color="info">Add Friend</mdb-btn>
+                            </mdb-col>
                         </div>
                     </mdb-col>
                 </mdb-row>

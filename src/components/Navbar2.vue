@@ -117,9 +117,9 @@ export default {
           if(key == 13){
             alert("enter")
             event.preventDefault();
-            // localStorage.setItem("search_text", this.query)
-            // location.href = "/search_result"+"?="+localStorage.getItem("search_text")
-            router.push({ name: 'search-page' });
+            localStorage.setItem("search_text", this.query)
+            location.href = "/search_result"+"/?="+localStorage.getItem("search_text")
+            // router.push({ name: 'search-page' });
           }
     });
   }
