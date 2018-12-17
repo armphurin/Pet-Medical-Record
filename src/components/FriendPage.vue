@@ -153,40 +153,11 @@ export default {
 </script>
 <style>
 body.body-friendpage {
-  min-height: 100%;
-  width: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background: rgb(52, 160, 217);
-  /* Old browsers */
-  background: -moz-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
-  /* IE6-9 */
+    background: url("../assets/bg_search.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 </style>
 
