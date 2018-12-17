@@ -162,7 +162,7 @@ export default {
 </script>
 <style>
 body.body-friendpage {
-    background: url("../assets/bg_search.jpg") no-repeat center center fixed;
+    background: url("../assets/bg_friend.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

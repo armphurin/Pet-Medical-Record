@@ -367,7 +367,7 @@
     <mdb-card-body>
       <mdb-card-title>Vactsine</mdb-card-title>
       <mdb-card-text>Vactsine disease</mdb-card-text>
-      <mdb-btn color="primary">Plan</mdb-btn>
+      <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
     </mdb-card-body>
   </mdb-card><br>
                             </column>
@@ -377,7 +377,7 @@
     <mdb-card-body>
       <mdb-card-title>Vactsine</mdb-card-title>
       <mdb-card-text>Vactsine disease</mdb-card-text>
-      <mdb-btn color="primary">Plan</mdb-btn>
+      <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
     </mdb-card-body>
   </mdb-card><br>
                             </column>
@@ -387,7 +387,7 @@
     <mdb-card-body>
       <mdb-card-title>Vactsine</mdb-card-title>
       <mdb-card-text>Vactsine disease</mdb-card-text>
-      <mdb-btn color="primary">Plan</mdb-btn>
+      <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
     </mdb-card-body>
   </mdb-card><br>
                             </column>
@@ -397,7 +397,7 @@
     <mdb-card-body>
       <mdb-card-title>Vactsine</mdb-card-title>
       <mdb-card-text>Vactsine disease</mdb-card-text>
-      <mdb-btn color="primary">Plan</mdb-btn>
+      <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
     </mdb-card-body>
   </mdb-card><br>
                             </column>
@@ -407,7 +407,7 @@
     <mdb-card-body>
       <mdb-card-title>Vactsine</mdb-card-title>
       <mdb-card-text>Vactsine disease</mdb-card-text>
-      <mdb-btn color="primary">Plan</mdb-btn>
+      <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
     </mdb-card-body>
   </mdb-card><br>
                             </column>
@@ -417,7 +417,7 @@
     <mdb-card-body>
       <mdb-card-title>Vactsine</mdb-card-title>
       <mdb-card-text>Vactsine disease</mdb-card-text>
-      <mdb-btn color="primary">Plan</mdb-btn>
+      <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
     </mdb-card-body>
   </mdb-card><br>
                             </column>
@@ -427,6 +427,30 @@
             </div>
         </container>
     </div>
+
+    <!-- Popup Add pet -->
+    <modal v-if="popupPlan" @close="popupPlan = false" size="lg">
+        <div class="popup-profile">
+            <modal-header>
+                <modal-title>Planning your Vactsine</modal-title>
+            </modal-header>
+            <modal-body>
+                <row>
+                    <column md="12">
+                        <div class="label-group">
+                            <label for="plandate">Plan Vactsine</label>
+                            <datetime type="datetime" v-model="plandate"></datetime>
+                        </div>
+                    </column>
+                </row>
+            </modal-body>
+            <modal-footer>
+                <btn color="default" @click.native="popupPlan = false">Close</btn>
+                <btn color="primary" @click.native="add_pet">Submit</btn>
+            </modal-footer>
+        </div>
+    </modal>
+    <!-- Popup -->
 </div>
 <!--/.ViewWrapper-->
 </template>
@@ -523,7 +547,7 @@ export default {
         mdbTable,
         mdbTblHead,
         mdbTblBody,
-              mdbCard,
+        mdbCard,
       mdbCardImage,
       mdbCardBody,
       mdbCardTitle,
@@ -536,6 +560,7 @@ export default {
             loading: true,
             popupProfile: false,
             popupPet: false,
+            popupPlan: false,
             progressUpload: 0,
             file: File,
             uploadTask: "",
