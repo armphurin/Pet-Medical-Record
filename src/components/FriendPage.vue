@@ -8,7 +8,10 @@
             <hr>
             <div class="news">
                 <div class="d-flex justify-content-between">
-                    <a class="light-blue-text"><h6 class="font-weight-bold"><mdb-icon icon="street-view" class="pr-2"/>Veterinary</h6></a>
+                    <a class="light-blue-text">
+                        <h6 v-if="owner_user" class="font-weight-bold"><mdb-icon icon="street-view" class="pr-2"/>Veterinary</h6>
+                        <h6 v-if="vet_user" class="font-weight-bold"><mdb-icon icon="street-view" class="pr-2"/>Owner</h6>
+                    </a>
                     <p class="font-weight-bold dark-grey-text">
                         <mdb-icon icon="clock-o" class="pr-2" />20/08/2018</p>
                 </div>
@@ -133,6 +136,12 @@ export default {
     document.body.className = "body-friendpage";
   },
     name: 'friend-page',
+    data: function () {
+    return {
+            owner_user: JSON.parse(localStorage.getItem("ownerUser")),
+            vet_user: JSON.parse(localStorage.getItem("vetUser"))
+        };
+    },
     components: {
         mdbContainer,
         mdbRow,

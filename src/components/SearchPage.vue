@@ -43,7 +43,9 @@
                                 <p class="dark-grey-text">Hospital: Mahidol Hospital</p>
                             </mdb-col>
                             <mdb-col col="3">
-                                <mdb-btn color="info">Add Friend</mdb-btn>
+                                <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
+                                <a v-else-if="vet_user && search_filter != 'veterinary'"><mdb-btn color="info">Add Friend</mdb-btn></a>
+                                <a v-else href="tel:+688912456"><mdb-btn color="info">Call</mdb-btn></a>
                             </mdb-col>
                         </div>
                     </mdb-col>
@@ -68,7 +70,9 @@
                                 <p class="dark-grey-text">Hospital: Setanya Hospital</p>
                             </mdb-col>
                             <mdb-col col="3">
-                                <mdb-btn color="info">Add Friend</mdb-btn>
+                                <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
+                                <a v-else-if="vet_user && search_filter != 'veterinary'"><mdb-btn color="info">Add Friend</mdb-btn></a>
+                                <a v-else href="tel:+688912456"><mdb-btn color="info">Call</mdb-btn></a>
                             </mdb-col>
                         </div>
                     </mdb-col>
@@ -93,7 +97,9 @@
                                 <p class="dark-grey-text">Hospital: Yala Hospital</p>
                             </mdb-col>
                             <mdb-col col="3">
-                                <mdb-btn color="info">Add Friend</mdb-btn>
+                                <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
+                                <a v-else-if="vet_user && search_filter != 'veterinary'"><mdb-btn color="info">Add Friend</mdb-btn></a>
+                                <a v-else href="tel:+688912456"><mdb-btn color="info">Call</mdb-btn></a>
                             </mdb-col>
                         </div>
                     </mdb-col>
@@ -133,7 +139,9 @@ export default {
         return {
             query: null,
             search_text: localStorage.getItem("search_text"),
-            search_filter:"veterinary"
+            search_filter:"veterinary",
+            owner_user: JSON.parse(localStorage.getItem("ownerUser")),
+            vet_user: JSON.parse(localStorage.getItem("vetUser"))
         };
     },
     components: {
