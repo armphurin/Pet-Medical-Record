@@ -6,18 +6,23 @@
         <mdb-col lg="12" md="12">
             <div class="news">
                 <div class="d-flex justify-content-between">
-                    <a class="light-blue-text"><h6 class="font-weight-bold"><mdb-icon icon="street-view" class="pr-2"/>Veterinary</h6></a>
+                    <a class="light-blue-text">
+                        <h6 v-if="search_filter == 'veterinary'" class="font-weight-bold"><mdb-icon icon="street-view" class="pr-2"/>Veterinary</h6>
+                        <h6 v-else-if="search_filter == 'hospital'" class="font-weight-bold"><mdb-icon icon="hotel" class="pr-2"/>Hospital</h6>
+                        <h6 v-else-if="search_filter == 'owner'" class="font-weight-bold"><mdb-icon icon="street-view" class="pr-2"/>Owner</h6>
+                        </a>
                     <p class="font-weight-bold dark-grey-text">
                         <mdb-icon icon="clock-o" class="pr-2" />20/08/2018</p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <h3 class="font-weight-bold dark-grey-text mb-3 p-0"><a>Search Result</a></h3>
-                    <select class="browser-default custom-select mb-3" style="width:20%;">
+                    <select v-model="search_filter" class="browser-default custom-select mb-3" style="width:20%;">
   <option selected value="veterinary">Veterinary</option>
   <option value="hospital">Hospital</option>
+  <option value="owner">Owner</option>
 </select>
                 </div>
-                <p class="dark-grey-text">Search result ...........................................</p>
+                <p class="dark-grey-text">Search result for <b>{{search_text}}</b></p>
             </div>
 
             <div class="news">
@@ -127,7 +132,8 @@ export default {
     data: function () {
         return {
             query: null,
-            search_text: null
+            search_text: localStorage.getItem("search_text"),
+            search_filter:"veterinary"
         };
     },
     components: {

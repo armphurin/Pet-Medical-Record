@@ -12,8 +12,6 @@
       <navbar-item><router-link to="/home_page">Home</router-link></navbar-item>
       <navbar-item><router-link to="/contact">Contact</router-link></navbar-item>
     </navbar-nav>
-      <!-- <navbar-item v-if="!isLoggedIn"><router-link to="/login">Login</router-link></navbar-item>
-      <navbar-item v-if="!isLoggedIn"><router-link to="/register">Register</router-link></navbar-item> -->
       <!-- right -->
       <navbar-nav right>
     <form class="form-inline">
@@ -81,10 +79,6 @@ export default {
     if (firebase.auth().currentUser) {
       this.isLoggedIn = true;
       this.currentUser = firebase.auth().currentUser.email;
-      // if (this.$route.meta.requiresOwner || this.$route.meta.requiresVet) {
-      //   this.ownerUser = this.$route.meta.requiresOwner;
-      //   this.vetUser = this.$route.meta.requiresVet;
-      // }
     }
   },
   methods: {
@@ -103,23 +97,16 @@ export default {
     if (firebase.auth().currentUser) {
       this.isLoggedIn = true;
       this.currentUser = firebase.auth().currentUser.email;
-      // alert(
-      //   "owner:" +
-      //     localStorage.getItem("ownerUser") +
-      //     ", vet:" +
-      //     localStorage.getItem("vetUser")
-      // );
       this.ownerUser = JSON.parse(localStorage.getItem("ownerUser"));
       this.vetUser = JSON.parse(localStorage.getItem("vetUser"));
     }
         document.getElementById('search').addEventListener('keypress', function(event) {
           var key = event.which || event.keyCode;
           if(key == 13){
-            alert("enter"+event.target.value)
+            // alert("enter"+event.target.value)
             event.preventDefault();
             localStorage.setItem("search_text", event.target.value)
             location.href = "/search_result"
-            // router.push({ name: 'search-page' });
           }
     });
   }
