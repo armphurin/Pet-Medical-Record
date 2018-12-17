@@ -69,7 +69,7 @@
                                 <row>
                                     <column>
                                         <div class="label-group">
-                                            <label for="petname">Pet Name</label>
+                                            <label for="petname">Pet Name {{med}}</label>
                                             <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="pet_name" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                     </column>
@@ -122,7 +122,7 @@
 
                     <div class="tab-panel-content">
                         <!-- Medic Content -->
-                        <v-select label="countryName" id="medicSelect" :options="options"></v-select>
+                        <v-select label="case_name" id="medicSelect" :options="med" v-model="selected"></v-select>
                         <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
                         <h2 class="h2-responsive"><strong>Subjective Finding</strong></h2>
                         <hr style="width:100%;margin-bottom:1em;">
@@ -143,19 +143,22 @@
                                             <tr>
                                                 <td align="center">Appetite</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" @click.native="select_appet='norm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" @click.native="select_appet='norm'" v-if="selected.select_appet == 'norm'" checked disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" @click.native="select_appet='norm'"/>
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" @click.native="select_appet='abnorm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" @click.native="select_appet='abnorm'" v-if="selected.select_appet == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" @click.native="select_appet='abnorm'" v-if="selected.select_appet == null" />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" @click.native="select_appet='na'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" @click.native="select_appet='na'" v-if="selected.select_appet == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" @click.native="select_appet='na'" v-if="selected.select_appet == null" />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Drinking</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" @click.native="select_drink='norm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" @click.native="select_drink='norm'" v-if=""/>
                                                 </td>
                                                 <td align="center">
                                                     <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" @click.native="select_drink='abnorm'" />
@@ -246,19 +249,19 @@
                                     <column md="12">
                                         <div class="label-group">
                                             <label for="pettype">Animal ID#</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Animal ID#" id="petid" v-model="petid" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                            <input class="form-control form-control-lg" type="text" placeholder="Animal ID#" id="petid" v-model="selected.name" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                                     </column>
                                     <column md="6">
                                         <div class="label-group">
                                             <label for="petdate">Case Date</label>
-                                            <datetime v-model="petdate"></datetime>
+                                            <datetime v-model="selected.pet_date"></datetime>
                                         </div>
                                     </column>
                                     <column md="6">
                                         <div class="label-group">
                                             <label for="pettime">Case Time</label>
-                                            <datetime type="time" v-model="pettime"></datetime>
+                                            <datetime type="time" v-model="selected.pet_time"></datetime>
                                         </div>
                                     </column>
                                 </row>
@@ -266,7 +269,7 @@
                                     <column md="12">
                                         <div class="label-group">
                                             <label for="spnote">Special Note</label>
-                                            <textarea class="form-control" id="spnote" v-model="contact" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                            <textarea class="form-control" id="spnote" v-model="selected.spnote" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                         </div>
                                     </column>
                                 </row>
@@ -278,73 +281,73 @@
                             <column md="6">
                                 <div class="label-group">
                                     <label for="pettemp">Temp:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Temperature" id="pettemp" v-model="pettemp" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Temperature" id="pettemp" v-model="selected.pet_temp" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                             <column md="6">
                                 <div class="label-group">
                                     <label for="petweight">Weight:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Weight" id="pettweight" v-model="petweight" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Weight" id="pettweight" v-model="selected.pet_weight" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                             <column md="12">
                                 <div class="label-group">
                                     <label for="note">Note:</label>
-                                    <textarea class="form-control" id="note" v-model="note" rows="5" placeholder="Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                    <textarea class="form-control" id="note" v-model="selected.note" rows="5" placeholder="Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                 </div>
                             </column>
                             <column md="12">
                                 <div class="label-group">
-                                    <label for="petdig">Dignos:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Dignos" id="petdig" v-model="petdig" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <label for="petdig">Diagnos:</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Diagnos" id="petdig" v-model="selected.pet_diag" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                             <column md="12">
                                 <div class="label-group">
                                     <label for="pettreat">Treatment/Test:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Treatment and Test" id="pettreat" v-model="pettreat" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Treatment and Test" id="pettreat" v-model="selected.pet_treat" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                             <column md="12">
                                 <div class="label-group">
                                     <label for="petmedic">Medication:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Medication" id="petmedic" v-model="petmedic" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Medication" id="petmedic" v-model="selected.pet_medic" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                             <column md="12">
                                 <div class="label-group">
                                     <label for="petex">Exercise:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Exercise" id="petex" v-model="petex" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Exercise" id="petex" v-model="selected.pet_ex" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                             <column md="12">
                                 <div class="label-group">
                                     <label for="petdirect">Directory Direction:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Directory Direction" id="petdirect" v-model="petdirect" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Directory Direction" id="petdirect" v-model="selected.pet_direct" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                             <column md="12">
                                 <div class="label-group">
                                     <label for="recheck">Recheck Note:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="recheck" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="selected.recheck" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                             <column md="12">
                                 <div class="label-group">
                                     <label for="addition">Additional Instruction:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="addition" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="selected.addition" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                             <column md="6">
                                 <div class="label-group">
                                     <label for="vetsig">Veterinary Signature:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="vetsig" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="selected.vet_sig" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                             <column md="6">
                                 <div class="label-group">
                                     <label for="hossig">Hospital Signature:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" v-model="hossig" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" v-model="selected.hos_sig" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                             </column>
                         </row>
@@ -537,12 +540,15 @@ export default {
     data() {
         return {
             pets: [],
+            med: "",
+            selected: null,
             pet_name: "",
             pet_type: "",
             pet_age: "",
             breed: "",
             color: "",
             marking: "",
+            medical_record: [],
             loading: true,
             popupProfile: false,
             popupPet: false,
@@ -550,6 +556,7 @@ export default {
             file: File,
             uploadTask: "",
             image: "",
+            pettemp: "",
             datebirth: "",
             petbirth: "",
             selected: false,
@@ -592,7 +599,7 @@ export default {
         selectHeader(pet) {
             this.selected = true;
             var allelement = document.getElementsByClassName("selectedHeader");
-            console.log(allelement);
+            // console.log(allelement);
             for (var i = 0; i < allelement.length; i++) {
                 console.log("inloop" + i);
                 allelement[i].classList.remove("selectedHeader");
@@ -606,6 +613,7 @@ export default {
             this.marking = pet.marking;
             this.gender = pet.gender;
             this.color = pet.color;
+            this.med = pet.medical_record;
         },
         calAgePet(e) {
             if (!e) {
@@ -619,15 +627,15 @@ export default {
                 var day = Number(today.getDate()) - Number(split_day[0]);
                 var yearsOld = Number(today.getFullYear()) - year;
                 var monthsOld = today.getMonth() - month;
-                console.log(
-                    "Age : " +
-                    yearsOld +
-                    " years " +
-                    monthsOld +
-                    " months " +
-                    day +
-                    " days "
-                );
+                // console.log(
+                    // "Age : " +
+                    // yearsOld +
+                    // " years " +
+                    // monthsOld +
+                    // " months " +
+                    // day +
+                    // " days "
+                // );
                 if (yearsOld == 0) {
                     return monthsOld + " Months";
                 } else if (yearsOld > 0 && monthsOld > 0) {
@@ -640,7 +648,7 @@ export default {
                     return yearsOld + " Years ";
                 }
             }
-        }
+        },
     },
     created() {
         db.collection("users")
@@ -653,6 +661,7 @@ export default {
                 querySnapshot.forEach(doc => {
                     const data = {
                         id: doc.id,
+                        medical_record: doc.data().medical,
                         pet_id: doc.data().pet_id,
                         name: doc.data().pet_name,
                         breed: doc.data().breed,
@@ -666,17 +675,18 @@ export default {
                         pet_dog: doc.data().pet_dog,
                         pet_cat: doc.data().pet_cat
                     };
-                    console.log(doc.data());
+                    
+                    // console.log(doc.data());
                     this.pets.push(data);
-                });
+                }).
                 this.email = firebase.auth().currentUser.email;
-                console.log(this.email);
+                // console.log(this.email);
                 // console.log(this.pets[0].age)
             });
     },
     mounted() {
         var area_select = document.querySelector(".scrolling-wrapper-flexbox");
-        console.log(area_select.classList);
+        // console.log(area_select.classList);
         var selectH = document.getElementsByClassName("card-header");
         if (selectH.length < 10) {
             area_select.classList.add("scrolling-wrapper-flexbox-min");
