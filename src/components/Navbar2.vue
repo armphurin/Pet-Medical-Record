@@ -19,7 +19,7 @@
     <form class="form-inline">
       <!-- <input class="form-control p-2" type="text" placeholder="Search" aria-label="Search" style="margin-right:10px;"> -->
       <vue-bootstrap-typeahead v-model="query" id="search" :data="['Canada', 'USA', 'Mexico']" placeholder="Search" style="margin-right:10px;"/>
-      <h1>{{query}}</h1>
+      <!-- <h1 style="color:white">{{query}}</h1> -->
     <navbar-item v-if="!isLoggedIn"><router-link to="/login">Login</router-link></navbar-item>
     <navbar-item v-if="!isLoggedIn"><router-link to="/register">Register</router-link></navbar-item>
       <dropdown v-if="isLoggedIn" tag="li" class="nav-item dropdown-custom symbol-custom">
@@ -74,7 +74,7 @@ export default {
       currentUser: false,
       ownerUser: null,
       vetUser: null,
-      query: null
+      query: null//localStorage.getItem("search_text")
     };
   },
   created() {
@@ -115,10 +115,10 @@ export default {
         document.getElementById('search').addEventListener('keypress', function(event) {
           var key = event.which || event.keyCode;
           if(key == 13){
-            alert("enter")
+            alert("enter"+event.target.value)
             event.preventDefault();
-            localStorage.setItem("search_text", this.query)
-            location.href = "/search_result"+"/?="+localStorage.getItem("search_text")
+            localStorage.setItem("search_text", event.target.value)
+            location.href = "/search_result"
             // router.push({ name: 'search-page' });
           }
     });

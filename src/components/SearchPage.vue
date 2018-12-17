@@ -124,6 +124,12 @@ export default {
     document.body.className = "body-searchpage";
   },
     name: 'search-page',
+    data: function () {
+        return {
+            query: null,
+            search_text: null
+        };
+    },
     components: {
         mdbContainer,
         mdbRow,

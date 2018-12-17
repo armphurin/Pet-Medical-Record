@@ -117,7 +117,9 @@ let router = new Router({
       name: "search-page",
       component: SearchPage,
       meta: {},
-      props: true
+      props: {
+        search_text: null
+      }
     },
     {
       path: "/friend",
