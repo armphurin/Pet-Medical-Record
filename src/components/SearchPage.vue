@@ -6,7 +6,7 @@
         <mdb-col lg="12" md="12">
             <div class="news">
                 <div class="d-flex justify-content-between">
-                    <a class="light-blue-text"><h6 class="font-weight-bold"><mdb-icon icon="plane" class="pr-2"/>Veterinary</h6></a>
+                    <a class="light-blue-text"><h6 class="font-weight-bold"><mdb-icon icon="street-view" class="pr-2"/>Veterinary</h6></a>
                     <p class="font-weight-bold dark-grey-text">
                         <mdb-icon icon="clock-o" class="pr-2" />20/08/2018</p>
                 </div>
@@ -37,7 +37,7 @@
                                 <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
                                 <p class="dark-grey-text">Hospital: Mahidol Hospital</p>
                             </mdb-col>
-                            <mdb-col col="3" style="display:inline-grid">
+                            <mdb-col col="3">
                                 <mdb-btn color="info">Add Friend</mdb-btn>
                             </mdb-col>
                         </div>
@@ -62,7 +62,7 @@
                                 <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
                                 <p class="dark-grey-text">Hospital: Setanya Hospital</p>
                             </mdb-col>
-                            <mdb-col col="3" style="display:inline-grid">
+                            <mdb-col col="3">
                                 <mdb-btn color="info">Add Friend</mdb-btn>
                             </mdb-col>
                         </div>
@@ -87,7 +87,7 @@
                                 <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
                                 <p class="dark-grey-text">Hospital: Yala Hospital</p>
                             </mdb-col>
-                            <mdb-col col="3" style="display:inline-grid">
+                            <mdb-col col="3">
                                 <mdb-btn color="info">Add Friend</mdb-btn>
                             </mdb-col>
                         </div>
@@ -144,40 +144,11 @@ export default {
 </script>
 <style>
 body.body-searchpage {
-  min-height: 100%;
-  width: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background: rgb(52, 160, 217);
-  /* Old browsers */
-  background: -moz-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
-  /* IE6-9 */
+      background: url("../assets/bg_search.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 </style>
 

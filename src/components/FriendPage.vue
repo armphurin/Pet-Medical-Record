@@ -8,7 +8,7 @@
             <hr>
             <div class="news">
                 <div class="d-flex justify-content-between">
-                    <a class="light-blue-text"><h6 class="font-weight-bold"><mdb-icon icon="plane" class="pr-2"/>Veterinary</h6></a>
+                    <a class="light-blue-text"><h6 class="font-weight-bold"><mdb-icon icon="street-view" class="pr-2"/>Veterinary</h6></a>
                     <p class="font-weight-bold dark-grey-text">
                         <mdb-icon icon="clock-o" class="pr-2" />20/08/2018</p>
                 </div>
@@ -45,7 +45,7 @@
 
             <div class="news">
                 <div class="d-flex justify-content-between">
-                    <a class="light-blue-text"><h6 class="font-weight-bold"><mdb-icon icon="plane" class="pr-2"/>Veterinary</h6></a>
+                    <a class="light-blue-text"><h6 class="font-weight-bold"><mdb-icon icon="address-book-o" class="pr-2"/>Veterinary</h6></a>
                     <p class="font-weight-bold dark-grey-text">
                         <mdb-icon icon="clock-o" class="pr-2" />20/08/2018</p>
                 </div>
@@ -73,7 +73,7 @@
                                 <p class="dark-grey-text" style="margin-bottom:0px;">Hospital: Setanya Hospital</p>
                                 <p class="dark-grey-text">Telephone: 08123456</p>
                             </mdb-col>
-                            <a href="tel:+6494461709"><mdb-icon icon="angle-double-right"/></a>
+                            <a href="tel:+6494461709"><mdb-icon icon="phone"/></a>
                         </div>
                     </mdb-col>
                 </mdb-row>
@@ -98,7 +98,7 @@
                                 <p class="dark-grey-text" style="margin-bottom:0px;">Hospital: Yala Hospital</p>
                                 <p class="dark-grey-text">Telephone: 08123456</p>
                             </mdb-col>
-                            <a href="tel:+6494461709"><mdb-icon icon="angle-double-right"/></a>
+                            <a href="tel:+6494461709"><mdb-icon icon="phone"/></a>
                         </div>
                     </mdb-col>
                 </mdb-row>
