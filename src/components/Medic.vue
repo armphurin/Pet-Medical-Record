@@ -419,69 +419,121 @@
 
                     <label for="tab-3" tabindex="0" class="tab-panel-label three-tabs"></label>
                     <input id="tab-3" type="radio" name="tabs" aria-hidden="true" />
-                    <h2 class="tab-title three-tabs">Vact</h2>
+                    <h2 class="tab-title three-tabs">Vaccine</h2>
 
                     <div class="tab-panel-content">
-                        <h2 class="h2-responsive"><strong>Vactsine Plan</strong></h2>
+                        <h2 class="h2-responsive"><strong>Vaccine Plan</strong></h2>
                         <hr style="width:100%;margin-bottom:1em;">
-                        <row>
+                        <row v-if="pet_type == 'dog'">
                             <column md="2">
                                 <mdb-card class="vacts">
-                                    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                    <mdb-card-image src="/src/assets/dog/vact_dog_caninedistemper.png" alt="caninedistemper" style="width:100%; height: 80px"></mdb-card-image>
                                     <mdb-card-body>
-                                        <mdb-card-title>Vactsine</mdb-card-title>
-                                        <mdb-card-text>Vactsine disease</mdb-card-text>
-                                        <mdb-btn color="primary">Plan</mdb-btn>
+                                        <mdb-card-title style="font-size:1.2em;">Canine Distemper</mdb-card-title>
+                                        <mdb-card-text>โรคไข้หัดสุนัข</mdb-card-text>
+                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                     </mdb-card-body>
                                 </mdb-card><br>
                             </column>
                                 <column md="2">
                                     <mdb-card class="vacts">
-                                        <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                        <mdb-card-image src="/src/assets/dog/vact_dog_canineparvovirus.png" alt="canineparvovirus" style="width:100%; height: 80px"></mdb-card-image>
                                         <mdb-card-body>
-                                            <mdb-card-title>Vactsine</mdb-card-title>
-                                            <mdb-card-text>Vactsine disease</mdb-card-text>
-                                            <mdb-btn color="primary">Plan</mdb-btn>
+                                            <mdb-card-title style="font-size:1.2em;">Canine Parvovirus</mdb-card-title>
+                                            <mdb-card-text>ลำไส้อักเสบติดต่อ</mdb-card-text>
+                                            <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                         </mdb-card-body>
                                     </mdb-card><br>
                             </column>
                                     <column md="2">
                                         <mdb-card class="vacts">
-                                            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                            <mdb-card-image src="/src/assets/dog/vact_dog_infectiouscaninehepatitis.jpg" alt="infectiouscaninehepatitis" style="width:100%; height: 80px"></mdb-card-image>
                                             <mdb-card-body>
-                                                <mdb-card-title>Vactsine</mdb-card-title>
-                                                <mdb-card-text>Vactsine disease</mdb-card-text>
-                                                <mdb-btn color="primary">Plan</mdb-btn>
+                                                <mdb-card-title style="font-size:1.2em;">Infectious Canine Hepatitis</mdb-card-title>
+                                                <mdb-card-text>โรคตับอักเสบติดต่อ</mdb-card-text>
+                                                <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                             </mdb-card-body>
                                         </mdb-card><br>
                             </column>
                                         <column md="2">
                                             <mdb-card class="vacts">
-                                                <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                                <mdb-card-image src="/src/assets/dog/vact_dog_kennelcough.png" alt="kennelcough" style="width:100%; height: 80px"></mdb-card-image>
                                                 <mdb-card-body>
-                                                    <mdb-card-title>Vactsine</mdb-card-title>
-                                                    <mdb-card-text>Vactsine disease</mdb-card-text>
-                                                    <mdb-btn color="primary">Plan</mdb-btn>
+                                                    <mdb-card-title style="font-size:1.2em;">Kennel Cough</mdb-card-title>
+                                                    <mdb-card-text>โรคหลอดลมอักเสบติดต่อ</mdb-card-text>
+                                                    <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                                 </mdb-card-body>
                                             </mdb-card><br>
                             </column>
                                             <column md="2">
                                                 <mdb-card class="vacts">
-                                                    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                                    <mdb-card-image src="/src/assets/dog/vact_dog_leptospirosis.png" alt="leptospirosis" style="width:100%; height: 80px"></mdb-card-image>
                                                     <mdb-card-body>
-                                                        <mdb-card-title>Vactsine</mdb-card-title>
-                                                        <mdb-card-text>Vactsine disease</mdb-card-text>
-                                                        <mdb-btn color="primary">Plan</mdb-btn>
+                                                        <mdb-card-title style="font-size:1.15em;">Leptospirosis</mdb-card-title>
+                                                        <mdb-card-text>โรคเล็ปโตสไปโรซิส</mdb-card-text>
+                                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                                     </mdb-card-body>
                                                 </mdb-card><br>
                             </column>
                                                 <column md="2">
                                                     <mdb-card class="vacts">
-                                                        <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                                        <mdb-card-image src="/src/assets/dog/vact_dog_rabiesvirus.png" alt="rabiesvirus" style="width:100%; height: 80px"></mdb-card-image>
                                                         <mdb-card-body>
-                                                            <mdb-card-title>Vactsine</mdb-card-title>
-                                                            <mdb-card-text>Vactsine disease</mdb-card-text>
-                                                            <mdb-btn color="primary">Plan</mdb-btn>
+                                                            <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
+                                                            <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
+                                                            <mdb-btn color="info" @click.native="popupPlan = true">Edit</mdb-btn>
+                                                        </mdb-card-body>
+                                                    </mdb-card><br>
+                            </column>
+                        </row>
+                        <row v-if="pet_type == 'cat'">
+                            <column md="2">
+                                <mdb-card class="vacts">
+                                    <mdb-card-image src="/src/assets/cat/vact_cat_felinecalicivirus.PNG" alt="felinecalicivirus" style="width:100%; height: 80px"></mdb-card-image>
+                                    <mdb-card-body>
+                                        <mdb-card-title style="font-size:1.2em;">Feline Calicivirus</mdb-card-title>
+                                        <mdb-card-text>โรคเกิดจากไวรัสพิเศษ</mdb-card-text>
+                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                    </mdb-card-body>
+                                </mdb-card><br>
+                            </column>
+                                <column md="2">
+                                    <mdb-card class="vacts">
+                                        <mdb-card-image src="/src/assets/cat/vact_cat_felineinfectiousperitonitis.png" alt="felineinfectiousperitonitis" style="width:100%; height: 80px"></mdb-card-image>
+                                        <mdb-card-body>
+                                            <mdb-card-title style="font-size:1.2em;">Feline Infectious Peritonitis</mdb-card-title>
+                                            <mdb-card-text>ช่องท้องอักเสบ</mdb-card-text>
+                                            <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                        </mdb-card-body>
+                                    </mdb-card><br>
+                            </column>
+                                    <column md="2">
+                                        <mdb-card class="vacts">
+                                            <mdb-card-image src="/src/assets/cat/vact_cat_felineleukemiavirus.PNG" alt="felineleukemiavirus" style="width:100%; height: 80px"></mdb-card-image>
+                                            <mdb-card-body>
+                                                <mdb-card-title style="font-size:1.2em;">Feline Leukemia Virus</mdb-card-title>
+                                                <mdb-card-text>โรคลิวคีเมีย</mdb-card-text>
+                                                <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                            </mdb-card-body>
+                                        </mdb-card><br>
+                            </column>
+                                        <column md="2">
+                                            <mdb-card class="vacts">
+                                                <mdb-card-image src="/src/assets/cat/vact_cat_felineviralrhinotracheitis.PNG" alt="felineviralrhinotracheitis" style="width:100%; height: 80px"></mdb-card-image>
+                                                <mdb-card-body>
+                                                    <mdb-card-title style="font-size:1.2em;">Feline Viral Rhinotracheitis</mdb-card-title>
+                                                    <mdb-card-text>โรคหวัดแมวและไข้หัดแมว</mdb-card-text>
+                                                    <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                                </mdb-card-body>
+                                            </mdb-card><br>
+                            </column>
+                                                <column md="2">
+                                                    <mdb-card class="vacts">
+                                                        <mdb-card-image src="/src/assets/dog/vact_dog_rabiesvirus.png" alt="rabiesvirus" style="width:100%; height: 80px"></mdb-card-image>
+                                                        <mdb-card-body>
+                                                            <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
+                                                            <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
+                                                            <mdb-btn color="info" @click.native="popupPlan = true">Edit</mdb-btn>
                                                         </mdb-card-body>
                                                     </mdb-card><br>
                             </column>
@@ -496,13 +548,13 @@
     <modal v-if="popupPlan" @close="popupPlan = false" size="lg">
         <div class="popup-profile">
             <modal-header>
-                <modal-title>Planning your Vactsine</modal-title>
+                <modal-title>Planning your Vaccine</modal-title>
             </modal-header>
             <modal-body>
                 <row>
                     <column md="12">
                         <div class="label-group">
-                            <label for="plandate">Plan Vactsine</label>
+                            <label for="plandate">Plan Vaccine</label>
                             <datetime type="datetime" v-model="plandate"></datetime>
                         </div>
                     </column>
