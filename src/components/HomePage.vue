@@ -312,7 +312,7 @@ h6 {
     padding-left: 50px;
   }
   .svg-container-bottom {
-    bottom: -105em;
+    bottom: -106em;
   }
   .svg-container-top {
     height: 9em;
@@ -329,7 +329,7 @@ h6 {
     margin-bottom: 20px;
   }
   .svg-container-bottom {
-    bottom: -60em;
+    bottom: -65em;
   }
 }
 
