@@ -177,11 +177,11 @@
                             <column>
                                 <div class="label-group" v-if="password_change">
                                     <label for="address">Address</label>
-                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled></textarea>
+                                    <textarea class="form-control" id="address" v-model="address" rows="3" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled></textarea>
                                 </div>
                                 <div class="label-group" v-if="!password_change">
                                     <label for="address">Address</label>
-                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" ></textarea>
+                                    <textarea class="form-control" id="address" v-model="address" rows="3" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" ></textarea>
                                 </div>
                             </column>
                         </row>
