@@ -146,7 +146,7 @@
                                             <tr>
                                                 <td align="center">Appetite</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled="disabled"/>
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled/>
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'abnorm'" disabled />
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'na'" disabled />
                                                     <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == null" /> -->
@@ -837,7 +837,7 @@ export default {
     },
     methods: {
         selectHeader(pet) {
-            this.selected = "Create new Medic Case";
+            this.selected = "Select Case";
             var allelement = document.getElementsByClassName("selectedHeader");
             // console.log(allelement);
             for (var i = 0; i < allelement.length; i++) {
@@ -855,8 +855,15 @@ export default {
             this.color = pet.color;
             this.med = pet.medical_record;
             let objHead = {case_name:"Create new Medic Case"};
-            this.med.unshift(objHead)
-            // alert(this.med[0].case_name)
+            if(this.med[0].case_name != "Create new Medic Case"){
+                this.med.unshift(objHead)
+            }
+            if(this.med[0].pet_date != null){
+                console.log(this.headerConcat(this.med[0].pet_date.split("T")[0],this.med[0].pet_treat))
+            }
+        },
+        headerConcat(date, head){
+            return date+": "+head;
         },
         calAgePet(e) {
             if (!e) {
@@ -987,8 +994,9 @@ body.body-medic {
 }
 
 /* checkbox and radio style */
-/* .form-check-label label[disabled="disabled"]{
-    background-color: white !important;
+/* input[type="radio"]:disabled:not([readonly])+label{
+    background-color: white;
+    color:white;
 } */
 
 input[type="checkbox"],
