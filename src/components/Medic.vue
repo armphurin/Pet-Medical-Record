@@ -38,6 +38,7 @@
                     <h2 class="tab-title three-tabs">Profile</h2>
 
                     <div class="tab-panel-content">
+                        <div v-if="pet_type">
                         <row class="medic-content">
                             <column md="4">
                                 <row class="text-center">
@@ -114,6 +115,7 @@
                                 </div>
                             </column>
                         </row>
+                        </div>
                     </div>
 
                     <label for="tab-2" tabindex="0" class="tab-panel-label three-tabs"></label>
@@ -121,6 +123,7 @@
                     <h2 class="tab-title three-tabs">Medic</h2>
 
                     <div class="tab-panel-content">
+                        <div v-if="pet_type">
                         <!-- Medic Content -->
                         <v-select label="case_name" id="medicSelect" :options="med" v-model="selected"></v-select>
                         <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
@@ -415,6 +418,7 @@
                             <btn color="default" @click.native="popupAddPet = false">Reset</btn>
                             <btn color="primary" @click.native="add_pet">Submit</btn>
                         </row>
+                        </div>
                     </div>
 
                     <label for="tab-3" tabindex="0" class="tab-panel-label three-tabs"></label>
@@ -422,6 +426,7 @@
                     <h2 class="tab-title three-tabs">Vaccine</h2>
 
                     <div class="tab-panel-content">
+                        <div v-if="pet_type">
                         <h2 class="h2-responsive"><strong>Vaccine Plan</strong></h2>
                         <hr style="width:100%;margin-bottom:1em;">
                         <row v-if="pet_type == 'dog'">
@@ -538,6 +543,7 @@
                                                     </mdb-card><br>
                             </column>
                         </row>
+                    </div>
                     </div>
                 </div>
             </div>
