@@ -240,7 +240,9 @@ export default {
                                                 address: this.address,
                                                 datebirth: this.datebirth,
                                                 urlImageProfile: url,
-                                                user_type: "owner"
+                                                user_type: "owner",
+                                                friend_req : [],
+                                                friend_list : []
                                             }).then(user => {
                                                 swal({
                                                     title: "Register Status",
@@ -298,7 +300,9 @@ export default {
                                         address: this.address,
                                         datebirth: this.datebirth,
                                         user_type: "owner",
-                                        urlImageProfile: ""
+                                        urlImageProfile: "",
+                                        friend_req : [],
+                                        friend_list : []
                                     }).then(user => {
                                         swal({
                                             title: "Register Status",

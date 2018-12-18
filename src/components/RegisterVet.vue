@@ -267,7 +267,9 @@ export default {
                               address: this.address,
                               datebirth: this.datebirth,
                               urlImageProfile: url,
-                              user_type: "vet"
+                              user_type: "vet",
+                              friend_req : [],
+                              friend_list : []
                             })
                             .then(user => {
                               swal({
@@ -327,7 +329,9 @@ export default {
                       hospital: this.hospital,
                       datebirth: this.datebirth,
                       user_type: "vet",
-                      urlImageProfile: ""
+                      urlImageProfile: "",
+                      friend_req : [],
+                      friend_list : []
                     })
                     .then(user => {
                       swal({
