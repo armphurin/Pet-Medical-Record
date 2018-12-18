@@ -79,8 +79,16 @@
                                 <row>
                                     <column>
                                         <div class="label-group">
+                                            <label for="hospital">Hospital Name</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="hospial name" id="hispital" v-model="hospital" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                        </div>
+                                    </column>
+                                </row>
+                                <row>
+                                    <column>
+                                        <div class="label-group">
                                             <label for="address">Hospital Address</label>
-                                            <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Hospital Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                            <textarea class="form-control" id="address" v-model="address" rows="2" placeholder="Hospital Address" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                         </div>
                                     </column>
                                 </row>
@@ -171,7 +179,8 @@ export default {
       confpassword: "",
       datebirth: "",
       visible: false,
-      file_pic: null
+      file_pic: null,
+      hospital:""
     };
   },
   components: {
@@ -218,6 +227,9 @@ export default {
       if (!this.datebirth) {
         count_input_empty = count_input_empty.concat("datebirth, ");
       }
+      if (!this.hospital) {
+        count_input_empty = count_input_empty.concat("Hospital name, ");
+      }
       if (!count_input_empty) {
         if (this.password == this.confpassword) {
           if (this.file_pic) {
@@ -251,6 +263,7 @@ export default {
                               fullname: this.fullname,
                               vet_id: this.vet_id,
                               telephone_number: this.telephone,
+                              hospital: this.hospital,
                               address: this.address,
                               datebirth: this.datebirth,
                               urlImageProfile: url,
@@ -266,9 +279,9 @@ export default {
                                 showConfirmButton: false,
                                 timer: 1500
                               }).then(result => {
-                                this.$router.go({
-                                  path: this.$router.path
-                                });
+                                localStorage.setItem("ownerUser", false);
+                                localStorage.setItem("vetUser", true);
+                                location.href = "/home_vet";
                               });
                             });
                         });
@@ -311,6 +324,7 @@ export default {
                       vet_id: this.vet_id,
                       telephone_number: this.telephone,
                       address: this.address,
+                      hospital: this.hospital,
                       datebirth: this.datebirth,
                       user_type: "vet",
                       urlImageProfile: ""
@@ -323,9 +337,9 @@ export default {
                         showConfirmButton: false,
                         timer: 1500
                       }).then(result => {
-                        this.$router.go({
-                          path: this.$router.path
-                        });
+                        localStorage.setItem("ownerUser", false);
+                        localStorage.setItem("vetUser", true);
+                        location.href = "/home_vet";
                       });
                     });
                 },
