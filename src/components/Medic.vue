@@ -146,7 +146,7 @@
                                             <tr>
                                                 <td align="center">Appetite</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled="disabled"/>
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled/>
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'abnorm'" disabled />
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'na'" disabled />
                                                     <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == null" /> -->
@@ -987,8 +987,9 @@ body.body-medic {
 }
 
 /* checkbox and radio style */
-/* .form-check-label label[disabled="disabled"]{
-    background-color: white !important;
+/* input[type="radio"]:disabled:not([readonly])+label{
+    background-color: white;
+    color:white;
 } */
 
 input[type="checkbox"],
