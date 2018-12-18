@@ -21,6 +21,7 @@
                 </div>
                         <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
                             <div>
+                              <btn type="button" class="btn btn-label text-center">Case List</btn><br>
                                 <h3 class="content-label">My Case List</h3>
                         </div>
                             </div>
