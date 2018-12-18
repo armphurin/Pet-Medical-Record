@@ -25,22 +25,51 @@
                         <p class="dark-grey-text">Search result for <b>{{search_text}}</b></p>
                     </div>
 
-                    <div class="news">
+                    <div v-for="q in query" v-bind:key="q.fullname" class="news" v-if="(q.user_type == 'vet' && search_filter == 'veterinary') || (q.user_type == 'vet' && search_filter == 'hospital')">
                         <mdb-row>
                             <mdb-col md="3">
                                 <mdb-view hover rounded class="z-depth-1-half mb-4">
-                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/photo8.jpg" alt="Sample image"/>
+                                    <img class="img-fluid" :src="q.img" v-if="q.img" alt="Sample image"/>
+                                    <img class="img-fluid" src="../assets/pic_owner.png" v-if="!q.img" alt="Sample image"/>
                                     <a>
                   <mdb-mask overlay="white-slight" class="waves-light"/>
                 </a>
                                 </mdb-view>
                             </mdb-col>
                             <mdb-col md="9">
-                                <h4 class="font-weight-bold dark-grey-text">Sattaya Singkul</h4>
+                                <h4 class="font-weight-bold dark-grey-text">{{q.fullname}}</h4>
                                 <div class="d-flex justify-content-between">
                                     <mdb-col col="9" class="text-truncate pl-0 mb-3">
-                                        <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
-                                        <p class="dark-grey-text">Hospital: Mahidol Hospital</p>
+                                        <p class="dark-grey-text" style="margin-bottom:0px;" v-if="q.user_type =='vet'">Veterinary ID: {{q.vet_id}} </p>
+                                        <p class="dark-grey-text" v-if="q.user_type == 'vet'">Hospital Adress: {{q.address}}</p>
+                                    </mdb-col>
+                                    <mdb-col col="3">
+                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
+                                        <a v-else-if="owner_user && search_filter == 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
+                                        <a v-else :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
+                                    </mdb-col>
+                                </div>
+                            </mdb-col>
+                        </mdb-row>
+                    </div>
+
+                    <div v-for="q in query" v-bind:key="q.id" class="news" v-if="(q.user_type == 'owner' && search_filter == 'owner')">
+                        <mdb-row>
+                            <mdb-col md="3">
+                                <mdb-view hover rounded class="z-depth-1-half mb-4">
+                                    <img class="img-fluid" :src="q.img" v-if="q.img" alt="Sample image"/>
+                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/54.jpg" v-if="!q.img" alt="Sample image"/>
+                                    <a>
+                  <mdb-mask overlay="white-slight" class="waves-light"/>
+                </a>
+                                </mdb-view>
+                            </mdb-col>
+                            <mdb-col md="9">
+                                <h4 class="font-weight-bold dark-grey-text">{{q.fullname}}</h4>
+                                <div class="d-flex justify-content-between">
+                                    <mdb-col col="9" class="text-truncate pl-0 mb-3">
+                                        <p class="dark-grey-text" style="margin-bottom:0px;">Line ID: {{q.line_id}}</p>
+                                        <p class="dark-grey-text">Address: {{q.address}}</p>
                                     </mdb-col>
                                     <mdb-col col="3">
                                         <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
@@ -52,59 +81,6 @@
                         </mdb-row>
                     </div>
 
-                    <div class="news">
-                        <mdb-row>
-                            <mdb-col md="3">
-                                <mdb-view hover rounded class="z-depth-1-half mb-4">
-                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/54.jpg" alt="Sample image"/>
-                                    <a>
-                  <mdb-mask overlay="white-slight" class="waves-light"/>
-                </a>
-                                </mdb-view>
-                            </mdb-col>
-                            <mdb-col md="9">
-                                <h4 class="font-weight-bold dark-grey-text">Phurin Setanya</h4>
-                                <div class="d-flex justify-content-between">
-                                    <mdb-col col="9" class="text-truncate pl-0 mb-3">
-                                        <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
-                                        <p class="dark-grey-text">Hospital: Setanya Hospital</p>
-                                    </mdb-col>
-                                    <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else-if="vet_user && search_filter == 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else href="tel:+688912456"><mdb-btn color="info">Call</mdb-btn></a>
-                                    </mdb-col>
-                                </div>
-                            </mdb-col>
-                        </mdb-row>
-                    </div>
-
-                    <div class="mb-4">
-                        <mdb-row>
-                            <mdb-col md="3">
-                                <mdb-view hover rounded class="z-depth-1-half mb-4">
-                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Sample image"/>
-                                    <a>
-                  <mdb-mask overlay="white-slight" class="waves-light"/>
-                </a>
-                                </mdb-view>
-                            </mdb-col>
-                            <mdb-col md="9">
-                                <h4 class="font-weight-bold dark-grey-text">Nai Thana</h4>
-                                <div class="d-flex justify-content-between">
-                                    <mdb-col col="9" class="text-truncate pl-0 mb-3">
-                                        <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
-                                        <p class="dark-grey-text">Hospital: Yala Hospital</p>
-                                    </mdb-col>
-                                    <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else-if="vet_user && search_filter == 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else href="tel:+688912456"><mdb-btn color="info">Call</mdb-btn></a>
-                                    </mdb-col>
-                                </div>
-                            </mdb-col>
-                        </mdb-row>
-                    </div>
                 </mdb-col>
             </mdb-row>
 
@@ -129,6 +105,8 @@ import {
     mdbCardText,
     mdbBtn
 } from 'mdbvue';
+import db from "./firebaseInit";
+import firebase from "firebase";
 
 export default {
     beforeCreate: function () {
@@ -137,7 +115,7 @@ export default {
     name: 'search-page',
     data: function () {
         return {
-            query: null,
+            query: [],
             search_text: localStorage.getItem("search_text"),
             search_filter: "veterinary",
             owner_user: JSON.parse(localStorage.getItem("ownerUser")),
@@ -159,6 +137,26 @@ export default {
         mdbCardText,
         mdbBtn
     },
+    created() {
+        var userRef = db.collection("users")
+        var query = userRef.where("fullname", "==", this.search_text)
+        query.get().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                const data = {
+                    id: doc.id,
+                    fullname: doc.data().fullname,
+                    line_id: doc.data().line_id,
+                    user_type: doc.data().user_type,
+                    tel: doc.data().telephone_number,
+                    address: doc.data().address,
+                    vet_id: doc.data().vet_id,
+                    img: doc.data().urlImageProfile
+                }
+                this.query.push(data);
+            })
+            console.log(this.query)
+        });
+    }
 
 };
 </script>
