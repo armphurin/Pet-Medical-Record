@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <div class="news">
+            <div class="news" id="req1">
                 <mdb-row>
                     <mdb-col md="3">
                         <mdb-view hover rounded class="z-depth-1-half mb-4">
@@ -38,8 +38,8 @@
                                 <p class="dark-grey-text">Hospital: Mahidol Hospital</p>
                             </mdb-col>
                             <mdb-col col="4" style="display:inline-grid">
-                                <mdb-btn color="primary">Accepted</mdb-btn>
-                                <mdb-btn color="danger">Decline</mdb-btn>
+                                <mdb-btn color="primary">Accept</mdb-btn>
+                                <mdb-btn color="danger" @click.native="deleteRequest($event)">Decline</mdb-btn>
                             </mdb-col>
                         </div>
                     </mdb-col>
@@ -108,7 +108,6 @@
             </div>
         </mdb-col>
     </mdb-row>
-
 </mdb-container>
     </mdb-card-body>
   </mdb-card>
@@ -157,6 +156,16 @@ export default {
       mdbCardText,
       mdbBtn
     },
+    methods:{
+        deleteRequest(e) {
+            // alert("section");
+            // this.selected = true;
+            e.target.className += " deleteRequest";
+            document.getElementById("req1").className += " deleteRequest"
+            alert(e.target.className);
+            alert(document.getElementById("req1"));
+        }
+    }
 
 };
 </script>
@@ -177,5 +186,16 @@ body.body-friendpage {
 }
 .card.searchcard{
     margin-top: 5em;
+}
+
+/* fade hiddem */
+.deleteRequest{
+    /* display:none; */
+    animation: delete-fadeout .3s ease-out;
+}
+
+@-webkit-keyframes delete-fadeout {
+      0% { opacity: 1; -webkit-transform: translateY(0); }   
+    100% { opacity: 0; -webkit-transform: translateY(-100%); }
 }
 </style>
