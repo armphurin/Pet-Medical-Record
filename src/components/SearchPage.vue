@@ -44,8 +44,8 @@
                                         <p class="dark-grey-text" v-if="q.user_type == 'vet'">Hospital Adress: {{q.address}}</p>
                                     </mdb-col>
                                     <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info" @click.native="addfriend(q.id)">Add Friend</mdb-btn></a>
-                                        <a v-else-if="owner_user && search_filter == 'owner'"><mdb-btn color="info" @click.native="addfriend(q.id)">Add Friend</mdb-btn></a>
+                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="owner_user && search_filter == 'owner'"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
                                         <a v-else :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
                                     </mdb-col>
                                 </div>
@@ -72,8 +72,8 @@
                                         <p class="dark-grey-text">Address: {{q.address}}</p>
                                     </mdb-col>
                                     <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info" @click.native="addfriend(q.id)">Add Friend</mdb-btn></a>
-                                        <a v-else-if="vet_user && search_filter == 'owner'"><mdb-btn color="info" @click.native="addfriend(q.id)">Add Friend</mdb-btn></a>
+                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="vet_user && search_filter == 'owner'"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
                                         <a v-else :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
                                     </mdb-col>
                                 </div>
@@ -107,6 +107,7 @@ import {
 } from 'mdbvue';
 import db from "./firebaseInit";
 import firebase from "firebase";
+import swal from "sweetalert2";
 
 export default {
     beforeCreate: function () {
@@ -138,12 +139,27 @@ export default {
         mdbBtn
     },
     methods: {
-    addfriend(id) {
+    addfriend(q) {
         // console.log(id)
+        const toast = swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000
+      });
         var current = firebase.auth().currentUser.email;
-        db.collection("users").doc(id).update({
-            
-        })
+        q.friend_req[current] = true
+        console.log(q.friend_req)
+        // db.collection("users").doc(q.id).update({
+        //     friend_req : q.friend_req
+        // }).then(user=>{
+        //     toast({
+        //                 type: "success",
+        //                 title: "Update pet successfully"
+        //               }).then(result => {
+        //                 // this.$router.go(this.$route.path);
+        //               });
+        // })
     }
   },
     created() {

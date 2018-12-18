@@ -268,8 +268,8 @@ export default {
                               datebirth: this.datebirth,
                               urlImageProfile: url,
                               user_type: "vet",
-                              friend_req : [],
-                              friend_list : []
+                              friend_req : {},
+                              friend_list : {}
                             })
                             .then(user => {
                               swal({
@@ -330,8 +330,8 @@ export default {
                       datebirth: this.datebirth,
                       user_type: "vet",
                       urlImageProfile: "",
-                      friend_req : [],
-                      friend_list : []
+                      friend_req : {},
+                      friend_list : {}
                     })
                     .then(user => {
                       swal({
