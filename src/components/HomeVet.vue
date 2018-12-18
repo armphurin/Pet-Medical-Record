@@ -1467,7 +1467,7 @@ input::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 11em;
+    margin-bottom: 21.5em;
   }
 
   .intro-section .btn {
@@ -1531,6 +1531,21 @@ input::placeholder {
     width: 50%;
   }
 }
+
+/*Pixel2XL Portrait*/
+@media only screen and (min-width: 411px) and (max-width: 412px) and (max-height: 825px) and (orientation: portrait) {
+  .home-owner {
+    margin-bottom: 27em;
+  }
+}
+
+/*iPhone X Portrait*/
+@media only screen and (min-width: 375px) and (max-width: 400px) and (max-height: 815px) and (orientation: portrait) {
+  .home-owner {
+    margin-bottom: 26.5em;
+  }
+}
+
 
 /*iPad Portrait*/
 @media only screen and (min-width: 760px) and (orientation: portrait) {

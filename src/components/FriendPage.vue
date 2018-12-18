@@ -231,8 +231,8 @@ body.body-friendpage {
 
 /*iPad Pro Portrait*/
 @media only screen and (min-width: 1000px) and (orientation: portrait) {
-    .footer-copyright{
-        margin-top: 24em;
+    .searchcard{
+        margin-bottom: 21.5em;
     }
 }
 

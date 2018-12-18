@@ -180,4 +180,41 @@ body.body-searchpage {
 .card.searchcard {
     margin-top: 5em;
 }
+
+/*Common Mobile Portrait*/
+@media only screen and (min-width: 370px) and (max-width: 600px) {
+    .col-3 .btn{
+        width: 5em;
+        padding-left: 0px;
+        left: -30%;
+        padding-right: 0px;
+        top: -10%;
+    }
+}
+
+/*Samsung Galaxy S5 and iPhone 5 Portrait*/
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+    .text-truncate{
+    overflow: visible;
+    }
+
+    .col-3{
+        left: -82%;
+        margin-top: 4em;
+        margin-bottom: 1.5em;
+    }
+
+    .col-3 .btn{
+        width: 5em;
+        padding-left: 0px;
+        left: -20%;
+        padding-right: 0px;
+        top: -10%;
+    }  
+
+    .browser-default{
+        margin-left: 1em;
+    }
+}
+
 </style>
