@@ -163,6 +163,18 @@
                         </row>
                         <row>
                             <column>
+                                <div class="label-group" v-if="hospital">
+                                    <label for="hospital">Hospital Name</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Hospital Name" id="hospital" v-model="hospital" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                </div>
+                                <div class="label-group" v-if="!hospital">
+                                    <label for="hospital">Hospital Name</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Hospital Name" id="hospital" v-model="hospital" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
                                 <div class="label-group" v-if="password_change">
                                     <label for="address">Address</label>
                                     <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled></textarea>
@@ -474,7 +486,8 @@ export default {
       addImagePet: null,
       showImagePet: null,
       file_pic: null,
-      petimage_pic: null
+      petimage_pic: null,
+      hospital:""
     };
   },
   methods: {
@@ -576,6 +589,9 @@ export default {
           if (!this.address) {
             return false;
           }
+          if (!this.hospital) {
+            return false;
+          }
           if (!this.telephone) {
             return false;
           }
@@ -598,6 +614,9 @@ export default {
             return false;
           }
           if (!this.address) {
+            return false;
+          }
+          if (!this.hospital) {
             return false;
           }
           if (!this.telephone) {
@@ -992,6 +1011,7 @@ export default {
                         vet_id: this.vetid,
                         telephone_number: this.telephone,
                         address: this.address,
+                        hospital: this.hospital,
                         urlImageProfile: url
                       })
                       .then(user => {
@@ -1013,7 +1033,8 @@ export default {
                 fullname: this.fullname,
                 vet_id: this.vetid,
                 telephone_number: this.telephone,
-                address: this.address
+                address: this.address,
+                hospital: this.hospital
               })
               .then(user => {
                 toast({
@@ -1204,6 +1225,7 @@ export default {
         this.fullname = doc.data().fullname;
         this.vetid = doc.data().vet_id;
         this.address = doc.data().address;
+        this.hospital = doc.data().hospital;
         this.password = doc.data().password;
         this.telephone = doc.data().telephone_number;
         this.gender = doc.data().gender;
