@@ -266,9 +266,9 @@ export default {
                                 showConfirmButton: false,
                                 timer: 1500
                               }).then(result => {
-                                this.$router.go({
-                                  path: this.$router.path
-                                });
+                                localStorage.setItem("ownerUser", false);
+                                localStorage.setItem("vetUser", true);
+                                location.href = "/home_vet";
                               });
                             });
                         });
@@ -323,9 +323,9 @@ export default {
                         showConfirmButton: false,
                         timer: 1500
                       }).then(result => {
-                        this.$router.go({
-                          path: this.$router.path
-                        });
+                        localStorage.setItem("ownerUser", false);
+                        localStorage.setItem("vetUser", true);
+                        location.href = "/home_vet";
                       });
                     });
                 },

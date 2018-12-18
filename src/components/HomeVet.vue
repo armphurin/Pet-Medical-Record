@@ -21,8 +21,7 @@
                 </div>
                         <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
                             <div>
-                                <h3 class="content-label">My Pet List</h3>
-                                <btn type="button" class="btn btn-label text-center" @click.native="popupAddPet=true;">Add Pet</btn><br>
+                                <h3 class="content-label">My Case List</h3>
                         </div>
                             </div>
                             <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
@@ -264,15 +263,15 @@
             </modal-body>
             <modal-footer>
                 <btn color="default" @click.native="popupPet = false,show_pet.pop()">Close</btn>
-                <btn color="danger" @click.native="deletePet">Delete</btn>
-                <btn color="primary" @click.native="updatePet">Save changes</btn>
+                <!-- <btn color="danger" @click.native="deletePet">Delete</btn>
+                <btn color="primary" @click.native="updatePet">Save changes</btn> -->
             </modal-footer>
         </div>
     </modal>
     <!-- Popup -->
 
     <!-- Popup Add pet -->
-    <modal v-if="popupAddPet" @close="popupAddPet = false" size="lg">
+    <!-- <modal v-if="popupAddPet" @close="popupAddPet = false" size="lg">
         <div class="popup-profile">
             <modal-header>
                 <modal-title>My Pet Card</modal-title>
@@ -280,7 +279,6 @@
             <modal-body>
                 <row style="padding:1em;">
                     <column class="col-md-5">
-                        <!-- picture -->
                         <div class="image-upload">
                             <label for="wizard-picturePro">
                               <img :src="showImagePet" class="picture-src picturePro" id="wizardPicturePreviewPro" style="object-fit: cover; border-radius: 50%;"/>
@@ -350,7 +348,7 @@
                 <btn color="primary" @click.native="add_pet">Submit</btn>
             </modal-footer>
         </div>
-    </modal>
+    </modal> -->
     <!-- Popup -->
 </div>
 <!--/.ViewWrapper-->
