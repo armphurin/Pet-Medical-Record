@@ -837,7 +837,7 @@ export default {
     },
     methods: {
         selectHeader(pet) {
-            this.selected = "Create new Medic Case";
+            this.selected = "Select Case";
             var allelement = document.getElementsByClassName("selectedHeader");
             // console.log(allelement);
             for (var i = 0; i < allelement.length; i++) {
@@ -855,8 +855,15 @@ export default {
             this.color = pet.color;
             this.med = pet.medical_record;
             let objHead = {case_name:"Create new Medic Case"};
-            this.med.unshift(objHead)
-            // alert(this.med[0].case_name)
+            if(this.med[0].case_name != "Create new Medic Case"){
+                this.med.unshift(objHead)
+            }
+            if(this.med[0].pet_date != null){
+                console.log(this.headerConcat(this.med[0].pet_date.split("T")[0],this.med[0].pet_treat))
+            }
+        },
+        headerConcat(date, head){
+            return date+": "+head;
         },
         calAgePet(e) {
             if (!e) {
