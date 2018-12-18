@@ -143,100 +143,157 @@
                                             <tr>
                                                 <td align="center">Appetite</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" @click.native="select_appet='norm'" v-if="selected.select_appet == 'norm'" checked disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" @click.native="select_appet='norm'"/>
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="norm" value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled
+                                                     />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'na'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == null" />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" @click.native="select_appet='abnorm'" v-if="selected.select_appet == 'norm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" @click.native="select_appet='abnorm'" v-if="selected.select_appet == null" />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="abnorm" value="abnorm" v-if="selected.select_appet == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'abnorm'" checked="checked" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'na'" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == null"/>
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" @click.native="select_appet='na'" v-if="selected.select_appet == 'norm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" @click.native="select_appet='na'" v-if="selected.select_appet == null" />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="na" value="na" v-if="selected.select_appet == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'abnrom'" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'na'" checked="checked" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == null" />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Drinking</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" @click.native="select_drink='norm'" v-if=""/>
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'norm'" checked="checked" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'abnorm'" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'na'" disabled/>
+                                                
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" @click.native="select_drink='abnorm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'norm'" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'abnorm'" checked="checked" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'na'" disabled/>
+                                                
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" @click.native="select_drink='na'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'norm'" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'abnorm'" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'na'" checked="checked" disabled/>
+                                               
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Coughing</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" @click.native="select_cough='norm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'norm'" checked="checked" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'na'" disabled />
+                                                
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" @click.native="select_cough='abnorm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'abnorm'" checked="checked" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'na'" disabled />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" @click.native="select_cough='na'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'norm'" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'na'" checked="checked" disabled/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Sneezing</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" @click.native="select_sneez='norm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'norm'" checked="checked" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'abnorm'" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'na'" disabled/>
+                                                
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" @click.native="select_sneez='abnorm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'norm'"  disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'abnorm'" checked="checked" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'na'" disabled/>
+                                                
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" @click.native="select_sneez='na'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'norm'"  disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'abnorm'" disabled/>
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'na'" checked="checked" disabled/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Attitude</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" @click.native="select_att='norm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'norm'" checked="checked" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'na'" disabled />
+                                                
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" @click.native="select_att='abnorm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'na'" checked="checked" disabled />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" @click.native="select_att='na'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'na'"checked="checked" disabled />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Vomiting</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" @click.native="select_vom='norm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'norm'" checked="checked" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'na'" disabled  />
+                                                
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" @click.native="select_vom='abnorm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'norm'"  disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'abnorm'" checked="checked" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'na'" disabled  />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" @click.native="select_vom='na'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'norm'"  disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'na'" checked="checked" disabled  />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Bowels</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" @click.native="select_bow='norm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'norm'" checked="checked" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'na'" disabled  />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" @click.native="select_bow='abnorm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'norm'"  disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'abnorm'" checked="checked" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'na'" disabled  />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" @click.native="select_bow='na'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'norm'"  disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'na'" checked="checked" disabled  />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Urination</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" @click.native="select_uri='norm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'norm'" checked="checked" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'na'" disabled  />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" @click.native="select_uri='abnorm'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'abnorm'" checked="checked" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'na'" disabled  />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" @click.native="select_uri='na'" />
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'abnorm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'na'" checked="checked" disabled  />
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -275,7 +332,7 @@
                                 </row>
                             </column>
                         </row>
-                        <h2 class="h2-responsive"><strong>Objective Finding</strong></h2>
+                        <h2 class="h2-responsive"><strong>Summary</strong></h2>
                         <hr style="width:100%;margin-bottom:1em;">
                         <row>
                             <column md="6">
