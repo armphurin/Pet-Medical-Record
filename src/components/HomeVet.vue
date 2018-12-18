@@ -21,8 +21,8 @@
                 </div>
                         <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
                             <div>
-                                <h3 class="content-label">My Pet List</h3>
-                                <btn type="button" class="btn btn-label text-center" @click.native="popupAddPet=true;">Add Pet</btn><br>
+                              <btn type="button" class="btn btn-label text-center">Case List</btn><br>
+                                <h3 class="content-label">My Case List</h3>
                         </div>
                             </div>
                             <div class="white-text text-center text-md-center col-md-12 mt-xl-12 mb-12">
@@ -164,13 +164,25 @@
                         </row>
                         <row>
                             <column>
+                                <div class="label-group" v-if="hospital">
+                                    <label for="hospital">Hospital Name</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Hospital Name" id="hospital" v-model="hospital" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                </div>
+                                <div class="label-group" v-if="!hospital">
+                                    <label for="hospital">Hospital Name</label>
+                                    <input class="form-control form-control-lg" type="text" placeholder="Hospital Name" id="hospital" v-model="hospital" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                </div>
+                            </column>
+                        </row>
+                        <row>
+                            <column>
                                 <div class="label-group" v-if="password_change">
                                     <label for="address">Address</label>
-                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled></textarea>
+                                    <textarea class="form-control" id="address" v-model="address" rows="3" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled></textarea>
                                 </div>
                                 <div class="label-group" v-if="!password_change">
                                     <label for="address">Address</label>
-                                    <textarea class="form-control" id="address" v-model="address" rows="5" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" ></textarea>
+                                    <textarea class="form-control" id="address" v-model="address" rows="3" placeholder="Address" style="width:100%;margin: 0 auto;border-radius: 13px;" ></textarea>
                                 </div>
                             </column>
                         </row>
@@ -264,15 +276,15 @@
             </modal-body>
             <modal-footer>
                 <btn color="default" @click.native="popupPet = false,show_pet.pop()">Close</btn>
-                <btn color="danger" @click.native="deletePet">Delete</btn>
-                <btn color="primary" @click.native="updatePet">Save changes</btn>
+                <!-- <btn color="danger" @click.native="deletePet">Delete</btn>
+                <btn color="primary" @click.native="updatePet">Save changes</btn> -->
             </modal-footer>
         </div>
     </modal>
     <!-- Popup -->
 
     <!-- Popup Add pet -->
-    <modal v-if="popupAddPet" @close="popupAddPet = false" size="lg">
+    <!-- <modal v-if="popupAddPet" @close="popupAddPet = false" size="lg">
         <div class="popup-profile">
             <modal-header>
                 <modal-title>My Pet Card</modal-title>
@@ -280,7 +292,6 @@
             <modal-body>
                 <row style="padding:1em;">
                     <column class="col-md-5">
-                        <!-- picture -->
                         <div class="image-upload">
                             <label for="wizard-picturePro">
                               <img :src="showImagePet" class="picture-src picturePro" id="wizardPicturePreviewPro" style="object-fit: cover; border-radius: 50%;"/>
@@ -350,7 +361,7 @@
                 <btn color="primary" @click.native="add_pet">Submit</btn>
             </modal-footer>
         </div>
-    </modal>
+    </modal> -->
     <!-- Popup -->
 </div>
 <!--/.ViewWrapper-->
@@ -476,7 +487,8 @@ export default {
       addImagePet: null,
       showImagePet: null,
       file_pic: null,
-      petimage_pic: null
+      petimage_pic: null,
+      hospital:""
     };
   },
   methods: {
@@ -578,6 +590,9 @@ export default {
           if (!this.address) {
             return false;
           }
+          if (!this.hospital) {
+            return false;
+          }
           if (!this.telephone) {
             return false;
           }
@@ -600,6 +615,9 @@ export default {
             return false;
           }
           if (!this.address) {
+            return false;
+          }
+          if (!this.hospital) {
             return false;
           }
           if (!this.telephone) {
@@ -994,6 +1012,7 @@ export default {
                         vet_id: this.vetid,
                         telephone_number: this.telephone,
                         address: this.address,
+                        hospital: this.hospital,
                         urlImageProfile: url
                       })
                       .then(user => {
@@ -1015,7 +1034,8 @@ export default {
                 fullname: this.fullname,
                 vet_id: this.vetid,
                 telephone_number: this.telephone,
-                address: this.address
+                address: this.address,
+                hospital: this.hospital
               })
               .then(user => {
                 toast({
@@ -1206,6 +1226,7 @@ export default {
         this.fullname = doc.data().fullname;
         this.vetid = doc.data().vet_id;
         this.address = doc.data().address;
+        this.hospital = doc.data().hospital;
         this.password = doc.data().password;
         this.telephone = doc.data().telephone_number;
         this.gender = doc.data().gender;

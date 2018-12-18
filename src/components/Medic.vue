@@ -38,6 +38,7 @@
                     <h2 class="tab-title three-tabs">Profile</h2>
 
                     <div class="tab-panel-content">
+                        <div v-if="pet_type">
                         <row class="medic-content">
                             <column md="4">
                                 <row class="text-center">
@@ -114,6 +115,7 @@
                                 </div>
                             </column>
                         </row>
+                        </div>
                     </div>
 
                     <label for="tab-2" tabindex="0" class="tab-panel-label three-tabs"></label>
@@ -121,6 +123,7 @@
                     <h2 class="tab-title three-tabs">Medic</h2>
 
                     <div class="tab-panel-content">
+                        <div v-if="pet_type">
                         <!-- Medic Content -->
                         <v-select label="case_name" id="medicSelect" :options="med" v-model="selected"></v-select>
                         <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
@@ -139,27 +142,26 @@
                                                 <th align="center">N/A</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody v-if="selected.case_name != 'Create new Medic Case'">
                                             <tr>
                                                 <td align="center">Appetite</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="norm" value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled
-                                                     />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled="disabled"/>
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'abnorm'" disabled />
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'na'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == null" />
+                                                    <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == null" /> -->
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="abnorm" value="abnorm" v-if="selected.select_appet == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-if="selected.select_appet == 'norm'" disabled />
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'abnorm'" checked="checked" disabled/>
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'na'" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == null"/>
+                                                    <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == null"/> -->
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="na" value="na" v-if="selected.select_appet == 'norm'" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-if="selected.select_appet == 'norm'" disabled />
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'abnrom'" disabled/>
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'na'" checked="checked" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == null" />
+                                                    <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == null" /> -->
                                                 </td>
                                             </tr>
                                             <tr>
@@ -238,7 +240,7 @@
                                                 <td align="center">
                                                     <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'norm'" disabled />
                                                     <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'na'"checked="checked" disabled />
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'na'" checked="checked" disabled />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -297,6 +299,108 @@
                                                 </td>
                                             </tr>
                                         </tbody>
+                                        <tbody v-if="selected.case_name == 'Create new Medic Case'">
+                                            <tr>
+                                                <td align="center">Appetite</td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm"/>
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" />
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">Drinking</td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm"/>
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm"/>
+                                                
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">Coughing</td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm"/>
+                                                
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm"/>
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">Sneezing</td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm"/>
+                                                
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm"/>
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">Attitude</td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm"/>
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm"/>
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">Vomiting</td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm"/>
+                                                
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="."/>
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">Bowels</td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" />
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" />
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">Urination</td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm"/>
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" />
+                                                </td>
+                                                <td align="center">
+                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
 
@@ -305,8 +409,8 @@
                                 <row>
                                     <column md="12">
                                         <div class="label-group">
-                                            <label for="pettype">Animal ID#</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Animal ID#" id="petid" v-model="selected.name" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                            <label for="pettype">Animal Name</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Animal Name" id="petname" v-model="selected.name" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
                                     </column>
                                     <column md="6">
@@ -415,77 +519,132 @@
                             <btn color="default" @click.native="popupAddPet = false">Reset</btn>
                             <btn color="primary" @click.native="add_pet">Submit</btn>
                         </row>
+                        </div>
                     </div>
 
                     <label for="tab-3" tabindex="0" class="tab-panel-label three-tabs"></label>
                     <input id="tab-3" type="radio" name="tabs" aria-hidden="true" />
-                    <h2 class="tab-title three-tabs">Vact</h2>
+                    <h2 class="tab-title three-tabs">Vaccine</h2>
 
                     <div class="tab-panel-content">
-                        <h2 class="h2-responsive"><strong>Vactsine Plan</strong></h2>
+                        <div v-if="pet_type">
+                        <h2 class="h2-responsive"><strong>Vaccine Plan</strong></h2>
                         <hr style="width:100%;margin-bottom:1em;">
-                        <row>
+                        <row v-if="pet_type == 'dog'">
                             <column md="2">
                                 <mdb-card class="vacts">
-                                    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                    <mdb-card-image src="/src/assets/dog/vact_dog_caninedistemper.png" alt="caninedistemper" style="width:100%; height: 80px"></mdb-card-image>
                                     <mdb-card-body>
-                                        <mdb-card-title>Vactsine</mdb-card-title>
-                                        <mdb-card-text>Vactsine disease</mdb-card-text>
-                                        <mdb-btn color="primary">Plan</mdb-btn>
+                                        <mdb-card-title style="font-size:1.2em;">Canine Distemper</mdb-card-title>
+                                        <mdb-card-text>โรคไข้หัดสุนัข</mdb-card-text>
+                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                     </mdb-card-body>
                                 </mdb-card><br>
                             </column>
                                 <column md="2">
                                     <mdb-card class="vacts">
-                                        <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                        <mdb-card-image src="/src/assets/dog/vact_dog_canineparvovirus.png" alt="canineparvovirus" style="width:100%; height: 80px"></mdb-card-image>
                                         <mdb-card-body>
-                                            <mdb-card-title>Vactsine</mdb-card-title>
-                                            <mdb-card-text>Vactsine disease</mdb-card-text>
-                                            <mdb-btn color="primary">Plan</mdb-btn>
+                                            <mdb-card-title style="font-size:1.2em;">Canine Parvovirus</mdb-card-title>
+                                            <mdb-card-text>ลำไส้อักเสบติดต่อ</mdb-card-text>
+                                            <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                         </mdb-card-body>
                                     </mdb-card><br>
                             </column>
                                     <column md="2">
                                         <mdb-card class="vacts">
-                                            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                            <mdb-card-image src="/src/assets/dog/vact_dog_infectiouscaninehepatitis.jpg" alt="infectiouscaninehepatitis" style="width:100%; height: 80px"></mdb-card-image>
                                             <mdb-card-body>
-                                                <mdb-card-title>Vactsine</mdb-card-title>
-                                                <mdb-card-text>Vactsine disease</mdb-card-text>
-                                                <mdb-btn color="primary">Plan</mdb-btn>
+                                                <mdb-card-title style="font-size:1.2em;">Infectious Canine Hepatitis</mdb-card-title>
+                                                <mdb-card-text>โรคตับอักเสบติดต่อ</mdb-card-text>
+                                                <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                             </mdb-card-body>
                                         </mdb-card><br>
                             </column>
                                         <column md="2">
                                             <mdb-card class="vacts">
-                                                <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                                <mdb-card-image src="/src/assets/dog/vact_dog_kennelcough.png" alt="kennelcough" style="width:100%; height: 80px"></mdb-card-image>
                                                 <mdb-card-body>
-                                                    <mdb-card-title>Vactsine</mdb-card-title>
-                                                    <mdb-card-text>Vactsine disease</mdb-card-text>
-                                                    <mdb-btn color="primary">Plan</mdb-btn>
+                                                    <mdb-card-title style="font-size:1.2em;">Kennel Cough</mdb-card-title>
+                                                    <mdb-card-text>โรคหลอดลมอักเสบติดต่อ</mdb-card-text>
+                                                    <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                                 </mdb-card-body>
                                             </mdb-card><br>
                             </column>
                                             <column md="2">
                                                 <mdb-card class="vacts">
-                                                    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                                    <mdb-card-image src="/src/assets/dog/vact_dog_leptospirosis.png" alt="leptospirosis" style="width:100%; height: 80px"></mdb-card-image>
                                                     <mdb-card-body>
-                                                        <mdb-card-title>Vactsine</mdb-card-title>
-                                                        <mdb-card-text>Vactsine disease</mdb-card-text>
-                                                        <mdb-btn color="primary">Plan</mdb-btn>
+                                                        <mdb-card-title style="font-size:1.15em;">Leptospirosis</mdb-card-title>
+                                                        <mdb-card-text>โรคเล็ปโตสไปโรซิส</mdb-card-text>
+                                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                                     </mdb-card-body>
                                                 </mdb-card><br>
                             </column>
                                                 <column md="2">
                                                     <mdb-card class="vacts">
-                                                        <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                                                        <mdb-card-image src="/src/assets/dog/vact_dog_rabiesvirus.png" alt="rabiesvirus" style="width:100%; height: 80px"></mdb-card-image>
                                                         <mdb-card-body>
-                                                            <mdb-card-title>Vactsine</mdb-card-title>
-                                                            <mdb-card-text>Vactsine disease</mdb-card-text>
-                                                            <mdb-btn color="primary">Plan</mdb-btn>
+                                                            <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
+                                                            <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
+                                                            <mdb-btn color="info" @click.native="popupPlan = true">Edit</mdb-btn>
                                                         </mdb-card-body>
                                                     </mdb-card><br>
                             </column>
                         </row>
+                        <row v-if="pet_type == 'cat'">
+                            <column md="2">
+                                <mdb-card class="vacts">
+                                    <mdb-card-image src="/src/assets/cat/vact_cat_felinecalicivirus.PNG" alt="felinecalicivirus" style="width:100%; height: 80px"></mdb-card-image>
+                                    <mdb-card-body>
+                                        <mdb-card-title style="font-size:1.2em;">Feline Calicivirus</mdb-card-title>
+                                        <mdb-card-text>โรคเกิดจากไวรัสพิเศษ</mdb-card-text>
+                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                    </mdb-card-body>
+                                </mdb-card><br>
+                            </column>
+                                <column md="2">
+                                    <mdb-card class="vacts">
+                                        <mdb-card-image src="/src/assets/cat/vact_cat_felineinfectiousperitonitis.png" alt="felineinfectiousperitonitis" style="width:100%; height: 80px"></mdb-card-image>
+                                        <mdb-card-body>
+                                            <mdb-card-title style="font-size:1.2em;">Feline Infectious Peritonitis</mdb-card-title>
+                                            <mdb-card-text>ช่องท้องอักเสบ</mdb-card-text>
+                                            <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                        </mdb-card-body>
+                                    </mdb-card><br>
+                            </column>
+                                    <column md="2">
+                                        <mdb-card class="vacts">
+                                            <mdb-card-image src="/src/assets/cat/vact_cat_felineleukemiavirus.PNG" alt="felineleukemiavirus" style="width:100%; height: 80px"></mdb-card-image>
+                                            <mdb-card-body>
+                                                <mdb-card-title style="font-size:1.2em;">Feline Leukemia Virus</mdb-card-title>
+                                                <mdb-card-text>โรคลิวคีเมีย</mdb-card-text>
+                                                <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                            </mdb-card-body>
+                                        </mdb-card><br>
+                            </column>
+                                        <column md="2">
+                                            <mdb-card class="vacts">
+                                                <mdb-card-image src="/src/assets/cat/vact_cat_felineviralrhinotracheitis.PNG" alt="felineviralrhinotracheitis" style="width:100%; height: 80px"></mdb-card-image>
+                                                <mdb-card-body>
+                                                    <mdb-card-title style="font-size:1.2em;">Feline Viral Rhinotracheitis</mdb-card-title>
+                                                    <mdb-card-text>โรคหวัดแมวและไข้หัดแมว</mdb-card-text>
+                                                    <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                                </mdb-card-body>
+                                            </mdb-card><br>
+                            </column>
+                                                <column md="2">
+                                                    <mdb-card class="vacts">
+                                                        <mdb-card-image src="/src/assets/dog/vact_dog_rabiesvirus.png" alt="rabiesvirus" style="width:100%; height: 80px"></mdb-card-image>
+                                                        <mdb-card-body>
+                                                            <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
+                                                            <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
+                                                            <mdb-btn color="info" @click.native="popupPlan = true">Edit</mdb-btn>
+                                                        </mdb-card-body>
+                                                    </mdb-card><br>
+                            </column>
+                        </row>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -496,13 +655,13 @@
     <modal v-if="popupPlan" @close="popupPlan = false" size="lg">
         <div class="popup-profile">
             <modal-header>
-                <modal-title>Planning your Vactsine</modal-title>
+                <modal-title>Planning your Vaccine</modal-title>
             </modal-header>
             <modal-body>
                 <row>
                     <column md="12">
                         <div class="label-group">
-                            <label for="plandate">Plan Vactsine</label>
+                            <label for="plandate">Plan Vaccine</label>
                             <datetime type="datetime" v-model="plandate"></datetime>
                         </div>
                     </column>
@@ -641,7 +800,6 @@ export default {
             pettemp: "",
             datebirth: "",
             petbirth: "",
-            selected: false,
             options: [{
                     countryCode: "AU",
                     countryName: "Australia"
@@ -679,7 +837,7 @@ export default {
     },
     methods: {
         selectHeader(pet) {
-            this.selected = true;
+            this.selected = "Create new Medic Case";
             var allelement = document.getElementsByClassName("selectedHeader");
             // console.log(allelement);
             for (var i = 0; i < allelement.length; i++) {
@@ -696,6 +854,9 @@ export default {
             this.gender = pet.gender;
             this.color = pet.color;
             this.med = pet.medical_record;
+            let objHead = {case_name:"Create new Medic Case"};
+            this.med.unshift(objHead)
+            // alert(this.med[0].case_name)
         },
         calAgePet(e) {
             if (!e) {
@@ -826,6 +987,10 @@ body.body-medic {
 }
 
 /* checkbox and radio style */
+/* .form-check-label label[disabled="disabled"]{
+    background-color: white !important;
+} */
+
 input[type="checkbox"],
 input[type="radio"] {
     border: 0;
