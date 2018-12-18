@@ -525,7 +525,7 @@ export default {
                   doc.ref.delete().then(doc => {
                     toast({
                       type: "success",
-                      title: "Your pet has been deleted"
+                      title: "Your pet has been removed"
                     }).then(result => {
                       this.$router.go(this.$route.path);
                     });
