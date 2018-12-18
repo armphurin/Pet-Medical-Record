@@ -44,8 +44,8 @@
                                         <p class="dark-grey-text" v-if="q.user_type == 'vet'">Hospital Adress: {{q.address}}</p>
                                     </mdb-col>
                                     <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else-if="owner_user && search_filter == 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
+                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info" @click.native="addfriend(q.id)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="owner_user && search_filter == 'owner'"><mdb-btn color="info" @click.native="addfriend(q.id)">Add Friend</mdb-btn></a>
                                         <a v-else :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
                                     </mdb-col>
                                 </div>
@@ -58,7 +58,7 @@
                             <mdb-col md="3">
                                 <mdb-view hover rounded class="z-depth-1-half mb-4">
                                     <img class="img-fluid" :src="q.img" v-if="q.img" alt="Sample image"/>
-                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/54.jpg" v-if="!q.img" alt="Sample image"/>
+                                    <img class="img-fluid" src="../assets/pic_owner.png" v-if="!q.img" alt="Sample image"/>
                                     <a>
                   <mdb-mask overlay="white-slight" class="waves-light"/>
                 </a>
@@ -72,9 +72,9 @@
                                         <p class="dark-grey-text">Address: {{q.address}}</p>
                                     </mdb-col>
                                     <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else-if="vet_user && search_filter == 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else href="tel:+688912456"><mdb-btn color="info">Call</mdb-btn></a>
+                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info" @click.native="addfriend(q.id)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="vet_user && search_filter == 'owner'"><mdb-btn color="info" @click.native="addfriend(q.id)">Add Friend</mdb-btn></a>
+                                        <a v-else :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
                                     </mdb-col>
                                 </div>
                             </mdb-col>
@@ -137,6 +137,15 @@ export default {
         mdbCardText,
         mdbBtn
     },
+    methods: {
+    addfriend(id) {
+        // console.log(id)
+        var current = firebase.auth().currentUser.email;
+        db.collection("users").doc(id).update({
+            
+        })
+    }
+  },
     created() {
         var userRef = db.collection("users")
         var query = userRef.where("fullname", "==", this.search_text)
@@ -150,11 +159,13 @@ export default {
                     tel: doc.data().telephone_number,
                     address: doc.data().address,
                     vet_id: doc.data().vet_id,
-                    img: doc.data().urlImageProfile
+                    img: doc.data().urlImageProfile,
+                    friend_req: doc.data().friend_req
                 }
+                console.log(data.friend_req)
                 this.query.push(data);
             })
-            console.log(this.query)
+            // console.log(this.query.friend_req)
         });
     }
 
