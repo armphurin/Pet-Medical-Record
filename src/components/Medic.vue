@@ -5,8 +5,20 @@
             <div class="header-button">
                 <div class="scrolling-wrapper-flexbox text-center"  >
                     <!-- pet 1 -->
-                    <label class="text-white" style="margin-top:1.3em;margin-left: 0em;" v-for="pet in pets" v-bind:key="pet.id" v-if="pet.pet_dog"><a @click="selectHeader(pet)"><div class="card-header img-scroll-dog" v-if="pet.pet_dog"></div></a>{{pet.name}}</label>
-                    <label class="text-white" style="margin-top:1.3em;margin-left: 0em;" v-for="pet in pets" v-bind:key="pet.id" v-if="pet.pet_cat"><a @click="selectHeader(pet)"><div class="card-header img-scroll-cat" v-if="pet.pet_cat"></div></a>{{pet.name}}</label>
+                    <label class="text-white" style="margin-top:1.3em;margin-left: 0em;" v-for="pet in pets" v-bind:key="pet.id" v-if="pet.pet_dog">
+                        <a @click="selectHeader(pet)">
+                            <div class="card-header img-scroll-dog"  v-if="pet.pet_dog && !pet.imagePet"></div>
+                            <div class="card-header img-scroll-cat" v-else-if="pet.pet_dog && pet.imagePet" v-bind:style="{ 'background-image': 'url(' + pet.imagePet + ')' }"></div>
+                        </a>
+                        {{pet.name}}
+                    </label>
+                    <label class="text-white" style="margin-top:1.3em;margin-left: 0em;" v-for="pet in pets" v-bind:key="pet.id" v-if="pet.pet_cat">
+                        <a @click="selectHeader(pet)">
+                            <div class="card-header img-scroll-cat" v-if="pet.pet_cat && !pet.imagePet"></div>
+                            <div class="card-header img-scroll-cat" v-else-if="pet.pet_cat && pet.imagePet" v-bind:style="{ 'background-image': 'url(' + pet.imagePet + ')' }"></div>
+                        </a>
+                        {{pet.name}}
+                    </label>
                     <!-- pet 2 to n -->
                     <!-- <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-cat"></div></a>Cat 2</label>
                     <label class="text-white" style="margin-top:1.3em;"><a @click="selectHeader"><div class="card-header img-scroll-dog"></div></a>Dog 3</label>
@@ -43,11 +55,13 @@
                             <column md="4">
                                 <row class="text-center">
                                     <column v-if="pet_type == 'cat'">
-                                        <img src="../assets/pic_cat.png" class="medic-pic" />
-              </column>
-               <column v-if="pet_type == 'dog'">
-                                        <img src="../assets/pic_dog2.png" class="medic-pic" />
-              </column>
+                                        <img v-if="!urlImagePet" src="../assets/pic_cat.png" class="medic-pic" />
+                                        <img v-else-if="urlImagePet" :src="urlImagePet" class="medic-pic" />
+                                    </column>
+                                    <column v-if="pet_type == 'dog'">
+                                        <img v-if="!urlImagePet" src="../assets/pic_dog2.png" class="medic-pic" />
+                                        <img v-else-if="urlImagePet" :src="urlImagePet" class="medic-pic" />
+                                    </column>
                                 </row>
                                 <row>
                                     <column>
@@ -797,6 +811,7 @@ export default {
             file: File,
             uploadTask: "",
             image: "",
+            urlImagePet:"",
             pettemp: "",
             datebirth: "",
             petbirth: "",
@@ -854,6 +869,7 @@ export default {
             this.gender = pet.gender;
             this.color = pet.color;
             this.med = pet.medical_record;
+            this.urlImagePet = pet.imagePet;
             let objHead = {case_name:"Create new Medic Case"};
             if(this.med[0].case_name != "Create new Medic Case"){
                 this.med.unshift(objHead)
