@@ -115,7 +115,7 @@
                                     <column>
                                         <div class="label-group">
                                             <label for="color">Color</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" v-model="color" style="width:100%;margin: 0 auto;border-radius: 13px;"disabled>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" v-model="color" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                     </column>
                                 </row>
@@ -1853,4 +1853,30 @@ caption {
 .card.vacts {
     width: 100%;
 }
+
+.medic-owner{
+    margin-bottom: 35.5em;
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 760px) and (orientation: portrait) {
+    .medic-owner{
+        margin-bottom: 41em;
+    }
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px) and (orientation: portrait) {
+    .medic-owner{
+        margin-bottom: 62em;
+    }
+}
+
+/*iPro Landscape*/
+@media only screen and (min-width: 1200px) and (max-width: 1400px) and (orientation: landscape) {
+    .medic-owner{
+        margin-bottom: 40.5em;
+    }
+}
+
 </style>

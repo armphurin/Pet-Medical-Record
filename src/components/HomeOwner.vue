@@ -1406,6 +1406,12 @@ input::placeholder {
   .col-md-8 {
     flex-basis: unset;
   }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 125px;
+    height: 60px;
+  }
 }
 
 /*Samsung Galaxy S5 and iPhone 5 Portrait*/
@@ -1431,6 +1437,12 @@ input::placeholder {
   }
   .col-md-8 {
     flex-basis: unset;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
   }
 }
 
@@ -1468,6 +1480,12 @@ input::placeholder {
   .col {
     flex-basis: unset;
   }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
 }
 
 /*iPad Pro Portrait*/
@@ -1498,6 +1516,12 @@ input::placeholder {
   }
   .col-md-8 {
     flex-basis: unset;
+  }
+    .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
   }
 }
 

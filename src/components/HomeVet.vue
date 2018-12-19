@@ -1465,7 +1465,7 @@ input::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 11em;
+    margin-bottom: 21.5em;
   }
 
   .intro-section .btn {
@@ -1485,6 +1485,12 @@ input::placeholder {
 
   .col-md-8 {
     flex-basis: unset;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
   }
 }
 
@@ -1495,7 +1501,7 @@ input::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 11em;
+    margin-bottom: 16em;
   }
 
   .intro-section .btn {
@@ -1515,6 +1521,12 @@ input::placeholder {
 
   .col-md-8 {
     flex-basis: unset;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
   }
 }
 
@@ -1529,6 +1541,33 @@ input::placeholder {
     width: 50%;
   }
 }
+
+/*Pixel2XL Portrait*/
+@media only screen and (min-width: 411px) and (max-width: 412px) and (max-height: 825px) and (orientation: portrait) {
+  .home-owner {
+    margin-bottom: 27em;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
+}
+
+/*iPhone X Portrait*/
+@media only screen and (min-width: 375px) and (max-width: 400px) and (max-height: 815px) and (orientation: portrait) {
+  .home-owner {
+    margin-bottom: 26.5em;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
+}
+
 
 /*iPad Portrait*/
 @media only screen and (min-width: 760px) and (orientation: portrait) {
@@ -1556,6 +1595,12 @@ input::placeholder {
   }
   .home-owner {
     height: 56em;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
   }
 }
 
@@ -1591,6 +1636,13 @@ input::placeholder {
 
   .col-md-8 {
     flex-basis: unset;
+  }
+
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
   }
 }
 
