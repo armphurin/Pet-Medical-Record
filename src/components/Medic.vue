@@ -3,7 +3,7 @@
     <md-mask class="d-flex justify-content-center align-items-center">
         <container>
             <div class="header-button">
-                <div class="scrolling-wrapper-flexbox text-center"  >
+                <div class="scrolling-wrapper-flexbox text-center">
                     <!-- pet 1 -->
                     <label class="text-white" style="margin-top:1.3em;margin-left: 0em;" v-for="pet in pets" v-bind:key="pet.id" v-if="pet.pet_dog">
                         <a @click="selectHeader(pet)">
@@ -51,84 +51,84 @@
 
                     <div class="tab-panel-content">
                         <div v-if="pet_type">
-                        <row class="medic-content">
-                            <column md="4">
-                                <row class="text-center">
-                                    <column v-if="pet_type == 'cat'">
-                                        <img v-if="!urlImagePet" src="../assets/pic_cat.png" class="medic-pic" />
-                                        <img v-else-if="urlImagePet" :src="urlImagePet" class="medic-pic" />
+                            <row class="medic-content">
+                                <column md="4">
+                                    <row class="text-center">
+                                        <column v-if="pet_type == 'cat'">
+                                            <img v-if="!urlImagePet" src="../assets/pic_cat.png" class="medic-pic" />
+                                            <img v-else-if="urlImagePet" :src="urlImagePet" class="medic-pic" />
                                     </column>
-                                    <column v-if="pet_type == 'dog'">
-                                        <img v-if="!urlImagePet" src="../assets/pic_dog2.png" class="medic-pic" />
-                                        <img v-else-if="urlImagePet" :src="urlImagePet" class="medic-pic" />
+                                            <column v-if="pet_type == 'dog'">
+                                                <img v-if="!urlImagePet" src="../assets/pic_dog2.png" class="medic-pic" />
+                                                <img v-else-if="urlImagePet" :src="urlImagePet" class="medic-pic" />
                                     </column>
-                                </row>
-                                <row>
-                                    <column>
-                                        <div class="label-group">
-                                            <label for="pettype">Pet Type</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pet_type" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    </row>
+                                    <row>
+                                        <column>
+                                            <div class="label-group">
+                                                <label for="pettype">Pet Type</label>
+                                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="pettype" v-model="pet_type" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                                    </column>
-                                </row>
-                                <row>
-                                    <column>
-                                        <div class="label-group">
-                                            <label for="marking">Marking</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="marking" v-model="marking" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        </column>
+                                    </row>
+                                    <row>
+                                        <column>
+                                            <div class="label-group">
+                                                <label for="marking">Marking</label>
+                                                <input class="form-control form-control-lg" type="text" placeholder="Pet Type" id="marking" v-model="marking" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                                    </column>
-                                </row>
-                            </column>
-                            <column md="8">
-                                <row>
-                                    <column>
-                                        <div class="label-group">
-                                            <label for="petname">Pet Name {{med}}</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="pet_name" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        </column>
+                                    </row>
+                                </column>
+                                <column md="8">
+                                    <row>
+                                        <column>
+                                            <div class="label-group">
+                                                <label for="petname">Pet Name</label>
+                                                <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petname" v-model="pet_name" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                                    </column>
-                                </row>
-                                <row>
-                                    <column>
-                                        <div class="label-group">
-                                            <label for="age">Age</label>
-                                            <input class="form-control form-control-lg" type="text" value="18 Year" placeholder="Age" id="age" v-model="pet_age" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        </column>
+                                    </row>
+                                    <row>
+                                        <column>
+                                            <div class="label-group">
+                                                <label for="age">Age</label>
+                                                <input class="form-control form-control-lg" type="text" value="18 Year" placeholder="Age" id="age" v-model="pet_age" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                                    </column>
-                                    <column>
-                                        <div class="label-group">
-                                            <label for="gender">Gender</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Gender" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        </column>
+                                        <column>
+                                            <div class="label-group">
+                                                <label for="gender">Gender</label>
+                                                <input class="form-control form-control-lg" type="text" placeholder="Gender" id="gender" v-model="gender" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                                    </column>
-                                </row>
-                                <row>
-                                    <column>
-                                        <div class="label-group">
-                                            <label for="breed">Breed</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        </column>
+                                    </row>
+                                    <row>
+                                        <column>
+                                            <div class="label-group">
+                                                <label for="breed">Breed</label>
+                                                <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="breed" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                                    </column>
-                                </row>
-                                <row>
-                                    <column>
-                                        <div class="label-group">
-                                            <label for="color">Color</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" v-model="color" style="width:100%;margin: 0 auto;border-radius: 13px;"disabled>
+                                        </column>
+                                    </row>
+                                    <row>
+                                        <column>
+                                            <div class="label-group">
+                                                <label for="color">Color</label>
+                                                <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" v-model="color" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
-                                    </column>
-                                </row>
-                            </column>
-                        </row>
-                        <row>
-                            <column>
-                                <div class="label-group">
-                                    <label for="contact">Contact</label>
-                                    <textarea class="form-control" id="contact" v-model="contact" rows="5" placeholder="Contact" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
-                                </div>
-                            </column>
-                        </row>
+                                        </column>
+                                    </row>
+                                </column>
+                            </row>
+                            <row>
+                                <column>
+                                    <div class="label-group" v-if="user_type == 'vet'">
+                                        <label for="contact">Contact</label>
+                                        <textarea class="form-control" id="contact"  rows="5" placeholder="" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>Owner name: {{dump[id].fullname}}&#13;&#10;Tel: {{dump[id].tel}}&#13;&#10;Address: {{dump[id].address}}</textarea>
+                                    </div>
+                                </column>
+                            </row>
                         </div>
                     </div>
 
@@ -138,401 +138,651 @@
 
                     <div class="tab-panel-content">
                         <div v-if="pet_type">
-                        <!-- Medic Content -->
-                        <v-select label="case_name" id="medicSelect" :options="med" v-model="selected"></v-select>
-                        <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
-                        <h2 class="h2-responsive"><strong>Subjective Finding</strong></h2>
-                        <hr style="width:100%;margin-bottom:1em;">
-                        <row>
-                            <column md="6">
-
-                                <div class="table-responsive">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th align="center">Subjective Finding</th>
-                                                <th align="center">Normal</th>
-                                                <th align="center">Abnormal</th>
-                                                <th align="center">N/A</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody v-if="selected.case_name != 'Create new Medic Case'">
-                                            <tr>
-                                                <td align="center">Appetite</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'na'" disabled />
-                                                    <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == null" /> -->
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-if="selected.select_appet == 'norm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'abnorm'" checked="checked" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'na'" disabled/>
-                                                    <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == null"/> -->
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-if="selected.select_appet == 'norm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'abnrom'" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'na'" checked="checked" disabled/>
-                                                    <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == null" /> -->
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Drinking</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'norm'" checked="checked" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'abnorm'" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'na'" disabled/>
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'norm'" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'abnorm'" checked="checked" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'na'" disabled/>
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'norm'" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'abnorm'" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'na'" checked="checked" disabled/>
-                                               
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Coughing</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'norm'" checked="checked" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'na'" disabled />
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'norm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'abnorm'" checked="checked" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'na'" disabled />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'norm'" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'na'" checked="checked" disabled/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Sneezing</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'norm'" checked="checked" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'abnorm'" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'na'" disabled/>
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'norm'"  disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'abnorm'" checked="checked" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'na'" disabled/>
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'norm'"  disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'abnorm'" disabled/>
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'na'" checked="checked" disabled/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Attitude</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'norm'" checked="checked" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'na'" disabled />
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'norm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'na'" checked="checked" disabled />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'norm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'na'" checked="checked" disabled />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Vomiting</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'norm'" checked="checked" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'na'" disabled  />
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'norm'"  disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'abnorm'" checked="checked" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'na'" disabled  />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'norm'"  disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'na'" checked="checked" disabled  />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Bowels</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'norm'" checked="checked" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'na'" disabled  />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'norm'"  disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'abnorm'" checked="checked" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'na'" disabled  />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'norm'"  disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'na'" checked="checked" disabled  />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Urination</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'norm'" checked="checked" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'na'" disabled  />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'norm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'abnorm'" checked="checked" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'na'" disabled  />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'norm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'abnorm'" disabled />
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'na'" checked="checked" disabled  />
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tbody v-if="selected.case_name == 'Create new Medic Case'">
-                                            <tr>
-                                                <td align="center">Appetite</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm"/>
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Drinking</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm"/>
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm"/>
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Coughing</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm"/>
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm"/>
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Sneezing</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm"/>
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm"/>
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Attitude</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm"/>
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm"/>
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Vomiting</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm"/>
-                                                
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="."/>
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Bowels</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">Urination</td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm"/>
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" />
-                                                </td>
-                                                <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na"/>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </column>
-                            <column md="6">
-                                <row>
-                                    <column md="12">
-                                        <div class="label-group">
-                                            <label for="pettype">Animal Name</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Animal Name" id="petname" v-model="selected.name" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                                    </column>
-                                    <column md="6">
-                                        <div class="label-group">
-                                            <label for="petdate">Case Date</label>
-                                            <datetime v-model="selected.pet_date"></datetime>
-                                        </div>
-                                    </column>
-                                    <column md="6">
-                                        <div class="label-group">
-                                            <label for="pettime">Case Time</label>
-                                            <datetime type="time" v-model="selected.pet_time"></datetime>
-                                        </div>
-                                    </column>
-                                </row>
-                                <row>
-                                    <column md="12">
-                                        <div class="label-group">
-                                            <label for="spnote">Special Note</label>
-                                            <textarea class="form-control" id="spnote" v-model="selected.spnote" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
-                                        </div>
-                                    </column>
-                                </row>
-                            </column>
-                        </row>
-                        <h2 class="h2-responsive"><strong>Summary</strong></h2>
-                        <hr style="width:100%;margin-bottom:1em;">
-                        <row>
-                            <column md="6">
-                                <div class="label-group">
-                                    <label for="pettemp">Temp:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Temperature" id="pettemp" v-model="selected.pet_temp" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                            <column md="6">
-                                <div class="label-group">
-                                    <label for="petweight">Weight:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Weight" id="pettweight" v-model="selected.pet_weight" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                            <column md="12">
-                                <div class="label-group">
-                                    <label for="note">Note:</label>
-                                    <textarea class="form-control" id="note" v-model="selected.note" rows="5" placeholder="Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
-                                </div>
-                            </column>
-                            <column md="12">
-                                <div class="label-group">
-                                    <label for="petdig">Diagnos:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Diagnos" id="petdig" v-model="selected.pet_diag" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                            <column md="12">
-                                <div class="label-group">
-                                    <label for="pettreat">Treatment/Test:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Treatment and Test" id="pettreat" v-model="selected.pet_treat" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                            <column md="12">
-                                <div class="label-group">
-                                    <label for="petmedic">Medication:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Medication" id="petmedic" v-model="selected.pet_medic" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                            <column md="12">
-                                <div class="label-group">
-                                    <label for="petex">Exercise:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Exercise" id="petex" v-model="selected.pet_ex" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                            <column md="12">
-                                <div class="label-group">
-                                    <label for="petdirect">Directory Direction:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Directory Direction" id="petdirect" v-model="selected.pet_direct" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                            <column md="12">
-                                <div class="label-group">
-                                    <label for="recheck">Recheck Note:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="selected.recheck" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                            <column md="12">
-                                <div class="label-group">
-                                    <label for="addition">Additional Instruction:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="selected.addition" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                            <column md="6">
-                                <div class="label-group">
-                                    <label for="vetsig">Veterinary Signature:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="selected.vet_sig" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                            <column md="6">
-                                <div class="label-group">
-                                    <label for="hossig">Hospital Signature:</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" v-model="selected.hos_sig" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
-                            </column>
-                        </row>
-                        <row>
+                            <!-- Medic Content -->
+                            <v-select label="case_name" id="medicSelect" :options="med" v-model="selected"></v-select>
                             <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
-                        </row>
-                        <row style="float:right;">
-                            <btn color="default" @click.native="popupAddPet = false">Reset</btn>
-                            <btn color="primary" @click.native="add_pet">Submit</btn>
-                        </row>
+                            <h2 class="h2-responsive"><strong>Subjective Finding</strong></h2>
+                            <hr style="width:100%;margin-bottom:1em;">
+                            <row>
+                                <column md="6">
+
+                                    <div class="table-responsive">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th align="center">Subjective Finding</th>
+                                                    <th align="center">Normal</th>
+                                                    <th align="center">Abnormal</th>
+                                                    <th align="center">N/A</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody v-if="selected.case_name != 'Create new Medic Case' && user_type == 'vet'" >
+                                                <tr>
+                                                    <td align="center">Appetite</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'na'" disabled />
+                                                        <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == null" /> -->
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-if="selected.select_appet == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'na'" disabled />
+                                                        <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == null"/> -->
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-if="selected.select_appet == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'abnrom'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'na'" checked="checked" disabled />
+                                                        <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == null" /> -->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Drinking</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'na'" checked="checked" disabled />
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Coughing</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Sneezing</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Attitude</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'na'"  disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Vomiting</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Bowels</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Urination</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tbody v-if=" user_type == 'owner'" >
+                                                <tr>
+                                                    <td align="center">Appetite</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'na'" disabled />
+                                                        <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == null" /> -->
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-if="selected.select_appet == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'na'" disabled />
+                                                        <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == null"/> -->
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-if="selected.select_appet == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'abnrom'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'na'" checked="checked" disabled />
+                                                        <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == null" /> -->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Drinking</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm" v-if="selected.select_drink == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" v-if="selected.select_drink == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" v-if="selected.select_drink == 'na'" checked="checked" disabled />
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Coughing</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" v-if="selected.select_cough == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" v-if="selected.select_cough == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" v-if="selected.select_cough == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Sneezing</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm" v-if="selected.select_sneez == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" v-if="selected.select_sneez == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" v-if="selected.select_sneez == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Attitude</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" v-if="selected.select_att == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'abnorm'"  checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" v-if="selected.select_att == 'na'"  disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" v-if="selected.select_att == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Vomiting</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" v-if="selected.select_vom == 'na'" disabled />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." value="abnorm" v-if="selected.select_vom == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" v-if="selected.select_vom == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Bowels</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" v-if="selected.select_bow == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" v-if="selected.select_bow == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" v-if="selected.select_bow == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Urination</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'norm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" v-if="selected.select_uri == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'abnorm'" checked="checked" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" v-if="selected.select_uri == 'na'" disabled />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'norm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'abnorm'" disabled />
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" v-if="selected.select_uri == 'na'" checked="checked" disabled />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tbody v-if="selected.case_name == 'Create new Medic Case' && user_type == 'vet'" >
+                                                <tr>
+                                                    <td align="center">Appetite</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" @click.native="selected.select_appet='norm'" />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" @click.native="selected.select_appet='abnorm'" />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" @click.native="selected.select_appet='norm'" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Drinking</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm"  @click.native="selected.select_drink='norm'"/>
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm" @click.native="selected.select_drink='abnorm'" />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na" @click.native="selected.select_drink='na'"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Coughing</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm" @click.native="selected.select_cough='norm'" />
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm" @click.native="selected.select_cough='abnorm'" />
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na" @click.native="selected.select_cough='na'" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Sneezing</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm"  @click.native="selected.select_sneez='norm'"/>
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm" @click.native="selected.select_sneez='abnorm'"/>
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na" @click.native="selected.select_sneez='na'"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Attitude</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm" @click.native="selected.select_att='norm'"/>
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm" @click.native="selected.select_att='abnorm'"/>
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na" @click.native="selected.select_att='na'"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Vomiting</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm" @click.native="selected.select_vom='norm'"/>
+
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="." @click.native="selected.select_vom='abnorm'"/>
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na" @click.native="selected.select_vom='na'"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Bowels</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" @click.native="selected.select_bow='norm'"/>
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" @click.native="selected.select_bow='abnorm'"/>
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na" @click.native="selected.select_bow='na'"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">Urination</td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm" @click.native="selected.select_uri='norm'"/>
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" @click.native="selected.select_uri='abnorm'"/>
+                                                    </td>
+                                                    <td align="center">
+                                                        <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na" @click.native="selected.select_uri='na'"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
+
+                                </column>
+                                <column md="6">
+                                    <row>
+                                        <column md="12" v-if="user_type == 'vet'">
+                                            <div class="label-group">
+                                                <label for="pettype">Animal Name</label>
+                                                <input class="form-control form-control-lg" type="text" placeholder="Animal Name" id="petname"  style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected == 'Select Case'" >
+                                                <input class="form-control form-control-lg" type="text" placeholder="Animal Name" id="petname" v-model="pet_name" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name == 'Create new Medic Case'" disabled >
+                                                <input class="form-control form-control-lg" type="text" placeholder="Animal Name" id="petname" v-model="selected.name" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" >
+                            </div>
+                                        </column>
+                                        <column md="12" v-if="user_type == 'owner'">
+                                            <div class="label-group">
+                                                <label for="pettype">Animal Name</label>
+                                                <input class="form-control form-control-lg" type="text" placeholder="Animal Name" id="petname" v-model="selected.name" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled >
+                            </div>
+                                        </column>
+                                        <column md="6" v-if="user_type == 'vet'">
+                                            <div class="label-group" v-if="selected.case_name == 'Create new Medic Case' || (selected.case_name != 'Create new Medic Case' && selected != 'Select Case')">
+                                                <label for="petdate">Case Date</label>
+                                                <datetime v-model="selected.pet_date"></datetime>
+                                            </div>
+                                            <div class="label-group" v-if="selected == 'Select Case'">
+                                                <label for="petdate">Case Date</label>
+                                                <input class="form-control form-control-lg" type="text" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                            </div>
+                                        </column>
+                                        <column md="6" v-if="user_type == 'owner'">
+                                            <div class="label-group" >
+                                                <label for="petdate">Case Date</label>
+                                                <datetime v-model="selected.pet_date" disabled></datetime>
+                                            </div>
+                                        </column>
+                                        <column md="6" v-if="user_type == 'vet'">
+                                            <div class="label-group" v-if="selected.case_name == 'Create new Medic Case' || (selected.case_name != 'Create new Medic Case' && selected != 'Select Case')">
+                                                <label for="petdate">Case Time</label>
+                                                <datetime type="time" v-model="selected.pet_time"></datetime>
+                                            </div>
+                                            <div class="label-group" v-if="selected == 'Select Case'">
+                                                <label for="petdate">Case Time</label>
+                                                <input class="form-control form-control-lg" type="text" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                            </div>
+                                        </column>
+                                        <column md="6" v-if="user_type == 'owner'">
+                                            <div class="label-group" >
+                                                <label for="petdate">Case Time</label>
+                                                <datetime type="time" v-model="selected.pet_time" disabled></datetime>
+                                            </div>
+                                        </column>
+                                    </row>
+                                    <row>
+                                        <column md="12" v-if="user_type == 'vet'">
+                                            <div class="label-group" v-if="selected == 'Select Case'">
+                                                <label for="spnote">Special Note</label>
+                                                <textarea class="form-control" id="spnote" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                            </div>
+                                            <div class="label-group" v-if="selected.case_name == 'Create new Medic Case' || (selected.case_name != 'Create new Medic Case' && selected != 'Select Case')">
+                                                <label for="spnote">Special Note</label>
+                                                <textarea class="form-control" id="spnote" v-model="selected.spnote" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                            </div>
+                                        </column>
+                                        <column md="12" v-if="user_type == 'owner'">
+                                            <div class="label-group">
+                                                <label for="spnote">Special Note</label>
+                                                <textarea class="form-control" id="spnote" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled ></textarea>
+                                            </div>
+                                        </column>
+                                    </row>
+                                </column>
+                            </row>
+                            <h2 class="h2-responsive"><strong>Summary</strong></h2>
+                            <hr style="width:100%;margin-bottom:1em;">
+                            <row>
+                                <column md="6">
+                                    <div class="label-group"v-if="user_type == 'vet'">
+                                        <label for="pettemp">Temp:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Temperature" id="pettemp" v-model="selected.pet_temp" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    </div>
+                                    <div class="label-group"v-if="user_type == 'owner'">
+                                        <label for="pettemp">Temp:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Temperature" id="pettemp" v-model="selected.pet_temp" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    </div>
+                                </column>
+                                <column md="6">
+                                    <div class="label-group"v-if="user_type == 'vet'">
+                                        <label for="petweight">Weight:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Weight" id="pettweight" v-model="selected.pet_weight" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                                    <div class="label-group"v-if="user_type == 'owner'">
+                                        <label for="petweight">Weight:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Weight" id="pettweight" v-model="selected.pet_weight" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                            </div>
+                                </column>
+                                <column md="12">
+                                    <div class="label-group"v-if="user_type == 'vet'">
+                                        <label for="note">Note:</label>
+                                        <textarea class="form-control" id="note" v-model="selected.note" rows="5" placeholder="Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                    </div>
+                                    <div class="label-group"v-if="user_type == 'owner'">
+                                        <label for="note">Note:</label>
+                                        <textarea class="form-control" id="note" v-model="selected.note" rows="5" placeholder="Note" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled ></textarea>
+                                    </div>
+                                </column>
+                                <column md="12">
+                                    <div class="label-group" v-if="user_type == 'vet'">
+                                        <label for="petdig">Diagnos:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Diagnos" id="petdig" v-model="selected.pet_diag" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                                    <div class="label-group" v-if="user_type == 'owner'">
+                                        <label for="petdig">Diagnos:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Diagnos" id="petdig" v-model="selected.pet_diag" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                            </div>
+                                </column>
+                                <column md="12">
+                                    <div class="label-group"  v-if="user_type == 'vet'">
+                                        <label for="pettreat">Treatment/Test:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Treatment and Test" id="pettreat" v-model="selected.pet_treat" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                                    <div class="label-group"  v-if="user_type == 'owner'">
+                                        <label for="pettreat">Treatment/Test:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Treatment and Test" id="pettreat" v-model="selected.pet_treat" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                            </div>
+                                </column>
+                                <column md="12">
+                                    <div class="label-group" v-if="user_type == 'vet'">
+                                        <label for="petmedic">Medication:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Medication" id="petmedic" v-model="selected.pet_medic" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                                    <div class="label-group" v-if="user_type == 'owner'">
+                                        <label for="petmedic">Medication:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Medication" id="petmedic" v-model="selected.pet_medic" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                            </div>
+                                </column>
+                                <column md="12">
+                                    <div class="label-group" v-if="user_type == 'vet'">
+                                        <label for="petex">Exercise:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Exercise" id="petex" v-model="selected.pet_ex" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                                    <div class="label-group" v-if="user_type == 'owner'">
+                                        <label for="petex">Exercise:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Exercise" id="petex" v-model="selected.pet_ex" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                            </div>
+                                </column>
+                                <column md="12">
+                                    <div class="label-group" v-if="user_type == 'vet'">
+                                        <label for="petdirect">Directory Direction:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Directory Direction" id="petdirect" v-model="selected.pet_direct" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                                    <div class="label-group" v-if="user_type == 'owner'">
+                                        <label for="petdirect">Directory Direction:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Directory Direction" id="petdirect" v-model="selected.pet_direct" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                            </div>
+                                </column>
+                                <column md="12">
+                                    <div class="label-group"v-if="user_type == 'vet'">
+                                        <label for="recheck">Recheck Note:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="selected.recheck" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                                     <div class="label-group"v-if="user_type == 'owner'">
+                                        <label for="recheck">Recheck Note:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="selected.recheck" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                            </div>
+                                </column>
+                                <column md="12">
+                                    <div class="label-group"v-if="user_type == 'vet'">
+                                        <label for="addition">Additional Instruction:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="selected.addition" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                                     <div class="label-group"v-if="user_type == 'owner'">
+                                        <label for="addition">Additional Instruction:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="selected.addition" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                            </div>
+                                </column>
+                                <column md="6">
+                                    <div class="label-group"v-if="user_type == 'vet'">
+                                        <label for="vetsig">Veterinary Signature:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected == 'Select Case'" >
+                                        <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name == 'Create new Medic Case'" disabled>
+                                        <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="selected.vet_sig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" >
+                            </div>
+                                     <div class="label-group"v-if="user_type == 'owner'">
+                                         <label for="hossig">Veterinary Signature:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="selected.vet_sig" style="width:100%;margin: 0 auto;border-radius: 13px;"  disabled>
+                                        
+                            </div>
+                                </column>
+                                <column md="6">
+                                    <div class="label-group" v-if="user_type == 'vet'"> 
+                                        <label for="hossig">Hospital Signature:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected == 'Select Case'">
+                                        <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" v-model="hospital" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name == 'Create new Medic Case'" disabled>
+                                        <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" v-model="selected.hos_sig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" >
+                            </div>
+                                    <div class="label-group" v-if="user_type == 'owner'"> 
+                                        <label for="hossig">Hospital Signature:</label>
+                                        
+                                        <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" v-model="selected.hos_sig" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                        
+                            </div>
+                                </column>
+                            </row>
+                            <row>
+                                <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
+                            </row>
+                            <row style="float:right;">
+                                <btn color="primary" @click.native="addCase(selected)" v-if="selected != 'Select Case' && user_type =='vet'">Submit</btn>
+                            </row>
                         </div>
                     </div>
 
@@ -542,55 +792,107 @@
 
                     <div class="tab-panel-content">
                         <div v-if="pet_type">
-                        <h2 class="h2-responsive"><strong>Vaccine Plan</strong></h2>
-                        <hr style="width:100%;margin-bottom:1em;">
-                        <row v-if="pet_type == 'dog'">
-                            <column md="2">
-                                <mdb-card class="vacts">
-                                    <mdb-card-image src="/src/assets/dog/vact_dog_caninedistemper.png" alt="caninedistemper" style="width:100%; height: 80px"></mdb-card-image>
-                                    <mdb-card-body>
-                                        <mdb-card-title style="font-size:1.2em;">Canine Distemper</mdb-card-title>
-                                        <mdb-card-text>โรคไข้หัดสุนัข</mdb-card-text>
-                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
-                                    </mdb-card-body>
-                                </mdb-card><br>
-                            </column>
+                            <h2 class="h2-responsive"><strong>Vaccine Plan</strong></h2>
+                            <hr style="width:100%;margin-bottom:1em;">
+                            <row v-if="pet_type == 'dog'">
                                 <column md="2">
                                     <mdb-card class="vacts">
-                                        <mdb-card-image src="/src/assets/dog/vact_dog_canineparvovirus.png" alt="canineparvovirus" style="width:100%; height: 80px"></mdb-card-image>
+                                        <mdb-card-image src="/src/assets/dog/vact_dog_caninedistemper.png" alt="caninedistemper" style="width:100%; height: 80px"></mdb-card-image>
                                         <mdb-card-body>
-                                            <mdb-card-title style="font-size:1.2em;">Canine Parvovirus</mdb-card-title>
-                                            <mdb-card-text>ลำไส้อักเสบติดต่อ</mdb-card-text>
+                                            <mdb-card-title style="font-size:1.2em;">Canine Distemper</mdb-card-title>
+                                            <mdb-card-text>โรคไข้หัดสุนัข</mdb-card-text>
                                             <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                         </mdb-card-body>
                                     </mdb-card><br>
                             </column>
                                     <column md="2">
                                         <mdb-card class="vacts">
-                                            <mdb-card-image src="/src/assets/dog/vact_dog_infectiouscaninehepatitis.jpg" alt="infectiouscaninehepatitis" style="width:100%; height: 80px"></mdb-card-image>
+                                            <mdb-card-image src="/src/assets/dog/vact_dog_canineparvovirus.png" alt="canineparvovirus" style="width:100%; height: 80px"></mdb-card-image>
                                             <mdb-card-body>
-                                                <mdb-card-title style="font-size:1.2em;">Infectious Canine Hepatitis</mdb-card-title>
-                                                <mdb-card-text>โรคตับอักเสบติดต่อ</mdb-card-text>
+                                                <mdb-card-title style="font-size:1.2em;">Canine Parvovirus</mdb-card-title>
+                                                <mdb-card-text>ลำไส้อักเสบติดต่อ</mdb-card-text>
                                                 <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                             </mdb-card-body>
                                         </mdb-card><br>
                             </column>
                                         <column md="2">
                                             <mdb-card class="vacts">
-                                                <mdb-card-image src="/src/assets/dog/vact_dog_kennelcough.png" alt="kennelcough" style="width:100%; height: 80px"></mdb-card-image>
+                                                <mdb-card-image src="/src/assets/dog/vact_dog_infectiouscaninehepatitis.jpg" alt="infectiouscaninehepatitis" style="width:100%; height: 80px"></mdb-card-image>
                                                 <mdb-card-body>
-                                                    <mdb-card-title style="font-size:1.2em;">Kennel Cough</mdb-card-title>
-                                                    <mdb-card-text>โรคหลอดลมอักเสบติดต่อ</mdb-card-text>
+                                                    <mdb-card-title style="font-size:1.2em;">Infectious Canine Hepatitis</mdb-card-title>
+                                                    <mdb-card-text>โรคตับอักเสบติดต่อ</mdb-card-text>
                                                     <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                                 </mdb-card-body>
                                             </mdb-card><br>
                             </column>
                                             <column md="2">
                                                 <mdb-card class="vacts">
-                                                    <mdb-card-image src="/src/assets/dog/vact_dog_leptospirosis.png" alt="leptospirosis" style="width:100%; height: 80px"></mdb-card-image>
+                                                    <mdb-card-image src="/src/assets/dog/vact_dog_kennelcough.png" alt="kennelcough" style="width:100%; height: 80px"></mdb-card-image>
                                                     <mdb-card-body>
-                                                        <mdb-card-title style="font-size:1.15em;">Leptospirosis</mdb-card-title>
-                                                        <mdb-card-text>โรคเล็ปโตสไปโรซิส</mdb-card-text>
+                                                        <mdb-card-title style="font-size:1.2em;">Kennel Cough</mdb-card-title>
+                                                        <mdb-card-text>โรคหลอดลมอักเสบติดต่อ</mdb-card-text>
+                                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                                    </mdb-card-body>
+                                                </mdb-card><br>
+                            </column>
+                                                <column md="2">
+                                                    <mdb-card class="vacts">
+                                                        <mdb-card-image src="/src/assets/dog/vact_dog_leptospirosis.png" alt="leptospirosis" style="width:100%; height: 80px"></mdb-card-image>
+                                                        <mdb-card-body>
+                                                            <mdb-card-title style="font-size:1.15em;">Leptospirosis</mdb-card-title>
+                                                            <mdb-card-text>โรคเล็ปโตสไปโรซิส</mdb-card-text>
+                                                            <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                                        </mdb-card-body>
+                                                    </mdb-card><br>
+                            </column>
+                                                    <column md="2">
+                                                        <mdb-card class="vacts">
+                                                            <mdb-card-image src="/src/assets/dog/vact_dog_rabiesvirus.png" alt="rabiesvirus" style="width:100%; height: 80px"></mdb-card-image>
+                                                            <mdb-card-body>
+                                                                <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
+                                                                <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
+                                                                <mdb-btn color="info" @click.native="popupPlan = true">Edit</mdb-btn>
+                                                            </mdb-card-body>
+                                                        </mdb-card><br>
+                            </column>
+                            </row>
+                            <row v-if="pet_type == 'cat'">
+                                <column md="2">
+                                    <mdb-card class="vacts">
+                                        <mdb-card-image src="/src/assets/cat/vact_cat_felinecalicivirus.PNG" alt="felinecalicivirus" style="width:100%; height: 80px"></mdb-card-image>
+                                        <mdb-card-body>
+                                            <mdb-card-title style="font-size:1.2em;">Feline Calicivirus</mdb-card-title>
+                                            <mdb-card-text>โรคเกิดจากไวรัสพิเศษ</mdb-card-text>
+                                            <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                        </mdb-card-body>
+                                    </mdb-card><br>
+                            </column>
+                                    <column md="2">
+                                        <mdb-card class="vacts">
+                                            <mdb-card-image src="/src/assets/cat/vact_cat_felineinfectiousperitonitis.png" alt="felineinfectiousperitonitis" style="width:100%; height: 80px"></mdb-card-image>
+                                            <mdb-card-body>
+                                                <mdb-card-title style="font-size:1.2em;">Feline Infectious Peritonitis</mdb-card-title>
+                                                <mdb-card-text>ช่องท้องอักเสบ</mdb-card-text>
+                                                <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                            </mdb-card-body>
+                                        </mdb-card><br>
+                            </column>
+                                        <column md="2">
+                                            <mdb-card class="vacts">
+                                                <mdb-card-image src="/src/assets/cat/vact_cat_felineleukemiavirus.PNG" alt="felineleukemiavirus" style="width:100%; height: 80px"></mdb-card-image>
+                                                <mdb-card-body>
+                                                    <mdb-card-title style="font-size:1.2em;">Feline Leukemia Virus</mdb-card-title>
+                                                    <mdb-card-text>โรคลิวคีเมีย</mdb-card-text>
+                                                    <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                                </mdb-card-body>
+                                            </mdb-card><br>
+                            </column>
+                                            <column md="2">
+                                                <mdb-card class="vacts">
+                                                    <mdb-card-image src="/src/assets/cat/vact_cat_felineviralrhinotracheitis.PNG" alt="felineviralrhinotracheitis" style="width:100%; height: 80px"></mdb-card-image>
+                                                    <mdb-card-body>
+                                                        <mdb-card-title style="font-size:1.2em;">Feline Viral Rhinotracheitis</mdb-card-title>
+                                                        <mdb-card-text>โรคหวัดแมวและไข้หัดแมว</mdb-card-text>
                                                         <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
                                                     </mdb-card-body>
                                                 </mdb-card><br>
@@ -605,60 +907,8 @@
                                                         </mdb-card-body>
                                                     </mdb-card><br>
                             </column>
-                        </row>
-                        <row v-if="pet_type == 'cat'">
-                            <column md="2">
-                                <mdb-card class="vacts">
-                                    <mdb-card-image src="/src/assets/cat/vact_cat_felinecalicivirus.PNG" alt="felinecalicivirus" style="width:100%; height: 80px"></mdb-card-image>
-                                    <mdb-card-body>
-                                        <mdb-card-title style="font-size:1.2em;">Feline Calicivirus</mdb-card-title>
-                                        <mdb-card-text>โรคเกิดจากไวรัสพิเศษ</mdb-card-text>
-                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
-                                    </mdb-card-body>
-                                </mdb-card><br>
-                            </column>
-                                <column md="2">
-                                    <mdb-card class="vacts">
-                                        <mdb-card-image src="/src/assets/cat/vact_cat_felineinfectiousperitonitis.png" alt="felineinfectiousperitonitis" style="width:100%; height: 80px"></mdb-card-image>
-                                        <mdb-card-body>
-                                            <mdb-card-title style="font-size:1.2em;">Feline Infectious Peritonitis</mdb-card-title>
-                                            <mdb-card-text>ช่องท้องอักเสบ</mdb-card-text>
-                                            <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
-                                        </mdb-card-body>
-                                    </mdb-card><br>
-                            </column>
-                                    <column md="2">
-                                        <mdb-card class="vacts">
-                                            <mdb-card-image src="/src/assets/cat/vact_cat_felineleukemiavirus.PNG" alt="felineleukemiavirus" style="width:100%; height: 80px"></mdb-card-image>
-                                            <mdb-card-body>
-                                                <mdb-card-title style="font-size:1.2em;">Feline Leukemia Virus</mdb-card-title>
-                                                <mdb-card-text>โรคลิวคีเมีย</mdb-card-text>
-                                                <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
-                                            </mdb-card-body>
-                                        </mdb-card><br>
-                            </column>
-                                        <column md="2">
-                                            <mdb-card class="vacts">
-                                                <mdb-card-image src="/src/assets/cat/vact_cat_felineviralrhinotracheitis.PNG" alt="felineviralrhinotracheitis" style="width:100%; height: 80px"></mdb-card-image>
-                                                <mdb-card-body>
-                                                    <mdb-card-title style="font-size:1.2em;">Feline Viral Rhinotracheitis</mdb-card-title>
-                                                    <mdb-card-text>โรคหวัดแมวและไข้หัดแมว</mdb-card-text>
-                                                    <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
-                                                </mdb-card-body>
-                                            </mdb-card><br>
-                            </column>
-                                                <column md="2">
-                                                    <mdb-card class="vacts">
-                                                        <mdb-card-image src="/src/assets/dog/vact_dog_rabiesvirus.png" alt="rabiesvirus" style="width:100%; height: 80px"></mdb-card-image>
-                                                        <mdb-card-body>
-                                                            <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
-                                                            <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
-                                                            <mdb-btn color="info" @click.native="popupPlan = true">Edit</mdb-btn>
-                                                        </mdb-card-body>
-                                                    </mdb-card><br>
-                            </column>
-                        </row>
-                    </div>
+                            </row>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -683,7 +933,7 @@
             </modal-body>
             <modal-footer>
                 <btn color="default" @click.native="popupPlan = false">Close</btn>
-                <btn color="primary" @click.native="add_pet">Submit</btn>
+                <btn color="primary" @click.native="popup">Submit</btn>
             </modal-footer>
         </div>
     </modal>
@@ -693,6 +943,7 @@
 </template>
 
 <script>
+import swal from "sweetalert2";
 import db from "./firebaseInit";
 import firebase from "firebase";
 import {
@@ -743,9 +994,6 @@ import {
 } from "vue-datetime";
 
 export default {
-    beforeCreate: function () {
-        document.body.className = "body-medic";
-    },
     name: "medic",
     components: {
         Container,
@@ -811,43 +1059,17 @@ export default {
             file: File,
             uploadTask: "",
             image: "",
-            urlImagePet:"",
+            urlImagePet: "",
             pettemp: "",
             datebirth: "",
             petbirth: "",
-            options: [{
-                    countryCode: "AU",
-                    countryName: "Australia"
-                },
-                {
-                    countryCode: "CA",
-                    countryName: "Canada"
-                },
-                {
-                    countryCode: "CN",
-                    countryName: "China"
-                },
-                {
-                    countryCode: "DE",
-                    countryName: "Germany"
-                },
-                {
-                    countryCode: "JP",
-                    countryName: "Japan"
-                },
-                {
-                    countryCode: "MX",
-                    countryName: "Mexico"
-                },
-                {
-                    countryCode: "CH",
-                    countryName: "Switzerland"
-                },
-                {
-                    countryCode: "US",
-                    countryName: "United States"
-                }
-            ]
+            dump: {},
+            friend_list: [],
+            user_type: "",
+            id: "",
+            fullname: "",
+            hospital: "",
+            doc_id: ""
         };
     },
     methods: {
@@ -870,16 +1092,88 @@ export default {
             this.color = pet.color;
             this.med = pet.medical_record;
             this.urlImagePet = pet.imagePet;
-            let objHead = {case_name:"Create new Medic Case"};
-            if(this.med[0].case_name != "Create new Medic Case"){
-                this.med.unshift(objHead)
+            this.doc_id = pet.id;
+            this.id = pet.id.split('_');
+            this.id = this.id[0];
+            console.log(this.med)
+            console.log(this.dump[this.id].fullname)
+            let objHead = {
+                case_name: "Create new Medic Case"
+            };
+            console.log(this.user_type)
+                if(this.user_type == 'vet'){
+                    if (this.med[0] == null) {
+                    this.med.unshift(objHead)
+                    console.log(this.med)
+                } else if (this.med[0] && this.med[0].case_name != "Create new Medic Case") {
+                    this.med.unshift(objHead)
+                    console.log(this.med)
+                }
             }
-            if(this.med[0].pet_date != null){
-                console.log(this.headerConcat(this.med[0].pet_date.split("T")[0],this.med[0].pet_treat))
+            
+
+
+
+            // if (this.med[0].pet_date != null) {
+            //     console.log(this.headerConcat(this.med[0].pet_date.split("T")[0], this.med[0].pet_treat))
+            // }
+        },
+        addCase(selected) {
+            swal({
+                title: "Loading ...",
+                onOpen: () => {
+                    swal.showLoading();
+                }
+            });
+            var flag = this.checkInput(selected)
+            console.log(flag, selected.pet_date, selected.pet_treat)
+            if (!flag) {
+                swal({
+                    title: "Submit Status",
+                    text: "Please fill out empty field",
+                    type: "error",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    onOpen: () => {
+                        swal.hideLoading();
+                    }
+                });
+            }
+            if (flag) {
+                selected.name = this.pet_name;
+                selected.vet_sig = this.fullname;
+                selected.hos_sig = this.hospital;
+                selected.case_name = this.headerConcat(this.med[0].pet_date.split("T")[0], this.med[0].pet_treat);
+                console.log(selected, this.med)
+                db.collection("users").doc(this.id).collection("pets").doc(this.doc_id).update({
+                    medical: this.med
+                }).then(user => {
+                    swal({
+                        title: "Submit Status",
+                        text: "Succesfully Submit",
+                        type: "success",
+                        showConfirmButton: false,
+                        timer: 1500,
+                        onOpen: () => {
+                            swal.hideLoading();
+                        }
+                    });
+                })
             }
         },
-        headerConcat(date, head){
-            return date+": "+head;
+        checkInput(selected) {
+            if (!selected.pet_date) {
+                return false;
+            }
+            if (!selected.pet_treat) {
+                return false;
+            } else {
+                return true;
+            }
+
+        },
+        headerConcat(date, head) {
+            return date + " : " + head;
         },
         calAgePet(e) {
             if (!e) {
@@ -894,13 +1188,13 @@ export default {
                 var yearsOld = Number(today.getFullYear()) - year;
                 var monthsOld = today.getMonth() - month;
                 // console.log(
-                    // "Age : " +
-                    // yearsOld +
-                    // " years " +
-                    // monthsOld +
-                    // " months " +
-                    // day +
-                    // " days "
+                // "Age : " +
+                // yearsOld +
+                // " years " +
+                // monthsOld +
+                // " months " +
+                // day +
+                // " days "
                 // );
                 if (yearsOld == 0) {
                     return monthsOld + " Months";
@@ -916,39 +1210,169 @@ export default {
             }
         },
     },
+    beforeCreate() {
+        document.body.className = "body-medic";
+        db.collection("users").get().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                const data = {
+                    id: doc.id,
+                    fullname: doc.data().fullname,
+                    line_id: doc.data().line_id,
+                    user_type: doc.data().user_type,
+                    tel: doc.data().telephone_number,
+                    address: doc.data().address,
+                    vet_id: doc.data().vet_id,
+                    img: doc.data().urlImageProfile,
+                    friend_req: doc.data().friend_req,
+                    hospital: doc.data().hospital,
+                    send_req: doc.data().send_friend_req,
+                    friend_list: doc.data().friend_list
+                }
+                this.dump[data.id] = data
+            })
+
+        })
+    },
     created() {
+        this.email = firebase.auth().currentUser.email;
         db.collection("users")
             .doc(firebase.auth().currentUser.email)
-            .collection("pets")
-            .orderBy("pet_id")
             .get()
-            .then(querySnapshot => {
-                this.loading = false;
-                querySnapshot.forEach(doc => {
-                    const data = {
-                        id: doc.id,
-                        medical_record: doc.data().medical,
-                        pet_id: doc.data().pet_id,
-                        name: doc.data().pet_name,
-                        breed: doc.data().breed,
-                        color: doc.data().color,
-                        // dob: doc.data().dob,
-                        gender: doc.data().gender,
-                        marking: doc.data().marking,
-                        type: doc.data().pet_type,
-                        age: this.calAgePet(doc.data().dob),
-                        imagePet: doc.data().urlImagePet,
-                        pet_dog: doc.data().pet_dog,
-                        pet_cat: doc.data().pet_cat
-                    };
-                    
-                    // console.log(doc.data());
-                    this.pets.push(data);
-                }).
-                this.email = firebase.auth().currentUser.email;
-                // console.log(this.email);
-                // console.log(this.pets[0].age)
-            });
+            .then(doc => {
+                this.friend_list = doc.data().friend_list;
+                this.user_type = doc.data().user_type;
+                this.fullname = doc.data().fullname;
+                this.hospital = doc.data().hospital;
+                console.log("Friend list:", this.friend_list);
+            }).then(user => {
+                if (this.user_type == 'vet') {
+                    if (this.friend_list.length == 1) {
+                        db.collection("users")
+                            .doc(this.friend_list[0])
+                            .collection("pets")
+                            .orderBy("pet_id")
+                            .get()
+                            .then(querySnapshot => {
+                                this.loading = false;
+                                querySnapshot.forEach(doc => {
+                                    const data = {
+                                        id: doc.id,
+                                        pet_id: doc.data().pet_id,
+                                        name: doc.data().pet_name,
+                                        breed: doc.data().breed,
+                                        color: doc.data().color,
+                                        // dob: doc.data().dob,
+                                        gender: doc.data().gender,
+                                        marking: doc.data().marking,
+                                        type: doc.data().pet_type,
+                                        age: this.calAgePet(doc.data().dob),
+                                        imagePet: doc.data().urlImagePet,
+                                        pet_dog: doc.data().pet_dog,
+                                        pet_cat: doc.data().pet_cat,
+                                        medical_record: doc.data().medical
+                                    };
+                                    console.log(doc.data());
+                                    this.pets.push(data);
+                                });
+                            });
+                    }
+                    if (this.friend_list.length > 1) {
+                        db.collection("users")
+                            .doc(this.friend_list[0])
+                            .collection("pets")
+                            .orderBy("pet_id")
+                            .get()
+                            .then(querySnapshot => {
+                                this.loading = false;
+                                querySnapshot.forEach(doc => {
+                                    const data = {
+                                        id: doc.id,
+                                        pet_id: doc.data().pet_id,
+                                        name: doc.data().pet_name,
+                                        breed: doc.data().breed,
+                                        color: doc.data().color,
+                                        // dob: doc.data().dob,
+                                        gender: doc.data().gender,
+                                        marking: doc.data().marking,
+                                        type: doc.data().pet_type,
+                                        age: this.calAgePet(doc.data().dob),
+                                        imagePet: doc.data().urlImagePet,
+                                        pet_dog: doc.data().pet_dog,
+                                        pet_cat: doc.data().pet_cat,
+                                        medical_record: doc.data().medical
+                                    };
+                                    console.log(doc.data());
+                                    this.pets.push(data);
+                                });
+                            }).then(user => {
+                                db.collection("users")
+                                    .doc(this.friend_list[1])
+                                    .collection("pets")
+                                    .orderBy("pet_id")
+                                    .get()
+                                    .then(querySnapshot => {
+                                        this.loading = false;
+                                        querySnapshot.forEach(doc => {
+                                            const data = {
+                                                id: doc.id,
+                                                pet_id: doc.data().pet_id,
+                                                name: doc.data().pet_name,
+                                                breed: doc.data().breed,
+                                                color: doc.data().color,
+                                                // dob: doc.data().dob,
+                                                gender: doc.data().gender,
+                                                marking: doc.data().marking,
+                                                type: doc.data().pet_type,
+                                                age: this.calAgePet(doc.data().dob),
+                                                imagePet: doc.data().urlImagePet,
+                                                pet_dog: doc.data().pet_dog,
+                                                pet_cat: doc.data().pet_cat,
+                                                medical_record: doc.data().medical
+                                            };
+                                            console.log(doc.data());
+                                            this.pets.push(data);
+                                        });
+                                    })
+
+                            })
+                    }
+                }
+                if (this.user_type == 'owner') {
+                    db.collection("users")
+                        .doc(firebase.auth().currentUser.email)
+                        .collection("pets")
+                        .orderBy("pet_id")
+                        .get()
+                        .then(querySnapshot => {
+                            this.loading = false;
+                            querySnapshot.forEach(doc => {
+                                const data = {
+                                    id: doc.id,
+                                    pet_id: doc.data().pet_id,
+                                    name: doc.data().pet_name,
+                                    breed: doc.data().breed,
+                                    color: doc.data().color,
+                                    // dob: doc.data().dob,
+                                    gender: doc.data().gender,
+                                    marking: doc.data().marking,
+                                    type: doc.data().pet_type,
+                                    age: this.calAgePet(doc.data().dob),
+                                    imagePet: doc.data().urlImagePet,
+                                    pet_dog: doc.data().pet_dog,
+                                    pet_cat: doc.data().pet_cat,
+                                    medical_record: doc.data().medical
+                                };
+                                console.log(doc.data());
+                                this.pets.push(data);
+
+                            });
+                            this.email = firebase.auth().currentUser.email;
+                            console.log(this.email);
+                            // console.log(this.pets[0].age)
+                        });
+                }
+
+            })
     },
     mounted() {
         var area_select = document.querySelector(".scrolling-wrapper-flexbox");
