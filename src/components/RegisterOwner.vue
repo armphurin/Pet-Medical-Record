@@ -227,7 +227,7 @@ export default {
                             .then(
                                 user => {
                                     storage.ref(this.email + "/profile").put(this.file_pic[0]).then(user => {
-                                        storageRef.child(this.email+"/profile").getDownloadURL().then( url=> {
+                                        storageRef.child(this.email + "/profile").getDownloadURL().then(url => {
                                             // this.urlImageProfile = url;
                                             console.log(url);
                                             db.collection('users').doc(this.email).set({
@@ -241,8 +241,9 @@ export default {
                                                 datebirth: this.datebirth,
                                                 urlImageProfile: url,
                                                 user_type: "owner",
-                                                friend_req : {},
-                                                friend_list : {}
+                                                friend_req: {},
+                                                friend_list: [],
+                                                send_friend_req: {}
                                             }).then(user => {
                                                 swal({
                                                     title: "Register Status",
@@ -278,7 +279,7 @@ export default {
                         e.preventDefault();
 
                     }
-                     if (!this.file_pic) {
+                    if (!this.file_pic) {
                         swal({
                             title: "Loading ...",
                             onOpen: () => {
@@ -301,8 +302,9 @@ export default {
                                         datebirth: this.datebirth,
                                         user_type: "owner",
                                         urlImageProfile: "",
-                                        friend_req : {},
-                                        friend_list : {}
+                                        friend_req: {},
+                                        friend_list: [],
+                                        send_friend_req: {}
                                     }).then(user => {
                                         swal({
                                             title: "Register Status",
@@ -421,497 +423,479 @@ export default {
 
 <style>
 body.body-registervet {
-  min-height: 100%;
-  width: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background: rgb(52, 160, 217); /* Old browsers */
-  background: -moz-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  ); /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0d9', endColorstr='#17a995',GradientType=0 ); /* IE6-9 */
+    min-height: 100%;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background: rgb(52, 160, 217);
+    /* Old browsers */
+    background: -moz-linear-gradient(top,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
+    /* IE6-9 */
 }
 
 .vdatetime-input {
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 13px;
-  border: 1px solid #ced4da;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  text-rendering: auto;
-  color: initial;
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: start;
-  margin: 0em;
-  font: 400 13.3333px Arial;
-  -webkit-writing-mode: horizontal-tb !important;
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
-  line-height: 1.5;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 13px;
+    border: 1px solid #ced4da;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    -webkit-writing-mode: horizontal-tb !important;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
 }
-</style>
-
-<style scoped>
-
+</style><style scoped>
 form.regis_content_vet {
-  /* margin-top: 7em;
+    /* margin-top: 7em;
   margin-bottom: 5em;
   margin-left: 5em;
   margin-right: 5em; */
-  height: 61%;
-  z-index: 2;
-  margin: 0em;
+    height: 61%;
+    z-index: 2;
+    margin: 0em;
 }
 
 body.body-registervet {
-  min-height: 100%;
-  width: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background: rgb(52, 160, 217);
-  /* Old browsers */
-  background: -moz-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
-  /* IE6-9 */
+    min-height: 100%;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background: rgb(52, 160, 217);
+    /* Old browsers */
+    background: -moz-linear-gradient(top,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
+    /* IE6-9 */
 }
 
 .logo_regis {
-  width: 12%;
-  height: 12%;
-  z-index: 6;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 4em;
+    width: 12%;
+    height: 12%;
+    z-index: 6;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4em;
 }
 
 .obj-center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  margin-top: 4.5em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 4.5em;
 }
 
 .card.register-card {
-  background: linear-gradient(
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.2)
-  );
-  border-radius: 2em;
-  /*height: 107%;*/
+    background: linear-gradient(rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.2));
+    border-radius: 2em;
+    /*height: 107%;*/
 }
 
 .circle-button {
-  width: 65%;
-  height: 65%;
-  margin: 0 auto;
-  z-index: 5;
-  position: relative;
-  top: -19%;
-  left: 1%;
+    width: 65%;
+    height: 65%;
+    margin: 0 auto;
+    z-index: 5;
+    position: relative;
+    top: -19%;
+    left: 1%;
 }
 
-.circle-in:hover ~ .circle-button {
-  opacity: 0.2;
+.circle-in:hover~.circle-button {
+    opacity: 0.2;
 }
 
 .circle-in {
-  position: absolute;
-  width: 35%;
-  height: 35%;
-  z-index: 6;
-  top: -4%;
-  left: 32%;
+    position: absolute;
+    width: 35%;
+    height: 35%;
+    z-index: 6;
+    top: -4%;
+    left: 32%;
 }
 
 .button-regis {
-  position: relative;
-  width: 178px;
-  margin: 0 auto;
-  border-radius: 62px;
-  top: -16.5%;
-  z-index: 2;
+    position: relative;
+    width: 178px;
+    margin: 0 auto;
+    border-radius: 62px;
+    top: -16.5%;
+    z-index: 2;
 }
 
-.button-regis:hover ~ .circle-button {
-  opacity: 0.2;
+.button-regis:hover~.circle-button {
+    opacity: 0.2;
 }
 
 .bg-bubbles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 .bg-bubbles li {
-  position: absolute;
-  list-style: none;
-  display: block;
-  width: 40px;
-  height: 40px;
-  bottom: -160px;
-  -webkit-animation: square 23s infinite;
-  animation: square 23s infinite;
-  transition-timing-function: linear;
+    position: absolute;
+    list-style: none;
+    display: block;
+    width: 40px;
+    height: 40px;
+    bottom: -160px;
+    -webkit-animation: square 23s infinite;
+    animation: square 23s infinite;
+    transition-timing-function: linear;
 }
 
 .bg-bubbles li:nth-child(1) {
-  left: 10%;
+    left: 10%;
 }
 
 .bg-bubbles li:nth-child(2) {
-  left: 20%;
-  width: 40px;
-  height: 40px;
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-  -webkit-animation-duration: 17s;
-  animation-duration: 17s;
+    left: 20%;
+    width: 40px;
+    height: 40px;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-animation-duration: 17s;
+    animation-duration: 17s;
 }
 
 .bg-bubbles li:nth-child(3) {
-  left: 25%;
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
+    left: 25%;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
 }
 
 .bg-bubbles li:nth-child(4) {
-  left: 40%;
-  width: 30px;
-  height: 30px;
-  -webkit-animation-duration: 22s;
-  animation-duration: 22s;
+    left: 40%;
+    width: 30px;
+    height: 30px;
+    -webkit-animation-duration: 22s;
+    animation-duration: 22s;
 }
 
 .bg-bubbles li:nth-child(5) {
-  left: 70%;
+    left: 70%;
 }
 
 .bg-bubbles li:nth-child(6) {
-  left: 80%;
-  width: 60px;
-  height: 60px;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
+    left: 80%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
 }
 
 .bg-bubbles li:nth-child(7) {
-  left: 32%;
-  width: 80px;
-  height: 80px;
-  -webkit-animation-delay: 5s;
-  animation-delay: 5s;
+    left: 32%;
+    width: 80px;
+    height: 80px;
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
 }
 
 .bg-bubbles li:nth-child(8) {
-  left: 55%;
-  width: 20px;
-  height: 20px;
-  -webkit-animation-delay: 13s;
-  animation-delay: 13s;
-  -webkit-animation-duration: 40s;
-  animation-duration: 40s;
+    left: 55%;
+    width: 20px;
+    height: 20px;
+    -webkit-animation-delay: 13s;
+    animation-delay: 13s;
+    -webkit-animation-duration: 40s;
+    animation-duration: 40s;
 }
 
 .bg-bubbles li:nth-child(9) {
-  left: 25%;
-  width: 10px;
-  height: 10px;
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-  -webkit-animation-duration: 40s;
-  animation-duration: 40s;
+    left: 25%;
+    width: 10px;
+    height: 10px;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-animation-duration: 40s;
+    animation-duration: 40s;
 }
 
 .bg-bubbles li:nth-child(10) {
-  left: 90%;
-  width: 80px;
-  height: 80px;
-  -webkit-animation-delay: 9s;
-  animation-delay: 9s;
+    left: 90%;
+    width: 80px;
+    height: 80px;
+    -webkit-animation-delay: 9s;
+    animation-delay: 9s;
 }
 
 .bg-bubbles li:nth-child(11) {
-  left: 65%;
+    left: 65%;
 }
 
 .bg-bubbles li:nth-child(12) {
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-  -webkit-animation-duration: 17s;
-  animation-duration: 17s;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-animation-duration: 17s;
+    animation-duration: 17s;
 }
 
 .bg-bubbles li:nth-child(13) {
-  left: 45%;
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
+    left: 45%;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
 }
 
 .bg-bubbles li:nth-child(14) {
-  left: 60%;
-  width: 30px;
-  height: 30px;
-  -webkit-animation-duration: 22s;
-  animation-duration: 22s;
+    left: 60%;
+    width: 30px;
+    height: 30px;
+    -webkit-animation-duration: 22s;
+    animation-duration: 22s;
 }
 
 .bg-bubbles li:nth-child(15) {
-  left: 25%;
+    left: 25%;
 }
 
 .bg-bubbles li:nth-child(16) {
-  left: 15%;
-  width: 60px;
-  height: 60px;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
+    left: 15%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
 }
 
 .bg-bubbles li:nth-child(17) {
-  left: 5%;
-  width: 80px;
-  height: 80px;
-  -webkit-animation-delay: 5s;
-  animation-delay: 5s;
+    left: 5%;
+    width: 80px;
+    height: 80px;
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
 }
 
 .bg-bubbles li:nth-child(18) {
-  left: 0%;
-  width: 20px;
-  height: 20px;
-  -webkit-animation-delay: 13s;
-  animation-delay: 13s;
-  -webkit-animation-duration: 40s;
-  animation-duration: 40s;
+    left: 0%;
+    width: 20px;
+    height: 20px;
+    -webkit-animation-delay: 13s;
+    animation-delay: 13s;
+    -webkit-animation-duration: 40s;
+    animation-duration: 40s;
 }
 
 .bg-bubbles li:nth-child(19) {
-  left: 75%;
-  width: 10px;
-  height: 10px;
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-  -webkit-animation-duration: 40s;
-  animation-duration: 40s;
+    left: 75%;
+    width: 10px;
+    height: 10px;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-animation-duration: 40s;
+    animation-duration: 40s;
 }
 
 .bg-bubbles li:nth-child(20) {
-  left: 63%;
-  width: 60px;
-  height: 60px;
-  -webkit-animation-delay: 9s;
-  animation-delay: 9s;
+    left: 63%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation-delay: 9s;
+    animation-delay: 9s;
 }
 
 @-webkit-keyframes square {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
 
-  100% {
-    -webkit-transform: translateY(-400px) rotate(600deg);
-    transform: translateY(-400px) rotate(600deg);
-  }
+    100% {
+        -webkit-transform: translateY(-400px) rotate(600deg);
+        transform: translateY(-400px) rotate(600deg);
+    }
 }
 
 @keyframes square {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
 
-  100% {
-    -webkit-transform: translateY(-400px) rotate(600deg);
-    transform: translateY(-400px) rotate(600deg);
-  }
+    100% {
+        -webkit-transform: translateY(-400px) rotate(600deg);
+        transform: translateY(-400px) rotate(600deg);
+    }
 }
 
 .wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  min-height: 100%;
-  width: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background: rgb(52, 160, 217);
-  /* Old browsers */
-  background: -moz-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    top,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    rgb(52, 160, 217) 0%,
-    rgb(23, 169, 149) 56%,
-    rgb(23, 169, 149) 100%
-  );
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
-  /* IE6-9 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    min-height: 100%;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background: rgb(52, 160, 217);
+    /* Old browsers */
+    background: -moz-linear-gradient(top,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,
+        rgb(52, 160, 217) 0%,
+        rgb(23, 169, 149) 56%,
+        rgb(23, 169, 149) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34a0d9', endColorstr='#17a995', GradientType=0);
+    /* IE6-9 */
 }
 
 .progress-bar {
-  margin: 10px 0;
+    margin: 10px 0;
 }
 
 /* upload pic style */
 #picPro {
-  width: 30%;
+    width: 30%;
 }
 
 /*Profile Pic Start*/
 .picture-container1 {
-  position: relative;
-  height: 250px;
-  width: 250px;
-  cursor: pointer;
-  text-align: center;
+    position: relative;
+    height: 250px;
+    width: 250px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .picture-container2 {
-  position: relative;
-  height: 380px;
-  width: 940px;
-  cursor: pointer;
-  text-align: center;
+    position: relative;
+    height: 380px;
+    width: 940px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .picturePro {
-  width: 250px;
-  height: 250px;
-  background-color: #999999;
-  border: 4px solid #cccccc;
-  color: #ffffff;
-  border-radius: 50%;
-  /*margin: 0px auto;*/
-  overflow: hidden;
-  transition: all 0.2s;
-  -webkit-transition: all 0.2s;
+    width: 250px;
+    height: 250px;
+    background-color: #999999;
+    border: 4px solid #cccccc;
+    color: #ffffff;
+    border-radius: 50%;
+    /*margin: 0px auto;*/
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
 }
 
 .picturePro:hover {
-  border-color: #2ca8ff;
+    border-color: #2ca8ff;
 }
 
 .content.ct-wizard-green .picture:hover {
-  border-color: #05ae0e;
+    border-color: #05ae0e;
 }
 
 .content.ct-wizard-blue .picture:hover {
-  border-color: #3472f7;
+    border-color: #3472f7;
 }
 
 .content.ct-wizard-orange .picture:hover {
-  border-color: #ff9500;
+    border-color: #ff9500;
 }
 
 .content.ct-wizard-red .picture:hover {
-  border-color: #ff3b30;
+    border-color: #ff3b30;
 }
 
 .picturePro input[type="file"] {
-  cursor: pointer;
-  display: block;
-  height: 250px;
-  left: 0;
-  opacity: 0 !important;
-  position: absolute;
-  top: 0;
-  width: 250px;
+    cursor: pointer;
+    display: block;
+    height: 250px;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 250px;
 }
 
 .picture-src {
-  width: 10em;
-  height: 10em;
+    width: 10em;
+    height: 10em;
 }
 
 /*Profile Pic End*/
-.image-upload > input {
-  display: none;
+.image-upload>input {
+    display: none;
 }
 
 .image-upload img {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 /* upload pic style */
@@ -919,157 +903,163 @@ body.body-registervet {
 /* Popup Style */
 
 .vdatetime-input {
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 13px;
-  border: 1px solid #ced4da;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  text-rendering: auto;
-  color: initial;
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: start;
-  margin: 0em;
-  font: 400 13.3333px Arial;
-  -webkit-writing-mode: horizontal-tb !important;
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
-  line-height: 1.5;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 13px;
+    border: 1px solid #ced4da;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    -webkit-writing-mode: horizontal-tb !important;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
 }
 
 .label-group {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 label {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 input::placeholder {
-  color: grey !important;
-  font-size: 80%;
+    color: grey !important;
+    font-size: 80%;
 }
 
 @media only screen and (min-width: 300px) and (max-width: 1400px) {
-  .wrapper {
-    overflow: scroll;
-  }
+    .wrapper {
+        overflow: scroll;
+    }
 }
 
 /*Common Responsive Portrait, Phone*/
 @media only screen and (max-width: 600px) and (orientation: Portrait) {
-  form.regis_content_vet {
-    width: 150%;
-    margin-left: -25%;
-  }
-  .obj-center {
-    margin-top: 600px;
-    margin-bottom: 5%;
-  }
-  .logo_regis {
-    width: 10em;
-    height: 5em;
-  }
-  .btn {
-    width: 10em;
-    height: 5em;
-  }
+    form.regis_content_vet {
+        width: 150%;
+        margin-left: -25%;
+    }
+
+    .obj-center {
+        margin-top: 600px;
+        margin-bottom: 5%;
+    }
+
+    .logo_regis {
+        width: 10em;
+        height: 5em;
+    }
+
+    .btn {
+        width: 10em;
+        height: 5em;
+    }
 }
 
 /*iPhone 5/SE Portrait*/
 @media only screen and (min-width: 320px) and (max-width: 600px) and (max-height: 570px) and (orientation: portrait) {
-    .obj-center{
-        margin-top: 800px;  
+    .obj-center {
+        margin-top: 800px;
     }
 }
 
 /*Common Responsive Portrait, Higher Phone*/
 @media only screen and (max-width: 600px) and (min-height: 700px) and (orientation: Portrait) {
-  .obj-center {
-    margin-top: 550px;
-  }
+    .obj-center {
+        margin-top: 550px;
+    }
 }
 
 /*Common Responsive Portrait, Tablet*/
 @media only screen and (min-width: 600px) and (orientation: Portrait) {
-  form.regis_content_vet {
-    width: 140%;
-    margin-left: -20%;
-  }
-  .logo_regis {
-    width: 10em;
-    height: 5em;
-  }
-  .obj-center {
-    margin-top: -10%;
-  }
+    form.regis_content_vet {
+        width: 140%;
+        margin-left: -20%;
+    }
+
+    .logo_regis {
+        width: 10em;
+        height: 5em;
+    }
+
+    .obj-center {
+        margin-top: -10%;
+    }
 }
 
 /*Common Responsive Portrait, Larger Tablet*/
 @media only screen and (min-width: 1024px) and (orientation: Portrait) {
-  .obj-center {
-    margin-top: -30%;
-  }
+    .obj-center {
+        margin-top: -30%;
+    }
 }
 
 /*Common Responsive Landscape, Phone*/
 @media only screen and (max-width: 673px) and (orientation: Landscape) {
-  .obj-center {
-    margin-top: 775px;
-    margin-bottom: 5%;
-  }
+    .obj-center {
+        margin-top: 775px;
+        margin-bottom: 5%;
+    }
 }
 
 /*Common Responsive Landscape, for iPhone5SE*/
 @media only screen and (min-width: 560px) and (max-width: 673px) and (orientation: Landscape) {
     .obj-center {
-    margin-top: 805px;
+        margin-top: 805px;
     }
 }
 
 /*Common Responsive Landscape, Wider Phone*/
 @media only screen and (min-width: 673px) and (orientation: Landscape) {
-  form.regis_content_vet {
-    width: 125%;
-    margin-left: -10%;
-  }
-  .obj-center {
-    margin-top: 400px;
-    margin-bottom: 5%;
-  }
+    form.regis_content_vet {
+        width: 125%;
+        margin-left: -10%;
+    }
+
+    .obj-center {
+        margin-top: 400px;
+        margin-bottom: 5%;
+    }
 }
 
 /*Common Responsive Landscape, Widest Phone*/
 @media only screen and (min-width: 713px) and (max-width: 1000px) and (orientation: Landscape) {
-  form.regis_content_vet {
-    width: 190%;
-    margin-left: -45%;
-  }
-  .obj-center {
-    margin-top: 305px;
-    margin-bottom: 5%;
-  }
+    form.regis_content_vet {
+        width: 190%;
+        margin-left: -45%;
+    }
+
+    .obj-center {
+        margin-top: 305px;
+        margin-bottom: 5%;
+    }
 }
 
 /*Common Responsive Landscape, Tablet*/
 @media only screen and (min-height: 700px) and (orientation: Landscape) {
-  .obj-center {
-    margin-top: 5%;
-    margin-bottom: 5%;
-  }
+    .obj-center {
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
 }
 
-@media only screen and (min-width: 1200px) and (orientation: landscape){
-  form.regis_content_vet {
-    width: 100%;
-    margin-left: 0%;
-  }
+@media only screen and (min-width: 1200px) and (orientation: landscape) {
+    form.regis_content_vet {
+        width: 100%;
+        margin-left: 0%;
+    }
 }
-
 </style>

@@ -187,7 +187,6 @@ export default {
                 }
                 this.query.push(data);
             })
-            // console.log(this.query.friend_req)
         });
     }
 
