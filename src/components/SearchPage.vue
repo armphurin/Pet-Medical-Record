@@ -41,12 +41,12 @@
                                 <div class="d-flex justify-content-between">
                                     <mdb-col col="9" class="text-truncate pl-0 mb-3">
                                         <p class="dark-grey-text" style="margin-bottom:0px;" v-if="q.user_type =='vet'">Veterinary ID: {{q.vet_id}} </p>
-                                        <p class="dark-grey-text" v-if="q.user_type == 'vet'">Hospital Adress: {{q.address}}</p>
+                                        <p class="dark-grey-text" v-if="q.user_type == 'vet'">Hospital Adress: {{q.hospital}}</p>
                                     </mdb-col>
                                     <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
-                                        <a v-else-if="owner_user && search_filter == 'owner'"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
-                                        <a v-else :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
+                                        <a v-if="owner_user && search_filter != 'owner' && (!q.friend_req[current_user] || q.friend_req[current_user] == 'cancel')"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="owner_user && search_filter == 'owner' && (!q.friend_req[current_user] || q.friend_req[current_user] == 'cancel')"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="vet_user" :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
                                     </mdb-col>
                                 </div>
                             </mdb-col>
@@ -72,9 +72,9 @@
                                         <p class="dark-grey-text">Address: {{q.address}}</p>
                                     </mdb-col>
                                     <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
-                                        <a v-else-if="vet_user && search_filter == 'owner'"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
-                                        <a v-else :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
+                                        <a v-if="owner_user && search_filter != 'owner'&& (!q.friend_req[current_user] || q.friend_req[current_user] == 'cancel')"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="vet_user && search_filter == 'owner'&& (!q.friend_req[current_user] || q.friend_req[current_user] == 'cancel')"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="owner_user" :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
                                     </mdb-col>
                                 </div>
                             </mdb-col>
@@ -117,6 +117,7 @@ export default {
     data: function () {
         return {
             query: [],
+            current_user: firebase.auth().currentUser.email,
             search_text: localStorage.getItem("search_text"),
             search_filter: "veterinary",
             owner_user: JSON.parse(localStorage.getItem("ownerUser")),
@@ -147,19 +148,23 @@ export default {
         showConfirmButton: false,
         timer: 2000
       });
-        var current = firebase.auth().currentUser.email;
-        q.friend_req[current] = true
-        console.log(q.friend_req)
-        // db.collection("users").doc(q.id).update({
-        //     friend_req : q.friend_req
-        // }).then(user=>{
-        //     toast({
-        //                 type: "success",
-        //                 title: "Update pet successfully"
-        //               }).then(result => {
-        //                 // this.$router.go(this.$route.path);
-        //               });
-        // })
+        q.friend_req[this.current_user] = 'wait'
+        console.log(q.friend_req[this.current_user])
+        db.collection("users").doc(q.id).update({
+            friend_req : q.friend_req
+        }).then(user=>{ 
+            q.friend_req = {}
+            q.friend_req[q.id] = 'sending'
+            console.log(q.friend_req)
+            db.collection("users").doc(this.current_user).update({
+                send_friend_req : q.friend_req
+            }).then(user=>{
+                console.log(q.friend_req[q.id])
+            }).then(user=>{
+                this.$router.go(this.$route.path);
+            })
+        })
+        
     }
   },
     created() {
@@ -176,9 +181,10 @@ export default {
                     address: doc.data().address,
                     vet_id: doc.data().vet_id,
                     img: doc.data().urlImageProfile,
-                    friend_req: doc.data().friend_req
+                    friend_req: doc.data().friend_req,
+                    send_friend_req: doc.data().send_friend_req,
+                    hospital: doc.data().hospital
                 }
-                console.log(data.friend_req)
                 this.query.push(data);
             })
             // console.log(this.query.friend_req)
