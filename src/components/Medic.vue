@@ -650,31 +650,31 @@
                             <hr style="width:100%;margin-bottom:1em;">
                             <row>
                                 <column md="6">
-                                    <div class="label-group"v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet'">
                                         <label for="pettemp">Temp:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Temperature" id="pettemp" v-model="selected.pet_temp" style="width:100%;margin: 0 auto;border-radius: 13px;">
                                     </div>
-                                    <div class="label-group"v-if="user_type == 'owner'">
+                                    <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="pettemp">Temp:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Temperature" id="pettemp" v-model="selected.pet_temp" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                                     </div>
                                 </column>
                                 <column md="6">
-                                    <div class="label-group"v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet'">
                                         <label for="petweight">Weight:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Weight" id="pettweight" v-model="selected.pet_weight" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-                                    <div class="label-group"v-if="user_type == 'owner'">
+                                    <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="petweight">Weight:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Weight" id="pettweight" v-model="selected.pet_weight" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group"v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet'">
                                         <label for="note">Note:</label>
                                         <textarea class="form-control" id="note" v-model="selected.note" rows="5" placeholder="Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                     </div>
-                                    <div class="label-group"v-if="user_type == 'owner'">
+                                    <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="note">Note:</label>
                                         <textarea class="form-control" id="note" v-model="selected.note" rows="5" placeholder="Note" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled ></textarea>
                                     </div>
@@ -730,33 +730,33 @@
                             </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group"v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet'">
                                         <label for="recheck">Recheck Note:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="selected.recheck" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-                                     <div class="label-group"v-if="user_type == 'owner'">
+                                     <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="recheck">Recheck Note:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="selected.recheck" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group"v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet'">
                                         <label for="addition">Additional Instruction:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="selected.addition" style="width:100%;margin: 0 auto;border-radius: 13px;">
                             </div>
-                                     <div class="label-group"v-if="user_type == 'owner'">
+                                     <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="addition">Additional Instruction:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="selected.addition" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                 </column>
                                 <column md="6">
-                                    <div class="label-group"v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet'">
                                         <label for="vetsig">Veterinary Signature:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected == 'Select Case'" >
                                         <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name == 'Create new Medic Case'" disabled>
                                         <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="selected.vet_sig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" >
                             </div>
-                                     <div class="label-group"v-if="user_type == 'owner'">
+                                     <div class="label-group" v-if="user_type == 'owner'">
                                          <label for="hossig">Veterinary Signature:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="selected.vet_sig" style="width:100%;margin: 0 auto;border-radius: 13px;"  disabled>
                                         
@@ -801,7 +801,9 @@
                                         <mdb-card-body>
                                             <mdb-card-title style="font-size:1.2em;">Canine Distemper</mdb-card-title>
                                             <mdb-card-text>โรคไข้หัดสุนัข</mdb-card-text>
-                                            <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                            <mdb-card-text v-if="timetoshow[0] != 'none' && user_type == 'owner'">{{timetoshow[0]}}</mdb-card-text>
+                                            <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 0" v-if="vaccine[0] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                            <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 0, plandate = vaccine[0]" v-if="vaccine[0] != 'none' && user_type == 'vet'">edit</mdb-btn>
                                         </mdb-card-body>
                                     </mdb-card><br>
                             </column>
@@ -811,7 +813,9 @@
                                             <mdb-card-body>
                                                 <mdb-card-title style="font-size:1.2em;">Canine Parvovirus</mdb-card-title>
                                                 <mdb-card-text>ลำไส้อักเสบติดต่อ</mdb-card-text>
-                                                <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                                <mdb-card-text v-if="timetoshow[1] != 'none' && user_type == 'owner'">{{timetoshow[1]}}</mdb-card-text>
+                                                <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 1" v-if="vaccine[1] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                                <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 1, plandate = vaccine[1]" v-if="vaccine[1] != 'none' && user_type == 'vet'">edit</mdb-btn>
                                             </mdb-card-body>
                                         </mdb-card><br>
                             </column>
@@ -821,7 +825,9 @@
                                                 <mdb-card-body>
                                                     <mdb-card-title style="font-size:1.2em;">Infectious Canine Hepatitis</mdb-card-title>
                                                     <mdb-card-text>โรคตับอักเสบติดต่อ</mdb-card-text>
-                                                    <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                                    <mdb-card-text v-if="timetoshow[2] != 'none' && user_type == 'owner'">{{timetoshow[2]}}</mdb-card-text>
+                                                    <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 2" v-if="vaccine[2] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                                    <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 2, plandate = vaccine[2]" v-if="vaccine[2] != 'none' && user_type == 'vet' ">edit</mdb-btn>
                                                 </mdb-card-body>
                                             </mdb-card><br>
                             </column>
@@ -831,7 +837,9 @@
                                                     <mdb-card-body>
                                                         <mdb-card-title style="font-size:1.2em;">Kennel Cough</mdb-card-title>
                                                         <mdb-card-text>โรคหลอดลมอักเสบติดต่อ</mdb-card-text>
-                                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                                        <mdb-card-text v-if="timetoshow[3] != 'none' && user_type == 'owner'">{{timetoshow[3]}}</mdb-card-text>
+                                                        <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 3" v-if="vaccine[3] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                                        <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 3, plandate = vaccine[3]" v-if="vaccine[3] != 'none' && user_type == 'vet'">edit</mdb-btn>
                                                     </mdb-card-body>
                                                 </mdb-card><br>
                             </column>
@@ -841,8 +849,10 @@
                                                         <mdb-card-body>
                                                             <mdb-card-title style="font-size:1.15em;">Leptospirosis</mdb-card-title>
                                                             <mdb-card-text>โรคเล็ปโตสไปโรซิส</mdb-card-text>
-                                                            <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
-                                                        </mdb-card-body>
+                                                            <mdb-card-text v-if="timetoshow[4] != 'none' && user_type == 'owner'">{{timetoshow[4]}}</mdb-card-text>
+                                                            <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 4" v-if="vaccine[4] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                                            <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 4, plandate = vaccine[4]" v-if="vaccine[4] != 'none' && user_type == 'vet'">edit</mdb-btn>
+                                                    </mdb-card-body>
                                                     </mdb-card><br>
                             </column>
                                                     <column md="2">
@@ -851,8 +861,10 @@
                                                             <mdb-card-body>
                                                                 <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
                                                                 <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
-                                                                <mdb-btn color="info" @click.native="popupPlan = true">Edit</mdb-btn>
-                                                            </mdb-card-body>
+                                                                <mdb-card-text v-if="timetoshow[5] != 'none' && user_type == 'owner'">{{timetoshow[5]}}</mdb-card-text>
+                                                                <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 5" v-if="vaccine[5] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                                                <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 5, plandate = vaccine[5]" v-if="vaccine[5] != 'none' && user_type == 'vet'">edit</mdb-btn>
+                                                    </mdb-card-body>
                                                         </mdb-card><br>
                             </column>
                             </row>
@@ -863,8 +875,10 @@
                                         <mdb-card-body>
                                             <mdb-card-title style="font-size:1.2em;">Feline Calicivirus</mdb-card-title>
                                             <mdb-card-text>โรคเกิดจากไวรัสพิเศษ</mdb-card-text>
-                                            <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
-                                        </mdb-card-body>
+                                            <mdb-card-text v-if="timetoshow[0] != 'none' && user_type == 'owner'">{{timetoshow[0]}}</mdb-card-text>
+                                            <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 0" v-if="vaccine[0] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                            <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 0, plandate = vaccine[0]" v-if="vaccine[0] != 'none' && user_type == 'vet'">edit</mdb-btn>
+                                            </mdb-card-body>
                                     </mdb-card><br>
                             </column>
                                     <column md="2">
@@ -873,8 +887,10 @@
                                             <mdb-card-body>
                                                 <mdb-card-title style="font-size:1.2em;">Feline Infectious Peritonitis</mdb-card-title>
                                                 <mdb-card-text>ช่องท้องอักเสบ</mdb-card-text>
-                                                <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
-                                            </mdb-card-body>
+                                                <mdb-card-text v-if="timetoshow[1] != 'none' && user_type == 'owner'">{{timetoshow[1]}}</mdb-card-text>
+                                                <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 1" v-if="vaccine[1] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                                <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 1, plandate = vaccine[1]" v-if="vaccine[1] != 'none' && user_type == 'vet'">edit</mdb-btn>
+                                        </mdb-card-body>
                                         </mdb-card><br>
                             </column>
                                         <column md="2">
@@ -883,7 +899,9 @@
                                                 <mdb-card-body>
                                                     <mdb-card-title style="font-size:1.2em;">Feline Leukemia Virus</mdb-card-title>
                                                     <mdb-card-text>โรคลิวคีเมีย</mdb-card-text>
-                                                    <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                                    <mdb-card-text v-if="timetoshow[2] != 'none' && user_type == 'owner'">{{timetoshow[2]}}</mdb-card-text>
+                                                    <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 2" v-if="vaccine[2] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                                    <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 2, plandate = vaccine[2]" v-if="vaccine[2] != 'none' && user_type == 'vet' ">edit</mdb-btn>
                                                 </mdb-card-body>
                                             </mdb-card><br>
                             </column>
@@ -893,7 +911,9 @@
                                                     <mdb-card-body>
                                                         <mdb-card-title style="font-size:1.2em;">Feline Viral Rhinotracheitis</mdb-card-title>
                                                         <mdb-card-text>โรคหวัดแมวและไข้หัดแมว</mdb-card-text>
-                                                        <mdb-btn color="primary" @click.native="popupPlan = true">Plan</mdb-btn>
+                                                        <mdb-card-text v-if="timetoshow[3] != 'none' && user_type == 'owner'">{{timetoshow[3]}}</mdb-card-text>
+                                                        <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 3" v-if="vaccine[3] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                                        <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 3, plandate = vaccine[3]" v-if="vaccine[3] != 'none' && user_type == 'vet'">edit</mdb-btn>
                                                     </mdb-card-body>
                                                 </mdb-card><br>
                             </column>
@@ -903,8 +923,10 @@
                                                         <mdb-card-body>
                                                             <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
                                                             <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
-                                                            <mdb-btn color="info" @click.native="popupPlan = true">Edit</mdb-btn>
-                                                        </mdb-card-body>
+                                                            <mdb-card-text v-if="timetoshow[4] != 'none' && user_type == 'owner'">{{timetoshow[4]}}</mdb-card-text>
+                                                            <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 4" v-if="vaccine[4] == 'none' && user_type == 'vet'">Plan</mdb-btn>
+                                                            <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 4, plandate = vaccine[4]" v-if="vaccine[4] != 'none' && user_type == 'vet'">edit</mdb-btn>
+                                                    </mdb-card-body>
                                                     </mdb-card><br>
                             </column>
                             </row>
@@ -932,8 +954,8 @@
                 </row>
             </modal-body>
             <modal-footer>
-                <btn color="default" @click.native="popupPlan = false">Close</btn>
-                <btn color="primary" @click.native="popup">Submit</btn>
+                <btn color="default" @click.native="popupPlan = false, plandate = ''">Close</btn>
+                <btn color="primary" @click.native="popupPlan = false, updateVaccine()">Submit</btn>
             </modal-footer>
         </div>
     </modal>
@@ -1069,10 +1091,39 @@ export default {
             id: "",
             fullname: "",
             hospital: "",
-            doc_id: ""
+            doc_id: "",
+            vaccine: [],
+            vaccine_id: "",
+            plandate: "",
+            timetoshow: []
         };
     },
     methods: {
+        updateVaccine() {
+            swal({
+                title: "Loading ...",
+                onOpen: () => {
+                    swal.showLoading();
+                }
+            });
+            // console.log(this.vaccine_id, this.plandate, this.vaccine[this.vaccine_id])
+            this.vaccine[this.vaccine_id] = this.plandate
+             db.collection("users").doc(this.id).collection("pets").doc(this.doc_id).update({
+                 vaccine : this.vaccine
+             }).then(user=>{
+                 swal({
+                        title: "Update Vaccine",
+                        text: "Succesfully Update Vaccine",
+                        type: "success",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        onOpen: () => {
+                            swal.hideLoading();
+                        }
+                    });
+             })
+            
+        },
         selectHeader(pet) {
             this.selected = "Select Case";
             var allelement = document.getElementsByClassName("selectedHeader");
@@ -1093,10 +1144,14 @@ export default {
             this.med = pet.medical_record;
             this.urlImagePet = pet.imagePet;
             this.doc_id = pet.id;
+            this.vaccine = pet.vaccine;
             this.id = pet.id.split('_');
             this.id = this.id[0];
-            console.log(this.med)
-            console.log(this.dump[this.id].fullname)
+            this.timetoshow = this.showTime(this.vaccine);
+            console.log(this.vaccine)
+            console.log(this.timetoshow)
+            // console.log(this.med)
+            // console.log(this.dump[this.id].fullname)
             let objHead = {
                 case_name: "Create new Medic Case"
             };
@@ -1104,10 +1159,10 @@ export default {
                 if(this.user_type == 'vet'){
                     if (this.med[0] == null) {
                     this.med.unshift(objHead)
-                    console.log(this.med)
+                    // console.log(this.med)
                 } else if (this.med[0] && this.med[0].case_name != "Create new Medic Case") {
                     this.med.unshift(objHead)
-                    console.log(this.med)
+                    // console.log(this.med)
                 }
             }
             
@@ -1118,6 +1173,28 @@ export default {
             //     console.log(this.headerConcat(this.med[0].pet_date.split("T")[0], this.med[0].pet_treat))
             // }
         },
+        showTime(vaccine){
+            // console.log(vaccine.length)
+            var timetoshow = []
+            vaccine.forEach(function(e){
+                if(e != 'none'){
+                    console.log(e)
+                    var date = e.split('T')[0]
+                    var time = e.split('T')[1]
+                    var time = time.split('.')[0]
+                    var hour = time.split(':')[0]
+                    var minute = time.split(':')[1]
+                    var hour = (parseInt(hour) + 7) % 24
+                    var showtime = "Date: "+date+" Time: "+hour+":"+minute 
+                    // console.log(showtime)
+                    timetoshow.push(showtime)
+                }
+                if(e == 'none'){
+                    timetoshow.push(e)
+                }
+            })
+            return timetoshow;
+        },
         addCase(selected) {
             swal({
                 title: "Loading ...",
@@ -1126,14 +1203,14 @@ export default {
                 }
             });
             var flag = this.checkInput(selected)
-            console.log(flag, selected.pet_date, selected.pet_treat)
+            // console.log(flag, selected.pet_date, selected.pet_treat)
             if (!flag) {
                 swal({
                     title: "Submit Status",
                     text: "Please fill out empty field",
                     type: "error",
                     showConfirmButton: false,
-                    timer: 1500,
+                    timer: 3000,
                     onOpen: () => {
                         swal.hideLoading();
                     }
@@ -1144,7 +1221,7 @@ export default {
                 selected.vet_sig = this.fullname;
                 selected.hos_sig = this.hospital;
                 selected.case_name = this.headerConcat(this.med[0].pet_date.split("T")[0], this.med[0].pet_treat);
-                console.log(selected, this.med)
+                // console.log(selected, this.med)
                 db.collection("users").doc(this.id).collection("pets").doc(this.doc_id).update({
                     medical: this.med
                 }).then(user => {
@@ -1153,7 +1230,7 @@ export default {
                         text: "Succesfully Submit",
                         type: "success",
                         showConfirmButton: false,
-                        timer: 1500,
+                        timer: 3000,
                         onOpen: () => {
                             swal.hideLoading();
                         }
@@ -1269,7 +1346,8 @@ export default {
                                         imagePet: doc.data().urlImagePet,
                                         pet_dog: doc.data().pet_dog,
                                         pet_cat: doc.data().pet_cat,
-                                        medical_record: doc.data().medical
+                                        medical_record: doc.data().medical,
+                                        vaccine : doc.data().vaccine
                                     };
                                     console.log(doc.data());
                                     this.pets.push(data);
@@ -1299,7 +1377,8 @@ export default {
                                         imagePet: doc.data().urlImagePet,
                                         pet_dog: doc.data().pet_dog,
                                         pet_cat: doc.data().pet_cat,
-                                        medical_record: doc.data().medical
+                                        medical_record: doc.data().medical,
+                                        vaccine : doc.data().vaccine
                                     };
                                     console.log(doc.data());
                                     this.pets.push(data);
@@ -1327,7 +1406,8 @@ export default {
                                                 imagePet: doc.data().urlImagePet,
                                                 pet_dog: doc.data().pet_dog,
                                                 pet_cat: doc.data().pet_cat,
-                                                medical_record: doc.data().medical
+                                                medical_record: doc.data().medical,
+                                                vaccine : doc.data().vaccine
                                             };
                                             console.log(doc.data());
                                             this.pets.push(data);
@@ -1360,7 +1440,8 @@ export default {
                                     imagePet: doc.data().urlImagePet,
                                     pet_dog: doc.data().pet_dog,
                                     pet_cat: doc.data().pet_cat,
-                                    medical_record: doc.data().medical
+                                    medical_record: doc.data().medical,
+                                    vaccine : doc.data().vaccine
                                 };
                                 console.log(doc.data());
                                 this.pets.push(data);
