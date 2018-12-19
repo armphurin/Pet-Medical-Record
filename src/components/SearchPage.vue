@@ -171,7 +171,9 @@ body.body-searchpage {
     -o-background-size: cover;
     background-size: cover;
 }
-</style><style scoped>
+</style>
+
+<style scoped>
 .news {
     border-bottom: 1px solid #e0e0e0;
     margin-bottom: 1.5rem;
@@ -183,10 +185,16 @@ body.body-searchpage {
 
 /*Common Mobile Portrait*/
 @media only screen and (min-width: 370px) and (max-width: 600px) {
+    .col-3{
+        left: -72%;
+        margin-top: 4em;
+        margin-bottom: 1.5em;
+    }
+
     .col-3 .btn{
-        width: 5em;
+        width: 7em;
         padding-left: 0px;
-        left: -30%;
+        left: -70%;
         padding-right: 0px;
         top: -10%;
     }
@@ -195,7 +203,7 @@ body.body-searchpage {
 /*Samsung Galaxy S5 and iPhone 5 Portrait*/
 @media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
     .text-truncate{
-    overflow: visible;
+        overflow: visible;
     }
 
     .col-3{
@@ -205,7 +213,7 @@ body.body-searchpage {
     }
 
     .col-3 .btn{
-        width: 5em;
+        width: 7em;
         padding-left: 0px;
         left: -20%;
         padding-right: 0px;
@@ -214,6 +222,54 @@ body.body-searchpage {
 
     .browser-default{
         margin-left: 1em;
+    }
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 760px) and (orientation: portrait) {
+    .col-3 .btn{
+        width: 7em;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .searchcard{
+        margin-bottom: 38.5%;
+    }
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px) and (orientation: portrait) {
+    .searchcard{
+        margin-bottom: 54%;
+    }
+}
+
+
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 830px) and (orientation: landscape) {
+    .col-3 .btn{
+        width: 7em;
+        padding-left: 0px;
+        padding-right: 0px;
+        top: -10%;
+    }  
+}
+
+/*Samsung Galaxy S5 and iPhone 5/SE Landscape*/
+@media only screen and (max-width: 640px) and (max-height: 360px) and (orientation: landscape) {
+    .col-3 .btn{
+        width: 7em;
+        padding-left: 0px;
+        padding-right: 0px;
+        top: -10%;
+    }
+}
+
+/*iPro Landscape*/
+@media only screen and (min-width: 1200px) and (max-width: 1400px) and (orientation: landscape) {
+    .searchcard{
+        margin-bottom: 6%;
     }
 }
 

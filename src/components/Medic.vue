@@ -1839,7 +1839,7 @@ caption {
 }
 
 .medic-owner{
-    margin-bottom: 27em;
+    margin-bottom: 35.5em;
 }
 
 /*iPad Portrait*/

@@ -1480,6 +1480,12 @@ input::placeholder {
   .col {
     flex-basis: unset;
   }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
 }
 
 /*iPad Pro Portrait*/
