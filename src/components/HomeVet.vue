@@ -212,7 +212,7 @@
                             <label for="wizard-picturePro">
                               <img :src="show_pet[0].imagePet" class="picture-src picturePro" id="wizardPicturePreviewPro"  style="object-fit: cover; border-radius: 50%;"/>
                             </label>
-                            <input type="file" multiple accept="image/jpeg" @change="onImagePetUpdate" id="wizard-picturePro" />
+                            <input type="file" multiple accept="image/jpeg" @change="onImagePetUpdate" id="wizard-picturePro" disabled/>
                         </div>
                             <div class="label-group">
                                 <label for="petname">Pet Name</label>
@@ -251,7 +251,7 @@
                             <column>
                                 <div class="label-group">
                                     <label for="breed">Breed</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="show_pet[0].breed" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Breed" id="breed" v-model="show_pet[0].breed" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                                 </div>
                             </column>
                         </row>
@@ -259,7 +259,7 @@
                             <column>
                                 <div class="label-group">
                                     <label for="colour">Colour</label>
-                                    <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="show_pet[0].color" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    <input class="form-control form-control-lg" type="text" placeholder="Colour" id="colour" v-model="show_pet[0].color" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                               </div>
                             </column>
                         </row>
@@ -267,7 +267,7 @@
                             <column>
                                 <div class="label-group">
                                     <label for="marking">Markings</label>
-                                    <textarea class="form-control" id="marking" v-model="show_pet[0].marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                    <textarea class="form-control" id="marking" v-model="show_pet[0].marking" rows="5" placeholder="Marking" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled></textarea>
                                 </div>
                             </column>
                         </row>
@@ -410,9 +410,6 @@ import {
 import { Datetime } from "vue-datetime";
 
 export default {
-  beforeCreate: function() {
-    document.body.className = "body-home";
-  },
   name: "home-vet",
   components: {
     Container,
@@ -1217,7 +1214,8 @@ export default {
         // console.log(this.pets[0].age)
       });
   },
-  mounted() {
+  beforeCreate() {
+    document.body.className = "body-home";
     db.collection("users")
       .doc(firebase.auth().currentUser.email)
       .get()
