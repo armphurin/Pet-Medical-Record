@@ -259,6 +259,7 @@ body.body-friendpage {
 }
 .card.searchcard{
     margin-top: 5em;
+    margin-bottom: 16em;
 }
 
 /* fade hiddem */
