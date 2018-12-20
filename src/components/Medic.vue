@@ -139,7 +139,7 @@
                     <div class="tab-panel-content">
                         <div v-if="pet_type">
                         <!-- Medic Content -->
-                        <v-select label="case_name" id="medicSelect" :options="med" v-model="selected"></v-select>
+                        <v-select label="case_name" id="medicSelect" :options="med" v-model="selected" @input="doWhenSelected(selected)"></v-select>
                         <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
                         <h2 class="h2-responsive"><strong>Subjective Finding</strong></h2>
                         <hr style="width:100%;margin-bottom:1em;">
@@ -163,19 +163,16 @@
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-if="selected.select_appet == 'norm'" checked="checked" disabled/>
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'abnorm'" disabled />
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == 'na'" disabled />
-                                                    <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm" v-else-if="selected.select_appet == null" /> -->
                                                 </td>
                                                 <td align="center">
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-if="selected.select_appet == 'norm'" disabled />
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'abnorm'" checked="checked" disabled/>
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == 'na'" disabled/>
-                                                    <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" v-else-if="selected.select_appet == null"/> -->
                                                 </td>
                                                 <td align="center">
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-if="selected.select_appet == 'norm'" disabled />
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'abnrom'" disabled/>
                                                     <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == 'na'" checked="checked" disabled/>
-                                                    <!-- <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" v-else-if="selected.select_appet == null" /> -->
                                                 </td>
                                             </tr>
                                             <tr>
@@ -313,105 +310,105 @@
                                                 </td>
                                             </tr>
                                         </tbody>
-                                        <tbody v-if="selected.case_name == 'Create new Medic Case'">
+                                        <tbody v-else-if="selected.case_name == 'Create new Medic Case'">
                                             <tr>
                                                 <td align="center">Appetite</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_norm" label="." value="norm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_appet1" id="app_norm" label="." value="norm"/>
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_abnorm" label="." value="abnorm" />
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_appet1" id="app_abnorm" label="." value="abnorm" />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_appet" id="app_na" label="." value="na" />
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_appet1" id="app_na" label="." value="na" />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Drinking</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_norm" label="." value="norm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_drink1" id="dri_norm" label="." value="norm"/>
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_abnorm" label="." value="abnorm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_drink1" id="dri_abnorm" label="." value="abnorm"/>
                                                 
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_drink" id="dri_na" label="." value="na"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_drink1" id="dri_na" label="." value="na"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Coughing</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_norm" label="." value="norm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_cough1" id="cou_norm" label="." value="norm"/>
                                                 
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_abnorm" label="." value="abnorm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_cough1" id="cou_abnorm" label="." value="abnorm"/>
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_cough" id="cou_na" label="." value="na"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_cough1" id="cou_na" label="." value="na"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Sneezing</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_norm" label="." value="norm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_sneez1" id="sne_norm" label="." value="norm"/>
                                                 
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_abnorm" label="." value="abnorm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_sneez1" id="sne_abnorm" label="." value="abnorm"/>
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_sneez" id="sne_na" label="." value="na"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_sneez1" id="sne_na" label="." value="na"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Attitude</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_norm" label="." value="norm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_att1" id="att_norm" label="." value="norm"/>
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_abnorm" label="." value="abnorm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_att1" id="att_abnorm" label="." value="abnorm"/>
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_att" id="att_na" label="." value="na"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_att1" id="att_na" label="." value="na"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Vomiting</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_norm" label="." value="norm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_vom1" id="vom_norm" label="." value="norm"/>
                                                 
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_abnorm" label="."/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_vom1" id="vom_abnorm" label="."/>
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_vom" id="vom_na" label="." value="na"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_vom1" id="vom_na" label="." value="na"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Bowels</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_norm" label="." value="norm" />
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_bow1" id="bow_norm" label="." value="norm" />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_abnorm" label="." value="abnorm" />
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_bow1" id="bow_abnorm" label="." value="abnorm" />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_bow" id="bow_na" label="." value="na"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_bow1" id="bow_na" label="." value="na"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">Urination</td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_norm" label="." value="norm"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_uri1" id="uri_norm" label="." value="norm"/>
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_abnorm" label="." value="abnorm" />
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_uri1" id="uri_abnorm" label="." value="abnorm" />
                                                 </td>
                                                 <td align="center">
-                                                    <mdb-input class="hidden" type="radio" name="select_uri" id="uri_na" label="." value="na"/>
+                                                    <mdb-input class="hidden new-case" type="radio" name="select_uri1" id="uri_na" label="." value="na"/>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -878,6 +875,244 @@ export default {
                 console.log(this.headerConcat(this.med[0].pet_date.split("T")[0],this.med[0].pet_treat))
             }
         },
+        doWhenSelected(e){
+            if(e.case_name == "Create new Medic Case"){
+                alert("do"+e.case_name)
+                // document.getElementById('app_norm1').checked = false;
+                // document.getElementById('app_abnorm1').checked = false;
+                // document.getElementById('app_na1').checked = false;
+                // document.getElementById('dri_norm1').checked = false;
+                // document.getElementById('dri_abnorm1').checked = false;
+                // document.getElementById('dri_na1').checked = false;
+                // document.getElementById('cou_norm1').checked = false;
+                // document.getElementById('cou_abnorm1').checked = false;
+                // document.getElementById('cou_na1').checked = false;
+                // document.getElementById('sne_norm1').checked = false;
+                // document.getElementById('sne_abnorm1').checked = false;
+                // document.getElementById('sne_na1').checked = false;
+                // document.getElementById('att_norm1').checked = false;
+                // document.getElementById('att_abnorm1').checked = false;
+                // document.getElementById('att_na1').checked = false;
+                // document.getElementById('vom_norm1').checked = false;
+                // document.getElementById('vom_abnorm1').checked = false;
+                // document.getElementById('vom_na1').checked = false;
+                // document.getElementById('bow_norm1').checked = false;
+                // document.getElementById('bow_abnorm1').checked = false;
+                // document.getElementById('bow_na1').checked = false;
+                // document.getElementById('uri_norm1').checked = false;
+                // document.getElementById('uri_abnorm1').checked = false;
+                // document.getElementById('uri_na1').checked = false;
+
+                // document.getElementById('app_norm').checked = false;
+                // document.getElementById('app_abnorm').checked = false;
+                // document.getElementById('app_na').checked = false;
+                // document.getElementById('dri_norm').checked = false;
+                // document.getElementById('dri_abnorm').checked = false;
+                // document.getElementById('dri_na').checked = false;
+                // document.getElementById('cou_norm').checked = false;
+                // document.getElementById('cou_abnorm').checked = false;
+                // document.getElementById('cou_na').checked = false;
+                // document.getElementById('sne_norm').checked = false;
+                // document.getElementById('sne_abnorm').checked = false;
+                // document.getElementById('sne_na').checked = false;
+                // document.getElementById('att_norm').checked = false;
+                // document.getElementById('att_abnorm').checked = false;
+                // document.getElementById('att_na').checked = false;
+                // document.getElementById('vom_norm').checked = false;
+                // document.getElementById('vom_abnorm').checked = false;
+                // document.getElementById('vom_na').checked = false;
+                // document.getElementById('bow_norm').checked = false;
+                // document.getElementById('bow_abnorm').checked = false;
+                // document.getElementById('bow_na').checked = false;
+                // document.getElementById('uri_norm').checked = false;
+                // document.getElementById('uri_abnorm').checked = false;
+                // document.getElementById('uri_na').checked = false;
+
+                document.getElementById('app_norm').removeAttribute("checked");
+                document.getElementById('app_abnorm').removeAttribute("checked");
+                document.getElementById('app_na').removeAttribute("checked");
+                document.getElementById('dri_norm').removeAttribute("checked");
+                document.getElementById('dri_abnorm').removeAttribute("checked");
+                document.getElementById('dri_na').removeAttribute("checked");
+                document.getElementById('cou_norm').removeAttribute("checked");
+                document.getElementById('cou_abnorm').removeAttribute("checked");
+                document.getElementById('cou_na').removeAttribute("checked");
+                document.getElementById('sne_norm').removeAttribute("checked");
+                document.getElementById('sne_abnorm').removeAttribute("checked");
+                document.getElementById('sne_na').removeAttribute("checked");
+                document.getElementById('att_norm').removeAttribute("checked");
+                document.getElementById('att_abnorm').removeAttribute("checked");
+                document.getElementById('att_na').removeAttribute("checked");
+                document.getElementById('vom_norm').removeAttribute("checked");
+                document.getElementById('vom_abnorm').removeAttribute("checked");
+                document.getElementById('vom_na').removeAttribute("checked");
+                document.getElementById('bow_norm').removeAttribute("checked");
+                document.getElementById('bow_abnorm').removeAttribute("checked");
+                document.getElementById('bow_na').removeAttribute("checked");
+                document.getElementById('uri_norm').removeAttribute("checked");
+                document.getElementById('uri_abnorm').removeAttribute("checked");
+                document.getElementById('uri_na').removeAttribute("checked");
+            }
+            else{
+                // document.getElementById('app_norm').checked = false;
+                // document.getElementById('app_abnorm').checked = false;
+                // document.getElementById('app_na').checked = false;
+                // document.getElementById('dri_norm').checked = false;
+                // document.getElementById('dri_abnorm').checked = false;
+                // document.getElementById('dri_na').checked = false;
+                // document.getElementById('cou_norm').checked = false;
+                // document.getElementById('cou_abnorm').checked = false;
+                // document.getElementById('cou_na').checked = false;
+                // document.getElementById('sne_norm').checked = false;
+                // document.getElementById('sne_abnorm').checked = false;
+                // document.getElementById('sne_na').checked = false;
+                // document.getElementById('att_norm').checked = false;
+                // document.getElementById('att_abnorm').checked = false;
+                // document.getElementById('att_na').checked = false;
+                // document.getElementById('vom_norm').checked = false;
+                // document.getElementById('vom_abnorm').checked = false;
+                // document.getElementById('vom_na').checked = false;
+                // document.getElementById('bow_norm').checked = false;
+                // document.getElementById('bow_abnorm').checked = false;
+                // document.getElementById('bow_na').checked = false;
+                // document.getElementById('uri_norm').checked = false;
+                // document.getElementById('uri_abnorm').checked = false;
+                // document.getElementById('uri_na').checked = false;
+                
+                if(e.select_appet == "norm"){
+                    alert("norm")
+                    // document.getElementById('app_norm').checked = true;
+                    // document.getElementById('app_abnorm').checked = false;
+                    // document.getElementById('app_na').checked = false;
+                    document.getElementById('app_norm').setAttribute("checked", "checked");
+                    document.getElementById('app_abnorm').removeAttribute("checked");
+                    document.getElementById('app_na').removeAttribute("checked");
+                }
+                else if(e.select_appet == "abnorm"){
+                    document.getElementById('app_norm').removeAttribute("checked");
+                    document.getElementById('app_abnorm').setAttribute("checked", "checked");
+                    document.getElementById('app_na').removeAttribute("checked");
+                }
+                else if(e.select_appet == "na"){
+                    document.getElementById('app_norm').removeAttribute("checked");
+                    document.getElementById('app_abnorm').removeAttribute("checked");
+                    document.getElementById('app_na').setAttribute("checked", "checked");
+                }
+                if(e.select_drink == "norm"){
+                    alert("norm")
+                    document.getElementById('dri_norm').setAttribute("checked", "checked");
+                    document.getElementById('dri_abnorm').removeAttribute("checked");
+                    document.getElementById('dri_na').removeAttribute("checked");
+                }
+                else if(e.select_drink == "abnorm"){
+                    document.getElementById('dri_norm').removeAttribute("checked");
+                    document.getElementById('dri_abnorm').setAttribute("checked", "checked");
+                    document.getElementById('dri_na').removeAttribute("checked");
+                }
+                else if(e.select_drink == "na"){
+                    document.getElementById('dri_norm').removeAttribute("checked");
+                    document.getElementById('dri_abnorm').removeAttribute("checked");
+                    document.getElementById('dri_na').setAttribute("checked", "checked");
+                }
+                if(e.select_cough == "norm"){
+                    alert("norm")
+                    document.getElementById('cou_norm').setAttribute("checked", "checked");
+                    document.getElementById('cou_abnorm').removeAttribute("checked");
+                    document.getElementById('cou_na').removeAttribute("checked");
+                }
+                else if(e.select_cough == "abnorm"){
+                    document.getElementById('cou_norm').removeAttribute("checked");
+                    document.getElementById('cou_abnorm').setAttribute("checked", "checked");
+                    document.getElementById('cou_na').removeAttribute("checked");
+                }
+                else if(e.select_cough == "na"){
+                    document.getElementById('cou_norm').removeAttribute("checked");
+                    document.getElementById('cou_abnorm').removeAttribute("checked");
+                    document.getElementById('cou_na').setAttribute("checked", "checked");
+                }
+                if(e.select_sneez == "norm"){
+                    alert("norm")
+                    document.getElementById('sne_norm').setAttribute("checked", "checked");
+                    document.getElementById('sne_abnorm').removeAttribute("checked");
+                    document.getElementById('sne_na').removeAttribute("checked");
+                }
+                else if(e.select_sneez == "abnorm"){
+                    document.getElementById('sne_norm').removeAttribute("checked");
+                    document.getElementById('sne_abnorm').setAttribute("checked", "checked");
+                    document.getElementById('sne_na').removeAttribute("checked");
+                }
+                else if(e.select_sneez == "na"){
+                    document.getElementById('sne_norm').removeAttribute("checked");
+                    document.getElementById('sne_abnorm').removeAttribute("checked");
+                    document.getElementById('sne_na').setAttribute("checked", "checked");
+                }
+                if(e.select_att == "norm"){
+                    alert("norm")
+                    document.getElementById('att_norm').setAttribute("checked", "checked");
+                    document.getElementById('att_abnorm').removeAttribute("checked");
+                    document.getElementById('att_na').removeAttribute("checked");
+                }
+                else if(e.select_att == "abnorm"){
+                    document.getElementById('att_norm').removeAttribute("checked");
+                    document.getElementById('att_abnorm').setAttribute("checked", "checked");
+                    document.getElementById('att_na').removeAttribute("checked");
+                }
+                else if(e.select_att == "na"){
+                    document.getElementById('att_norm').removeAttribute("checked");
+                    document.getElementById('att_abnorm').removeAttribute("checked");
+                    document.getElementById('att_na').setAttribute("checked", "checked");
+                }
+                if(e.select_vom == "norm"){
+                    alert("norm")
+                    document.getElementById('vom_norm').setAttribute("checked", "checked");
+                    document.getElementById('vom_abnorm').removeAttribute("checked");
+                    document.getElementById('vom_na').removeAttribute("checked");
+                }
+                else if(e.select_vom == "abnorm"){
+                    document.getElementById('vom_norm').removeAttribute("checked");
+                    document.getElementById('vom_abnorm').setAttribute("checked", "checked");
+                    document.getElementById('vom_na').removeAttribute("checked");
+                }
+                else if(e.select_vom == "na"){
+                    document.getElementById('vom_norm').removeAttribute("checked");
+                    document.getElementById('vom_abnorm').removeAttribute("checked");
+                    document.getElementById('vom_na').setAttribute("checked", "checked");
+                }
+                if(e.select_bow == "norm"){
+                    alert("norm")
+                    document.getElementById('bow_norm').setAttribute("checked", "checked");
+                    document.getElementById('bow_abnorm').removeAttribute("checked");
+                    document.getElementById('bow_na').removeAttribute("checked");
+                }
+                else if(e.select_bow == "abnorm"){
+                    document.getElementById('bow_norm').removeAttribute("checked");
+                    document.getElementById('bow_abnorm').setAttribute("checked", "checked");
+                    document.getElementById('bow_na').removeAttribute("checked");
+                }
+                else if(e.select_bow == "na"){
+                    document.getElementById('bow_norm').removeAttribute("checked");
+                    document.getElementById('bow_abnorm').removeAttribute("checked");
+                    document.getElementById('bow_na').setAttribute("checked", "checked");
+                }
+                if(e.select_uri == "norm"){
+                    alert("norm")
+                    document.getElementById('uri_norm').setAttribute("checked", "checked");
+                    document.getElementById('uri_abnorm').removeAttribute("checked");
+                    document.getElementById('uri_na').removeAttribute("checked");
+                }
+                else if(e.select_uri == "abnorm"){
+                    document.getElementById('uri_norm').removeAttribute("checked");
+                    document.getElementById('uri_abnorm').setAttribute("checked", "checked");
+                    document.getElementById('uri_na').removeAttribute("checked");
+                }
+                else if(e.select_uri == "na"){
+                    document.getElementById('uri_norm').removeAttribute("checked");
+                    document.getElementById('uri_abnorm').removeAttribute("checked");
+                    document.getElementById('uri_na').setAttribute("checked", "checked");
+                }
+            }
+        }
+        ,
         headerConcat(date, head){
             return date+": "+head;
         },
@@ -1090,6 +1325,18 @@ input[type="radio"]:checked+label:after {
     transform: scale(1);
 }
 
+/* addch */
+input[type="radio"].checked+label:before {
+    -moz-animation: borderscale 300ms ease-in;
+    -webkit-animation: borderscale 300ms ease-in;
+    animation: borderscale 300ms ease-in;
+    background-color: #fff;
+}
+
+input[type="radio"].checked+label:after {
+    transform: scale(1);
+}
+
 input[type="radio"]+label:before,
 input[type="radio"]+label:after {
     border-radius: 50%;
@@ -1122,6 +1369,25 @@ input[type="checkbox"]:checked+label:before {
 }
 
 input[type="checkbox"]:checked+label:after {
+    content: "";
+    -moz-transform: rotate(-45deg) scale(1);
+    -ms-transform: rotate(-45deg) scale(1);
+    -webkit-transform: rotate(-45deg) scale(1);
+    transform: rotate(-45deg) scale(1);
+    -moz-transition: -moz-transform 200ms ease-out;
+    -o-transition: -o-transform 200ms ease-out;
+    -webkit-transition: -webkit-transform 200ms ease-out;
+    transition: transform 200ms ease-out;
+}
+
+/* addch */
+input[type="checkbox"].checked+label:before {
+    -moz-animation: borderscale 200ms ease-in;
+    -webkit-animation: borderscale 200ms ease-in;
+    animation: borderscale 200ms ease-in;
+}
+
+input[type="checkbox"].checked+label:after {
     content: "";
     -moz-transform: rotate(-45deg) scale(1);
     -ms-transform: rotate(-45deg) scale(1);
@@ -1434,6 +1700,16 @@ input[type="checkbox"]:checked+label:after {
     border-radius: 15px 100px 0px 0px;
 }
 
+/* addch */
+.tab-panel>input.checked+h2 {
+    background: #ffffff;
+    border-bottom: none;
+    color: #66d2a6;
+    font-weight: 800;
+    box-shadow: 10px -2px 4px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 15px 100px 0px 0px;
+}
+
 .tab-panel>input+h2 {
     transition: color 0.5s ease-in;
     -webkit-transition: color 0.5s ease-in;
@@ -1447,6 +1723,11 @@ input[type="checkbox"]:checked+label:after {
     color: #66d2a6;
 }
 
+/* addch */
+.tab-panel>input.checked:hover+h2 {
+    color: #66d2a6;
+}
+
 @media screen and (max-width: 45em) {
 
     .tab-panel>input:checked+h2:nth-child(7),
@@ -1457,9 +1738,28 @@ input[type="checkbox"]:checked+label:after {
     .tab-panel>input:checked+h2 {
         border-radius: 0px;
     }
+
+    /* addch */
+
+    .tab-panel>input.checked+h2:nth-child(7),
+    .tab-panel>input.checked+h2:nth-child(11) {
+        border-top: none;
+    }
+
+    .tab-panel>input.checked+h2 {
+        border-radius: 0px;
+    }
 }
 
 .tab-panel>input:checked+h2+.tab-panel-content {
+    position: static !important;
+    padding: 24px !important;
+    height: auto !important;
+    width: auto !important;
+}
+
+/* addch */
+.tab-panel>input.checked+h2+.tab-panel-content {
     position: static !important;
     padding: 24px !important;
     height: auto !important;
