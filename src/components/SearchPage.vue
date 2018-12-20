@@ -12,7 +12,7 @@
                         <h6 v-else-if="search_filter == 'owner'" class="font-weight-bold"><mdb-icon icon="street-view" class="pr-2"/>Owner</h6>
                         </a>
                             <p class="font-weight-bold dark-grey-text">
-                                <mdb-icon icon="clock-o" class="pr-2" />20/08/2018</p>
+                                <mdb-icon icon="clock-o" class="pr-2" />{{timenow()}}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h3 class="font-weight-bold dark-grey-text mb-3 p-0"><a>Search Result</a></h3>
@@ -163,9 +163,23 @@ export default {
             }).then(user=>{
                 this.$router.go(this.$route.path);
             })
-        })
-        
+        })    
+    },
+    timenow(){
+    var now= new Date(), 
+    ampm= 'am', 
+    h= now.getHours(), 
+    m= now.getMinutes(), 
+    s= now.getSeconds();
+    if(h>= 12){
+        if(h>12) h -= 12;
+        ampm= 'pm';
     }
+
+    if(m<10) m= '0'+m;
+    if(s<10) s= '0'+s;
+    return now.toLocaleDateString()+ ' ' + h + ':' + m + ':' + s + ' ' + ampm;
+}
   },
     created() {
         var userRef = db.collection("users")

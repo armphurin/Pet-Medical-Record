@@ -125,7 +125,7 @@ let router = new Router({
       path: "/friend",
       name: "friend-page",
       component: FriendPage,
-      meta: {}
+      meta: { requiresAuth: true }
     }
   ],
   mode: "history"
