@@ -138,13 +138,13 @@
 
                     <div class="tab-panel-content">
                         <div v-if="pet_type">
-                        <!-- Medic Content -->
-                        <v-select label="case_name" id="medicSelect" :options="med" v-model="selected" @input="doWhenSelected(selected)"></v-select>
-                        <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
-                        <h2 class="h2-responsive"><strong>Subjective Finding</strong></h2>
-                        <hr style="width:100%;margin-bottom:1em;">
-                        <row>
-                            <column md="6">
+                            <!-- Medic Content -->
+                            <v-select label="case_name" id="medicSelect" :options="med" v-model="selected" @input="doWhenSelected(selected)"></v-select>
+                            <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
+                            <h2 class="h2-responsive"><strong>Subjective Finding</strong></h2>
+                            <hr style="width:100%;margin-bottom:1em;">
+                            <row>
+                                <column md="6">
 
                                     <div class="table-responsive">
                                         <table>
@@ -1010,11 +1010,9 @@ import {
     mdbCardText,
     mdbBtn
 } from "mdbvue";
-
 import {
     Datetime
 } from "vue-datetime";
-
 export default {
     name: "medic",
     components: {
@@ -1166,9 +1164,6 @@ export default {
                 }
             }
             
-
-
-
             // if (this.med[0].pet_date != null) {
             //     console.log(this.headerConcat(this.med[0].pet_date.split("T")[0], this.med[0].pet_treat))
             // }
@@ -1247,60 +1242,10 @@ export default {
             } else {
                 return true;
             }
-
+        },
         doWhenSelected(e){
             if(e.case_name == "Create new Medic Case"){
-                alert("do"+e.case_name)
-                // document.getElementById('app_norm1').checked = false;
-                // document.getElementById('app_abnorm1').checked = false;
-                // document.getElementById('app_na1').checked = false;
-                // document.getElementById('dri_norm1').checked = false;
-                // document.getElementById('dri_abnorm1').checked = false;
-                // document.getElementById('dri_na1').checked = false;
-                // document.getElementById('cou_norm1').checked = false;
-                // document.getElementById('cou_abnorm1').checked = false;
-                // document.getElementById('cou_na1').checked = false;
-                // document.getElementById('sne_norm1').checked = false;
-                // document.getElementById('sne_abnorm1').checked = false;
-                // document.getElementById('sne_na1').checked = false;
-                // document.getElementById('att_norm1').checked = false;
-                // document.getElementById('att_abnorm1').checked = false;
-                // document.getElementById('att_na1').checked = false;
-                // document.getElementById('vom_norm1').checked = false;
-                // document.getElementById('vom_abnorm1').checked = false;
-                // document.getElementById('vom_na1').checked = false;
-                // document.getElementById('bow_norm1').checked = false;
-                // document.getElementById('bow_abnorm1').checked = false;
-                // document.getElementById('bow_na1').checked = false;
-                // document.getElementById('uri_norm1').checked = false;
-                // document.getElementById('uri_abnorm1').checked = false;
-                // document.getElementById('uri_na1').checked = false;
-
-                // document.getElementById('app_norm').checked = false;
-                // document.getElementById('app_abnorm').checked = false;
-                // document.getElementById('app_na').checked = false;
-                // document.getElementById('dri_norm').checked = false;
-                // document.getElementById('dri_abnorm').checked = false;
-                // document.getElementById('dri_na').checked = false;
-                // document.getElementById('cou_norm').checked = false;
-                // document.getElementById('cou_abnorm').checked = false;
-                // document.getElementById('cou_na').checked = false;
-                // document.getElementById('sne_norm').checked = false;
-                // document.getElementById('sne_abnorm').checked = false;
-                // document.getElementById('sne_na').checked = false;
-                // document.getElementById('att_norm').checked = false;
-                // document.getElementById('att_abnorm').checked = false;
-                // document.getElementById('att_na').checked = false;
-                // document.getElementById('vom_norm').checked = false;
-                // document.getElementById('vom_abnorm').checked = false;
-                // document.getElementById('vom_na').checked = false;
-                // document.getElementById('bow_norm').checked = false;
-                // document.getElementById('bow_abnorm').checked = false;
-                // document.getElementById('bow_na').checked = false;
-                // document.getElementById('uri_norm').checked = false;
-                // document.getElementById('uri_abnorm').checked = false;
-                // document.getElementById('uri_na').checked = false;
-
+                // alert("do"+e.case_name)
                 document.getElementById('app_norm').removeAttribute("checked");
                 document.getElementById('app_abnorm').removeAttribute("checked");
                 document.getElementById('app_na').removeAttribute("checked");
@@ -1327,36 +1272,8 @@ export default {
                 document.getElementById('uri_na').removeAttribute("checked");
             }
             else{
-                // document.getElementById('app_norm').checked = false;
-                // document.getElementById('app_abnorm').checked = false;
-                // document.getElementById('app_na').checked = false;
-                // document.getElementById('dri_norm').checked = false;
-                // document.getElementById('dri_abnorm').checked = false;
-                // document.getElementById('dri_na').checked = false;
-                // document.getElementById('cou_norm').checked = false;
-                // document.getElementById('cou_abnorm').checked = false;
-                // document.getElementById('cou_na').checked = false;
-                // document.getElementById('sne_norm').checked = false;
-                // document.getElementById('sne_abnorm').checked = false;
-                // document.getElementById('sne_na').checked = false;
-                // document.getElementById('att_norm').checked = false;
-                // document.getElementById('att_abnorm').checked = false;
-                // document.getElementById('att_na').checked = false;
-                // document.getElementById('vom_norm').checked = false;
-                // document.getElementById('vom_abnorm').checked = false;
-                // document.getElementById('vom_na').checked = false;
-                // document.getElementById('bow_norm').checked = false;
-                // document.getElementById('bow_abnorm').checked = false;
-                // document.getElementById('bow_na').checked = false;
-                // document.getElementById('uri_norm').checked = false;
-                // document.getElementById('uri_abnorm').checked = false;
-                // document.getElementById('uri_na').checked = false;
-                
                 if(e.select_appet == "norm"){
-                    alert("norm")
-                    // document.getElementById('app_norm').checked = true;
-                    // document.getElementById('app_abnorm').checked = false;
-                    // document.getElementById('app_na').checked = false;
+                    // alert("norm")
                     document.getElementById('app_norm').setAttribute("checked", "checked");
                     document.getElementById('app_abnorm').removeAttribute("checked");
                     document.getElementById('app_na').removeAttribute("checked");
@@ -1372,7 +1289,7 @@ export default {
                     document.getElementById('app_na').setAttribute("checked", "checked");
                 }
                 if(e.select_drink == "norm"){
-                    alert("norm")
+                    // alert("norm")
                     document.getElementById('dri_norm').setAttribute("checked", "checked");
                     document.getElementById('dri_abnorm').removeAttribute("checked");
                     document.getElementById('dri_na').removeAttribute("checked");
@@ -1388,7 +1305,7 @@ export default {
                     document.getElementById('dri_na').setAttribute("checked", "checked");
                 }
                 if(e.select_cough == "norm"){
-                    alert("norm")
+                    // alert("norm")
                     document.getElementById('cou_norm').setAttribute("checked", "checked");
                     document.getElementById('cou_abnorm').removeAttribute("checked");
                     document.getElementById('cou_na').removeAttribute("checked");
@@ -1404,7 +1321,7 @@ export default {
                     document.getElementById('cou_na').setAttribute("checked", "checked");
                 }
                 if(e.select_sneez == "norm"){
-                    alert("norm")
+                    // alert("norm")
                     document.getElementById('sne_norm').setAttribute("checked", "checked");
                     document.getElementById('sne_abnorm').removeAttribute("checked");
                     document.getElementById('sne_na').removeAttribute("checked");
@@ -1420,7 +1337,7 @@ export default {
                     document.getElementById('sne_na').setAttribute("checked", "checked");
                 }
                 if(e.select_att == "norm"){
-                    alert("norm")
+                    // alert("norm")
                     document.getElementById('att_norm').setAttribute("checked", "checked");
                     document.getElementById('att_abnorm').removeAttribute("checked");
                     document.getElementById('att_na').removeAttribute("checked");
@@ -1436,7 +1353,7 @@ export default {
                     document.getElementById('att_na').setAttribute("checked", "checked");
                 }
                 if(e.select_vom == "norm"){
-                    alert("norm")
+                    // alert("norm")
                     document.getElementById('vom_norm').setAttribute("checked", "checked");
                     document.getElementById('vom_abnorm').removeAttribute("checked");
                     document.getElementById('vom_na').removeAttribute("checked");
@@ -1452,7 +1369,7 @@ export default {
                     document.getElementById('vom_na').setAttribute("checked", "checked");
                 }
                 if(e.select_bow == "norm"){
-                    alert("norm")
+                    // alert("norm")
                     document.getElementById('bow_norm').setAttribute("checked", "checked");
                     document.getElementById('bow_abnorm').removeAttribute("checked");
                     document.getElementById('bow_na').removeAttribute("checked");
@@ -1468,7 +1385,7 @@ export default {
                     document.getElementById('bow_na').setAttribute("checked", "checked");
                 }
                 if(e.select_uri == "norm"){
-                    alert("norm")
+                    // alert("norm")
                     document.getElementById('uri_norm').setAttribute("checked", "checked");
                     document.getElementById('uri_abnorm').removeAttribute("checked");
                     document.getElementById('uri_na').removeAttribute("checked");
@@ -1484,8 +1401,6 @@ export default {
                     document.getElementById('uri_na').setAttribute("checked", "checked");
                 }
             }
-        }
-        ,
         },
         headerConcat(date, head) {
             return date + " : " + head;
@@ -1545,7 +1460,6 @@ export default {
                 }
                 this.dump[data.id] = data
             })
-
         })
     },
     created() {
@@ -1651,7 +1565,6 @@ export default {
                                             this.pets.push(data);
                                         });
                                     })
-
                             })
                     }
                 }
@@ -1683,14 +1596,12 @@ export default {
                                 };
                                 console.log(doc.data());
                                 this.pets.push(data);
-
                             });
                             this.email = firebase.auth().currentUser.email;
                             console.log(this.email);
                             // console.log(this.pets[0].age)
                         });
                 }
-
             })
     },
     mounted() {
