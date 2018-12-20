@@ -225,6 +225,7 @@ body.body-searchpage {
 
 .card.searchcard {
     margin-top: 5em;
+    margin-bottom: 25em;
 }
 
 /*Common Mobile Portrait*/
