@@ -849,7 +849,7 @@
                             <row v-if="pet_type == 'dog'">
                                 <column md="2">
                                     <mdb-card class="vacts">
-                                        <mdb-card-image src="/src/assets/dog/vact_dog_caninedistemper.png" alt="caninedistemper" style="width:100%; height: 80px"></mdb-card-image>
+                                        <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_dog_caninedistemper.png?alt=media&token=78752d2f-9ce3-40ca-838a-bdd921f6d14d" alt="caninedistemper" style="width:100%; height: 80px"></mdb-card-image>
                                         <mdb-card-body>
                                             <mdb-card-title style="font-size:1.2em;">Canine Distemper</mdb-card-title>
                                             <mdb-card-text>โรคไข้หัดสุนัข</mdb-card-text>
@@ -862,7 +862,7 @@
                             </column>
                                     <column md="2">
                                         <mdb-card class="vacts">
-                                            <mdb-card-image src="/src/assets/dog/vact_dog_canineparvovirus.png" alt="canineparvovirus" style="width:100%; height: 80px"></mdb-card-image>
+                                            <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_dog_canineparvovirus.png?alt=media&token=9dd6bed9-dfd7-416c-ade6-394cf8ea1495" alt="canineparvovirus" style="width:100%; height: 80px"></mdb-card-image>
                                             <mdb-card-body>
                                                 <mdb-card-title style="font-size:1.2em;">Canine Parvovirus</mdb-card-title>
                                                 <mdb-card-text>ลำไส้อักเสบติดต่อ</mdb-card-text>
@@ -875,7 +875,7 @@
                             </column>
                                         <column md="2">
                                             <mdb-card class="vacts">
-                                                <mdb-card-image src="/src/assets/dog/vact_dog_infectiouscaninehepatitis.jpg" alt="infectiouscaninehepatitis" style="width:100%; height: 80px"></mdb-card-image>
+                                                <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_dog_infectiouscaninehepatitis.jpg?alt=media&token=e83815c2-f65f-4f9d-98fb-1d153ab3fcfa" alt="infectiouscaninehepatitis" style="width:100%; height: 80px"></mdb-card-image>
                                                 <mdb-card-body>
                                                     <mdb-card-title style="font-size:1.2em;">Infectious Canine Hepatitis</mdb-card-title>
                                                     <mdb-card-text>โรคตับอักเสบติดต่อ</mdb-card-text>
@@ -888,7 +888,7 @@
                             </column>
                                             <column md="2">
                                                 <mdb-card class="vacts">
-                                                    <mdb-card-image src="/src/assets/dog/vact_dog_kennelcough.png" alt="kennelcough" style="width:100%; height: 80px"></mdb-card-image>
+                                                    <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_dog_kennelcough.png?alt=media&token=2ba6f5c1-988c-4c17-8004-bd4ae5c13988" alt="kennelcough" style="width:100%; height: 80px"></mdb-card-image>
                                                     <mdb-card-body>
                                                         <mdb-card-title style="font-size:1.2em;">Kennel Cough</mdb-card-title>
                                                         <mdb-card-text>โรคหลอดลมอักเสบติดต่อ</mdb-card-text>
@@ -901,7 +901,7 @@
                             </column>
                                                 <column md="2">
                                                     <mdb-card class="vacts">
-                                                        <mdb-card-image src="/src/assets/dog/vact_dog_leptospirosis.png" alt="leptospirosis" style="width:100%; height: 80px"></mdb-card-image>
+                                                        <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_dog_leptospirosis.png?alt=media&token=4ebbe239-8480-4393-8f41-dda8efb4a2db" alt="leptospirosis" style="width:100%; height: 80px"></mdb-card-image>
                                                         <mdb-card-body>
                                                             <mdb-card-title style="font-size:1.15em;">Leptospirosis</mdb-card-title>
                                                             <mdb-card-text>โรคเล็ปโตสไปโรซิส</mdb-card-text>
@@ -914,7 +914,7 @@
                             </column>
                                                     <column md="2">
                                                         <mdb-card class="vacts">
-                                                            <mdb-card-image src="/src/assets/dog/vact_dog_rabiesvirus.png" alt="rabiesvirus" style="width:100%; height: 80px"></mdb-card-image>
+                                                            <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_dog_rabiesvirus.png?alt=media&token=131b9d5e-f201-4a3b-95c3-dac9333c0b8c" alt="rabiesvirus" style="width:100%; height: 80px"></mdb-card-image>
                                                             <mdb-card-body>
                                                                 <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
                                                                 <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
@@ -929,7 +929,7 @@
                             <row v-if="pet_type == 'cat'">
                                 <column md="2">
                                     <mdb-card class="vacts">
-                                        <mdb-card-image src="/src/assets/cat/vact_cat_felinecalicivirus.PNG" alt="felinecalicivirus" style="width:100%; height: 80px"></mdb-card-image>
+                                        <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_cat_felinecalicivirus.PNG?alt=media&token=0a3c0e63-1040-4cf0-b52c-8f69407def92" alt="felinecalicivirus" style="width:100%; height: 80px"></mdb-card-image>
                                         <mdb-card-body>
                                             <mdb-card-title style="font-size:1.2em;">Feline Calicivirus</mdb-card-title>
                                             <mdb-card-text>โรคเกิดจากไวรัสพิเศษ</mdb-card-text>
@@ -942,7 +942,7 @@
                             </column>
                                     <column md="2">
                                         <mdb-card class="vacts">
-                                            <mdb-card-image src="/src/assets/cat/vact_cat_felineinfectiousperitonitis.png" alt="felineinfectiousperitonitis" style="width:100%; height: 80px"></mdb-card-image>
+                                            <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_cat_felineinfectiousperitonitis.png?alt=media&token=893f263b-4db8-4545-ba97-0c0a9c690576" alt="felineinfectiousperitonitis" style="width:100%; height: 80px"></mdb-card-image>
                                             <mdb-card-body>
                                                 <mdb-card-title style="font-size:1.2em;">Feline Infectious Peritonitis</mdb-card-title>
                                                 <mdb-card-text>ช่องท้องอักเสบ</mdb-card-text>
@@ -955,7 +955,7 @@
                             </column>
                                         <column md="2">
                                             <mdb-card class="vacts">
-                                                <mdb-card-image src="/src/assets/cat/vact_cat_felineleukemiavirus.PNG" alt="felineleukemiavirus" style="width:100%; height: 80px"></mdb-card-image>
+                                                <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_cat_felineleukemiavirus.PNG?alt=media&token=82bec5b6-44b0-4cc4-989b-326d9abdfe98" alt="felineleukemiavirus" style="width:100%; height: 80px"></mdb-card-image>
                                                 <mdb-card-body>
                                                     <mdb-card-title style="font-size:1.2em;">Feline Leukemia Virus</mdb-card-title>
                                                     <mdb-card-text>โรคลิวคีเมีย</mdb-card-text>
@@ -968,7 +968,7 @@
                             </column>
                                             <column md="2">
                                                 <mdb-card class="vacts">
-                                                    <mdb-card-image src="/src/assets/cat/vact_cat_felineviralrhinotracheitis.PNG" alt="felineviralrhinotracheitis" style="width:100%; height: 80px"></mdb-card-image>
+                                                    <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_cat_felineviralrhinotracheitis.PNG?alt=media&token=7ac5df0e-6480-43cf-b5d4-8b2bc7cf2791" alt="felineviralrhinotracheitis" style="width:100%; height: 80px"></mdb-card-image>
                                                     <mdb-card-body>
                                                         <mdb-card-title style="font-size:1.2em;">Feline Viral Rhinotracheitis</mdb-card-title>
                                                         <mdb-card-text>โรคหวัดแมวและไข้หัดแมว</mdb-card-text>
@@ -981,7 +981,7 @@
                             </column>
                                                 <column md="2">
                                                     <mdb-card class="vacts">
-                                                        <mdb-card-image src="/src/assets/dog/vact_dog_rabiesvirus.png" alt="rabiesvirus" style="width:100%; height: 80px"></mdb-card-image>
+                                                        <mdb-card-image src="https://firebasestorage.googleapis.com/v0/b/pet-medical-record-22d9a.appspot.com/o/vact_cat_rabies.jpg?alt=media&token=91fe964f-eb57-4f98-8028-2f74fc42b935" alt="rabiesvirus" style="width:100%; height: 80px"></mdb-card-image>
                                                         <mdb-card-body>
                                                             <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
                                                             <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
