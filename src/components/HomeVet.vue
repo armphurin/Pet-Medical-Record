@@ -1524,13 +1524,13 @@ input::placeholder {
 
 /*Common Mobile Portrait*/
 @media only screen and (min-width: 370px) and (max-width: 600px) {
-    .home-owner {
-        margin-top: 10em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 11em;
-    }
+  .home-owner {
+    margin-top: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 21.5em;
+  }
 
     .intro-section .btn {
         width: 100%;
@@ -1547,20 +1547,26 @@ input::placeholder {
         left: 10%;
     }
 
-    .col-md-8 {
-        flex-basis: unset;
-    }
+  .col-md-8 {
+    flex-basis: unset;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
 }
 
 /*Samsung Galaxy S5 and iPhone 5 Portrait*/
 @media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
-    .home-owner {
-        margin-top: 10em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 11em;
-    }
+  .home-owner {
+    margin-top: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16em;
+  }
 
     .intro-section .btn {
         width: 100%;
@@ -1577,9 +1583,15 @@ input::placeholder {
         left: 10%;
     }
 
-    .col-md-8 {
-        flex-basis: unset;
-    }
+  .col-md-8 {
+    flex-basis: unset;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
 }
 
 /*iPhone 5/SE Portrait Button Fix*/
@@ -1593,6 +1605,33 @@ input::placeholder {
         width: 50%;
     }
 }
+
+/*Pixel2XL Portrait*/
+@media only screen and (min-width: 411px) and (max-width: 412px) and (max-height: 825px) and (orientation: portrait) {
+  .home-owner {
+    margin-bottom: 27em;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
+}
+
+/*iPhone X Portrait*/
+@media only screen and (min-width: 375px) and (max-width: 400px) and (max-height: 815px) and (orientation: portrait) {
+  .home-owner {
+    margin-bottom: 26.5em;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
+}
+
 
 /*iPad Portrait*/
 @media only screen and (min-width: 760px) and (orientation: portrait) {
@@ -1615,13 +1654,18 @@ input::placeholder {
         left: 4%;
     }
 
-    .col {
-        flex-basis: unset;
-    }
-
-    .home-owner {
-        height: 56em;
-    }
+  .col {
+    flex-basis: unset;
+  }
+  .home-owner {
+    height: 56em;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
 }
 
 /*iPad Pro Portrait*/
@@ -1655,9 +1699,16 @@ input::placeholder {
         left: 27%;
     }
 
-    .col-md-8 {
-        flex-basis: unset;
-    }
+  .col-md-8 {
+    flex-basis: unset;
+  }
+
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
 }
 
 /*Samsung Galaxy S5 and iPhone 5/SE Landscape*/

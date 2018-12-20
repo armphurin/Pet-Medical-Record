@@ -260,6 +260,7 @@ body.body-friendpage {
 }
 .card.searchcard{
     margin-top: 5em;
+    margin-bottom: 16em;
 }
 
 /* fade hiddem */
@@ -268,8 +269,58 @@ body.body-friendpage {
     animation: delete-fadeout .3s ease-out;
 }
 
+.text-truncate{
+    overflow: visible;
+}
+
+/*Common Mobile Portrait*/
+@media only screen and (min-width: 370px) and (max-width: 600px) {
+    .col-4{
+        left: -73%;
+        margin-top: 3em;
+        margin-bottom: 1.5em;
+    }
+    .col-4 .btn{
+        width: 10em;
+    }
+}
+
+/*Samsung Galaxy S5 and iPhone 5 Portrait*/
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+    .col-4{
+        left: -75%;
+        margin-top: 3em;
+        margin-bottom: 1.5em;
+    }
+    .col-4 .btn{
+        width: 10em;
+    }  
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 760px) and (orientation: portrait) {
+    .col-4 .btn{
+        width: 10em;
+    }  
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px) and (orientation: portrait) {
+    .searchcard{
+        margin-bottom: 21.5em;
+    }
+}
+
+/*Common Landscape*/
+@media only screen and (max-width: 830px) and (orientation: landscape) {
+    .col-4 .btn{
+        width: 10em;
+    }  
+}
+
 @-webkit-keyframes delete-fadeout {
       0% { opacity: 1; -webkit-transform: translateY(0); }   
     100% { opacity: 0; -webkit-transform: translateY(-100%); }
 }
+
 </style>
