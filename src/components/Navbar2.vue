@@ -27,7 +27,7 @@
           <dropdown-item v-if="this.ownerUser"><router-link to="/home_owner">Dashboard</router-link></dropdown-item>
           <dropdown-item v-if="this.vetUser"><router-link to="/medic">My Pet Record</router-link></dropdown-item>
           <dropdown-item v-if="this.ownerUser"><router-link to="/medic">My Pet Record</router-link></dropdown-item>
-          <dropdown-item><router-link to="/friend">Friend</router-link></dropdown-item>
+          <dropdown-item v-if="this.ownerUser || this.vetUser"><router-link to="/friend">Friend</router-link></dropdown-item>
           <div class="dropdown-divider"></div>
           <dropdown-item><btn @click="logout" class="btn btn-elegant">Logout</btn></dropdown-item>
         </dropdown-menu>
@@ -89,6 +89,7 @@ export default {
         .then(() => {
           localStorage.removeItem("ownerUser");
           localStorage.removeItem("vetUser");
+          // location.href = "/home_page";
           this.$router.go({ path: this.$router.path });
         });
     }
