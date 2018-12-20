@@ -24,7 +24,8 @@
                 <mdb-row>
                     <mdb-col md="3">
                         <mdb-view hover rounded class="z-depth-1-half mb-4">
-                            <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/photo8.jpg" alt="Sample image"/>
+                            <img class="img-fluid" src="../assets/pic_owner.png" v-if="!dump[f[0]].img" alt="Sample image"/>
+                            <img class="img-fluid" :src="dump[f[0]].img" v-if="dump[f[0]].img" alt="Sample image"/>
                             <a>
                   <mdb-mask overlay="white-slight" class="waves-light"/>
                 </a>

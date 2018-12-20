@@ -786,7 +786,9 @@ export default {
                                         color: this.pet_color,
                                         pet_type: this.pet_type,
                                         urlImagePet: url,
-                                        pet_cat: true
+                                        pet_cat: true,
+                                        vaccine: ['none','none','none','none','none'],
+                                        medical: []
                                     })
                                     .then(doc => {
                                         toast({
@@ -818,7 +820,9 @@ export default {
                                         color: this.pet_color,
                                         pet_type: this.pet_type,
                                         urlImagePet: url,
-                                        pet_dog: true
+                                        pet_dog: true,
+                                        vaccine: ['none','none','none','none','none','none'],
+                                        medical: []
                                     })
                                     .then(doc => {
                                         toast({
@@ -850,7 +854,9 @@ export default {
                                 color: this.pet_color,
                                 pet_type: this.pet_type,
                                 urlImagePet: "",
-                                pet_cat: true
+                                pet_cat: true,
+                                vaccine: ['none','none','none','none','none'],
+                                medical: []
                             })
                             .then(doc => {
                                 toast({
@@ -878,7 +884,9 @@ export default {
                                 color: this.pet_color,
                                 pet_type: this.pet_type,
                                 urlImagePet: "",
-                                pet_dog: true
+                                pet_dog: true,
+                                vaccine: ['none','none','none','none','none'],
+                                medical: []
                             })
                             .then(doc => {
                                 toast({
