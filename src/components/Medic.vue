@@ -584,7 +584,7 @@
                                                 <label for="pettype">Animal Name</label>
                                                 <input class="form-control form-control-lg" type="text" placeholder="Animal Name" id="petname"  style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected == 'Select Case'" >
                                                 <input class="form-control form-control-lg" type="text" placeholder="Animal Name" id="petname" v-model="pet_name" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name == 'Create new Medic Case'" disabled >
-                                                <input class="form-control form-control-lg" type="text" placeholder="Animal Name" id="petname" v-model="selected.name" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" >
+                                                <input class="form-control form-control-lg" type="text" placeholder="Animal Name" id="petname" v-model="selected.name" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" disabled >
                             </div>
                                         </column>
                                         <column md="12" v-if="user_type == 'owner'">
@@ -594,9 +594,13 @@
                             </div>
                                         </column>
                                         <column md="6" v-if="user_type == 'vet'">
-                                            <div class="label-group" v-if="selected.case_name == 'Create new Medic Case' || (selected.case_name != 'Create new Medic Case' && selected != 'Select Case')">
+                                            <div class="label-group" v-if="selected.case_name == 'Create new Medic Case' ">
                                                 <label for="petdate">Case Date</label>
                                                 <datetime v-model="selected.pet_date"></datetime>
+                                            </div>
+                                            <div class="label-group"  v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" >
+                                                <label for="petdate">Case Date</label>
+                                                <datetime v-model="selected.pet_date" disabled></datetime>
                                             </div>
                                             <div class="label-group" v-if="selected == 'Select Case'">
                                                 <label for="petdate">Case Date</label>
@@ -610,13 +614,17 @@
                                             </div>
                                         </column>
                                         <column md="6" v-if="user_type == 'vet'">
-                                            <div class="label-group" v-if="selected.case_name == 'Create new Medic Case' || (selected.case_name != 'Create new Medic Case' && selected != 'Select Case')">
+                                            <div class="label-group" v-if="selected.case_name == 'Create new Medic Case'">
                                                 <label for="petdate">Case Time</label>
                                                 <datetime type="time" v-model="selected.pet_time"></datetime>
                                             </div>
                                             <div class="label-group" v-if="selected == 'Select Case'">
                                                 <label for="petdate">Case Time</label>
                                                 <input class="form-control form-control-lg" type="text" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                            </div>
+                                            <div class="label-group"  v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" >
+                                                <label for="petdate">Case time</label>
+                                                <datetime type="time" v-model="selected.pet_time" disabled></datetime>
                                             </div>
                                         </column>
                                         <column md="6" v-if="user_type == 'owner'">
@@ -632,9 +640,13 @@
                                                 <label for="spnote">Special Note</label>
                                                 <textarea class="form-control" id="spnote" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
                                             </div>
-                                            <div class="label-group" v-if="selected.case_name == 'Create new Medic Case' || (selected.case_name != 'Create new Medic Case' && selected != 'Select Case')">
+                                            <div class="label-group" v-if="selected.case_name == 'Create new Medic Case' ">
                                                 <label for="spnote">Special Note</label>
                                                 <textarea class="form-control" id="spnote" v-model="selected.spnote" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                            </div>
+                                            <div class="label-group" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                                <label for="spnote">Special Note</label>
+                                                <textarea class="form-control" id="spnote" v-model="selected.spnote" rows="5" placeholder="Special Note" style="width:100%;margin: 0 auto;border-radius: 13px;"disabled></textarea>
                                             </div>
                                         </column>
                                         <column md="12" v-if="user_type == 'owner'">
@@ -650,9 +662,13 @@
                             <hr style="width:100%;margin-bottom:1em;">
                             <row>
                                 <column md="6">
-                                    <div class="label-group" v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet' && (selected.case_name == 'Create new Medic Case' || selected == 'Select Case')">
                                         <label for="pettemp">Temp:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Temperature" id="pettemp" v-model="selected.pet_temp" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                                    </div>
+                                    <div class="label-group" v-if="user_type == 'vet' && selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                        <label for="pettemp">Temp:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Temperature" id="pettemp" v-model="selected.pet_temp" style="width:100%;margin: 0 auto;border-radius: 13px;"disabled>
                                     </div>
                                     <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="pettemp">Temp:</label>
@@ -660,9 +676,13 @@
                                     </div>
                                 </column>
                                 <column md="6">
-                                    <div class="label-group" v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet' && (selected.case_name == 'Create new Medic Case' || selected == 'Select Case')">
                                         <label for="petweight">Weight:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Weight" id="pettweight" v-model="selected.pet_weight" style="width:100%;margin: 0 auto;border-radius: 13px;">
+                            </div>
+                                    <div class="label-group" v-if="user_type == 'vet' && selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                        <label for="petweight">Weight:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Weight" id="pettweight" v-model="selected.pet_weight" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                     <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="petweight">Weight:</label>
@@ -670,9 +690,13 @@
                             </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group" v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet' && (selected.case_name == 'Create new Medic Case' || selected == 'Select Case')">
                                         <label for="note">Note:</label>
                                         <textarea class="form-control" id="note" v-model="selected.note" rows="5" placeholder="Note" style="width:100%;margin: 0 auto;border-radius: 13px;"></textarea>
+                                    </div>
+                                    <div class="label-group" v-if="user_type == 'vet' && selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                        <label for="note">Note:</label>
+                                        <textarea class="form-control" id="note" v-model="selected.note" rows="5" placeholder="Note" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled></textarea>
                                     </div>
                                     <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="note">Note:</label>
@@ -680,70 +704,98 @@
                                     </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group" v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet' && (selected.case_name == 'Create new Medic Case' || selected == 'Select Case')">
                                         <label for="petdig">Diagnos:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Diagnos" id="petdig" v-model="selected.pet_diag" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
+                                    </div>
+                                    <div class="label-group" v-if="user_type == 'vet' && selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                        <label for="petdig">Diagnos:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Diagnos" id="petdig" v-model="selected.pet_diag" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    </div>
                                     <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="petdig">Diagnos:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Diagnos" id="petdig" v-model="selected.pet_diag" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group"  v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet' && (selected.case_name == 'Create new Medic Case' || selected == 'Select Case')">
                                         <label for="pettreat">Treatment/Test:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Treatment and Test" id="pettreat" v-model="selected.pet_treat" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
+                                    </div>
+                                    <div class="label-group"  v-if="user_type == 'vet' && selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                        <label for="pettreat">Treatment/Test:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Treatment and Test" id="pettreat" v-model="selected.pet_treat" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    </div>
                                     <div class="label-group"  v-if="user_type == 'owner'">
                                         <label for="pettreat">Treatment/Test:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Treatment and Test" id="pettreat" v-model="selected.pet_treat" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group" v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet' && (selected.case_name == 'Create new Medic Case' || selected == 'Select Case')">
                                         <label for="petmedic">Medication:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Medication" id="petmedic" v-model="selected.pet_medic" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
+                                    </div>
+                                    <div class="label-group" v-if="user_type == 'vet' && selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                        <label for="petmedic">Medication:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Medication" id="petmedic" v-model="selected.pet_medic" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    </div>
                                     <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="petmedic">Medication:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Medication" id="petmedic" v-model="selected.pet_medic" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group" v-if="user_type == 'vet'">
+                                   <div class="label-group" v-if="user_type == 'vet' && (selected.case_name == 'Create new Medic Case' || selected == 'Select Case')">
                                         <label for="petex">Exercise:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Exercise" id="petex" v-model="selected.pet_ex" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
+                                    </div>
+                                     <div class="label-group" v-if="user_type == 'vet' && selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                        <label for="petex">Exercise:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Exercise" id="petex" v-model="selected.pet_ex" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    </div>
                                     <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="petex">Exercise:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Exercise" id="petex" v-model="selected.pet_ex" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group" v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet' && (selected.case_name == 'Create new Medic Case' || selected == 'Select Case')">
                                         <label for="petdirect">Directory Direction:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Directory Direction" id="petdirect" v-model="selected.pet_direct" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
+                                    </div>
+                                    <div class="label-group" v-if="user_type == 'vet' && selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                        <label for="petdirect">Directory Direction:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Directory Direction" id="petdirect" v-model="selected.pet_direct" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    </div>
                                     <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="petdirect">Directory Direction:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Directory Direction" id="petdirect" v-model="selected.pet_direct" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group" v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet' && (selected.case_name == 'Create new Medic Case' || selected == 'Select Case')">
                                         <label for="recheck">Recheck Note:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="selected.recheck" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
+                                    </div>
+                                    <div class="label-group" v-if="user_type == 'vet' && selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                        <label for="recheck">Recheck Note:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="selected.recheck" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    </div>
                                      <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="recheck">Recheck Note:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Recheck Note" id="recheck" v-model="selected.recheck" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
                             </div>
                                 </column>
                                 <column md="12">
-                                    <div class="label-group" v-if="user_type == 'vet'">
+                                    <div class="label-group" v-if="user_type == 'vet' && (selected.case_name == 'Create new Medic Case' || selected == 'Select Case')">
                                         <label for="addition">Additional Instruction:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="selected.addition" style="width:100%;margin: 0 auto;border-radius: 13px;">
-                            </div>
+                                    </div>
+                                    <div class="label-group" v-if="user_type == 'vet' && selected.case_name != 'Create new Medic Case' && selected != 'Select Case'">
+                                        <label for="addition">Additional Instruction:</label>
+                                        <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="selected.addition" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
+                                    </div>
                                      <div class="label-group" v-if="user_type == 'owner'">
                                         <label for="addition">Additional Instruction:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="Additional Instruction" id="addition" v-model="selected.addition" style="width:100%;margin: 0 auto;border-radius: 13px;" disabled>
@@ -754,7 +806,7 @@
                                         <label for="vetsig">Veterinary Signature:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected == 'Select Case'" >
                                         <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="fullname" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name == 'Create new Medic Case'" disabled>
-                                        <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="selected.vet_sig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" >
+                                        <input class="form-control form-control-lg" type="text" placeholder="vet" id="vetsig" v-model="selected.vet_sig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" disabled>
                             </div>
                                      <div class="label-group" v-if="user_type == 'owner'">
                                          <label for="hossig">Veterinary Signature:</label>
@@ -767,7 +819,7 @@
                                         <label for="hossig">Hospital Signature:</label>
                                         <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected == 'Select Case'">
                                         <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" v-model="hospital" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name == 'Create new Medic Case'" disabled>
-                                        <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" v-model="selected.hos_sig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" >
+                                        <input class="form-control form-control-lg" type="text" placeholder="hospital" id="hossig" v-model="selected.hos_sig" style="width:100%;margin: 0 auto;border-radius: 13px;" v-if="selected.case_name != 'Create new Medic Case' && selected != 'Select Case'" disabled>
                             </div>
                                     <div class="label-group" v-if="user_type == 'owner'"> 
                                         <label for="hossig">Hospital Signature:</label>
@@ -781,7 +833,7 @@
                                 <hr style="width:100%;margin-top:3em;margin-bottom:2em;">
                             </row>
                             <row style="float:right;">
-                                <btn color="primary" @click.native="addCase(selected)" v-if="selected != 'Select Case' && user_type =='vet'">Submit</btn>
+                                <btn color="primary" @click.native="addCase(selected)" v-if="user_type =='vet' && selected.case_name == 'Create new Medic Case'" >Submit</btn>
                             </row>
                         </div>
                     </div>

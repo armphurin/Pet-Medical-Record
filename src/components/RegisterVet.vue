@@ -1092,6 +1092,12 @@ input::placeholder {
     }
 }
 
+@media only screen and (min-width: 1400px) and (orientation: landscape) {
+    .card-body{
+        margin-bottom: -1em;
+    }
+}
+
 /*Common Responsive Landscape, Tablet*/
 @media only screen and (min-height: 700px) and (orientation: Landscape) {
     .obj-center {
