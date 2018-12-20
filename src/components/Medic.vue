@@ -801,6 +801,7 @@
                                         <mdb-card-body>
                                             <mdb-card-title style="font-size:1.2em;">Canine Distemper</mdb-card-title>
                                             <mdb-card-text>โรคไข้หัดสุนัข</mdb-card-text>
+                                            <mdb-card-text v-if="timetoshow[0] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                             <mdb-card-text v-if="timetoshow[0] != 'none' && user_type == 'owner'">{{timetoshow[0]}}</mdb-card-text>
                                             <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 0" v-if="vaccine[0] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                             <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 0, plandate = vaccine[0]" v-if="vaccine[0] != 'none' && user_type == 'vet'">edit</mdb-btn>
@@ -813,6 +814,7 @@
                                             <mdb-card-body>
                                                 <mdb-card-title style="font-size:1.2em;">Canine Parvovirus</mdb-card-title>
                                                 <mdb-card-text>ลำไส้อักเสบติดต่อ</mdb-card-text>
+                                                <mdb-card-text v-if="timetoshow[1] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                                 <mdb-card-text v-if="timetoshow[1] != 'none' && user_type == 'owner'">{{timetoshow[1]}}</mdb-card-text>
                                                 <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 1" v-if="vaccine[1] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                                 <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 1, plandate = vaccine[1]" v-if="vaccine[1] != 'none' && user_type == 'vet'">edit</mdb-btn>
@@ -825,6 +827,7 @@
                                                 <mdb-card-body>
                                                     <mdb-card-title style="font-size:1.2em;">Infectious Canine Hepatitis</mdb-card-title>
                                                     <mdb-card-text>โรคตับอักเสบติดต่อ</mdb-card-text>
+                                                    <mdb-card-text v-if="timetoshow[2] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                                     <mdb-card-text v-if="timetoshow[2] != 'none' && user_type == 'owner'">{{timetoshow[2]}}</mdb-card-text>
                                                     <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 2" v-if="vaccine[2] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                                     <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 2, plandate = vaccine[2]" v-if="vaccine[2] != 'none' && user_type == 'vet' ">edit</mdb-btn>
@@ -837,6 +840,7 @@
                                                     <mdb-card-body>
                                                         <mdb-card-title style="font-size:1.2em;">Kennel Cough</mdb-card-title>
                                                         <mdb-card-text>โรคหลอดลมอักเสบติดต่อ</mdb-card-text>
+                                                        <mdb-card-text v-if="timetoshow[3] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                                         <mdb-card-text v-if="timetoshow[3] != 'none' && user_type == 'owner'">{{timetoshow[3]}}</mdb-card-text>
                                                         <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 3" v-if="vaccine[3] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                                         <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 3, plandate = vaccine[3]" v-if="vaccine[3] != 'none' && user_type == 'vet'">edit</mdb-btn>
@@ -849,6 +853,7 @@
                                                         <mdb-card-body>
                                                             <mdb-card-title style="font-size:1.15em;">Leptospirosis</mdb-card-title>
                                                             <mdb-card-text>โรคเล็ปโตสไปโรซิส</mdb-card-text>
+                                                            <mdb-card-text v-if="timetoshow[4] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                                             <mdb-card-text v-if="timetoshow[4] != 'none' && user_type == 'owner'">{{timetoshow[4]}}</mdb-card-text>
                                                             <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 4" v-if="vaccine[4] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                                             <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 4, plandate = vaccine[4]" v-if="vaccine[4] != 'none' && user_type == 'vet'">edit</mdb-btn>
@@ -861,6 +866,7 @@
                                                             <mdb-card-body>
                                                                 <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
                                                                 <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
+                                                                <mdb-card-text v-if="timetoshow[5] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                                                 <mdb-card-text v-if="timetoshow[5] != 'none' && user_type == 'owner'">{{timetoshow[5]}}</mdb-card-text>
                                                                 <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 5" v-if="vaccine[5] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                                                 <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 5, plandate = vaccine[5]" v-if="vaccine[5] != 'none' && user_type == 'vet'">edit</mdb-btn>
@@ -875,6 +881,7 @@
                                         <mdb-card-body>
                                             <mdb-card-title style="font-size:1.2em;">Feline Calicivirus</mdb-card-title>
                                             <mdb-card-text>โรคเกิดจากไวรัสพิเศษ</mdb-card-text>
+                                            <mdb-card-text v-if="timetoshow[0] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                             <mdb-card-text v-if="timetoshow[0] != 'none' && user_type == 'owner'">{{timetoshow[0]}}</mdb-card-text>
                                             <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 0" v-if="vaccine[0] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                             <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 0, plandate = vaccine[0]" v-if="vaccine[0] != 'none' && user_type == 'vet'">edit</mdb-btn>
@@ -887,6 +894,7 @@
                                             <mdb-card-body>
                                                 <mdb-card-title style="font-size:1.2em;">Feline Infectious Peritonitis</mdb-card-title>
                                                 <mdb-card-text>ช่องท้องอักเสบ</mdb-card-text>
+                                                <mdb-card-text v-if="timetoshow[1] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                                 <mdb-card-text v-if="timetoshow[1] != 'none' && user_type == 'owner'">{{timetoshow[1]}}</mdb-card-text>
                                                 <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 1" v-if="vaccine[1] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                                 <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 1, plandate = vaccine[1]" v-if="vaccine[1] != 'none' && user_type == 'vet'">edit</mdb-btn>
@@ -899,6 +907,7 @@
                                                 <mdb-card-body>
                                                     <mdb-card-title style="font-size:1.2em;">Feline Leukemia Virus</mdb-card-title>
                                                     <mdb-card-text>โรคลิวคีเมีย</mdb-card-text>
+                                                    <mdb-card-text v-if="timetoshow[2] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                                     <mdb-card-text v-if="timetoshow[2] != 'none' && user_type == 'owner'">{{timetoshow[2]}}</mdb-card-text>
                                                     <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 2" v-if="vaccine[2] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                                     <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 2, plandate = vaccine[2]" v-if="vaccine[2] != 'none' && user_type == 'vet' ">edit</mdb-btn>
@@ -911,6 +920,7 @@
                                                     <mdb-card-body>
                                                         <mdb-card-title style="font-size:1.2em;">Feline Viral Rhinotracheitis</mdb-card-title>
                                                         <mdb-card-text>โรคหวัดแมวและไข้หัดแมว</mdb-card-text>
+                                                        <mdb-card-text v-if="timetoshow[3] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                                         <mdb-card-text v-if="timetoshow[3] != 'none' && user_type == 'owner'">{{timetoshow[3]}}</mdb-card-text>
                                                         <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 3" v-if="vaccine[3] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                                         <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 3, plandate = vaccine[3]" v-if="vaccine[3] != 'none' && user_type == 'vet'">edit</mdb-btn>
@@ -923,6 +933,7 @@
                                                         <mdb-card-body>
                                                             <mdb-card-title style="font-size:1.2em;">Rabies Virus</mdb-card-title>
                                                             <mdb-card-text>โรคพิษสุนัขบ้า</mdb-card-text>
+                                                            <mdb-card-text v-if="timetoshow[4] == 'none' && user_type == 'owner'">No Plan</mdb-card-text>
                                                             <mdb-card-text v-if="timetoshow[4] != 'none' && user_type == 'owner'">{{timetoshow[4]}}</mdb-card-text>
                                                             <mdb-btn color="primary" @click.native="popupPlan = true, vaccine_id = 4" v-if="vaccine[4] == 'none' && user_type == 'vet'">Plan</mdb-btn>
                                                             <mdb-btn color="info" @click.native="popupPlan = true, vaccine_id = 4, plandate = vaccine[4]" v-if="vaccine[4] != 'none' && user_type == 'vet'">edit</mdb-btn>
