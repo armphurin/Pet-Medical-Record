@@ -25,86 +25,62 @@
                         <p class="dark-grey-text">Search result for <b>{{search_text}}</b></p>
                     </div>
 
-                    <div class="news">
+                    <div v-for="q in query" v-bind:key="q.fullname" class="news" v-if="(q.user_type == 'vet' && search_filter == 'veterinary') || (q.user_type == 'vet' && search_filter == 'hospital')">
                         <mdb-row>
                             <mdb-col md="3">
                                 <mdb-view hover rounded class="z-depth-1-half mb-4">
-                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/photo8.jpg" alt="Sample image"/>
+                                    <img class="img-fluid" :src="q.img" v-if="q.img" alt="Sample image"/>
+                                    <img class="img-fluid" src="../assets/pic_owner.png" v-if="!q.img" alt="Sample image"/>
                                     <a>
                   <mdb-mask overlay="white-slight" class="waves-light"/>
                 </a>
                                 </mdb-view>
                             </mdb-col>
                             <mdb-col md="9">
-                                <h4 class="font-weight-bold dark-grey-text">Sattaya Singkul</h4>
+                                <h4 class="font-weight-bold dark-grey-text">{{q.fullname}}</h4>
                                 <div class="d-flex justify-content-between">
                                     <mdb-col col="9" class="text-truncate pl-0 mb-3">
-                                        <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
-                                        <p class="dark-grey-text">Hospital: Mahidol Hospital</p>
+                                        <p class="dark-grey-text" style="margin-bottom:0px;" v-if="q.user_type =='vet'">Veterinary ID: {{q.vet_id}} </p>
+                                        <p class="dark-grey-text" v-if="q.user_type == 'vet'">Hospital Adress: {{q.hospital}}</p>
                                     </mdb-col>
                                     <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else-if="vet_user && search_filter == 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else href="tel:+688912456"><mdb-btn color="info">Call</mdb-btn></a>
+                                        <a v-if="owner_user && search_filter != 'owner' && (!q.friend_req[current_user] || q.friend_req[current_user] == 'cancel')"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="owner_user && search_filter == 'owner' && (!q.friend_req[current_user] || q.friend_req[current_user] == 'cancel')"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="vet_user" :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
                                     </mdb-col>
                                 </div>
                             </mdb-col>
                         </mdb-row>
                     </div>
 
-                    <div class="news">
+                    <div v-for="q in query" v-bind:key="q.id" class="news" v-if="(q.user_type == 'owner' && search_filter == 'owner')">
                         <mdb-row>
                             <mdb-col md="3">
                                 <mdb-view hover rounded class="z-depth-1-half mb-4">
-                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/54.jpg" alt="Sample image"/>
+                                    <img class="img-fluid" :src="q.img" v-if="q.img" alt="Sample image"/>
+                                    <img class="img-fluid" src="../assets/pic_owner.png" v-if="!q.img" alt="Sample image"/>
                                     <a>
                   <mdb-mask overlay="white-slight" class="waves-light"/>
                 </a>
                                 </mdb-view>
                             </mdb-col>
                             <mdb-col md="9">
-                                <h4 class="font-weight-bold dark-grey-text">Phurin Setanya</h4>
+                                <h4 class="font-weight-bold dark-grey-text">{{q.fullname}}</h4>
                                 <div class="d-flex justify-content-between">
                                     <mdb-col col="9" class="text-truncate pl-0 mb-3">
-                                        <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
-                                        <p class="dark-grey-text">Hospital: Setanya Hospital</p>
+                                        <p class="dark-grey-text" style="margin-bottom:0px;">Line ID: {{q.line_id}}</p>
+                                        <p class="dark-grey-text">Address: {{q.address}}</p>
                                     </mdb-col>
                                     <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else-if="vet_user && search_filter == 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else href="tel:+688912456"><mdb-btn color="info">Call</mdb-btn></a>
+                                        <a v-if="owner_user && search_filter != 'owner'&& (!q.friend_req[current_user] || q.friend_req[current_user] == 'cancel')"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="vet_user && search_filter == 'owner'&& (!q.friend_req[current_user] || q.friend_req[current_user] == 'cancel')"><mdb-btn color="info" @click.native="addfriend(q)">Add Friend</mdb-btn></a>
+                                        <a v-else-if="owner_user" :href="'tel:'+q.tel"><mdb-btn color="info">Call</mdb-btn></a>
                                     </mdb-col>
                                 </div>
                             </mdb-col>
                         </mdb-row>
                     </div>
 
-                    <div class="mb-4">
-                        <mdb-row>
-                            <mdb-col md="3">
-                                <mdb-view hover rounded class="z-depth-1-half mb-4">
-                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Sample image"/>
-                                    <a>
-                  <mdb-mask overlay="white-slight" class="waves-light"/>
-                </a>
-                                </mdb-view>
-                            </mdb-col>
-                            <mdb-col md="9">
-                                <h4 class="font-weight-bold dark-grey-text">Nai Thana</h4>
-                                <div class="d-flex justify-content-between">
-                                    <mdb-col col="9" class="text-truncate pl-0 mb-3">
-                                        <p class="dark-grey-text" style="margin-bottom:0px;">Veterinary ID: 696969696</p>
-                                        <p class="dark-grey-text">Hospital: Yala Hospital</p>
-                                    </mdb-col>
-                                    <mdb-col col="3">
-                                        <a v-if="owner_user && search_filter != 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else-if="vet_user && search_filter == 'owner'"><mdb-btn color="info">Add Friend</mdb-btn></a>
-                                        <a v-else href="tel:+688912456"><mdb-btn color="info">Call</mdb-btn></a>
-                                    </mdb-col>
-                                </div>
-                            </mdb-col>
-                        </mdb-row>
-                    </div>
                 </mdb-col>
             </mdb-row>
 
@@ -129,6 +105,9 @@ import {
     mdbCardText,
     mdbBtn
 } from 'mdbvue';
+import db from "./firebaseInit";
+import firebase from "firebase";
+import swal from "sweetalert2";
 
 export default {
     beforeCreate: function () {
@@ -137,7 +116,8 @@ export default {
     name: 'search-page',
     data: function () {
         return {
-            query: null,
+            query: [],
+            current_user: firebase.auth().currentUser.email,
             search_text: localStorage.getItem("search_text"),
             search_filter: "veterinary",
             owner_user: JSON.parse(localStorage.getItem("ownerUser")),
@@ -159,6 +139,56 @@ export default {
         mdbCardText,
         mdbBtn
     },
+    methods: {
+    addfriend(q) {
+        // console.log(id)
+        const toast = swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000
+      });
+        q.friend_req[this.current_user] = 'wait'
+        console.log(q.friend_req[this.current_user])
+        db.collection("users").doc(q.id).update({
+            friend_req : q.friend_req
+        }).then(user=>{ 
+            q.friend_req = {}
+            q.friend_req[q.id] = 'sending'
+            console.log(q.friend_req)
+            db.collection("users").doc(this.current_user).update({
+                send_friend_req : q.friend_req
+            }).then(user=>{
+                console.log(q.friend_req[q.id])
+            }).then(user=>{
+                this.$router.go(this.$route.path);
+            })
+        })
+        
+    }
+  },
+    created() {
+        var userRef = db.collection("users")
+        var query = userRef.where("fullname", "==", this.search_text)
+        query.get().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                const data = {
+                    id: doc.id,
+                    fullname: doc.data().fullname,
+                    line_id: doc.data().line_id,
+                    user_type: doc.data().user_type,
+                    tel: doc.data().telephone_number,
+                    address: doc.data().address,
+                    vet_id: doc.data().vet_id,
+                    img: doc.data().urlImageProfile,
+                    friend_req: doc.data().friend_req,
+                    send_friend_req: doc.data().send_friend_req,
+                    hospital: doc.data().hospital
+                }
+                this.query.push(data);
+            })
+        });
+    }
 
 };
 </script>
@@ -171,7 +201,9 @@ body.body-searchpage {
     -o-background-size: cover;
     background-size: cover;
 }
-</style><style scoped>
+</style>
+
+<style scoped>
 .news {
     border-bottom: 1px solid #e0e0e0;
     margin-bottom: 1.5rem;
@@ -180,4 +212,95 @@ body.body-searchpage {
 .card.searchcard {
     margin-top: 5em;
 }
+
+/*Common Mobile Portrait*/
+@media only screen and (min-width: 370px) and (max-width: 600px) {
+    .col-3{
+        left: -72%;
+        margin-top: 4em;
+        margin-bottom: 1.5em;
+    }
+
+    .col-3 .btn{
+        width: 7em;
+        padding-left: 0px;
+        left: -70%;
+        padding-right: 0px;
+        top: -10%;
+    }
+}
+
+/*Samsung Galaxy S5 and iPhone 5 Portrait*/
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+    .text-truncate{
+        overflow: visible;
+    }
+
+    .col-3{
+        left: -82%;
+        margin-top: 4em;
+        margin-bottom: 1.5em;
+    }
+
+    .col-3 .btn{
+        width: 7em;
+        padding-left: 0px;
+        left: -20%;
+        padding-right: 0px;
+        top: -10%;
+    }  
+
+    .browser-default{
+        margin-left: 1em;
+    }
+}
+
+/*iPad Portrait*/
+@media only screen and (min-width: 760px) and (orientation: portrait) {
+    .col-3 .btn{
+        width: 7em;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .searchcard{
+        margin-bottom: 38.5%;
+    }
+}
+
+/*iPad Pro Portrait*/
+@media only screen and (min-width: 1000px) and (orientation: portrait) {
+    .searchcard{
+        margin-bottom: 54%;
+    }
+}
+
+
+/*Common Mobile Landscape*/
+@media only screen and (max-width: 830px) and (orientation: landscape) {
+    .col-3 .btn{
+        width: 7em;
+        padding-left: 0px;
+        padding-right: 0px;
+        top: -10%;
+    }  
+}
+
+/*Samsung Galaxy S5 and iPhone 5/SE Landscape*/
+@media only screen and (max-width: 640px) and (max-height: 360px) and (orientation: landscape) {
+    .col-3 .btn{
+        width: 7em;
+        padding-left: 0px;
+        padding-right: 0px;
+        top: -10%;
+    }
+}
+
+/*iPro Landscape*/
+@media only screen and (min-width: 1200px) and (max-width: 1400px) and (orientation: landscape) {
+    .searchcard{
+        margin-bottom: 6%;
+    }
+}
+
 </style>

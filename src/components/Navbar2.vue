@@ -134,5 +134,13 @@ a {
 .symbol-custom {
   color: white !important;
 }
+
+/*Samsung Galaxy S5 and iPhone 5 Portrait*/
+@media only screen and (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+  .form-inline{
+      margin-right: 70px;
+  }
+}
+
 </style>
 

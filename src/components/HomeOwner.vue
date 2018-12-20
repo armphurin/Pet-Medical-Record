@@ -786,7 +786,9 @@ export default {
                                         color: this.pet_color,
                                         pet_type: this.pet_type,
                                         urlImagePet: url,
-                                        pet_cat: true
+                                        pet_cat: true,
+                                        vaccine: ['none','none','none','none','none'],
+                                        medical: []
                                     })
                                     .then(doc => {
                                         toast({
@@ -818,7 +820,9 @@ export default {
                                         color: this.pet_color,
                                         pet_type: this.pet_type,
                                         urlImagePet: url,
-                                        pet_dog: true
+                                        pet_dog: true,
+                                        vaccine: ['none','none','none','none','none','none'],
+                                        medical: []
                                     })
                                     .then(doc => {
                                         toast({
@@ -850,7 +854,9 @@ export default {
                                 color: this.pet_color,
                                 pet_type: this.pet_type,
                                 urlImagePet: "",
-                                pet_cat: true
+                                pet_cat: true,
+                                vaccine: ['none','none','none','none','none'],
+                                medical: []
                             })
                             .then(doc => {
                                 toast({
@@ -878,7 +884,9 @@ export default {
                                 color: this.pet_color,
                                 pet_type: this.pet_type,
                                 urlImagePet: "",
-                                pet_dog: true
+                                pet_dog: true,
+                                vaccine: ['none','none','none','none','none'],
+                                medical: []
                             })
                             .then(doc => {
                                 toast({
@@ -1406,6 +1414,12 @@ input::placeholder {
   .col-md-8 {
     flex-basis: unset;
   }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 125px;
+    height: 60px;
+  }
 }
 
 /*Samsung Galaxy S5 and iPhone 5 Portrait*/
@@ -1431,6 +1445,12 @@ input::placeholder {
   }
   .col-md-8 {
     flex-basis: unset;
+  }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
   }
 }
 
@@ -1468,6 +1488,12 @@ input::placeholder {
   .col {
     flex-basis: unset;
   }
+  .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
+  }
 }
 
 /*iPad Pro Portrait*/
@@ -1498,6 +1524,12 @@ input::placeholder {
   }
   .col-md-8 {
     flex-basis: unset;
+  }
+    .modal-footer .btn{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 60px;
   }
 }
 
